@@ -1,0 +1,102 @@
+====================================================================
+    GetIt.d2h
+
+A D2hackit plugin for automatic item picking and moving. 
+
+Abin (abinn32@yahoo.com)
+====================================================================
+
+*** This Module Requires D2Hackit v2.00 Build 1121 or Higher ***
+
+Features:
+
+1, Automatically picks gold, rejuve, full rejuv depending on player's
+   inventory & belt stats.
+2, Valuable items have higher priority than junkies.
+3, Teleport to godly items(configurable).
+4, Automatically identifying items.
+5, Moving good items from inventory to stash or cube.
+
+History:
+
+3.0 - Changed many formats...Removed gold, rejuv, fullrejuv,goldamount commands.
+2.0 - Added ".getit stash" command.
+1.0 - Initial public release.
+
+Commands:
+
+------------------------------------------------------------------------------
+"delay"
+
+.getit delay <milliseconds>
+
+Specifies the delay, in milliseconds, between picking two items.
+------------------------------------------------------------------------------
+
+"radius"
+
+.getit radius <yards>
+
+Specifies the radius, in yards, within which items will be picked.
+------------------------------------------------------------------------------
+
+"townpick"
+
+.getit townpick <0/1>
+
+Specifies whether to pick items in town.
+------------------------------------------------------------------------------
+
+"clientmove"
+
+.getit clientmove <0/1>
+
+Specifies whether to show client side movements.
+------------------------------------------------------------------------------
+
+"toggle"
+
+.getit toggle
+
+Enables/disables GetIt in a switch mode.
+------------------------------------------------------------------------------
+
+"enable"
+
+.getit enable
+
+Enables GetIt.
+------------------------------------------------------------------------------
+
+"disable"
+
+.getit disable
+
+Enables GetIt.
+------------------------------------------------------------------------------
+
+"load"
+
+.getit load [file_name]
+
+Reloads settings from a config file.
+------------------------------------------------------------------------------
+
+"log"
+
+.getit log [file_name]
+
+Writes item log to a file.
+------------------------------------------------------------------------------
+
+"summary"
+
+.getit summary
+
+Displays summary information of current settings.
+------------------------------------------------------------------------------
+
+"stash"
+.getit stash
+
+Finds move valuable items from inventory to stash or cube.

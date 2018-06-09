@@ -1,0 +1,15 @@
+///////////////////////////////////////////////////////////
+// MyStats.h
+//
+// Abin (abinn32@yahoo.com)
+///////////////////////////////////////////////////////////
+
+#ifndef __MYSTATS_H__
+#define __MYSTATS_H__
+
+#include <windows.h>
+
+BOOL ShowMyStats();
+BOOL CleanMyStats();
+
+#endif // __MYSTATS_H__

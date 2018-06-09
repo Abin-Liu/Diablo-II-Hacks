@@ -1,0 +1,192 @@
+;;===================================================================
+;; 			D2Items.ini
+;;===================================================================
+;; Item type/mod definitions for D2Hackit2 regular expression mod parser.
+;; This file is only configurable by experts. Please check D2Hackit
+;; document "Item Mod Expression" for details.
+;;
+;; Abin (abinn32@yahoo.com)
+;;===================================================================
+
+[type]
+
+;;-------------------------------------------------------------------
+;; Misc
+;;-------------------------------------------------------------------
+any=* // Any item, use it carefully!!!
+lowrune=r01,r02,r03,r04,r05,r06,r07,r08,r09,r10,r11,r12 // Low runes, 0-12
+midrune=r13,r14,r15,r16,r17,r18,r19,r20,r21 // Medium runes, 13-21
+hirune=r22,r23,r24,r25,r26,r27,r28,r29,r30,r31,r32,r33 // High runes, 22-33
+charm=cm1,cm2,cm3 // Charms
+
+;;-------------------------------------------------------------------
+;; Helmets/Gloves/Boots/Belts
+;;-------------------------------------------------------------------
+circlet=ci0,ci1,ci2,ci3 // Circlets
+ecpt_helm=xap,xkp,xlm,xhl,xhm,xrn,xsk // Exceptional helmets
+elite_helm=uap,ukp,ulm,uhl,uhm,urn,usk // Elite helmets
+gloves=lgl,vgl,mgl,tgl,hgl,xlg,xvg,xmg,xtg,xhg,ulg,uvg,umg,utg,uhg // Gloves
+boots=lbt,vbt,mbt,tbt,hbt,xlb,xvb,xmb,xtb,xhb,ulb,uvb,umb,utb,uhb // Boots
+belt4=hbl,zlb,zvb,zmb,ztb,zhb,ulc,uvc,umc,utc,uhc // 4-row belts
+
+;;-------------------------------------------------------------------
+;; Weapons
+;;-------------------------------------------------------------------
+orb=ob1,ob2,ob3,ob4,ob5,ob6,ob7,ob8,ob9,oba,obb,obc,obd,obe,obf // Sorc orbs
+wand=wnd,ywn,bwn,gwn,9wn,9yw,9bw,9gw,,7wn,7yw,7bw,7gw // Necro wands
+scepter=scp,gsc,wsp,9sc,9qs,9ws,7sc,7qs,7ws // Paladin scepters
+elite_merc=7sr,7tr,7br,7st,7p7,7o7,7vo,7s8,7pa,7h7,7wc // Elite merc weapons 
+elite_sword=72h,7cm,7gs,7b7,7fb,7gd // Elite swords
+
+;;-------------------------------------------------------------------
+;; Armors
+;;-------------------------------------------------------------------
+ecpt_armor=xui,xea,xla,xtu,xng,xcl,xhn,xrs,xpl,xlt,xld,xth,xul,xar,xtp // Exceptional armors
+elite_armor=uui,uea,ula,utu,ung,ucl,uhn,urs,upl,ult,uld,uth,uul,uar,utp // Elite armors
+
+;;-------------------------------------------------------------------
+;; Shields
+;;-------------------------------------------------------------------
+ecpt_pal=pa6,pa7,pa8,pa9,paa // Exceptional paladin shield
+elite_pal=pab,pac,pad,pae,paf // Elite paladin shield
+
+[Mod]
+
+;;-------------------------------------------------------------------
+;; Character Skills
+;;-------------------------------------------------------------------
+all_skill=127 		// +[0] to all skill levels
+ama=83,?,0 		// +[0] to amazon skill levels
+sor=83,?,1		// +[0] to sorceress skill levels
+nec=83,?,2		// +[0] to necromancer skill levels
+pal=83,?,3		// +[0] to paladin skill levels
+bar=83,?,4		// +[0] to barbarian skill levels
+dru=83,?,5		// +[0] to druid skill levels
+asn=83,?,6		// +[0] to assassin skill levels
+ama_bow=188,?,0		// +[0] to amazon bow and corssbow skill levels
+ama_pas=188,?,1		// +[0] to amazon passive and magic skill levels
+ama_jav=188,?,2		// +[0] to amazon javelin and spear skill levels
+sor_fire=188,?,8	// +[0] to sorceress fire skill levels
+sor_lit=188,?,9		// +[0] to sorceress lightning skill levels
+sor_cold=188,?,10	// +[0] to sorceress cold skill levels
+nec_cur=188,?,16	// +[0] to necromancer curses skill levels
+nec_poi=188,?,17	// +[0] to necromancer poison and bone skill levels
+nec_sum=188,?,18	// +[0] to necromancer summoning skill levels
+pal_com=188,?,24	// +[0] to paladin combat skill levels
+pal_off=188,?,25	// +[0] to paladin offensive aura skill levels
+pal_def=188,?,26	// +[0] to paladin defensive aura levels
+bar_com=188,?,32	// +[0] to barbarian combat skill levels
+bar_mas=188,?,33	// +[0] to barbarian combat mastery skill levels
+bar_cry=188,?,34	// +[0] to barbarian war cry skill levels
+dru_sum=188,?,40	// +[0] to druid summoning skill levels
+dru_ss=188,?,41		// +[0] to druid shape shift skill levels
+dru_ele=188,?,42	// +[0] to druid elemental skill levels
+asn_trap=188,?,48	// +[0] to assassin traps skill levels
+asn_sha=188,?,49	// +[0] to assassin shadow discipline skill levels
+asn_ma=188,?,50		// +[0] to assassin martial arts skill levels
+
+conc=107,?,113		// +[0] to Concentration (Paladin Only)
+bhammer=107,?,112	// +[0] to Blessed Hammer (Paladin Only)
+bspirit=107,?,93	// +[0] to Bone Spirit (Necromancer Only)
+bspear=107,?,84		// +[0] to Bone Spear (Necromancer Only)
+
+cast_attack=195		// [0]% chance to cast [1] on attack
+cast_striking=198	// [0]% chance to cast [1] when striking
+cast_struck=201		// [0]% chance to cast [1] on struck
+
+;;-------------------------------------------------------------------
+;; Character Stats & Attributes
+;;-------------------------------------------------------------------
+str=0			// +[0] to strength
+eng=1			// +[0] to energy 
+dex=2			// +[0] to dexterity
+vit=3			// +[0] to vitality
+life=7			// +[0] to life
+mana=9			// +[0] to mana
+defp=16			// +[0]% to defense 
+def=31			// +[0] to defense
+block=20		// +[0]% chance of block 
+mana_regen=27		// regenerate mana [0]% 
+life_regen=74		// replenish life +[0]
+life_leech=60		// [0]% life stolen per hit
+mana_leech=62		// [0]% mana stolen per hit
+mf=80			// [0]% better chance of getting magic item
+exp=85			// +[0]% experience gained
+req=91			// requirements -[0]%
+dmg_mana=114		// [0]% damage goes to mana
+
+;;-------------------------------------------------------------------
+;; Damage Related
+;;-------------------------------------------------------------------
+ar=19			// +[0]% to attack rating
+ed=17			// [0]% enhanced damage 
+min_dmg=21		// +[0] to minimum damage
+max_dmg=22		// +[0] to maximum damage
+fire_dmg=48		// Adds [0] to [1] fire damage 
+lit_dmg=50		// Adds [0] to [1] lightning damage 
+magic_dmg=52		// Adds [0] to [1] magic damage 
+cold_dmg=54		// Adds [0] to [1] cold damage (cold length [2] seconds) 
+poi_dmg=57		// Adds [0] to [1] poison damage over [2] seconds 
+fire_skilldmg=329	// +[0]% to fire spell damage 
+lit_skilldmg=330	// +[0]% to lightning spell damage
+cold_skilldmg=331	// +[0]% to cold spell damage
+poison_skilldmg=332	// +[0]% to poison spell damage
+enemy_fireres=333	// -[0]% to enemy fire resistance
+enemy_litres=334	// -[0]% to enemy lightning resistance
+enemy_coldres=335	// -[0]% to enemy cold resistance
+enemy_poisonres=336	// -[0]% to enemy poison resistance
+ow=135			// [0]% chance of opening wounds
+cb=136			// [0]% chance of crushing blow
+ds=141			// [0]% chance of deadly strike
+
+;;-------------------------------------------------------------------
+;; Speed Boosts
+;;-------------------------------------------------------------------
+ias=68			// [0]% increased attack speed
+frw=67			// [0]% faster run/walk
+fhr=99			// [0]% faster hit recovery
+fbr=102			// [0]% faster block rate
+fcr=105			// [0]% faster cast rate
+
+;;-------------------------------------------------------------------
+;; Resistances & Absorbs
+;;-------------------------------------------------------------------
+dr=34			// damage reduced by [0]
+mdr=35			// magic damage reduced by [0]
+phy_res=36		// physical resist +[0]%
+fire_res=39		// fire resist +[0]%
+lit_res=41		// lightning resist +[0]%
+cold_res=43		// cold resist +[0]%
+poi_res=45		// poison resist +[0]%
+plr=110			// poison length reduced by [0]%
+fire_absp=142		// [0]% fire absorb
+fire_abs=143		// [0] fire absorb
+lit_absp=144		// [0]% lightning absorb
+lit_abs=145		// [0] lightning absorb
+cold_absp=148		// [0]% cold absorb
+cold_abs=149		// [0] cold absorb
+
+;;-------------------------------------------------------------------
+;; strategic
+;;-------------------------------------------------------------------
+knockback=81		// knockback ([0] == 1)
+peace=108		// slain monsters rest in peace ([0] == 1)
+flee=112		// hit causes monster to flee [0]%
+blind=113		// hit blinds target
+itd=115			// ignore target defense ([0] == 1)
+tgt_def=116		// -[0]% target defense
+pmh=117			// Prevent Monster Heal ([0] == 1)
+hfd=118			// Half Freeze Duration	([0] == 1)
+slow=150		// Slows Target by [0]%
+cbf=153			// cannot be frozen ([0] == 1)
+
+;;-------------------------------------------------------------------
+;; Item Special Attributes
+;;-------------------------------------------------------------------
+Indestructible=152	// Indestructible ([0] == 1)
+pierce=156		// Piercing Attack [0]%
+magic_arrow=157		// Fires Magic Arrows ([0] == 1)
+explosive_arrow=158	// Fires Explosive Arrows ([0] == 1)
+repair=252		// Repairs 1 durability in [0] seconds
+qty_regen=253		// Replenishes Quantity ([0] == 1)
+stack=254		// Increased Stack Size ([0] == 1)

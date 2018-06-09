@@ -1,0 +1,74 @@
+LifeSaver v1.0 by Abin
+
+Author's Email: abinn32@yahoo.com
+Author's URL: http://www.wxjindu.com/abin/
+
+"LifeSaver" is a D2hackit 2.00 module. This module basically offers two categories of features:
+1) automatically reacts when player is threaten and
+2) greatly simplified some time-critical game operations, such as "save & exit", "TP to town" 
+so that one single key stroke will get the job done, those are especially important for Hardcore players.
+
+Requirements: D2hackit 2.00 or higher
+
+Copyright (c) 2002, Abin (abinn32@yahoo.com)
+All rights reserved.
+
+Features:
+
+1: Quit to channel(NOT shut down game) if HP is low or player is hostiled.
+2: TP to town if HP is low or player is hostiled.
+3: Auto drink potions when HP/mana is low.
+4: Client view synchronization(anti black-wall) by one single key-stroke.
+5: Fast "save & exit" by one single key-stroke.
+6: Fast "Cast a town portal walk in" by one single key-stroke
+
+Please note that some essential features, such as automatically potion drinking, requires that this module
+is loaded BEFORE your character enters the game, otherwise those features will not function properly until
+the character enters a new game.
+
+Module Commands:
+
+"quit"
+Save and exit.
+Syntax: .LifeSaver quit
+
+"sync"
+Force client view to synchronize char location.
+Syntax: .LifeSaver sync
+
+"town"
+Immediately cast a town portal and enter it.
+Syntax: .LifeSaver town
+
+"key.quit"
+Assign shortcut key for "Save And Exit".
+Syntax: .LifeSaver key.quit <key_code>
+
+"key.sync"
+Assign shortcut key for "Sync".
+Syntax: .LifeSaver key.sync <key_code>
+
+"key.town"
+Assign shortcut key for "Town".
+Syntax: .LifeSaver key.town <key_code>
+
+"hostile"
+Specify your action when hostiled.
+Syntax: .LifeSaver hostile <quit/town>
+
+"hp"
+Specify your action when HP is low.
+Syntax: .LifeSaver hp <quit/town/potion> <hp_percent>
+
+"mana"
+Specify your action when mana is low.
+Syntax: .LifeSaver mana <quit/town/potion> <mana_percent>
+
+"merc"
+Specify your action when the merc's HP is low.
+Syntax: .LifeSaver merc <quit/town/potion> <hp_percent>
+
+"summary"
+Displays all settings for current character.
+Syntax: .LifeSaver summary
+

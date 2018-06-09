@@ -1,0 +1,14 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Pindlebot.chm
+Default topic=intro.htm
+Display compile progress=No
+Language=0x804 Chinese (PRC)
+Title=SIG版Pindlebot使用说明
+
+
+[FILES]
+intro.htm
+
+[INFOTYPES]
+

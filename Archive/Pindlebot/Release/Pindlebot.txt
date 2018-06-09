@@ -1,0 +1,22 @@
+[Log]
+Game=134
+Running=0
+Run Time=4527
+Succeed=69
+Potion=8
+Retreat=1
+Char die=1
+Fail=13
+Avoid=2
+Ins Skill=1
+Warp=2
+[Deadly Combos]
+Any + Holy Shock Aura=1
+Any + Might Aura=1
+Any + Blessed Aim Aura=1
+Cold Enchanted + Any=4
+Holy Fire Aura + Any=4
+Cursed + Any=2
+Conviction Aura + Any=1
+Fanaticism Aura + Any=1
+Fanaticism Aura=1

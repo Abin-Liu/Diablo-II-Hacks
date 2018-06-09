@@ -1,0 +1,150 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ItemDB - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Release/ItemDB.res" /d "NDEBUG" /d "_AFXDLL" "D:\Projects\Diablo II\ItemDB\server\ItemDB.rc"" 
+Creating temporary file "C:\DOCUME~1\Abin\LOCALS~1\Temp\RSPDE.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/ItemDB.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\Diablo II\ItemDB\server\External\ado.cpp"
+"D:\Projects\Diablo II\ItemDB\server\RegExp\BuiltinVar.cpp"
+"D:\Projects\Diablo II\ItemDB\server\CharList.cpp"
+"D:\Projects\Diablo II\ItemDB\server\CharView.cpp"
+"D:\Projects\Diablo II\ItemDB\server\Diablo2\D2ItemDesc.cpp"
+"D:\Projects\Diablo II\ItemDB\server\External\D2Monitor.cpp"
+"D:\Projects\Diablo II\ItemDB\server\Diablo2\D2Storage.cpp"
+"D:\Projects\Diablo II\ItemDB\server\Diablo2\D2View.cpp"
+"D:\Projects\Diablo II\ItemDB\server\External\EditEx.cpp"
+"D:\Projects\Diablo II\ItemDB\server\RegExp\ExamItemProperties.cpp"
+"D:\Projects\Diablo II\ItemDB\server\Diablo2\HoverWnd.cpp"
+"D:\Projects\Diablo II\ItemDB\server\External\HyperLink.cpp"
+"D:\Projects\Diablo II\ItemDB\server\External\Ini.cpp"
+"D:\Projects\Diablo II\ItemDB\server\Diablo2\ItemDatabase.cpp"
+"D:\Projects\Diablo II\ItemDB\server\ItemDB.cpp"
+"D:\Projects\Diablo II\ItemDB\server\ItemDBDoc.cpp"
+"D:\Projects\Diablo II\ItemDB\server\ItemDBToolbar.cpp"
+"D:\Projects\Diablo II\ItemDB\server\ItemDBView.cpp"
+"D:\Projects\Diablo II\ItemDB\server\ItemListView.cpp"
+"D:\Projects\Diablo II\ItemDB\server\MainFrm.cpp"
+"D:\Projects\Diablo II\ItemDB\server\RegExp\ModDef.cpp"
+"D:\Projects\Diablo II\ItemDB\server\External\MsgWnd.cpp"
+"D:\Projects\Diablo II\ItemDB\server\External\Picture.cpp"
+"D:\Projects\Diablo II\ItemDB\server\External\PopupMenu.cpp"
+"D:\Projects\Diablo II\ItemDB\server\External\ProgressWnd.cpp"
+"D:\Projects\Diablo II\ItemDB\server\RealmView.cpp"
+"D:\Projects\Diablo II\ItemDB\server\External\ReportCtrl.cpp"
+"D:\Projects\Diablo II\ItemDB\server\External\ResPack.cpp"
+"D:\Projects\Diablo II\ItemDB\server\External\Singleton.cpp"
+"D:\Projects\Diablo II\ItemDB\server\Diablo2\SpellDef.cpp"
+"D:\Projects\Diablo II\ItemDB\server\External\StringEx.cpp"
+"D:\Projects\Diablo II\ItemDB\server\RegExp\syntax.cpp"
+"D:\Projects\Diablo II\ItemDB\server\External\SystemTray.cpp"
+"D:\Projects\Diablo II\ItemDB\server\External\TickThread.cpp"
+"D:\Projects\Diablo II\ItemDB\server\External\WinAppEx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Abin\LOCALS~1\Temp\RSPDE.tmp" 
+Creating temporary file "C:\DOCUME~1\Abin\LOCALS~1\Temp\RSPDF.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/ItemDB.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\Diablo II\ItemDB\server\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Abin\LOCALS~1\Temp\RSPDF.tmp" 
+Creating temporary file "C:\DOCUME~1\Abin\LOCALS~1\Temp\RSPE0.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:"Release/ItemDB.pdb" /machine:I386 /out:"../Release/ItemDB.exe" 
+".\Release\ado.obj"
+".\Release\BuiltinVar.obj"
+".\Release\CharList.obj"
+".\Release\CharView.obj"
+".\Release\D2ItemDesc.obj"
+".\Release\D2Monitor.obj"
+".\Release\D2Storage.obj"
+".\Release\D2View.obj"
+".\Release\EditEx.obj"
+".\Release\ExamItemProperties.obj"
+".\Release\HoverWnd.obj"
+".\Release\HyperLink.obj"
+".\Release\Ini.obj"
+".\Release\ItemDatabase.obj"
+".\Release\ItemDB.obj"
+".\Release\ItemDBDoc.obj"
+".\Release\ItemDBToolbar.obj"
+".\Release\ItemDBView.obj"
+".\Release\ItemListView.obj"
+".\Release\MainFrm.obj"
+".\Release\ModDef.obj"
+".\Release\MsgWnd.obj"
+".\Release\Picture.obj"
+".\Release\PopupMenu.obj"
+".\Release\ProgressWnd.obj"
+".\Release\RealmView.obj"
+".\Release\ReportCtrl.obj"
+".\Release\ResPack.obj"
+".\Release\Singleton.obj"
+".\Release\SpellDef.obj"
+".\Release\StdAfx.obj"
+".\Release\StringEx.obj"
+".\Release\syntax.obj"
+".\Release\SystemTray.obj"
+".\Release\TickThread.obj"
+".\Release\WinAppEx.obj"
+".\Release\ItemDB.res"
+".\External\RemoteLib.lib"
+]
+Creating command line "link.exe @C:\DOCUME~1\Abin\LOCALS~1\Temp\RSPE0.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ado.cpp
+BuiltinVar.cpp
+CharList.cpp
+CharView.cpp
+D2ItemDesc.cpp
+D2Monitor.cpp
+D2Storage.cpp
+D2View.cpp
+EditEx.cpp
+ExamItemProperties.cpp
+HoverWnd.cpp
+HyperLink.cpp
+Ini.cpp
+ItemDatabase.cpp
+ItemDB.cpp
+ItemDBDoc.cpp
+ItemDBToolbar.cpp
+ItemDBView.cpp
+ItemListView.cpp
+MainFrm.cpp
+Generating Code...
+Compiling...
+ModDef.cpp
+MsgWnd.cpp
+Picture.cpp
+PopupMenu.cpp
+ProgressWnd.cpp
+RealmView.cpp
+ReportCtrl.cpp
+ResPack.cpp
+Singleton.cpp
+SpellDef.cpp
+StringEx.cpp
+syntax.cpp
+SystemTray.cpp
+TickThread.cpp
+WinAppEx.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+ItemDB.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "d2reloader", "d2reloader.vcproj", "{121AFD69-389A-4AA8-A2CA-975E30F4A492}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{121AFD69-389A-4AA8-A2CA-975E30F4A492}.Debug.ActiveCfg = Debug|Win32
+		{121AFD69-389A-4AA8-A2CA-975E30F4A492}.Debug.Build.0 = Debug|Win32
+		{121AFD69-389A-4AA8-A2CA-975E30F4A492}.Release.ActiveCfg = Release|Win32
+		{121AFD69-389A-4AA8-A2CA-975E30F4A492}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

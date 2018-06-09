@@ -1,0 +1,37 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bind", "Bind\Bind.vcproj", "{682DFEA9-86DB-4779-8FA9-DE7A44EAB355}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "D2HackIt", "D2HackIt\D2HackIt.vcproj", "{7F8510A4-4761-48D6-BD77-045BAD148257}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Loader", "Loader\Loader.vcproj", "{5E2FAB72-30C8-4D53-BA2C-3C9E5C32F395}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{682DFEA9-86DB-4779-8FA9-DE7A44EAB355}.Debug.ActiveCfg = Debug|Win32
+		{682DFEA9-86DB-4779-8FA9-DE7A44EAB355}.Debug.Build.0 = Debug|Win32
+		{682DFEA9-86DB-4779-8FA9-DE7A44EAB355}.Release.ActiveCfg = Release|Win32
+		{682DFEA9-86DB-4779-8FA9-DE7A44EAB355}.Release.Build.0 = Release|Win32
+		{7F8510A4-4761-48D6-BD77-045BAD148257}.Debug.ActiveCfg = Debug|Win32
+		{7F8510A4-4761-48D6-BD77-045BAD148257}.Debug.Build.0 = Debug|Win32
+		{7F8510A4-4761-48D6-BD77-045BAD148257}.Release.ActiveCfg = Release|Win32
+		{7F8510A4-4761-48D6-BD77-045BAD148257}.Release.Build.0 = Release|Win32
+		{5E2FAB72-30C8-4D53-BA2C-3C9E5C32F395}.Debug.ActiveCfg = Debug|Win32
+		{5E2FAB72-30C8-4D53-BA2C-3C9E5C32F395}.Debug.Build.0 = Debug|Win32
+		{5E2FAB72-30C8-4D53-BA2C-3C9E5C32F395}.Release.ActiveCfg = Release|Win32
+		{5E2FAB72-30C8-4D53-BA2C-3C9E5C32F395}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

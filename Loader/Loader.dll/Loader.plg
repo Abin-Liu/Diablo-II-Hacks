@@ -1,0 +1,28 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Loader - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Abin\LOCALS~1\Temp\RSPE4.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "LOADER_EXPORTS" /Fp"Release/Loader.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\Diablo II\Loader\Loader.dll\Main.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Abin\LOCALS~1\Temp\RSPE4.tmp" 
+Creating command line "link.exe kernel32.lib user32.lib /nologo /dll /incremental:no /pdb:"Release/Loader.pdb" /machine:I386 /out:"../bin/Loader.dll" /implib:"../bin/Loader.lib"  ".\Release\Main.obj" "
+<h3>Output Window</h3>
+Compiling...
+Main.cpp
+Linking...
+   Creating library ../bin/Loader.lib and object ../bin/Loader.exp
+
+
+
+<h3>Results</h3>
+Loader.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

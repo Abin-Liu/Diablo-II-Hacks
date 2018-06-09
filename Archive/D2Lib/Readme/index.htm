@@ -1,0 +1,443 @@
+<html>
+<head>
+<title>The D2Lib Library</title>
+</head>
+<body>
+ 
+<p align="center"><font face="Arial Black" size="5"><b>The D2LIB Library</b></font> 
+<b><font face="Arial"> v1.09 Beta</font></b></p>         
+<p align="center"><br>
+<font face="Arial"><b>A Set of C++ Classes for D2H Module Development</b></font></p>   
+<p align="center"> </p>  
+<p><font face="Arial"><b><a name="toc"></a>Table of Contents</b></font></p>                 
+<ul>
+  <li><font face="Arial"><a href="#abouttheauthor">About the Author</a></font></li> 
+  <li><font face="Arial"><a href="#licenseagreement">License Agreement</a></font></li> 
+  <li><font face="Arial"><a href="#introduction">Introduction</a></font></li>
+  <li><font face="Arial"><a href="#classhierarchy">Class Hierarchy</a></font></li>
+  <li><font face="Arial"><a href="#d2messagesystem">The D2 Message System</a></font></li>  
+  <li><font face="Arial"><a href="#builtinmessages">Built-in D2 Messages</a></font></li> 
+</ul>
+<hr align="left" noshade size="1">
+<p>
+<font face="Arial Black"><a name="abouttheauthor"></a>About the Author</font></p>                 
+<p><font face="Arial">
+Author:	Abin<br>   
+Homepage: <a href="http://www.wxjindu.com/abin/">	http://www.wxjindu.com/abin/</a><br>  
+Email: <a href="mailto:abinn32@yahoo.com">		abinn32@yahoo.com</a></font></p>  
+<hr align="left" noshade size="1">
+<p><font face="Arial Black">
+<a name="licenseagreement"></a>
+License Agreement</font></p>                  
+<ol>
+  <li>
+    <p><font face="Arial">Developing or using any third-party applications on the Battle.net closed realms are considered hacking and may therefore receive punishments from Blizzard Entertainment, including, but not limited to, character deletion, account deletion, or CD-key removal. The author holds no responsibility to any damage of data caused by use of this library. USE IT AT YOUR OWN RISK.</font></li>  
+  <li>
+    <p><font face="Arial">This library may be used in compiled form in any way you desire. This library may be redistributed unmodified by any means providing it is not sold for profit without the author¨s written consent, and providing that this notice and the authors name is included. If the source code in this library is used in any commercial application then acknowledgement must be made to the author.</font></li> 
+  <li>
+    <p><font face="Arial">This library is provided "as is" with no expressed or implied warranty.</font></li>  
+</ol>
+<hr align="left" noshade size="1">
+<p><font face="Arial Black">
+<a name="introduction"></a>
+Introduction</font><br>               
+<br>
+<font face="Arial">The D2Lib library is a set of C++ classes that wraps a lot of important functionalities of the Diablo II game 
+hacking, and aims for the following:</font></p>
+<ul>
+  <li>
+    <p><font face="Arial">To simplify D2H module development.</font></li> 
+  <li>
+    <p><font face="Arial">To provide an Object-Oriented interface to the D2Hackit SDK.</font></li> 
+  <li>
+    <p><font face="Arial">To establish a Message-Driving system between the game and your   
+    application.</font></li>
+</ul>
+<p><font face="Arial">To use D2Lib in your own projects, please follow these 
+steps:</font>
+<ol>
+  <li>
+    <p><font face="Arial">Add &quot;D2Lib.lib&quot; and 
+    &quot;ClientCore.cpp&quot; into your workspace.</font></li> 
+  <li>
+    <p><font face="Arial">Ignore "libc.lib". To do so, click "Project->Settings->Link", select "Input" 
+    in the "Category" list, and type "libc.lib" in the "Ignore Libraries" box.</font></li> 
+  <li>
+    <p><font face="Arial">Include "D2Lib.h" where needed.</font></li> 
+</ol>
+<hr align="left" noshade size="1">
+<p><font face="Arial Black">
+<a name="classhierarchy"></a>
+Class Hierarchy</font></p>                 
+<p align="center"><font face="Arial"><img border="0" src="d2lib1.GIF" width="519" height="484"></font></p>
+<p>　</p>
+<p><font face="Arial"><b>CD2Abstract</b></font></p>
+<p><font face="Arial">Pure virtual class. The top-most base class of any other 
+classes in this library, it provides a Message-Driving interface.</font></p>
+<p><font face="Arial"><b>CD2Object : public CD2Abstract</b></font></p>
+<p><font face="Arial">Pure virtual class. Represents any game object that has a 
+unique ID, a map position, and can be affected by other game entiries.</font></p>
+<p><font face="Arial"><b>CD2Player : public CD2Object</b></font></p>
+<p><font face="Arial">A large-scaled class that comprehensively process and             
+maintain player-related game events. This class is also used for performing game             
+actions such as moving, casting spells, speaking, etc.&nbsp;</font></p>            
+<p><font face="Arial"><b>CD2StaticObject : public CD2Object</b></font></p>            
+<p><font face="Arial">Represents a static game object that the player can 
+interact with, a static object will never move once spawned. Usually used for 
+maintaining objects like stash, town portals, waypoints, shrines, etc.</font></p>
+<p><font face="Arial"><b>CD2Unit : public CD2Object</b></font></p>
+<p><font face="Arial">Represents a mobile object that the player can interact 
+with. Usually used for maintaining NPC or any invulnerable mobile object that 
+cannot be killed or injured by the player or other game entities.</font></p>
+<p><font face="Arial"><b>CD2Monster : public CD2Unit</b></font></p>
+<p><font face="Arial">Represents a vulnerable unit that the player can interact             
+with, has a particular amount of hit points and can be killed or injured by the             
+player or other game entities. Usually used for maintaining monsters and minions             
+in the game.&nbsp;</font></p>            
+<p><font face="Arial"><b>CD2Merc : public CD2Monster</b></font></p>            
+<p><font face="Arial">Represents the player's mercenary, it is a special 
+monster.</font></p>
+<hr align="left" noshade size="1">
+ 
+<p><font face="Arial Black">
+<a name="d2messagesystem"></a>
+ The D2 Messages System</font><font face="Arial"><br>                   
+<br>
+When predefined game events occur, appropriate D2 messages will be sent to your applications, this mechanism is similar to the  
+<u>Windows Message System</u> on Win32 platforms.  If you wish to process any  
+D2 message in your applications, you need to define a message handling functions  
+and pass the function address to the library by calling <font color="#0000FF">CD2Abstract</font>::SetD2MessageProc. Prototype of the message handler function shall be defined as the following:<br>     
+<br>
+<font color="#0000FF">
+void </font><font color="#800080"> CALLBACK</font><font color="#0000FF"> </font>D2MessageProc(<font color="#0000FF">UINT</font> 
+<i>nMessage</i>, <font color="#0000FF"> WPARAM</font> <i>wParam</i>, <font color="#0000FF"> LPARAM</font>  
+<i>lParam</i>, <font color="#0000FF"> LPVOID</font> <i>lpData</i>);<br>    
+<br>
+<i>nMessage</i>: The message ID.<br>     
+<i>wParam</i>: Additional message data, value depends on message types.<br>     
+<i>lParam</i>: Additional message data, value depends on message types.<br>    
+<i>lpData</i>: A 32-bit application defined data.</font></p>  
+ 
+<p><font face="Arial">Your application then will be able to process the message  
+data that are passed into your message handling function.</font></p> 
+ 
+<hr align="left" noshade size="1">
+ 
+<p><font face="Arial"><a name="builtinmessages"></a></font><font face="Arial Black">Built-in 
+D2 Messages</font></p>
+<p><font face="Arial">Every D2 message will be sent to your application along 
+with a wParam and an lParam. The following messages have been predefined in the 
+D2Lib library:</font></p>
+<p><font face="Arial"><b>CD2Object Messages</b></font></p> 
+<table border="1" width="100%" cellspacing="0">
+  <tr>
+    <td width="21%" align="center"><font face="Arial"><b>Message ID</b></font></td>
+    <td width="23%" align="center"><font face="Arial"><b>wParam</b></font></td>
+    <td width="23%" align="center"><font face="Arial"><b>lParam</b></font></td>
+    <td width="33%" align="center"><font face="Arial"><b>Remarks</b></font></td>
+  </tr>
+  <tr>
+    <td width="21%"><font face="Arial" color="#0000FF">OM_SPAWN</font></td>
+    <td width="23%"><font face="Arial">Object ID.</font></td>
+    <td width="23%"><font face="Arial">Low WORD: Object position x.<br>
+      High WORD: Object position y.</font></td>
+    <td width="33%"><font face="Arial">Object spawned.</font></td>
+  </tr>
+  <tr>
+    <td width="21%"><font face="Arial" color="#0000FF">OM_DESTROY</font></td>
+    <td width="23%"><font face="Arial">Object ID.</font></td>
+    <td width="23%"><font face="Arial">0.</font></td>
+    <td width="33%"><font face="Arial">Object is gone from current player's vision.</font></td>
+  </tr>
+  <tr>
+    <td width="21%"><font face="Arial" color="#0000FF">OM_AFFECT</font></td>
+    <td width="23%"><font face="Arial">0: Initiative.<br>
+      1: Passive.</font></td>
+    <td width="23%"><font face="Arial">Affection ID.&nbsp;<br>    
+      Defined in &quot;AffectionDef.h&quot;.</font></td>    
+    <td width="33%"><font face="Arial">Object is affected by some affection, 
+      such as aura, freeze, etc.</font></td>
+  </tr>
+  <tr>
+    <td width="21%"><font face="Arial" color="#0000FF">OM_DISAFFECT</font></td>
+    <td width="23%"><font face="Arial">0: Initiative.<br>
+      1: Passive.</font></td>
+    <td width="23%"><font face="Arial">Affection ID.&nbsp;</font></td>    
+    <td width="33%"><font face="Arial">Object is no longer affected by some     
+      affection, such as aura, freeze, etc.</font></td>    
+  </tr>
+</table>
+<p><font face="Arial"><b>CD2Player Messages</b></font></p>
+<table border="1" width="100%" cellspacing="0">
+  <tr>
+    <td width="17%" align="center"><font face="Arial"><b>Message ID</b></font></td>
+    <td width="24%" align="center"><font face="Arial"><b>wParam</b></font></td>
+    <td width="25%" align="center"><font face="Arial"><b>lParam</b></font></td>
+    <td width="34%" align="center"><font face="Arial"><b>Remarks</b></font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_SPELLCHARGES</font></td>
+    <td width="24%"><font face="Arial">Spell ID. Defined in 
+      &quot;SpellDef.h&quot;.</font></td>
+    <td width="25%"><font face="Arial">Number of remianed charges.</font></td>
+    <td width="34%"><font face="Arial">Spell charges changed (spells those can only be used for a particular times, e.g., Tome of 
+      Town Portal 20 charges)</font></td> 
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_LSPELL</font></td>
+    <td width="24%"><font face="Arial">Original spell ID.</font></td>
+    <td width="25%"><font face="Arial">Current spell ID.</font></td>
+    <td width="34%"><font face="Arial">Player's left-hand spell changed.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_RSPELL</font></td>
+    <td width="24%"><font face="Arial">Original spell ID.</font></td>
+    <td width="25%"><font face="Arial">Current spell ID.</font></td>
+    <td width="34%"><font face="Arial">Player's right-hand spell changed.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_LEVEL</font></td>
+    <td width="24%"><font face="Arial">0</font></td>
+    <td width="25%"><font face="Arial">Current character level.</font></td>
+    <td width="34%"><font face="Arial">Player's level changed.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_HPUP</font></td>
+    <td width="24%"><font face="Arial">Original HP.</font></td>
+    <td width="25%"><font face="Arial">Current HP.</font></td>
+    <td width="34%"><font face="Arial">Player HP increased.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_HPDOWN</font></td>
+    <td width="24%"><font face="Arial">Original HP.</font></td>
+    <td width="25%"><font face="Arial">Current HP.</font></td>
+    <td width="34%"><font face="Arial">Player's HP decreased.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_MANAUP</font></td>
+    <td width="24%"><font face="Arial">Original mana.</font></td>
+    <td width="25%"><font face="Arial">Current mana.</font></td>
+    <td width="34%"><font face="Arial">Player's mana increased.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_MANADOWN</font></td>
+    <td width="24%"><font face="Arial">Original mana.</font></td>
+    <td width="25%"><font face="Arial">Current mana.</font></td>
+    <td width="34%"><font face="Arial">Player's mana decreased.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_DEATH</font></td>
+    <td width="24%"><font face="Arial">Current act.</font></td>
+    <td width="25%"><font face="Arial">Low WORD: Position x.<br>
+      High WORD: Position y.</font></td>
+    <td width="34%"><font face="Arial">Player just died.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_CORPSE</font></td>
+    <td width="24%"><font face="Arial">Corpse ID.</font></td>
+    <td width="25%"><font face="Arial">Low WORD: Position x.<br>
+      High WORD: Position y.</font></td>
+    <td width="34%"><font face="Arial">Player's corpse appeared.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_CORPSEPICKEDUP</font></td>
+    <td width="24%"><font face="Arial">0.</font></td>
+    <td width="25%"><font face="Arial">0.</font></td>
+    <td width="34%"><font face="Arial">Player picked up his/her corpse.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_HOSTILE</font></td>
+    <td width="24%"><font face="Arial">Hostiler ID.</font></td>
+    <td width="25%"><font face="Arial">Number of hostilers.</font></td>
+    <td width="34%"><font face="Arial">Player is hostiled by other players.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_UNHOSTILE</font></td>
+    <td width="24%"><font face="Arial">Unhostiler ID.</font></td>
+    <td width="25%"><font face="Arial">Number of hostilers.</font></td>
+    <td width="34%"><font face="Arial">Player is unhostiled by other players.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_NPCEND</font></td>
+    <td width="24%"><font face="Arial">0: Failed<br>
+      1: Succeeded</font></td>
+    <td width="25%"><font face="Arial">NPC ID.</font></td>
+    <td width="34%"><font face="Arial">Player ended interacting with a NPC.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_MAPBLINK</font></td>
+    <td width="24%"><font face="Arial">Current act.</font></td>
+    <td width="25%"><font face="Arial">Low WORD: Position x.<br>
+      High WORD: Position y.</font></td>
+    <td width="34%"><font face="Arial">The map blinked (because of WP, TP, Teleport, etc).</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_MAPCHANGE</font></td>
+    <td width="24%"><font face="Arial">Original area ID. Defined in &quot;MapDef.h&quot;.</font></td>
+    <td width="25%"><font face="Arial">Current area ID.</font></td>
+    <td width="34%"><font face="Arial">Player entered a new area.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_ENTERTOWN</font></td>
+    <td width="24%"><font face="Arial">Original area ID.</font></td>
+    <td width="25%"><font face="Arial">Current area ID.</font></td>
+    <td width="34%"><font face="Arial">Player entered a town (safe areas).</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_LEAVETOWN</font></td>
+    <td width="24%"><font face="Arial">Original area ID.</font></td>
+    <td width="25%"><font face="Arial">Current area ID.</font></td>
+    <td width="34%"><font face="Arial">Player left a town (unsafe areas).</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_MOVECOMPLETE</font></td>
+    <td width="24%"><font face="Arial">0: Move failed.<br>
+      1: Move completed successfully.</font></td>
+    <td width="25%"><font face="Arial">Low WORD: Position x.<br>
+      High WORD: Position y.</font></td>
+    <td width="34%"><font face="Arial">Player finished a queue of move, such as 
+      run/walk, teleport.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_WEAPONSWITCH</font></td>
+    <td width="24%"><font face="Arial">0.</font></td>
+    <td width="25%"><font face="Arial">0.</font></td>
+    <td width="34%"><font face="Arial">Player completed a weapon switching.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_TOWNFAIL</font></td>
+    <td width="24%"><font face="Arial">0.</font></td>
+    <td width="25%"><font face="Arial">0.</font></td>
+    <td width="34%"><font face="Arial">The &quot;Back to town&quot; operation 
+      failed.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_INVENTORYFULL</font></td>
+    <td width="24%"><font face="Arial">0.</font></td>
+    <td width="25%"><font face="Arial">0.</font></td>
+    <td width="34%"><font face="Arial">Player's inventory is full.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font color="#0000FF" face="Arial">PM_EQUIPEVENT</font></td>
+    <td width="24%"><font face="Arial">Event type. Defined in 
+      &quot;Item.h&quot;.</font></td>
+    <td width="25%"><font face="Arial">Address of an <font color="#0000FF"> ITEM</font> struct.</font></td>
+    <td width="34%"><font face="Arial">Player equipped/unequipped an item.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font face="Arial" color="#0000FF">PM_ACTCHANGE</font></td>
+    <td width="24%"><font face="Arial">Original act.</font></td>
+    <td width="25%"><font face="Arial">Current act.</font></td>
+    <td width="34%"><font face="Arial">Act changed.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font face="Arial" color="#0000FF">PM_WPOPEN</font></td>
+    <td width="24%"><font face="Arial">Current act.</font></td>
+    <td width="25%"><font face="Arial">Current Area ID.</font></td>
+    <td width="34%"><font face="Arial">Player successfully opened a waypoint.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font face="Arial" color="#0000FF">PM_STASHOPEN</font></td>
+    <td width="24%"><font face="Arial">Current act.</font></td>
+    <td width="25%"><font face="Arial">0.</font></td>
+    <td width="34%"><font face="Arial">Player successfully opened the stash.</font></td>
+  </tr>
+  <tr>
+    <td width="17%"><font face="Arial" color="#0000FF">PM_GAMEREADY</font></td>
+    <td width="24%"><font face="Arial">Current act.</font></td>
+    <td width="25%"><font face="Arial">Low WORD: Position x.<br>
+      High WORD: Position y.</font></td>
+    <td width="34%"><font face="Arial">Game is ready for operations.</font></td>
+  </tr>
+  <tr>
+    <td width="17%">　</td>
+    <td width="24%">　</td>
+    <td width="25%">　</td>
+    <td width="34%">　</td>
+  </tr>
+</table>
+<p><font face="Arial"><b>CD2Uint Messages</b></font></p>
+<table border="1" width="100%" cellspacing="0">
+  <tr>
+    <td width="21%" align="center"><font face="Arial"><b>Message ID</b></font></td>
+    <td width="23%" align="center"><font face="Arial"><b>wParam</b></font></td>
+    <td width="23%" align="center"><font face="Arial"><b>lParam</b></font></td>
+    <td width="33%" align="center"><font face="Arial"><b>Remarks</b></font></td>
+  </tr>
+  <tr>
+    <td width="21%"><font face="Arial" color="#0000FF">UM_STARTMOVE</font></td>
+    <td width="23%"><font face="Arial">Low WORD: Current position x.<br>
+      High WORD: Current position y.</font></td>
+    <td width="23%"><font face="Arial">Low WORD: Destination position x.<br>
+      High WORD: Destination position y.</font></td>
+    <td width="33%"><font face="Arial">Unit started to move.</font></td>
+  </tr>
+  <tr>
+    <td width="21%"><font face="Arial" color="#0000FF">UM_ENDMOVE</font></td>
+    <td width="23%"><font face="Arial">Low WORD: Original position x.<br>
+      High WORD: Original position y.</font></td>
+    <td width="23%"><font face="Arial">Low WORD: Current position x.<br>
+      High WORD: Current position y.</font></td>
+    <td width="33%"><font face="Arial">Unit ended moving.</font></td>
+  </tr>
+</table>
+<p><font face="Arial"><b>CD2Monster Messages</b></font></p>
+<table border="1" width="100%" cellspacing="0">
+  <tr>
+    <td width="21%" align="center"><font face="Arial"><b>Message ID</b></font></td>
+    <td width="23%" align="center"><font face="Arial"><b>wParam</b></font></td>
+    <td width="23%" align="center"><font face="Arial"><b>lParam</b></font></td>
+    <td width="33%" align="center"><font face="Arial"><b>Remarks</b></font></td>
+  </tr>
+  <tr>
+    <td width="21%"><font face="Arial" color="#0000FF">MM_HPPERCENTUP</font></td>
+    <td width="23%"><font face="Arial">Original HP percent.</font></td>
+    <td width="23%"><font face="Arial">Current HP percent.</font></td>
+    <td width="33%"><font face="Arial">Monster's HP percentage increased.</font></td>
+  </tr>
+  <tr>
+    <td width="21%"><font face="Arial" color="#0000FF">MM_HPPERCENTDOWN</font></td>
+    <td width="23%"><font face="Arial">Original HP percent.</font></td>
+    <td width="23%"><font face="Arial">Current HP percent.</font></td>
+    <td width="33%"><font face="Arial">Monster HP percentage decreased.</font></td>
+  </tr>
+  <tr>
+    <td width="21%"><font face="Arial" color="#0000FF">MM_ATTACK</font></td>
+    <td width="23%"><font face="Arial">Victim ID.</font></td>
+    <td width="23%"><font face="Arial">Low WORD: Position x.<br>
+      High WORD: Position y.</font></td>
+    <td width="33%"><font face="Arial">Monster attacked some target.</font></td>
+  </tr>
+  <tr>
+    <td width="21%"><font face="Arial" color="#0000FF">MM_UNDERATTACK</font></td>
+    <td width="23%"><font face="Arial">Attacker ID.</font></td>
+    <td width="23%"><font face="Arial">Low WORD: Position x.<br>
+      High WORD: Position y.</font></td>
+    <td width="33%"><font face="Arial">Monster is attacked by some game 
+      entities.</font></td>
+  </tr>
+  <tr>
+    <td width="21%"><font face="Arial" color="#0000FF">MM_DEATH</font></td>
+    <td width="23%"><font face="Arial">Object ID.</font></td>
+    <td width="23%"><font face="Arial">0.</font></td>
+    <td width="33%"><font face="Arial">Monster is killed.</font></td>
+  </tr>
+  <tr>
+    <td width="21%"><font face="Arial" color="#0000FF">MM_CORPSE</font></td>
+    <td width="23%"><font face="Arial">Object ID.</font></td>
+    <td width="23%"><font face="Arial">Low WORD: Position x.<br>
+      High WORD: Position y.</font></td>
+    <td width="33%"><font face="Arial">Monster's corpse appeared.</font></td>
+  </tr>
+  <tr>
+    <td width="21%"><font face="Arial" color="#0000FF">MM_REVIVED</font></td>
+    <td width="23%"><font face="Arial">0: Revived by itself.<br>
+      1: Revived by others.</font></td>
+    <td width="23%"><font face="Arial">Low WORD: Position x.<br>
+      High WORD: Position y.</font></td>
+    <td width="33%"><font face="Arial">Monster is revived(e.g. fallen by shaman).</font></td>
+  </tr>
+</table>
+ 
+</body>
+</html>

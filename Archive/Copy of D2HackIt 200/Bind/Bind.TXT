@@ -1,0 +1,80 @@
+Bind 4.00 for D2HackIt!
+
+--------------------------------------------------------------------------------
+
+This module maps keys to commands and/or re-maps keys.
+
+Commands:
+  .bind keycode
+       Shows the keycode of the next key you press
+
+  .bind set <keycode> <returncode> [command1[;command2;...;commandN]]
+       Binds the key with <keycode> to return <returncode> to game.
+	   If [command] is present, it executes this command as well.
+	   If you wish to use multiple commands, seperate commands by a ";".
+	   You can use any command from D2HackIt! If you wish to put a "|" in
+	   your command (helpful for the rotating command for you power users),
+           you can now put a "`" (the character on the "~" key).
+           Just remember to omit the "." in front of the command.
+
+  .bind add <keycode> [command1[;command2;...;commandN]]
+       Adds commands to the key with <keycode>.
+	   If you wish to add multiple commands, seperate commands by a ";".
+	   You can use any command from D2HackIt! If you wish to put a "|" in
+	   your command (helpful for the rotating command for you power users),
+           you can now put a "`" (the character on the "~" key).
+           Just remember to omit the "." in front of the command and that you
+	   must "set" the key before using this. 
+
+  .bind rotate <keycode>
+       Rotate the commands for <keycode> instead of using them all at once.
+
+  .bind unset <keycode>
+       Returns key with <keycode> to normal state (no remap, no command)
+
+  .bind list
+       Shows a list of all keys currently defined.
+ 
+  .bind clear
+       Removes all bind definitions (Return all keys to normal)
+
+  .bind load [section]
+       Loads a section of bind definitions from [section] bind.ini
+
+  .bind save [section]
+       Saves all current bind definitions to [section] in bind.ini.
+
+  .bind help
+       Shows help
+
+Installation:
+  Copy bind.d2h and bind.ini to your D2HackIt folder and use ".load bind" to 
+  load the module.
+
+Tips:
+  ".bind set 70 0" will completely kill F1 from the game
+  ".bind set 70 70 say I just hit F1" will show a text message when hitting F1
+  and send F1 to the game for processing.
+  ".bind set 70 71" and ".bind set 71 70" will map F1 to F2 and D2 to F1.
+  ".bind set 70 70 say I just hit F1;say now what do I say?" will show "I just hit F1"
+  and "now what do I say?"
+  ".bind rotate 70" will cause the commands to rotate. So if you use the example above
+  in conjunction with this, the first time it would say "I just hit F1". The second time you
+  hit it, it would say "now what do I say?"
+
+Official websites: 
+  http://thohell.d2network.com
+  http://www.geocities.com/thohell/
+
+Official forum: 
+  http://forums.d2network.com/phpBB/viewforum.php?forum=35
+
+Requirements:
+  D2HackIt! 0.45 or later.
+  D2HackIt! 0.56 or later for the "|" translation.
+
+/thohell
+-ClckWcher
+--------------------------------------------------------------------------------
+
+Repackaged by HaeRang's Diablo2 ( http://diaro.com )

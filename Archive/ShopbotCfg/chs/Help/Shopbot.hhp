@@ -1,0 +1,11 @@
+[OPTIONS]
+Compatibility=1.1
+Compiled file=Shopbot.chm
+Default topic=index.htm
+Display compile progress=No
+Language=0x804 中文(中国)
+Title=Shotbot 1.10使用说明
+
+
+[FILES]
+index.htm

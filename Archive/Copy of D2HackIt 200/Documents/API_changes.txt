@@ -1,0 +1,144 @@
+// 2004-9-9
+[Deleted]
+
+me->CloseWP
+me->LeaveNpc
+me->CloseStash
+me->StopInteract
+
+[Modified]
+me->DropCursorItemToGround
+
+[Added]
+server->EnumPresetUnits
+server->CalculatePath
+server->GetItemCode
+server->LeftClick
+server->RightClick
+me->Transmute
+me->IsUIOpened
+me->EnumStorageItems
+me->PickStorageItemToCursor
+me->FindFirstStorageSpace
+me->DropCursorItemToStorage
+me->PickGroundItem
+me->GetOpenedUI
+me->CloseAllUIs
+PM_UICLOSED
+
+[Doc Changes]
+Added "Credits" list.
+
+
+// 2004-9-11
+
+[Added]
+PM_WPFAIL
+EnterWaypoint
+
+[Removed]
+EnterWP
+
+[Modified]
+CalculatePath
+
+// 2004-9-12
+[Added]
+me->NpcStart
+me->NpcEnd
+me->SellItem
+me->BuyHealingPotion
+me->BuyManaPotion
+me->BuyTownScroll
+me->BuyIdentifyScroll
+me->BuyArrows
+me->BuyBolts
+me->DrinkAllInventoryPotions
+me->IsMercAlive
+me->DrinkBeltPotion
+me->DrinkInventoryPotion
+
+[removed]
+me->TalkToNpc
+me->OpenNpcStore
+me->DrinkPotion
+
+[Modified]
+me->ResurrectMerc
+me->IdentifyItems
+me->BuyItem
+me->RepairItem
+
+// 2004-9-13
+[Removed]
+PM_NPCEND
+me->NpcStart
+me->NpcEnd
+
+[Added]
+PM_NPCSESSION
+me->StartNpcSession
+me->EndNpcSession
+me->DropGold
+me->Gamble
+
+[Modified]
+me->ResurrectMerc
+me->IdentifyItems
+me->BuyItem
+me->RepairItem
+
+// 2004-9-16
+[Added]
+me->GetSpellCharges
+
+// 2004-9-17
+[Added]
+screen->ClearScroll 
+screen->SetScrollTitle 
+screen->AddScrollLine 
+screen->ShowScroll 
+
+// 2004-9-19
+[Added]
+me->GetUnidItemCount
+me->GetLowestEquipDurabilityPercent
+me->GetEquipItem
+server->QueryModuleData
+
+// 2004-09-20
+[Added]
+server->GetKeyName
+
+// 2004-09-21
+[Modified]
+server->ParseItem
+me->GetBeltItem
+
+[Added]
+server->GetItemMod
+me->GetAvailableBeltSlots
+me->GetCurrentAct
+me->GetStorageItem
+me->SellInventoryItems
+
+// 2004-09-22
+[Added]
+me->GambleAmulets
+me->GambleRings
+me->GambleCirclets
+me->GambleGloves
+me->GambleBoots
+me->GambleBelts
+
+// 2004-09-28
+[Removed]
+server->GetBossEnchants
+
+[Added]
+server->GetMonsterAttributes
+
+// 2004-10-01
+[Added]
+me->IsNpcSessionStarted
+

@@ -1,0 +1,471 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\ItemDB.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_POPUP_CHS MENU DISCARDABLE 
+BEGIN
+    POPUP "popup"
+    BEGIN
+        MENUITEM "恢复(&R)",                    ID_POPUP_RESTORE
+        POPUP "语言(&L)"
+        BEGIN
+            MENUITEM "英语(&E)",                    ID_LANG_ENG
+            MENUITEM "简体中文(C)",                 ID_LANG_CHS
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "帮助主题(&T)",                ID_HELPHELP
+        MENUITEM SEPARATOR
+        MENUITEM "关于ItemDB(&A)...",           ID_APP_ABOUT
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&X)",                    ID_APP_EXIT
+    END
+END
+
+IDR_SEARCH_CHS MENU DISCARDABLE 
+BEGIN
+    POPUP "search"
+    BEGIN
+        MENUITEM "关键词匹配(&K)",              ID_BYKEYWORDS
+        MENUITEM "表达式匹配(&E)",              ID_BYEXP
+    END
+END
+
+IDR_MAINFRAME_CHS MENU DISCARDABLE 
+BEGIN
+    POPUP "文件(&F)"
+    BEGIN
+        MENUITEM "导出(&E)...",                 ID_EXPORT
+        MENUITEM SEPARATOR
+        MENUITEM "删除(&D)",                    ID_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&X)",                    ID_APP_EXIT
+    END
+    POPUP "语言(&L)"
+    BEGIN
+        MENUITEM "英语(&E)",                    ID_LANG_ENG
+        MENUITEM "简体中文(C)",                 ID_LANG_CHS
+    END
+    POPUP "视图(&V)"
+    BEGIN
+        MENUITEM "图形界面(&G)",                ID_D2VIEW
+        MENUITEM "列表界面(&L)",                ID_ITEMVIEW
+        MENUITEM "查询界面(&Q)",                ID_SQLVIEW
+        MENUITEM SEPARATOR
+        MENUITEM "工具栏(&T)",                  ID_VIEW_TOOLBAR
+        MENUITEM "状态栏(&S)",                  ID_VIEW_STATUS_BAR
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "帮助主题(&T)",                ID_HELPHELP
+        MENUITEM SEPARATOR
+        MENUITEM "关于ItemDB(&A)...",           ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 16
+BEGIN
+    BUTTON      ID_EXPORT
+    SEPARATOR
+    BUTTON      ID_DELETE
+    SEPARATOR
+    BUTTON      ID_D2VIEW
+    BUTTON      ID_ITEMVIEW
+    BUTTON      ID_SQLVIEW
+    SEPARATOR
+    BUTTON      ID_TBEDIT
+    BUTTON      ID_START_SEARCH
+    SEPARATOR
+    BUTTON      ID_TBCHK
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About ItemDB"
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,13,16,21,21
+    LTEXT           "ItemDB Version 1.0",IDC_TITLE,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2005, Abin",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+    LTEXT           "http://www.wxjindu.com/abin/",IDC_URL,40,40,188,8
+END
+
+IDD_ITEMDBDLG DIALOG DISCARDABLE  0, 0, 428, 291
+STYLE WS_CHILD
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "",IDC_D2VIEW,"Static",SS_BLACKRECT | SS_NOTIFY,0,0,427,
+                    291
+END
+
+IDD_CHARVIEWDLG DIALOG DISCARDABLE  0, 0, 6, 6
+STYLE WS_CHILD
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_SINGLESEL | 
+                    LVS_SHOWSELALWAYS | LVS_AUTOARRANGE | WS_TABSTOP,0,0,6,6
+END
+
+IDD_LISTDLG DIALOG DISCARDABLE  0, 0, 12, 6
+STYLE WS_CHILD
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "List1",IDC_ITEMLIST,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | WS_TABSTOP,0,0,6,6
+    CONTROL         "List2",IDC_SQLLIST,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | NOT WS_VISIBLE | WS_TABSTOP,6,0,6,6
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 4,0,0,1
+ PRODUCTVERSION 4,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "ItemDB MFC Application\0"
+            VALUE "FileVersion", "4, 0, 0, 1\0"
+            VALUE "InternalName", "ItemDB\0"
+            VALUE "LegalCopyright", "Copyright (C) 2005\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "ItemDB.EXE\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "ItemDB Application\0"
+            VALUE "ProductVersion", "4, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_ITEMDBDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 421
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 284
+    END
+
+    IDD_LISTDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 5
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_BLANK               ICON    DISCARDABLE     "res\\blank.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "\nAbout"
+    ID_APP_EXIT             "\nExit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "\nToggle StatusBar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_TO_NEXT              "\nNext Page"
+    ID_TO_END               "\nLast Page"
+    ID_EXPORT               "\nExport Item Data to a File (Ctrl - S)"
+    ID_DELETE               "\nDelete the Selected Realm/Account/Player"
+    ID_LANG_ENG             "\nEnglish"
+    ID_LANG_CHS             "\nSimplified Chinese"
+    ID_HELPHELP             "\nHelp Contents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_BYKEYWORDS           "Keyword Match"
+    ID_BYEXP                "Expression Match"
+    ID_D2VIEW               "\nGraphic View (F2)"
+    ID_ITEMVIEW             "\nList View (F3)"
+    ID_SQLVIEW              "\nQuery View (F4)"
+    ID_START_SEARCH         "\nSearch (Ctrl - F)"
+    ID_TO_BEGIN             "\nFirst Page"
+    ID_TO_PREV              "\nPrevious Page"
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME_ENG MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Export...",                  ID_EXPORT
+        MENUITEM SEPARATOR
+        MENUITEM "&Delete",                     ID_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Language"
+    BEGIN
+        MENUITEM "&English",                    ID_LANG_ENG
+        MENUITEM "Simplified &Chinese",         ID_LANG_CHS
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Graphic View",               ID_D2VIEW
+        MENUITEM "&List View",                  ID_ITEMVIEW
+        MENUITEM "&Query View",                 ID_SQLVIEW
+        MENUITEM SEPARATOR
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Contents",                   ID_HELPHELP
+        MENUITEM SEPARATOR
+        MENUITEM "&About ItemDB...",            ID_APP_ABOUT
+    END
+END
+
+IDR_POPUP_ENG MENU DISCARDABLE 
+BEGIN
+    POPUP "popup"
+    BEGIN
+        MENUITEM "&Restore",                    ID_POPUP_RESTORE
+        POPUP "&Language"
+        BEGIN
+            MENUITEM "&English",                    ID_LANG_ENG
+            MENUITEM "Simplified &Chinese",         ID_LANG_CHS
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Contents",                   ID_HELPHELP
+        MENUITEM SEPARATOR
+        MENUITEM "&About ItemDB...",            ID_APP_ABOUT
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+END
+
+IDR_SEARCH_ENG MENU DISCARDABLE 
+BEGIN
+    POPUP "search"
+    BEGIN
+        MENUITEM "&Keyword Match",              ID_BYKEYWORDS
+        MENUITEM "&Expression Match",           ID_BYEXP
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_CHARS               BITMAP  DISCARDABLE     "res\\chars.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\ItemDB.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "F",            ID_START_SEARCH,        VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_EXPORT,              VIRTKEY, CONTROL, NOINVERT
+    VK_END,         ID_TO_END,              VIRTKEY, CONTROL, NOINVERT
+    VK_F1,          ID_HELPHELP,            VIRTKEY, NOINVERT
+    VK_F2,          ID_D2VIEW,              VIRTKEY, NOINVERT
+    VK_F3,          ID_ITEMVIEW,            VIRTKEY, NOINVERT
+    VK_F4,          ID_SQLVIEW,             VIRTKEY, NOINVERT
+    VK_HOME,        ID_TO_BEGIN,            VIRTKEY, CONTROL, NOINVERT
+    VK_LEFT,        ID_TO_PREV,             VIRTKEY, CONTROL, NOINVERT
+    VK_RIGHT,       ID_TO_NEXT,             VIRTKEY, CONTROL, NOINVERT
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\ItemDB.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

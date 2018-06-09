@@ -1,0 +1,464 @@
+
+<p align="center"><font face="Arial Black" size="4">D2 Message System</font></p> 
+<p align="center"><font size="2">¡¡</font></p>
+<ul>
+  <li><a href="#Overview"><font face="Verdana" size="2">Overview</font></a></li>
+  <li><a href="#uh"><font face="Verdana" size="2">Unit Message Handler</font></a></li> 
+  <li><a href="#ph"><font face="Verdana" size="2">This-Player Message Handler</font></a></li> 
+  <li><a href="#um"><font face="Verdana" size="2">Unit Messages</font></a></li> 
+  <li><a href="#pm"><font face="Verdana" size="2">This-Player Messages</font></a></li> 
+</ul>
+<hr noshade size="1">
+<p><b><font size="2"><a name="Overview"><font face="Verdana"></font></a><font face="Verdana">Overview</font></font></b></p>
+<p><font face="Verdana" size="2">The &quot;D2Message System&quot; is similar to  
+&quot;Windows message system&quot; on Win32 plateforms, D2 messages will be sent  
+to your application(d2h modules) when something happens in the game. This  
+mechanism establishes an &quot;Event Driving&quot; interface between the game  
+and your application. There are two types of D2 messages: &quot;Unit  
+Messages&quot; and &quot;This-Player Messages&quot;. &quot;Unit Messages&quot;  
+are sent when game-unit related events happen, and &quot;This-Player  
+Messages&quot; are sent when player-related events happen.</font></p> 
+<hr noshade size="1">
+<p><b><font size="2"><a name="uh"><font face="Verdana"></font></a><font face="Verdana">Unit Message Handler</font></font></b></p>  
+<p><font face="Verdana" size="2">To be able to receive and process &quot;Unit  
+Messages&quot;, the &quot;OnUnitMessage&quot; function must be implemented in  
+your module. The &quot;OnUnitMessage&quot; function shall be defined as the  
+following:</font></p>
+<p><b><font size="2" face="Verdana">VOID EXPORT OnUnitMessage(UINT </font></b><font size="2" face="Verdana"><i>nMessage</i><b>, LPCGAMEUNIT 
+</b><i>lpUnit</i><b>, WPARAM </b><i>wParam</i><b>, LPARAM </b><i>lParam</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+  <p><i><font face="Verdana" size="2">nMessage</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specifies the message. Please check <a href="#um"> Unit       
+    Messages</a> for a complete list of unit-related messages.&nbsp;</font></p>      
+  </blockquote>
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>  
+    struct which contains the game unit information.</font></p> 
+  </blockquote>
+  <p><i><font face="Verdana" size="2">wParam</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specifies additional message information.  
+    The contents of this parameter depend on the value of the <i>nMessage</i>  
+    parameter.</font></p> 
+  </blockquote>
+  <p><i><font face="Verdana" size="2">lParam</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specifies additional message information.  
+    The contents of this parameter depend on the value of the <i>nMessage</i>  
+    parameter.</font></p> 
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">This function will be automatically called by       
+  D2Hackit to receive unit-related messages.&nbsp;</font></p>      
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="ph"><font face="Verdana"></font></a><font face="Verdana">This-Player Message Handler</font></font></b></p>      
+<p><font face="Verdana" size="2">To be able to receive and process &quot;This-Player  
+Messages&quot;, the &quot;OnThisPlayerMessage&quot; function must be implemented  
+in your module. The &quot;OnThisPlayerMessage&quot; function shall be defined as  
+the following:</font></p> 
+<p><b><font size="2" face="Verdana">VOID EXPORT OnThisPlayerMessage(UINT </font></b><font size="2" face="Verdana"><i>nMessage</i><b>, 
+WPARAM </b><i>wParam</i><b>, LPARAM </b><i>lParam</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+  <p><i><font face="Verdana" size="2">nMessage</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specifies the message. Please check <a href="#pm">      
+    This-Player Messages</a> for a complete list of player-related messages.&nbsp;</font></p>      
+  </blockquote>
+  <p><i><font face="Verdana" size="2">wParam</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specifies additional message information.  
+    The contents of this parameter depend on the value of the <i>nMessage</i>  
+    parameter.</font></p> 
+  </blockquote>
+  <p><i><font face="Verdana" size="2">lParam</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specifies additional message information.  
+    The contents of this parameter depend on the value of the <i>nMessage</i>  
+    parameter.</font></p> 
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">This function will be automatically called by       
+  D2Hackit to receive player-related messages.&nbsp;</font></p>      
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="um"><font face="Verdana"></font></a><font face="Verdana">Unit Messages</font></font></b></p>      
+<table border="1" cellpadding="2" width="100%" bordercolorlight="#808080" bordercolordark="#808080" bordercolor="#808080" cellspacing="0">
+  <tr>
+    <th width="19%" bgcolor="#C0C0C0"><b><font size="2" face="Verdana">Message</font></b></th>
+    <th width="31%" bgcolor="#C0C0C0"><b><font face="Verdana" size="2">Description</font></b></th>
+    <th width="25%" bgcolor="#C0C0C0"><b><font face="Verdana" size="2">wParam</font></b></th>
+    <th width="25%" bgcolor="#C0C0C0"><b><font face="Verdana" size="2">lParam</font></b></th>
+  </tr>
+  <tr>
+    <td width="19%"><font face="Verdana" size="2">UM_SPAWN</font></td>
+    <td width="31%"><font face="Verdana" size="2">Unit spawned.</font></td> 
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+    <td width="25%"><font face="Verdana" size="2">The lower-order WORD contains  
+      the unit's map position x. The higher-order WORD contains the unit's map  
+      position y.</font></td> 
+  </tr>
+  <tr>
+    <td width="19%"><font face="Verdana" size="2">UM_DESTROY</font></td>
+    <td width="31%"><font face="Verdana" size="2">Unit was gone from player's  
+      awareness.</font></td>
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+  </tr>
+  <tr>
+    <td width="19%"><font face="Verdana" size="2">UM_AFFECT</font></td>
+    <td width="31%"><font face="Verdana" size="2">Unit was affected by an  
+      affection. Please check <a href="definitions.htm#affection" target="_self">Unit  
+      Affection Definition</a> for a complete list of unit affection ID's.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">0-Initiative. 1-Passive.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">Affection ID.</font></td> 
+  </tr>
+  <tr>
+    <td width="19%"><font face="Verdana" size="2">UM_DISAFFECT</font></td>
+    <td width="31%"><font face="Verdana" size="2">Unit was no longer affected by  
+      an affection. Please check <a href="definitions.htm#affection" target="_self">Unit  
+      Affection Definition</a> for a complete list of unit affection ID's.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">0-Initiative. 1-Passive.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">Affection ID.</font></td> 
+  </tr>
+  <tr>
+    <td width="19%"><font face="Verdana" size="2">UM_STARTMOVE</font></td>
+    <td width="31%"><font face="Verdana" size="2">Unit started to move.</font></td> 
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+    <td width="25%"><font face="Verdana" size="2">The lower-order WORD contains  
+      the destination map position x. The higher-order WORD contains the  
+      destination map position y.</font></td> 
+  </tr>
+  <tr>
+    <td width="19%"><font face="Verdana" size="2">UM_ENDMOVE</font></td>
+    <td width="31%"><font face="Verdana" size="2">Unit ended moving.</font></td> 
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+    <td width="25%"><font face="Verdana" size="2">The lower-order WORD contains  
+      the unit's map position x. The higher-order WORD contains the unit's map  
+      position y.</font></td> 
+  </tr>
+  <tr>
+    <td width="19%"><font face="Verdana" size="2">UM_HPPERCENT</font></td>
+    <td width="31%"><font face="Verdana" size="2">Unit(monster) life percent 
+      changed.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">Current life percent.</font></td>  
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></p>
+    </td> 
+  </tr>
+  <tr>
+    <td width="19%"><font face="Verdana" size="2">UM_ATTACK</font></td>
+    <td width="31%"><font face="Verdana" size="2">Unit attacked another unit.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>  
+      struct which contains the victim's unit information.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">The lower-order WORD contains  
+      the unit's map position x. The higher-order WORD contains the unit's map  
+      position y.</font></td> 
+  </tr>
+  <tr>
+    <td width="19%"><font face="Verdana" size="2">UM_UNDERATTACK</font></td>
+    <td width="31%"><font face="Verdana" size="2">Unit was attacked by another       
+      unit.&nbsp;</font></td>
+    <td width="25%"><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>       
+      struct which contains the attacker's unit information.</font></td>      
+    <td width="25%"><font face="Verdana" size="2">The lower-order WORD contains  
+      the unit's map position x. The higher-order WORD contains the unit's map  
+      position y.</font></td> 
+  </tr>
+  <tr>
+    <td width="19%"><font face="Verdana" size="2">UM_DEATH</font></td>
+    <td width="31%"><font face="Verdana" size="2">Unit died.</font></td> 
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+  </tr>
+  <tr>
+    <td width="19%"><font face="Verdana" size="2">UM_CORPSE</font></td>
+    <td width="31%"><font face="Verdana" size="2">Unit corpse appeared.</font></td> 
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+    <td width="25%"><font face="Verdana" size="2">The lower-order WORD contains  
+      the unit's map position x. The higher-order WORD contains the unit's map  
+      position y.</font></td> 
+  </tr>
+  <tr>
+    <td width="19%"><font face="Verdana" size="2">UM_REVIVED</font></td>
+    <td width="31%"><font face="Verdana" size="2">Unit was revived. i.e.,  
+      &quot;Fallen&quot; by &quot;Fallen Shaman&quot;.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">0-Revived by itself. 1-Revived  
+      by another unit.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">The lower-order WORD contains  
+      the unit's map position x. The higher-order WORD contains the unit's map  
+      position y.</font></td> 
+  </tr>
+  <tr>
+    <td width="19%"><font face="Verdana" size="2">UM_CAVENOTIFY</font></td>
+    <td width="31%"><font face="Verdana" size="2">A cave unit(cave, entrance,  
+      stairs, etc) spawned.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">Cave type.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">The lower-order WORD contains  
+      the unit's map position x. The higher-order WORD contains the unit's map  
+      position y.</font></td> 
+  </tr>
+</table>
+<hr noshade size="1">
+<p><b><font face="Verdana" size="2"><a name="pm"></a>This-Player      
+Messages</font></b></p>
+<table border="1" cellpadding="2" width="100%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080" cellspacing="0">
+  <tr>
+    <th width="19%" bgcolor="#C0C0C0"><font size="2" face="Verdana">Message</font></th>
+    <th width="31%" bgcolor="#C0C0C0"><font face="Verdana" size="2">Description</font></th>
+    <th width="25%" bgcolor="#C0C0C0"><font face="Verdana" size="2">wParam</font></th>
+    <th width="25%" bgcolor="#C0C0C0"><font face="Verdana" size="2">lParam</font></th>
+  </tr>
+  <tr>
+    <td width="19%"><font face="Verdana" size="2">PM_AFFECT</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player was affected by an   
+      affection. Please check <a href="definitions.htm#affection" target="_self">Unit   
+      Affection Definition</a> for a complete list of unit affection ID's.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">0-Initiative. 1-Passive.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Affection ID.</font></td>  
+  </tr>
+  <tr>
+    <td width="19%"><font face="Verdana" size="2">PM_DISAFFECT</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player was no longer affected   
+      by an affection. Please check <a href="definitions.htm#affection" target="_self">Unit   
+      Affection Definition</a> for a complete list of unit affection ID's.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">0-Initiative. 1-Passive.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Affection ID.</font></td>  
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_SPELLCHARGES</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player's chargeable spell   
+      updated. Please check <a href="definitions.htm#spell" target="_self">Spell   
+      Definition</a> for a complete list of spell ID's.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Spell ID.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Number of charges left.</font></td>  
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_SPELLSELECT</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player selected a spell.   
+      Please check <a href="definitions.htm#spell" target="_self">Spell   
+      Definition</a> for a complete list of spell ID's.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">0-Right hand. 1-Left hand.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Spell ID.</font></td>  
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_LEVEL</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player's character level   
+      changed.</font></td>
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+    <td width="25%"><font face="Verdana" size="2">Current character level.</font></td>  
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_HPUP</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player's life increased.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Original life amount.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Current life amount.</font></td>  
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_HPDOWN</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player's life decreased.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Original life amount.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Current life amount.</font></td>  
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_MANAUP</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player's mana increased.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Original mana amount.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Current mana amount.</font></td>  
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_MANADOWN</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player's mana decreased.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Original mana amount.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Current mana amount.</font></td>  
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_DEATH</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player died.</font></td>  
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_CORPSE</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player corpse appeared.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Corpse ID.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">The lower-order WORD contains   
+      the corpse's map position x. The higher-order WORD contains the corpse's   
+      map position y.</font></td>  
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_CORPSEPICKEDUP</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player picked up the corpse.</font></td>  
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_HOSTILE</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player was hostiled by another   
+      player.</font></td>
+    <td width="25%"><font face="Verdana" size="2">ID of the player who hostiled   
+      this player.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Number of players who have   
+      expressed hostility to this player.</font></td>  
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_UNHOSTILE</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player was unhostiled by   
+      another player.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">ID of the player who   
+      unhostiled this player.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Number of players who have   
+      expressed hostility to this player.</font></td>  
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_NPCSESSION</font></td>
+    <td width="31%"><font face="Verdana" size="2">Reflects the results of a 
+      previous call to &quot;StartNpcSession&quot;.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">0-Failed. 1-Succeeded.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">ID of the npc unit.</font></td>  
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_MAPBLINK</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player's map blinked due to   
+      use of waypoint, town portal, teleport spell, etc.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Current act.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">The lower-order WORD contains   
+      the player's map position x. The higher-order WORD contains the player's   
+      map position y.</font></td>  
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_MAPCHANGE</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player entered a new map.   
+      Please check <a href="definitions.htm#map" target="_self">Map definition</a>   
+      for a complete list of map ID's.</font></td>  
+    <td width="25%"><font face="Verdana" size="2">Original map ID.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">New map ID.</font></td> 
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_ENTERTOWN</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player entered town.</font></td> 
+    <td width="25%"><font size="2" face="Verdana">Original map ID.</font></td> 
+    <td width="25%"><font size="2" face="Verdana">New map ID.</font></td> 
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_LEAVETOWN</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player left town.</font></td> 
+    <td width="25%"><font size="2" face="Verdana">Original map ID.</font></td> 
+    <td width="25%"><font size="2" face="Verdana">New map ID.</font></td> 
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_ACTCHANGE</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player entered a new act.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">Original act.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">New act.</font></td> 
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_MOVECOMPLETE</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player completed a job queue.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">0-Failed. 1-Succeeded.</font></td> 
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_WEAPONSWITCH</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player performed a weapon  
+      switching.</font></td>
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_TOWNFAIL</font></td>
+    <td width="31%"><font face="Verdana" size="2">A previous &quot;Back to  
+      town&quot; operation failed.</font></td> 
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_INVENTORYFULL</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player's inventory is full.</font></td> 
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_EQUIPEVENT</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player equipped/unequipped and  
+      item.</font></td>
+    <td width="25%"><font face="Verdana" size="2">Event type.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">Pointer to an <a href="structs.htm#ITEM" target="_self">ITEM</a>  
+      struct which contains the item information.</font></td> 
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_WPOPEN</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player opened a waypoint.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">Current act.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">Current map ID.</font></td> 
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_STASHOPEN</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player opened the stash.</font></td> 
+    <td width="25%"><font face="Verdana" size="2">Current act.</font></td> 
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_GAMEREADY</font></td>
+    <td width="31%"><font face="Verdana" size="2">The game is ready.</font></td> 
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_INVITATION</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player received a party  
+      invitation.</font></td>
+    <td width="25%"><font face="Verdana" size="2">ID of the player who sent the  
+      invitation.</font></td>
+    <td width="25%">
+      <p align="center"><font face="Verdana" size="2">-</font></td>
+  </tr>
+  <tr>
+    <td width="19%"><font size="2" face="Verdana">PM_JOINPARTY</font></td>
+    <td width="31%"><font face="Verdana" size="2">Player joined a party.</font></td> 
+    <td width="25%"><font size="2" face="Verdana">ID of the player who sent the invitation.</font></td> 
+    <td width="25%">
+      <p align="center"><font size="2" face="Verdana">-</font></td>
+  </tr>
+  <tr>
+    <td width="19%"><font face="Verdana" size="2">PM_UICLOSED</font></td>
+    <td width="31%"><font size="2" face="Verdana">All game UI's have been closed 
+      by a previous call to me-&gt;CloseAllUIs.</font></td> 
+    <td width="25%">
+      <p align="center"><font size="2" face="Verdana">-</font></td> 
+    <td width="25%">
+      <p align="center"><font size="2" face="Verdana">-</font></td>
+  </tr>
+</table>
+<hr noshade size="1">

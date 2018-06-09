@@ -1,0 +1,1735 @@
+
+
+<head>
+<title>D2Hackit v2.00 - Item Mod Expression</title>
+</head>
+
+<p align="center"><font face="Arial Black">Item Mod Expression</font>
+<ul>
+  <li><font face="Verdana" size="2"><a href="#Introduction">Introduction</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#Operator">Operator  
+    Precedence</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#Variables">Mod-Variables</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#Alias">Mod Alias</a></font></li>  
+  <li><font face="Verdana" size="2"><a href="#Special">Special Mods</a></font></li> 
+  <li><font face="Verdana" size="2"><a href="#UsingVariables">Using Mod-Variables in an Expression</a></font></li>  
+  <li><font face="Verdana" size="2"><a href="#UsingAlias">Using Mod Alias in an Expression</a></font></li>  
+  <li><font face="Verdana" size="2"><a href="#Examples">More Examples on Mod Expression</a></font></li>  
+  <li><font face="Verdana" size="2"><a href="#Table">Mod Table</a></font></li>  
+</ul> 
+<p><font face="Verdana" size="2"><b><a name="Introduction">Introduction</a></b></font></p>
+<p><font face="Verdana" size="2">D2Hackit supports &quot;Item mod    
+expression&quot; since build 1116, this technique allows the user to specify    
+item property filters in an expression, that is, a character string containing constants,   
+mod-variables, logical operators, arithmetical operators,    
+indices, and parenthesizes. </font></p>  
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="Operator">Operator Precedence</a></b></font></p>   
+<p><font face="Verdana" size="2">Operators in the same group have equal  
+precedence and are evaluated left to right in an expression unless explicitly  
+forced by a pair of parentheses, ( ). Operator precedence are in the following 
+order (from highest to lowest precedence):</font></p> 
+<blockquote> 
+<table border="1" cellpadding="0" width="400" cellspacing="0"> 
+  <tr> 
+    <td bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="2"><b>Operator</b></font></td> 
+    <td bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="2"><b>Name  
+      or Meaning</b></font></td> 
+  </tr> 
+  <tr> 
+    <td valign="middle" align="center"><font face="Verdana" size="2">[]</font></td> 
+    <td valign="middle" align="center"><font face="Verdana" size="2">indexing</font></td> 
+  </tr> 
+  <tr> 
+    <td valign="middle" align="center"><font face="Verdana" size="2">+</font></td> 
+    <td valign="middle" align="center"><font face="Verdana" size="2">arithmetic  
+      positive (unary)</font></td> 
+  </tr> 
+  <tr> 
+    <td valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td valign="middle" align="center"><font face="Verdana" size="2">arithmetic  
+      negative (unary)</font></td> 
+  </tr> 
+  <tr> 
+    <td valign="middle" align="center"><font face="Verdana" size="2">!</font></td> 
+    <td valign="middle" align="center"><font face="Verdana" size="2">logical NOT  
+      (unary)</font></td> 
+  </tr> 
+  <tr> 
+    <td valign="middle" align="center"><font face="Verdana" size="2">*, /</font></td> 
+    <td valign="middle" align="center"><font face="Verdana" size="2">multiplication,  
+      division</font></td> 
+  </tr> 
+  <tr> 
+    <td valign="middle" align="center"><font face="Verdana" size="2">+, -</font></td> 
+    <td valign="middle" align="center"><font face="Verdana" size="2">addition,  
+      subtraction</font></td> 
+  </tr> 
+  <tr> 
+    <td valign="middle" align="center"><font face="Verdana" size="2">&gt;, &lt;,  
+      &gt;=, &lt;=, ==, !=</font></td> 
+    <td valign="middle" align="center"><font face="Verdana" size="2">comparison</font></td> 
+  </tr> 
+  <tr> 
+    <td valign="middle" align="center"><font face="Verdana" size="2">&amp;&amp;,  
+      ||</font></td> 
+    <td valign="middle" align="center"><font face="Verdana" size="2">logical  
+      AND, logical OR</font></td> 
+  </tr> 
+</table></blockquote> 
+ 
+<hr noshade size="1"> 
+ 
+<p><font face="Verdana" size="2"><b><a name="Variables">Mod-Variables</a></b></font></p>
+<p><font face="Verdana" size="2">Each item mod (property) contains a mod ID and 4  
+integer values:</font></p> 
+<p><font face="Verdana" size="2">DWORD ModID;<br> 
+int Value[4];</font></p>  
+<p><font face="Verdana" size="2">Mod ID distinguishes a mod from others, for   
+example, &quot;+x to strength&quot; has mod ID of 0, &quot;+x to energy&quot;   
+has mod ID of 2, &quot;+x to life&quot; has mod ID of 7, etc. </font></p>  
+<p><font face="Verdana" size="2">The 4 integer values contain mod values for the   
+particular mod, and are in English reading order from left to right, below are a   
+few examples:</font></p>  
+<blockquote>  
+<table border="1" cellpadding="0" cellspacing="0" width="700">  
+  <tr>  
+    <td width="268" bgcolor="#C0C0C0"><font face="Verdana" size="2"><b>Mod   
+      Description</b></font></td>  
+    <td width="66" bgcolor="#C0C0C0"><font face="Verdana" size="2"><b>Mod ID</b></font></td>  
+    <td width="89" bgcolor="#C0C0C0"><font face="Verdana" size="2"><b>Value[0]</b></font></td>  
+    <td width="90" bgcolor="#C0C0C0"><font face="Verdana" size="2"><b>Value[1]</b></font></td>  
+    <td width="85" bgcolor="#C0C0C0"><font face="Verdana" size="2"><b>Value[2]</b></font></td>  
+    <td width="88" bgcolor="#C0C0C0"><font face="Verdana" size="2"><b>Value[3]</b></font></td>  
+  </tr>  
+  <tr>  
+    <td width="268"><font face="Verdana" size="2">+20 to Strength</font></td>  
+    <td width="66" valign="middle" align="center"><font face="Verdana" size="2">0</font></td>  
+    <td width="89" valign="middle" align="center"><font face="Verdana" size="2">20</font></td>  
+    <td width="90" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="85" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="88" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr>  
+  <tr>  
+    <td width="268"><font face="Verdana" size="2">10% Faster Cast Rate</font></td>  
+    <td width="66" valign="middle" align="center"><font face="Verdana" size="2">105</font></td>  
+    <td width="89" valign="middle" align="center"><font face="Verdana" size="2">10</font></td>  
+    <td width="90" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="85" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="88" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr>  
+  <tr>  
+    <td width="268"><font face="Verdana" size="2">+3 to Meteor (Sorceress Only)</font></td>  
+    <td width="66" valign="middle" align="center"><font face="Verdana" size="2">107</font></td>  
+    <td width="89" valign="middle" align="center"><font face="Verdana" size="2">3</font></td>  
+    <td width="90" valign="middle" align="center"><font face="Verdana" size="2">56</font></td>  
+    <td width="85" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="88" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr>  
+  <tr>  
+    <td width="268"><font face="Verdana" size="2">+1 to Necromancer Skill Levels</font></td>  
+    <td width="66" valign="middle" align="center"><font face="Verdana" size="2">83</font></td>  
+    <td width="89" valign="middle" align="center"><font face="Verdana" size="2">1</font></td>  
+    <td width="90" valign="middle" align="center"><font face="Verdana" size="2">2</font></td>  
+    <td width="85" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="88" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr>  
+  <tr>  
+    <td width="268"><font face="Verdana" size="2">Level 2 Life Tap (10/15   
+      Charges)</font></td>  
+    <td width="66" valign="middle" align="center"><font face="Verdana" size="2">204</font></td>  
+    <td width="89" valign="middle" align="center"><font face="Verdana" size="2">2</font></td>  
+    <td width="90" valign="middle" align="center"><font face="Verdana" size="2">82</font></td>  
+    <td width="85" valign="middle" align="center"><font face="Verdana" size="2">10</font></td>  
+    <td width="88" valign="middle" align="center"><font face="Verdana" size="2">15</font></td>  
+  </tr>  
+</table></blockquote>  
+  
+<hr noshade size="1">  
+  
+<p><font face="Verdana" size="2"><b><a name="Alias">Mod Alias</a></b></font></p>    
+<p><font face="Verdana" size="2">It could be difficult for human being to   
+memorize all mod ID's as raw abstract numbers, to solve this problem, we   
+recommend you to define and use mod alias, which are intuitive character strings   
+associated to mod ID's. Most of the useful mod's have already been defined in   
+&quot;D2Items.ini&quot;, please take a look at the [mod] section to have an   
+impression on how mod alias are defined. If you need to define your own mod   
+alias, please do it in this format:</font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">alias_name=mod_ID[,[Value[0]],[Value[1]],[Value[2]],[Value[3]]]</font></p>  
+</blockquote>  
+<p><font face="Verdana" size="2">Only the &quot;alias_name&quot; and   
+&quot;mod_ID&quot; are required, all other values are optional. For example:</font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">life_leech=60</font></p>  
+</blockquote>  
+<p><font face="Verdana" size="2">The mod ID must be 60(<i>x% Life Stolen per Hit</i>),    
+leech percentage does not matter at this point.</font></p>   
+<blockquote>  
+  <p><font face="Verdana" size="2">meteor=107,?,56</font></p>  
+</blockquote>  
+<p><font face="Verdana" size="2">The mod ID must be 107(<i>+x to y skill (...    
+Only)</i>) and Value[1] must be 56(skill ID for Meteor), skill level does not    
+matter at this point.</font></p>   
+<blockquote>  
+  <p><font face="Verdana" size="2">lvl2_lifetap=204,2,82,?,?</font></p>  
+</blockquote>  
+<p><font face="Verdana" size="2">The mod ID must be 204(<i>Level x y skill (m/n    
+Charges)</i>), Value[0] must be 2(skill level), Value[1] must be 82(skill ID    
+for Life Tap), remaining charges and maximum charges do not matter at this    
+point.</font></p>  
+<p><font face="Verdana" size="2">In a mod alias definition, mod ID and all    
+numeric portions must match the real item property exactly, portions those shall    
+be ignored are denoted as &quot;<b>?</b>&quot;. Portions shall be separated by    
+commas.</font></p>  
+<p><font face="Verdana" size="2">Mod alias can only contain letters, digits and   
+under-scores, and must starts with a letter or under-score. The following mod   
+alias are valid:</font></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">my_mod1<br>  
+_my_Mod1<br>  
+_1_MY_mod</font></p>  
+</blockquote>  
+<p><font face="Verdana" size="2">Whereas the following alias are invalid:</font></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">1_my_mod&nbsp;&nbsp; <font color="#FF0000">//             
+This is INVALID! Must start with a letter or under-score!</font></font></p>            
+</blockquote>     
+<p><font face="Verdana" size="2">Mod alias are case-insensitive so there is no      
+difference among &quot;str&quot;, &quot;STR&quot;, and &quot;sTr&quot;.</font></p>     
+<p><font face="Verdana" size="2">There are a set of keywords are reserved as 
+&quot;built-in&quot; variables, they have predefined meanings and must not be 
+used for defining your own mod alias, see next paragraph for a complete list of 
+built-in variables.</font></p>     
+<hr noshade size="1">     
+<p><font face="Verdana" size="2"><b><a name="Special">Special Mods</a> (Built-in 
+Variables)</b></font></p>     
+<p><font face="Verdana" size="2">Special mods are mod alias that have been 
+predefined internally, you cannot use them to define your own mod alias, nor can 
+you by any means modify the ways how they are defined. You may use them just as 
+using normal alias except for that special mods do not support indexing 
+operators (&quot;[&quot;, &quot;]&quot;).</font></p>   
+<blockquote> <table border="1" width="68%" cellspacing="0">
+  <tr>
+    <td width="14%" bgcolor="#C0C0C0" align="center" valign="middle"><b><font face="Verdana" size="2">Name</font><font size="2">　</font></b></td>
+    <td width="86%" bgcolor="#C0C0C0" align="center" valign="middle"><font face="Verdana" size="2"><b>Description</b></font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">code</font></td>
+    <td width="86%"><font face="Verdana" size="2">Reserved, no equivalent value.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">type</font></td>
+    <td width="86%"><font face="Verdana" size="2">Reserved, no equivalent value.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">quality</font></td>
+    <td width="86%"><font face="Verdana" size="2">Item quality: </font><font face="Verdana" size="2">1=Inferior, 
+      2=Normal, 3=Superior, 4=Magical, 5=Set, 6=Rare, 7=Unique, 8=Craft</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">quantity</font></td>
+    <td width="86%"><font face="Verdana" size="2">Item quantity, for tomes, 
+      keys, throwing weapons, arrows, bolts.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">sockets</font></td>
+    <td width="86%"><font face="Verdana" size="2">Number of sockets on item.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">ethereal</font></td>
+    <td width="86%"><font face="Verdana" size="2">Item is ethereal.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">identified</font></td>
+    <td width="86%"><font face="Verdana" size="2">Item has been identified.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">value</font></td>
+    <td width="86%"><font face="Verdana" size="2">Item selling value (to Malah 
+      in current game difficulty).</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">level</font></td>
+    <td width="86%"><font face="Verdana" size="2">Item level.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">all_res</font></td>
+    <td width="86%"><font face="Verdana" size="2">All resistance.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">all_attr</font></td>
+    <td width="86%"><font face="Verdana" size="2">Adds to all 
+      attributes(strength, dexterity, vitality, energy).</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">defense</font></td>
+    <td width="86%"><font face="Verdana" size="2">Item total defense.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">runeword</font></td>
+    <td width="86%"><font face="Verdana" size="2">Item is a rune-word.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">sizex</font></td>
+    <td width="86%"><font face="Verdana" size="2">Item size x.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">sizey</font></td>
+    <td width="86%"><font face="Verdana" size="2">Item size y.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">req_str</font></td>
+    <td width="86%"><font face="Verdana" size="2">Item strength requirement.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">req_dex</font></td>
+    <td width="86%"><font face="Verdana" size="2">Item dexterity requirement.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">req_level</font></td>
+    <td width="86%"><font face="Verdana" size="2">Item player level requirement.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">inferrior</font></td>
+    <td width="86%"><font face="Verdana" size="2">Equals to 1.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">normal</font></td>
+    <td width="86%"><font face="Verdana" size="2">Equals to 2.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">superior</font></td>
+    <td width="86%"><font face="Verdana" size="2">Equals to 3.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">magical</font></td>
+    <td width="86%"><font face="Verdana" size="2">Equals to 4.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">set</font></td>
+    <td width="86%"><font face="Verdana" size="2">Equals to 5.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">rare</font></td>
+    <td width="86%"><font face="Verdana" size="2">Equals to 6.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">unique</font></td>
+    <td width="86%"><font face="Verdana" size="2">Equals to 7.</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="middle" align="center"><font face="Verdana" size="2" color="#0000FF">craft</font></td>
+    <td width="86%"><font face="Verdana" size="2">Equals to 8.</font></td>
+  </tr>
+</table></blockquote> 
+<hr noshade size="1">   
+<p><font face="Verdana" size="2"><b><a name="UsingVariables">Using Mod-Variables in an Expression</a></b></font></p>       
+<p><font face="Verdana" size="2">A direct mod-variable is used in an expression      
+in below format:</font></p>     
+<blockquote>     
+  <p><font face="Verdana" size="2">$variable_name[value_index]</font></p>     
+</blockquote>     
+<p><font face="Verdana" size="2">The leading &quot;<b>$</b>&quot; symbol is      
+required in order to distinguish a mod-variable from a constant number,      
+otherwise D2Hackit will be confused, for example, there is no way to tell if by      
+&quot;0&quot; the user means the mod ID of &quot;+x to Strength&quot; or a plain      
+&quot;zero&quot; number.</font></p>     
+<p><font face="Verdana" size="2">&quot;[Value_index]&quot; is optional, if no       
+index is specified or the specified index is invalid, the index 0 will be used       
+by default, so &quot;$60&quot; gives exactly same result as &quot;$60[0]&quot;.</font></p>      
+<p><font face="Verdana" size="2">To express &quot;sum of +strength and       
++dexterity must be greater than 15&quot;, you may do it as below:</font></p>      
+<blockquote>     
+<p><font face="Verdana" size="2">$0[0] + $2[0] &gt; 15</font></p>     
+</blockquote>     
+<p><font face="Verdana" size="2">since both indices are [0], or you can omit      
+them and simply write:</font></p>     
+<blockquote>     
+<p><font face="Verdana" size="2">$0 + $2 &gt; 15</font></p>     
+</blockquote>     
+<hr noshade size="1">     
+<p><font face="Verdana" size="2"><b><a name="UsingAlias">Using Mod Alias in an Expression</a></b></font></p>      
+<p><font face="Verdana" size="2">A mod alias is used in an expression in below      
+format:</font></p>     
+<blockquote>     
+  <p><font face="Verdana" size="2">alias_name[value_index]</font></p>     
+</blockquote>     
+<p><font face="Verdana" size="2">&quot;[Value_index]&quot; is optional, if no       
+index is specified or the specified index is invalid, the index 0 will be used       
+by default, so &quot;life_leech&quot; gives exactly same result as &quot;life_leech[0]&quot;.</font></p>     
+<p><font face="Verdana" size="2">To express &quot;sum of +strength and       
++dexterity must be greater than 15&quot;, you may do it as below:</font></p>      
+<blockquote>     
+<p><font face="Verdana" size="2">str[0] + dex[0] &gt; 15</font></p>     
+</blockquote>     
+<p><font face="Verdana" size="2">since both indices are [0], or you can omit      
+them and simply write:</font></p>     
+<blockquote>     
+<p><font face="Verdana" size="2">str + dex &gt; 15</font></p>     
+</blockquote>     
+<hr noshade size="1">     
+<p><font face="Verdana" size="2"><b><a name="Examples">More Examples on Mod Expression</a></b></font></p>      
+<p>　</p>
+<p><b><font face="Verdana" size="2">Sample 1:</font></b> <font face="Verdana" size="2">3             
+or 4 sockets ethereal normal/superior elite body armors.</font></p>     
+<p><font face="Verdana" size="2"><b>Item Codes: </b>uui,uea,ula,utu,ung,ucl,uhn,urs,upl,ult,uld,uth,uul,uar,utp</font></p>     
+<p><b><font face="Verdana" size="2">Expression:</font></b> <font face="Verdana" size="2">(sockets==3       
+|| sockets==4) &amp;&amp; ethereal &amp;&amp; (quality==2 || quality==3)</font></p>     
+<p><font face="Verdana" size="2"><b>Remarks:</b> Notice the Boolean style usage      
+of mod &quot;ethereal&quot;. If you want a non-ethereal item, use      
+&quot;!ethereal&quot;. You can, of course, use original &quot;ethereal !=      
+0&quot; or &quot;ethereal == 0&quot; instead, but this isn't likely a professional  
+C++ programmer would do, is it?</font></p>    
+<p>　</p>
+<p><font face="Verdana" size="2"><b>Sample 2:</b> Perfect Raven Frost ring.</font></p>          
+<p><font face="Verdana" size="2"><b>Item Codes:</b> rin</font></p>    
+<p><font face="Verdana" size="2"><b>Expression:</b> quality==7 &amp;&amp;     
+dex==20 &amp;&amp; ar=250</font></p>    
+<p>　</p>
+<p><font face="Verdana" size="2"><b>Sample 3:</b> +2 any class skills, 30% magic           
+find amulets or circlets.</font></p>          
+<p><font face="Verdana" size="2"><b>Item Codes:</b> amu,ci0,ci1,ci2,ci3</font></p>    
+<p><font face="Verdana" size="2"><b>Expression:</b> $83==2 &amp;&amp; mf&gt;=30</font></p>    
+<p><font face="Verdana" size="2"><b>Remarks:</b> Notice the combined usage of     
+mod-variables and mod alias.</font></p>    
+<p>　</p>
+<p><font face="Verdana" size="2"><b>Sample 4:</b> Level 2 Life Tap wands with           
+20+ maximum charges.</font></p>          
+<p><font face="Verdana" size="2"><b>Item Codes:</b> wnd,ywn,bwn,gwn,9wn,9yw,9bw,9gw,,7wn,7yw,7bw,7gw</font></p>    
+<p><font face="Verdana" size="2"><b>Expression:</b> $204==2 &amp;&amp;     
+$204[1]==82 &amp;&amp; $204[3]&gt;=20</font></p>    
+<p><font face="Verdana" size="2"><b>Remarks:</b> An expression with no mod alias     
+used.</font></p>    
+<p>　</p>
+<p><font face="Verdana" size="2"><b>Sample 5:</b> +2 sor/pal/nec skills, 20%           
+faster cast rate, 15% all resistance or +30 total to str/dex or +50 total to           
+life/mana circlets.</font></p>          
+<p><font face="Verdana" size="2"><b>Item Codes:</b> ci0,ci1,ci2,ci3</font></p>    
+<p><font face="Verdana" size="2"><b>Expression:</b> (sor==2 || pal==2 || nec==2)     
+&amp;&amp; fcr==20 &amp;&amp; (all_res&gt;=15 || str+dex&gt;=30 ||     
+life+mana&gt;=50)</font></p>    
+<p><font face="Verdana" size="2"><b>Remarks:</b> Notice the creative usage of     
+the addition operator &quot;+&quot;, we don't care how much str and dex it     
+exactly adds, just the sum value that matters.</font></p>    
+<p>　</p>
+<p><font face="Verdana" size="2"><b>Sample 6:</b> +2 javelin and spear skills,           
+20% ias, 3% life or mana leech, +40% total to fire/lightning resistance or +30           
+to life or +20 total to str/dex gloves.</font></p>          
+<p><font face="Verdana" size="2"><b>Item Codes:</b> lgl,vgl,mgl,tgl,hgl,xlg,xvg,xmg,xtg,xhg,ulg,uvg,umg,utg,uhg</font></p>    
+<p><font face="Verdana" size="2"><b>Expression:</b> ama_jav==2 &amp;&amp;     
+ias==20 &amp;&amp; (life_leech+mana_leech&gt;=3) &amp;&amp;     
+(fire_res+lit_res&gt;=40 || life&gt;=30 || str+dex&gt;=20)</font></p>    
+<hr noshade size="1">    
+<p><b><font face="Verdana" size="2"><a name="Table">Mod Table</a></font></b></p>    
+<p><font face="Verdana" size="2">The following table lists most of known item mods:</font></p>  
+<blockquote>  
+<table border="1" cellpadding="0" cellspacing="0" width="780">  
+  <tr>  
+    <td width="67" bgcolor="#C0C0C0" valign="middle" align="center" rowspan="2"><b><font size="2" face="Verdana">Mod ID</font></b></td>    
+    <td width="671" bgcolor="#C0C0C0" rowspan="2">  
+      <p align="center"><b><font size="2" face="Verdana">Mod    
+      Description</font></b></p> 
+    </td>   
+    <td width="287" bgcolor="#C0C0C0" valign="middle" align="center" colspan="4"><font face="Verdana" size="2"><b>Mod   
+      Values</b></font></td>   
+  </tr>   
+  <tr> 
+    <td width="57" bgcolor="#C0C0C0" valign="middle" align="center"><b><font size="2" face="Verdana">[0]</font></b></td>   
+    <td width="57" bgcolor="#C0C0C0" valign="middle" align="center"><b><font size="2" face="Verdana">[1]</font></b></td>   
+    <td width="57" bgcolor="#C0C0C0" valign="middle" align="center"><b><font size="2" face="Verdana">[2]</font></b></td>   
+    <td width="58" bgcolor="#C0C0C0" valign="middle" align="center"><b><font size="2" face="Verdana">[3]</font></b></td>   
+  </tr>   
+  <tr>   
+    <td width="67" valign="middle" align="center"><font size="2" face="Verdana">0</font></td>   
+    <td width="671"><font face="Verdana" size="2">+x to Strength</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font size="2" face="Verdana">-</font></td>  
+    <td width="57" valign="middle" align="center"><font size="2" face="Verdana">-</font></td>  
+    <td width="58" valign="middle" align="center"><font size="2" face="Verdana">-</font></td>  
+  </tr>  
+  <tr>  
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">1</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Energy</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font size="2" face="Verdana">-</font></td>  
+    <td width="57" valign="middle" align="center"><font size="2" face="Verdana">-</font></td>  
+    <td width="58" valign="middle" align="center"><font size="2" face="Verdana">-</font></td>  
+  </tr>  
+  <tr>  
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">2</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Dexterity</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font size="2" face="Verdana">-</font></td>  
+    <td width="58" valign="middle" align="center"><font size="2" face="Verdana">-</font></td>  
+  </tr>  
+  <tr>  
+    <td width="67" valign="middle" align="center"><font size="2" face="Verdana">3</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Vitality</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font size="2" face="Verdana">-</font></td>  
+    <td width="58" valign="middle" align="center"><font size="2" face="Verdana">-</font></td>  
+  </tr>  
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">7</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Life</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">9</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Mana</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">11</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Maximum Stamina</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">16</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x% Enhanced Defense</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">17</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x% Enhanced Damage</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">19</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Attack Rating</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">20</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x% Increased Chance of Blocking</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">21</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Minimum Damage</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">22</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Maximum Damage</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">27</font></td>  
+    <td width="671"><font face="Verdana" size="2">Regenerate Mana x%</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">28</font></td>  
+    <td width="671"><font face="Verdana" size="2">Heal Stamina Plus x%</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">31</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x Defense</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">32</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x Defense vs. Missile</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">33</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x Defense vs. Melee</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">34</font></td>  
+    <td width="671"><font face="Verdana" size="2">Damage Reduced by x</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">35</font></td>  
+    <td width="671"><font face="Verdana" size="2">Magic Damage Reduced by x</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">36</font></td>  
+    <td width="671"><font face="Verdana" size="2">Damage Reduced by x%</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">37</font></td>  
+    <td width="671"><font face="Verdana" size="2">Magic Resist +x%</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">38</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x% to Maximum Magic Resist</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">39</font></td>  
+    <td width="671"><font face="Verdana" size="2">Fire Resist +x%</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">40</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x% to Maximum Fire Resist</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">41</font></td>  
+    <td width="671"><font face="Verdana" size="2">Lightning Resist +x%</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">42</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x% to Maximum Lightning Resist</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">43</font></td>  
+    <td width="671"><font face="Verdana" size="2">Cold Resist +x%</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">44</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x% to Maximum Cold Resist</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">45</font></td>  
+    <td width="671"><font face="Verdana" size="2">Poison Resist +x%</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">46</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x% to Maximum Poison Resist</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">48</font></td>  
+    <td width="671"><font face="Verdana" size="2">Adds x to y Fire Damage</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">50</font></td>  
+    <td width="671"><font face="Verdana" size="2">Adds x to y Lightning Damage</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">52</font></td>  
+    <td width="671"><font face="Verdana" size="2">Adds x to y Magic Damage</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">54</font></td>  
+    <td width="671"><font face="Verdana" size="2">Adds x to y Cold Damage (Cold  
+      Length z Seconds)</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">z</font></td> 
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+  </tr>
+  <tr>
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">57</font></td> 
+    <td width="671"><font face="Verdana" size="2">x to y Poison Damage over z 
+      Seconds</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">z</font></td> 
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+  </tr>
+  <tr>
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">60</font></td> 
+    <td width="671"><font face="Verdana" size="2">x% Life stolen per hit</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+  </tr>
+  <tr>
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">62</font></td> 
+    <td width="671"><font face="Verdana" size="2">x% Mana stolen per hit</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+  </tr>
+  <tr>
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">67</font></td> 
+    <td width="671"><font face="Verdana" size="2">x% Faster Run/Walk</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+  </tr>
+  <tr>
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">68</font></td> 
+    <td width="671"><font face="Verdana" size="2">x% Increased Attack Speed</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+  </tr>
+  <tr>
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">74</font></td> 
+    <td width="671"><font face="Verdana" size="2">Replenish Life +x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+  </tr>
+  <tr>
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">75</font></td> 
+    <td width="671"><font face="Verdana" size="2">Increase Maximum Durability x%</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+  </tr>
+  <tr>
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">76</font></td> 
+    <td width="671"><font face="Verdana" size="2">Increase Maximum Life x%</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+  </tr>
+  <tr>
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">77</font></td> 
+    <td width="671"><font face="Verdana" size="2">Increase Maximum Mana x%</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+  </tr>
+  <tr>
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">78</font></td> 
+    <td width="671"><font face="Verdana" size="2">Attacker Takes Damage of x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+  </tr>
+  <tr>
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">79</font></td> 
+    <td width="671"><font face="Verdana" size="2">x% Extra Gold from Monsters</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+  </tr>
+  <tr>
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">80</font></td> 
+    <td width="671"><font face="Verdana" size="2">x% Better Chance of Getting Magic Items</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+  </tr>
+  <tr>
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">81</font></td> 
+    <td width="671"><font face="Verdana" size="2">Knockback</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">1</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td> 
+  </tr>
+  <tr>
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">83</font></td> 
+    <td width="671"><font face="Verdana" size="2">+x to y (class) Skill Levels</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">85</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x% to Experience Gained</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">86</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x Life after each Kill</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">87</font></td>  
+    <td width="671"><font face="Verdana" size="2">Reduces All Vendor Prices x%</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">89</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Light Radius</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">91</font></td>  
+    <td width="671"><font face="Verdana" size="2">Requirements -x%</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">99</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Faster Hit Recovery</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">102</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Faster Block Rate</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">105</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Faster Cast Rate</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">107</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to y (Single Skill) (??? Only)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">108</font></td>  
+    <td width="671"><font face="Verdana" size="2">Slain Monsters Rest In Peace</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">1</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">110</font></td>  
+    <td width="671"><font face="Verdana" size="2">Poison Length Reduced by x%</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">111</font></td>  
+    <td width="671"><font face="Verdana" size="2">Adds x Damage</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">112</font></td>  
+    <td width="671"><font face="Verdana" size="2">Hit Causes Monster to Flee x%</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">113</font></td>  
+    <td width="671"><font face="Verdana" size="2">Hit Blinds Target x%</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">114</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Damage Taken Goes to Mana</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">115</font></td>  
+    <td width="671"><font face="Verdana" size="2">Ignore Target Defense</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">1</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">116</font></td>  
+    <td width="671"><font face="Verdana" size="2">-x% Target Defense</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">117</font></td>  
+    <td width="671"><font face="Verdana" size="2">Prevent Monster Heal</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">1</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">118</font></td>  
+    <td width="671"><font face="Verdana" size="2">Half Freeze Duration</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">1</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">119</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Bonus to Attack Rating</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">120</font></td>  
+    <td width="671"><font face="Verdana" size="2">-x to Monster Defense Per Hit</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">121</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Damage to Demons</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">122</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Damage to Undead</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">123</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Attack Rating against Demons</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">124</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Attack Rating against Undead</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">125</font></td>  
+    <td width="671"><font face="Verdana" size="2">Throwable</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">1</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">126</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to y (Elemental) Skills</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">127</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to All Skill Levels</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">128</font></td>  
+    <td width="671"><font face="Verdana" size="2">Attacker Takes Lightning Damage of x</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">134</font></td>  
+    <td width="671"><font face="Verdana" size="2">Freezes Target</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">1</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">135</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Chance of Open Wounds</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">136</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Chance of Crushing Blow</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">137</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x Kick Damage</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">138</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Mana After Each Kill</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">139</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x Life after each Demon Kill</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">141</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Deadly Strike</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">142</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Fire Absorb</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">143</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x Fire Absorb</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">144</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Lightning Absorb</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">145</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x Lightning Absorb</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">146</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Magic Absorb</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">147</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x Magic Absorb</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">148</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Cold Absorb</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">149</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x Cold Absorb</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">150</font></td>  
+    <td width="671"><font face="Verdana" size="2">Slows Target by x%</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">151</font></td>  
+    <td width="671"><font face="Verdana" size="2">Level x y Aura When Equipped</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">152</font></td>  
+    <td width="671"><font face="Verdana" size="2">Indestructible</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">1</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">153</font></td>  
+    <td width="671"><font face="Verdana" size="2">Cannot Be Frozen</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">1</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">154</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Slower Stamina Drain</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">155</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Reanimate As: y</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">156</font></td>  
+    <td width="671"><font face="Verdana" size="2">Piercing Attack (x%)</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">157</font></td>  
+    <td width="671"><font face="Verdana" size="2">Fires Magic Arrows</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">1</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">158</font></td>  
+    <td width="671"><font face="Verdana" size="2">Fires Explosive Arrows</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">1</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">188</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to y (Skill Tree) Skills (??? Only)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">194</font></td>  
+    <td width="671"><font face="Verdana" size="2">Socketed (x)</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">195</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Chance to cast Level y z 
+      (Skill) on Attack</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">z</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">196</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Chance to cast Level y z 
+      (Skill) When You Kill an  
+      Enemy</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">z</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">197</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Chance to cast Level y z 
+      (Skill) When You Die</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">z</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">198</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Chance to cast Level y z 
+      (Skill) on Striking</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">z</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">199</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Chance to cast Level y z 
+      (Skill) When You Level Up</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">z</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">201</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Chance to cast Level y z 
+      (Skill) When Struck</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">z</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">204</font></td>  
+    <td width="671"><font face="Verdana" size="2">Level x y (Skill) (m/n Charges)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">y</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">m</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">n</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">214</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Defense (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">215</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x% to Defense (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">216</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Life (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">217</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Mana (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">218</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Maximum Damage (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">219</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x% to Maximum Damage (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">220</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Strength (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">221</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Dexterity (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">222</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Energy (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">223</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Vitality (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">224</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Attack Rating (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">225</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Bonus to Attack Rating (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">226</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Maximum Cold Damage (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">227</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Maximum Fire Damage (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">228</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Maximum Lightning Damage (Based on Character level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">229</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Maximum Poison Damage (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">230</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Maximum Cold Resist (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">231</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Maximum Fire Resist (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">232</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Maximum Lightning Resist (Based on Character Level)</font></td>    
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">233</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Maximum Poison Resist (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">234</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Cold Absorb (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">235</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Fire Absorb (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">236</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Lightning Absorb (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">237</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Poison Absorb (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">238</font></td>  
+    <td width="671"><font face="Verdana" size="2">Attacker Takes Damage of x (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">239</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Extra Gold (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">240</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Better Chance of Getting Magic Items (Based on Character  
+      Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">241</font></td>  
+    <td width="671"><font face="Verdana" size="2">Heal Stamina Plus x% (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">242</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x to Maximum Stamina (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">243</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Damage to Demons (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">244</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Damage to Undead (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">245</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Bonus to Attack Rating Against Demons (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">246</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Bonus to Attack Rating Against Undead (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">247</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Crushing Blow (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">248</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Open Wounds (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">249</font></td>  
+    <td width="671"><font face="Verdana" size="2">x Kick Damage (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">250</font></td>  
+    <td width="671"><font face="Verdana" size="2">x% Deadly Strike (Based on Character Level)</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x*1000</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">252</font></td>  
+    <td width="671"><font face="Verdana" size="2">Repairs 1 durability in x seconds</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">253</font></td>  
+    <td width="671"><font face="Verdana" size="2">Replenishes Quantity</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">1</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">254</font></td>  
+    <td width="671"><font face="Verdana" size="2">Increased Stack Size</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">1</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">329</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x% to Fire Skill Damage</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">330</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x% to Lightning Skill Damage</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">331</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x% to Cold Skill Damage</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">332</font></td>  
+    <td width="671"><font face="Verdana" size="2">+x% to Poison Skill Damage</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">333</font></td>  
+    <td width="671"><font face="Verdana" size="2">-x% to Enemy Fire Resistance</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">334</font></td>  
+    <td width="671"><font face="Verdana" size="2">-x% to Enemy Lightning Resistance</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">335</font></td>  
+    <td width="671"><font face="Verdana" size="2">-x% to Enemy Cold Resistance</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">336</font></td>  
+    <td width="671"><font face="Verdana" size="2">-x% to Enemy Poison Resistance</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+  <tr> 
+    <td width="67" valign="middle" align="center"><font face="Verdana" size="2">356</font></td>  
+    <td width="671"><font face="Verdana" size="2">Quest Item Difficulty: x</font></td>   
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">x</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="57" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+    <td width="58" valign="middle" align="center"><font face="Verdana" size="2">-</font></td>  
+  </tr> 
+</table></blockquote>  
+  
+<p><font size="2">　</font></p>  

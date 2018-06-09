@@ -1,0 +1,2191 @@
+
+
+<head>
+<title>D2Hackit v2.00 - server API set</title>
+</head>
+
+<p align="center"><font face="Arial Black" size="4">The &quot;server&quot; API
+Set</font></p>
+<p><font face="Verdana" size="2">This API set encapsulates general game attribues and 
+global operations. I will only list new API's that were added in D2Hackit 2.00. 
+API's those exist since older versions of D2Hackit are assumed well known.</font></p> 
+<p><font face="Verdana" size="2"><b>General Game Attributes</b></font></p>
+<ul>
+  <li><a href="#GetPing"><font face="Verdana" size="2">server-&gt;GetPing</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#GetRealmName">server-&gt;GetRealmName</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetGameIP">server-&gt;GetGameIP</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetGameName">server-&gt;GetGameName</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetGamePassword">server-&gt;GetGamePassword</a></font></li>
+  <li><a href="#GetGameDifficulty"><font face="Verdana" size="2">server-&gt;GetGameDifficulty</font></a></li>
+  <li><a href="#GetD2WindowTitle"><font face="Verdana" size="2">server-&gt;GetD2WindowTitle</font></a></li>
+  <li><a href="#GetInGameTime"><font face="Verdana" size="2">server-&gt;GetInGameTime</font></a></li>
+  <li><a href="#IsGameReady"><font face="Verdana" size="2">server-&gt;IsGameReady</font></a></li>
+  <li><a href="#GetModuleDirectory"><font face="Verdana" size="2">server-&gt;GetModuleDirectory</font></a></li>
+  <li><a href="#IsClientLoaded"><font face="Verdana" size="2">server-&gt;IsClientLoaded</font></a></li>
+  <li><a href="#GetScreenSize"><font face="Verdana" size="2">server-&gt;GetScreenSize</font></a></li>
+  <li><a href="#GetMousePosition"><font face="Verdana" size="2">server-&gt;GetMousePosition</font></a></li>
+</ul>
+<p><font face="Verdana" size="2"><b>Inter-Module Communication</b></font></p>
+<ul>
+  <li><font face="Verdana" size="2"><a href="#QueryModuleData">server-&gt;QueryModuleData</a></font></li>
+</ul>
+<p><font face="Verdana" size="2"><b>Information Printing Functions</b></font></p>
+<ul>
+  <li><a href="#GameInfof"><font face="Verdana" size="2">server-&gt;GameInfof</font></a></li>
+  <li><a href="#GameErrorf"><font face="Verdana" size="2">server-&gt;GameErrorf</font></a></li>
+  <li><a href="#GameStringf"><font face="Verdana" size="2">server-&gt;GameStringf</font></a></li>
+  <li><a href="#GameCommandf"><font face="Verdana" size="2">server-&gt;GameCommandf</font></a></li>
+  <li><a href="#GamePrintPacket"><font face="Verdana" size="2">server-&gt;GamePrintPacket</font></a></li>
+</ul>
+<p><font face="Verdana" size="2"><b>Unit Functions</b></font></p>
+<ul>
+  <li><a href="#EnumUnit"><font face="Verdana" size="2">server-&gt;EnumUnits</font></a></li>
+  <li><a href="#VerifyUnit"><font face="Verdana" size="2">server-&gt;VerifyUnit</font></a></li>
+  <li><a href="#FindUnitByClassID"><font face="Verdana" size="2">server-&gt;FindUnitByClassID</font></a></li>
+  <li><a href="#FindUnitByName"><font face="Verdana" size="2">server-&gt;FindUnitByName</font></a></li>
+  <li><a href="#GetUnitPosition"><font face="Verdana" size="2">server-&gt;GetUnitPosition</font></a></li>
+  <li><a href="#GetUnitName"><font face="Verdana" size="2">server-&gt;GetUnitName</font></a></li>
+  <li><a href="#GetUnitOwnerID"><font face="Verdana" size="2">server-&gt;GetUnitOwnerID</font></a></li>
+  <li><a href="#GetUnitClassID"><font face="Verdana" size="2">server-&gt;GetUnitClassID</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#GetUnitMode">server->GetUnitMode</a></font></li>
+  <li><a href="#GetUnitHPPercent"><font face="Verdana" size="2">server-&gt;GetUnitHPPercent</font></a></li>
+  <li><a href="#GetUnitStat"><font face="Verdana" size="2">server-&gt;GetUnitStat</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#GetUnitBaseStat">server->GetUnitBaseStat</a></font></li>
+  <li><a href="#GetUnitAffection"><font face="Verdana" size="2">server-&gt;GetUnitAffection</font></a></li>
+  <li><a href="#IsMercUnit"><font face="Verdana" size="2">server-&gt;IsMercUnit</font></a></li>
+  <li><a href="#GetMonsterType"><font face="Verdana" size="2">server-&gt;GetMonsterType</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#GetMonsterAttributes">server-&gt;GetMonsterAttributes</a></font></li>
+  <li><font size="2" face="Verdana"><a href="#EnumPresetUnits">server-&gt;EnumPresetUnits</a></font></li>
+  <li><font size="2" face="Verdana"><a href="#FindPresetUnit">server-&gt;FindPresetUnit</a></font></li>
+  <li><font size="2" face="Verdana"><a href="#UnitOverhead">server-&gt;UnitOverhead</a></font></li>
+  <li><font size="2" face="Verdana"><a href="#GetHighlightUnit">server->GetHighlightUnit</a></font></li>
+  <li><font size="2" face="Verdana"><a href="#EnumPlayers">server-&gt;EnumPlayers</a></font></li>
+</ul>
+<p><font size="2" face="Verdana"><b>Item Functions</b></font></p>
+<ul>
+  <li><font face="Verdana" size="2"><a href="#GetItemCode">server-&gt;GetItemCode</a></font></li>
+  <li><a href="#GetItemSize"><font face="Verdana" size="2">server-&gt;GetItemSize</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#IsQuestItem">server-&gt;IsQuestItem</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetItemPrice">server->GetItemPrice</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetItemAttributes">server->GetItemAttributes</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetItemSockets">server->GetItemSockets</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetItemQuality">server->GetItemQuality</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetItemPrefixSuffix">server->GetItemPrefixSuffix</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetPrefixSuffixName">server-&gt;GetPrefixSuffixName</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetItemProperties">server->GetItemProperties</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#EnumGroundItems">server-&gt;EnumGroundItems</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetItemLevel">server-&gt;GetItemLevel</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#ExamItemProperties">server-&gt;ExamItemProperties</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetItemDescription">server->GetItemDescription</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetItemStrRequirement">server-GetItemStrRequirement</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetItemDexRequirement">server->GetItemDexRequirement</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetItemLevelRequirement">server->GetItemLevelRequirement</a></font></li>
+</ul>
+<p><font size="2" face="Verdana"><b>Pathing Functions</b></font></p>
+<ul>
+  <li><font face="Verdana" size="2"><a href="#CalculateTeleportPath">server-&gt;CalculateTeleportPath</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#CalculateWalkPath">server-&gt;CalculateWalkPath</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#CreateCollisionMap">server-&gt;CreateCollisionMap</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetCollisionData">server-&gt;GetCollisionData</a></font></li>
+  <li><a href="#GetDistance"><font face="Verdana" size="2">server-&gt;GetDistance</font></a></li>
+  <li><a href="#ScreenToMapCoords"><font face="Verdana" size="2">server-&gt;ScreenToMapCoords</font></a></li>
+  <li><a href="#MapToScreenCoords"><font face="Verdana" size="2">server-&gt;MapToScreenCoords</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#GetRandomPosition">server-&gt;GetRandomPosition</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetAngle">server-&gt;GetAngle</a></font></li>
+  <li><font size="2" face="Verdana"><a href="#DumpCollisionMap">server-&gt;DumpCollisionMap</a></font></li>
+</ul>
+<p><b><font size="2" face="Verdana">Misc Functions</font></b></p>
+<ul>
+  <li><a href="#GetAffectionName"><font face="Verdana" size="2">server-&gt;GetAffectionName</font></a></li>
+  <li><a href="#AffectionIsAura"><font face="Verdana" size="2">server-&gt;AffectionIsAura</font></a></li>
+  <li><a href="#SendKey"><font face="Verdana" size="2">server-&gt;SendKey</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#LeftClick">server-&gt;LeftClick</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#RightClick">server-&gt;RightClick</a></font></li>
+  <li><a href="#GetSpellName"><font face="Verdana" size="2">server-&gt;GetSpellName</font></a></li>
+  <li><a href="#GetMapName"><font face="Verdana" size="2">server-&gt;GetMapName</font></a></li>
+  <li><a href="#MapIsTown"><font face="Verdana" size="2">server-&gt;MapIsTown</font></a></li>
+  <li><a href="#GetTownMap"><font face="Verdana" size="2">server-&gt;GetTownMap</font></a></li>
+  <li><a href="#GetActFromMap"><font face="Verdana" size="2">server-&gt;GetActFromMap</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#GetKeyName">server-&gt;GetKeyName</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetD2HackitVersion">server->GetD2HackitVersion</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetD2HackitBuild">server->GetD2HackitBuild</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#LoadD2Bitmap">server->LoadD2Bitmap</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#DestroyD2Bitmap">server->DestroyD2Bitmap</a></font></li>
+</ul>
+<hr noshade size="1">
+<p><b><font face="Verdana" size="2"><a name="GetPing"></a>DWORD GetPing();</font></b></p>                                    
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns current ping value.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve current network ping value. Ping values are   
+  used for detecting lag, the higher the ping, the worse the lag.</font></p>   
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetRealmName"></a>LPCSTR GetRealmName();</b></font></p>                                    
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If suceeded, the function returns pointer to   
+  a null-terminated string which contains realm name, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve realm name.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetGameIP"></a>LPCSTR GetGameIP();</b></font></p>                                    
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If suceeded, the function returns pointer to   
+  a null-terminated string which contains game IP, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve current game server IP.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetGameName"></a>LPCSTR GetGameName();</b></font></p>                                    
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If suceeded, the function returns pointer to   
+  a null-terminated string which contains game name, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve current game name.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetGamePassword"></a>LPCSTR GetGamePassword();</b></font></p>                                    
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If suceeded, the function returns pointer to   
+  a null-terminated string which contains game password, otherwise it returns   
+  zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve current game password.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><b><font face="Verdana" size="2"><a name="GetModuleDirectory"></a>LPCSTR GetModuleDirectory();</font></b></p>                                    
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returens pointer to a null-terminated  
+  string which contains module directory.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve directory where D2Hackit resides.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="IsClientLoaded"></a>BOOL IsClientLoaded(LPCSTR                                    
+</b><i>lpszClientName</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if the d2h module was  
+  loaded, zero otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpszClientName</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a null-terminated string which contains  
+    name of the module to be examed. Note that module file extension, usually  
+    &quot;.d2h&quot;, shall not be included in <i>lpszClientName.</i></font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Determine whether a pariticular module was loaded.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GameInfof"></a>BOOL GameInfof(LPCSTR </b><i>lpszFormat</i><b>, ...);<br>                                    
+<a name="GameErrorf"></a>BOOL GameErrorf(LPCSTR </b><i>lpszFormat</i><b>, ...);<br>                                    
+<a name="GameStringf"></a>BOOL GameStringf(LPCSTR </b><i>lpszFormat</i><b>, ...);<br>                                    
+<a name="GameCommandf"></a>BOOL GameCommandf(LPCSTR </b><i>lpszFormat</i><b>, ...);</b></font></p>                                    
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The functions return non-zero if succeeds, zero  
+  otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpszFormat</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a null-terminated string which contains the  
+    format specifications.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">These functions will first format a given string, then  
+  call <i>GamePrintInfo</i>, <i>GamePrintError</i>, <i>GamePrintString</i>, <i>GameCommandLine</i>  
+  and pass in the formatted string. For example, if you want to print an integer  
+  value to the screen, you no longer need to declare a string buffer, then  
+  format the string using <i>sprintf</i>, then print it, instead, you can simply  
+  call <i>server-&gt;GameInfof(&quot;My value is: %d&quot;, nValue);</i> for  
+  significant code length reduction.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GamePrintPacket"></a>BOOL GamePrintPacket(BOOL                                    
+</b><i>bReceived</i><b>, const BYTE *</b><i>aPacket</i><b>, DWORD </b><i>aLen</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero  
+  otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">bReceived</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies whether the packet is received or sent.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">aPacket</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Packet data block.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">aLen</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the packet length, in bytes.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Print packet contents to screen.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><b><font face="Verdana" size="2"><a name="IsGameReady"></a>BOOL IsGameReady();</font></b></p>                                    
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if the game is ready to be  
+  operated, zero otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">When the player joins a game, the game doesn't become  
+  ready immediately, there will be a few seconds of delay until all necessary  
+  data are received or loaded by the game client. Your modules should not  
+  operate the player until the game is ready.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="EnumUnit"></a>BOOL EnumUnits(DWORD </b><i>dwUnitType</i><b>,                                   
+fnEnumUnitProc </b><i>lpfnEnumUnitProc</i><b>, LPARAM    
+</b><i> lParam</i><b> = 0);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero  
+  otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2"><i>dwUnitType</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies type of the game units that are   
+    to be enumerated. Please check <a href="definitions.htm#unittype">Unit Types</a>   
+    for a complete list of game unit types.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">lpfnEnumUnitProc</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <i><a href="#fnEnumUnitProc">fnEnumUnitProc</a></i><b> </b>function   
+    which will receive unit data.</font></p>   
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">lParam</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">A 32-bit application defined value.</font></p>   
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Enumerate all existing game units whose unit   
+  type equal to <i>dwUnitType</i>.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="fnEnumUnitProc"></a>typedef BOOL (CALLBACK *</b><i>fnEnumUnitProc</i><b>)(LPCGAMEUNIT                                    
+</b><i>lpUnit</i><b>, LPARAM </b><i>lParam</i><b>)</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Return zero to abort unit enumeration, return non-zero  
+  to continue.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>  
+    struct.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">lParam</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">A 32-bit application defined value.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Process each unit data passed from <i><a href="#EnumUnit">EnumUnit</a>.</i></font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="VerifyUnit"></a>BOOL VerifyUnit(LPCGAMEUNIT </b><i>lpUnit</i><b>);</b></font></p>                                    
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if the unit data is valid,  
+  zero otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>  
+    struct.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Verify an unit data, if the unit does not exist or is  
+  invalid, this function will fail.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="FindUnitByClassID"></a>BOOL FindUnitByClassID(DWORD                                    
+</b><i>dwUnitClassID</i><b>, DWORD </b><i>dwUnitType</i><b>, LPGAMEUNIT </b><i>lpBuffer</i><b>);</b></font></p>   
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if the unit has been  
+  found, zero otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">dwUnitClassID</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies unit class ID. If there are multiple units   
+    with same class ID, the first matched unit in the game unit chain will be used.</font></p>   
+  </blockquote>  
+<p><font face="Verdana" size="2"><i>dwUnitType</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies type of the game unit that is to be   
+    found. Please check <a href="definitions.htm#unittype">Unit Types</a>    
+    for a complete list of game unit types.</font></p>   
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">lpBuffer</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>  
+    struct which will receive the unit's data if the unit is found.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Find a game unit whose class ID equals to <i>dwUnitClassID   
+  </i>and unit type equals to <i>dwUnitType</i>.   
+  Class ID's identify units' base types.</font></p>   
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="FindUnitByName"></a>BOOL FindUnitByName(LPCSTR                                    
+</b><i>lpszUnitName</i><b>, DWORD </b><i>dwUnitType</i><b>, LPGAMEUNIT </b><i>lpBuffer</i><b>);</b></font></p>   
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if the unit has been  
+  found, zero otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpszUnitName</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a null-terminated string which contains   
+    name of the unit to be found. If there are multiple units with same name,   
+    the first matched unit in the game unit chain will be used.</font></p>   
+  </blockquote>  
+<p><font face="Verdana" size="2"><i>dwUnitType</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies type of the game unit that is    
+    to be found. Please check <a href="definitions.htm#unittype">Unit Types</a>    
+    for a complete list of game unit types.</font></p>   
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">lpBuffer</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>  
+    struct which will receive the unit's data if the unit is found.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Find a game unit whose name matches <i>lpszUnitName   
+  </i>and unit type equals to <i>dwUnitType</i>.   
+  Unit names are case-insensitive.</font></p>   
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetUnitPosition"></a>POINT GetUnitPosition(LPCGAMEUNIT                                    
+</b><i>lpUnit</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns the unit's map position if the unit is found, otherwise   
+  it returns {0,0}.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>  
+    struct.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieves map position of a pariticular game unit.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetUnitName"></a>DWORD GetUnitName(LPCGAMEUNIT                                    
+</b><i>lpUnit</i><b>, LPSTR </b><i>lpszBuffer</i><b>, DWORD </b><i>dwMaxChars</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If succeeded, the function returns length of the unit  
+  name, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>  
+    struct.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">lpszBuffer</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a null-terminated string which will receive  
+    the unit's name.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">dwMaxChars</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the maximum buffer size, in char's.&nbsp;</font></p>                                    
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieves name of a particular game unit.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetUnitOwnerID"></a>DWORD GetUnitOwnerID(LPCGAMEUNIT                                    
+</b><i>lpUnit</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns ID of the unit's owner if succeeds,  
+  -1 otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>  
+    struct.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieves ID of the unit owner, only works for monsters.  
+  This can be used to determine whether a mercenary belongs to a player. Global  
+  units that do not have any owner will have -1(0xffffffff) as owner ID.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetUnitClassID"></a>DWORD GetUnitClassID(LPCGAMEUNIT                                    
+</b><i>lpUnit</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns class ID of the unit if succeeds,  
+  zero otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>  
+    struct.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve<b> </b>class ID of a particular game unit.  
+  Class ID's identify units' base types.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetUnitHPPercent"></a>BYTE GetUnitHPPercent(LPCGAMEUNIT                                    
+</b><i>lpUnit</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns unit's remaining life percent.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>  
+    struct.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve life percent of a particular game unit, return  
+  value ranges from 0 to 100.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetUnitStat"></a>DWORD GetUnitStat(LPCGAMEUNIT                                    
+</b><i>lpUnit</i><b>, int </b><i>nStatID</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns unit's stat value specified by <i>nStatID.</i></font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>  
+    struct.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">nStatID</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">ID of the stat to return. Please check <a href="definitions.htm#stat">Unit  
+    Stat Definition</a> for a complete list of unit stat ID's.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve a particular stat value of the unit. This  
+  function can be used to retrieve any unit stats such as HP, max HP, mana, max  
+  mana, magic find, IAS, fast run, fast cast, resists, absorbs, etc. You may  
+  even use this function to retrieve stats of other players, but do not abuse it  
+  and ruin the PVP!</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetUnitBaseStat"></a>DWORD  
+GetUnitBaseStat(LPCGAMEUNIT </b><i>lpUnit</i><b>, int </b><i>nStatID</i><b>);</b></font></p> 
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns unit's base stat value specified by <i>nStatID.</i></font></p>   
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>  
+    struct.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">nStatID</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">ID of the stat to return. Please check <a href="definitions.htm#stat">Unit  
+    Stat Definition</a> for a complete list of unit stat ID's.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve a particular base stat value of the unit.  
+  Base stats are not modified by items or spells.&nbsp;</font></p>   
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetUnitAffection"></a>BOOL GetUnitAffection(LPCGAMEUNIT                                    
+</b><i>lpUnit</i><b>, int </b><i>nAffectionID</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if the unit is affected by  
+  the affection specified by <i>nAffectionID</i>, zero otherwise<i>.</i></font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>  
+    struct.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">nAffectionID</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">ID of the affection. Please check <a href="definitions.htm#affection">Unit  
+    Affection Definition</a> for a complete list of unit affection ID's.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Check whether the unit is affected by a particular  
+  affection. Affections are states that can affect game units, such as poisoned,  
+  chilled, all passive skills, auras, etc.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetAffectionName"></a>DWORD GetAffectionName(BYTE                                    
+</b><i>iAffectionID</i><b>, LPTSTR </b><i>lpszBuffer</i><b>, DWORD </b><i>dwMaxChars</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If succeeded, the function returns length of the  
+  affection name, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">nAffectionID</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">ID of the affection. Please check <a href="definitions.htm#affection">Unit  
+    Affection Definition</a> for a complete list of unit affection ID's.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">lpszBuffer</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a null-terminated string which will receive  
+    the affection name.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">dwMaxChars</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the maximum buffer size, in char's.&nbsp;</font></p>                                    
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Convert an affection into its string representation.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="AffectionIsAura"></a>BOOL AffectionIsAura(BYTE                                    
+</b><i>iAffectionID</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if the affection is an  
+  aura, zero otherwise<i>.</i></font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">nAffectionID</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">ID of the affection. Please check <a href="definitions.htm#affection">Unit  
+    Affection Definition</a> for a complete list of unit affection ID's.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Check whether an affection is an aura.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="IsMercUnit"></a>DWORD IsMercUnit(LPCGAMEUNIT </b><i>lpUnit</i><b>);</b></font></p>                                    
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If succeeded, the function returns class ID of the merc,  
+  otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>  
+    struct.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Determine whether a game unit is a merc and which merc  
+  type it is. Please check <a href="definitions.htm#mercclass">Merc Class ID</a>  
+  for a complete list of merc types.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetMonsterType"></a>int GetMonsterType(LPCGAMEUNIT                                    
+</b><i>lpUnit</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns monster type of the unit if  
+  succeeds, zero otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>  
+    struct.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Determine monster type of a particular unit, e.g.  
+  champion, minor, boss, etc. Please check <a href="definitions.htm#monstertype">Monster  
+  Types</a> for a complete list of monster types.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetMonsterAttributes"></a>DWORD                       
+GetMonsterAttributes(LPCGAMEUNIT                                    
+</b><i>lpUnit</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If succeeded, the function returns a   
+  combination of the monster attributes, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>  
+    struct.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve monster attributes, including boss   
+  enchantments, boss auras, immunities. The return value will never be zero if   
+  the monster exists even if it does not have any relevant attributes. You may   
+  exam each attribute using the bit &quot;<i>&amp;</i>&quot; operator. Please   
+  check <a href="definitions.htm#monsterattr">Monster Attributes</a> for a   
+  complete list of monster attribute values.</font></p>  
+</blockquote>  
+<p><font face="Verdana" size="2"><b>Code Sample</b></font></p>  
+<blockquote>  
+  <p><font size="2" face="Courier New" color="#008000">//////////////////////////////////////////////////////////////<br>  
+  // We will be displaying Pindleskin's attributes on screen<br>  
+  //////////////////////////////////////////////////////////////</font></p>  
+  <p><font face="Courier New" size="2"><font color="#0000FF">GAMEUNIT</font> gu   
+  = {0};<br>  
+  server-&gt;FindUnitByName(szName, <font color="#800080">UNIT_TYPE_MONSTER</font>,   
+  &amp;gu); <font color="#008000">// Find Pindleskin</font><br>  
+  const <font color="#0000FF">DWORD</font> ATTR =   
+  server-&gt;GetMonsterAttributes(&amp;gu); <font color="#008000">// Get its   
+  attributes<br>  
+  </font>assert(ATTR); <font color="#008000">// ATTR will not be zero if   
+  Pindleskin exists</font></font></p>  
+  <p><font face="Courier New" size="2"><font color="#008000">////////////////////////////////////////////////////<br>  
+  // Enchantments<br>  
+  ////////////////////////////////////////////////////</font><br>  
+  <font color="#0000FF">if</font> (ATTR &amp; <font color="#800080">MA_FIRE_ENCHANTED</font>)<br>                      
+  &nbsp;&nbsp;&nbsp; server-&gt;GamePrintInfo(&quot;Fire enchanted&quot;);</font></p>                      
+  <p><font face="Courier New" size="2"><font color="#0000FF">if</font> (ATTR                       
+  &amp; <font color="#800080">MA_LIGHTNING_ENCHANTED</font>)<br>                      
+  &nbsp;&nbsp;&nbsp; server-&gt;GamePrintInfo(&quot;Lightning enchanted&quot;);</font></p>                      
+  <p><font face="Courier New" size="2" color="#008000">// Other enchantments...</font></p>  
+  <p><font color="#008000" face="Courier New" size="2">////////////////////////////////////////////////////</font><font face="Courier New" size="2"><font color="#008000"><br>  
+  // Auras<br>  
+  ////////////////////////////////////////////////////</font><br>  
+  <font color="#0000FF">if</font> (ATTR &amp; <font color="#800080">MA_MIGHT</font>)<br>                      
+  &nbsp;&nbsp;&nbsp; server-&gt;GamePrintInfo(&quot;Might&quot;);</font></p>                      
+  <p><font face="Courier New" size="2"><font color="#0000FF">if</font> (ATTR                       
+  &amp; <font color="#800080">MA_CONVICTION</font>)<br>                      
+  &nbsp;&nbsp;&nbsp; server-&gt;GamePrintInfo(&quot;Conviction&quot;);</font></p>                      
+  <p><font face="Courier New" size="2"><font color="#0000FF">if</font> (ATTR                       
+  &amp; <font color="#800080">MA_FANATICISM</font>)<br>                      
+  &nbsp;&nbsp;&nbsp; server-&gt;GamePrintInfo(&quot;Fanaticism&quot;);</font></p>                      
+  <p><font face="Courier New" size="2" color="#008000">// Other auras...</font></p>  
+  <p><font color="#008000" face="Courier New" size="2">////////////////////////////////////////////////////</font><font face="Courier New" size="2"><font color="#008000"><br>  
+  // Immunities<br>  
+  ////////////////////////////////////////////////////</font><br>  
+  <font color="#0000FF">if</font> (ATTR &amp; <font color="#800080">MA_IMMUNE_FIRE</font>)<br>                      
+  &nbsp;&nbsp;&nbsp; server-&gt;GamePrintInfo(&quot;Immune to fire&quot;);</font></p>                      
+  <p><font face="Courier New" size="2"><font color="#0000FF">if</font> (ATTR                       
+  &amp; <font color="#800080">MA_IMMUNE_PHYSICAL</font>)<br>                      
+  &nbsp;&nbsp;&nbsp; server-&gt;GamePrintInfo(&quot;Immune to physical&quot;);</font></p>                      
+  <p><font face="Courier New" size="2" color="#008000">// Other immunities...</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetDistance"></a>DWORD GetDistance(WORD </b><i>x1</i><b>, WORD                                    
+</b><i>y1</i><b>, WORD </b><i>x2</i><b>, WORD </b><i>y2</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns distance, in yards, between two map  
+  positions.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">x1, y1</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the first map position.</font></p>  
+  </blockquote>  
+  <p><font face="Verdana" size="2"><i>x2, y2</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the second map position.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Calculate map position distance, in yards.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="SendKey"></a>BOOL SendKey(BYTE </b><i>iVKCode</i><b>);</b></font></p>                                    
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero  
+  otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">iVKCode</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Virtual key code of the key which is being sent.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Simulate a key press event in the game.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetSpellName"></a>DWORD GetSpellName(WORD </b><i>wSpell</i><b>, LPSTR                                    
+</b><i>lpszBuffer</i><b>, DWORD </b><i>dwMaxChars</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If succeeded, the function returns length of the spell  
+  name, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">wSpell</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the spell ID. Please check <a href="definitions.htm#spell">Spell  
+    Definition</a> for a complete list of spell ID's.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">lpszBuffer</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a null-terminated string which will receive  
+    the spell name.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">dwMaxChars</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the maximum buffer size, in char's.&nbsp;</font></p>                                    
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve name of a spell.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetMapName"></a>DWORD GetMapName(BYTE </b><i>iMapID</i><b>, LPTSTR                                    
+</b><i>lpszBuffer</i><b>, DWORD </b><i>dwMaxChars</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If succeeded, the function returns length of the map  
+  name, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">iMapID</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the map ID. Please check <a href="definitions.htm#map">Map  
+    definition</a> for a complete list of map ID's.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">lpszBuffer</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a null-terminated string which will receive  
+    the map name.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">dwMaxChars</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the maximum buffer size, in char's.&nbsp;</font></p>                                    
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve name of a map.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="MapIsTown"></a>BOOL MapIsTown(BYTE </b><i>iMapID</i><b>);</b></font></p>                                    
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if the map is a town, zero  
+  otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">iMapID</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the map ID. Please check <a href="definitions.htm#map">Map  
+    definition</a> for a complete list of map ID's.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Check whether a map is a town.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetTownMap"></a>BYTE GetTownMap(BYTE </b><i>iAct</i><b>);</b></font></p>                                    
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns a map ID if succeeds, zero  
+  otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">iAct</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the act, act number is zero-based, so 0  
+    represents act 1, 1 represents act 2, and so on.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve the town map ID of an act.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetActFromMap"></a>BYTE GetActFromMap(BYTE </b><i>iMapID</i><b>);</b></font></p>                                    
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns act number of the given map.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">iMapID</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the map ID. Please check <a href="definitions.htm#map">Map  
+    definition</a> for a complete list of map ID's.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Determine which act the particular map belongs to.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetItemSize"></a>SIZE GetItemSize(LPCSTR </b><i>lpszItemCode</i><b>);</b></font></p>                                    
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns size of an item.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpszItemCode</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a null-terminated string which represents  
+    the 3-letter item code.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Determine size of an item.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetD2WindowTitle"></a>DWORD GetD2WindowTitle(LPSTR                                    
+</b><i>lpszBuffer</i><b>, DWORD </b><i>dwMaxChars</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If succeeded, the function returns number of characters  
+  copied to the buffer, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpszBuffer</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a null-terminated string which will receive  
+    the window title.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">dwMaxChars</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the maximum buffer size, in char's.&nbsp;</font></p>                                    
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve D2 game window title.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><b><font face="Verdana" size="2"><a name="GetInGameTime"></a>DWORD GetInGameTime();</font></b></p>                                    
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns total elapsed time, in  
+  milliseconds, since the player joined the game.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve current game length.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><b><font face="Verdana" size="2"><a name="GetGameDifficulty"></a>int GetGameDifficulty();</font></b></p>                                    
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If succeeded, the function returns difficulty of current  
+  game, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve game difficulty, if succeeded, the return value  
+  can be 1(normal), 2(nightmare), or 3(hell).</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font size="2"><b><font face="Verdana"><a name="EnumPresetUnits"></a>BOOL EnumPresetUnits(fnEnumPresetUnitProc                                
+</font></b><font face="Verdana"><i>lpfnEnumPresetUnitProc</i><b>, LPARAM </b><i> lParam</i><b> = 0);</b></font></font></p>   
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero  
+  otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><font size="2"><font face="Verdana"><i>lpfnEnumPresetUnitProc</i></font></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a </font><a href="#fnEnumPresetUnitProc"><font face="Verdana" size="2">fnEnumPresetUnitProc</font></a><font face="Verdana" size="2">   
+    function which will received preset-unit data.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">lParam</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">A 32-bit application defined value.</font></p>   
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Enumerate all preset-units on current map.</font></p>   
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="fnEnumPresetUnitProc"></a>typedef BOOL (CALLBACK *fnEnumPresetUnitProc)(LPCPRESETUNIT                                
+</b><i>lpPresetUnit</i><b>, LPARAM </b><i>lParam</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Return zero to abort preset-unit enumeration, return non-zero   
+  to continue.</font></p>   
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2"><i>lpPresetUnit</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#presetunit">PRESETUNIT</a>   
+    struct which will receive the preset-unit data.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">lParam</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">A 32-bit application defined value.</font></p>   
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Process each preset-unit data passed from <i><a href="#EnumPresetUnit">EnumPresetUnit</a>.</i></font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="CalculateTeleportPath"></a>DWORD </b></font><font size="2"><b><font face="Verdana">CalculateTeleportPath(WORD                                
+</font></b><font face="Verdana"><i>x</i><b>, WORD </b><i>y</i><b>, LPPOINT </b><i>lpBuffer</i><b>,   
+DWORD </b><i>dwMaxCount</i><b>);</b></font></font></p>  
+<p><font face="Verdana" size="2"><b>Return Value</b></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If succeeded, the function returns number of   
+  path node calculated, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><font face="Verdana" size="2"><b>Parameters</b></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2"><i>x, y</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the destination map position.</font></p>  
+  </blockquote>  
+  <p><font face="Verdana" size="2"><i>lpBuffer</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to an array of POINT structures which will receive the calculated path   
+    nodes.</font></p>   
+  </blockquote>  
+    <p><font face="Verdana" size="2">dwMaxCount</font></p>   
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the maximum number of path nodes   
+    that <i>lpBuffer</i> can hold.</font></p>   
+  </blockquote>  
+</blockquote>  
+<p><font face="Verdana" size="2"><b>Remarks</b></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Calculate all required steps from the     
+  player's current map position to the destination map position specified by <i>x</i>     
+  and <i>y</i>. This function can be extremely handy for finding a path from one    
+  position to another, for example, finding the path from Durance of hate level 2 waypoint     
+  to the Durance of hate level 3 entrance, whose map position can be obtained by     
+  a previous call to <i><a href="#EnumPresetUnit">EnumPresetUnit</a>.</i></font></p>    
+  <p><font face="Verdana" size="2">Please note that path calculated by this   
+  function does not take into account obstacle(monsters, chests, closed   
+  doorways, etc), so it is recommended to be used for players with the Teleport   
+  spell.</font></p>  
+</blockquote>  
+<p><font face="Verdana" size="2"><b>Code Sample</b></font></p>  
+<blockquote>  
+  <p><font face="Courier New" size="2" color="#008000">/////////////////////////////////////////////////////////////////////<br>  
+  // Calculate a path and teleport there<br>  
+  /////////////////////////////////////////////////////////////////////<br>  
+  <br>  
+  // Suppose we have already obtained a PRESETUNIT named &quot;pu&quot; from a    
+  previous call to EnumPresetUnit </font></p>   
+  <p><font face="Courier New" size="2"><font color="#0000FF">PATH</font> path = { 0 };<br>                 
+  POINT aPath[255];<br>                
+  DWORD dwCount = server-&gt;CalculateTeleportPath(pu.x, pu.y, aPath, 255);<br>                             
+  <font color="#0000FF">      
+  if</font>  (dwCount == 0)<br>                             
+  {<br>  
+  &nbsp;&nbsp;&nbsp; server-&gt;GamePrintError(&quot;Failed to calculate                               
+  path!&quot;);<br>  
+  }<br>  
+  <font color="#0000FF">  
+  else</font><br>  
+  {<br>  
+  &nbsp;&nbsp;&nbsp; <font color="#0000FF">for</font> (DWORD i = 0; i &lt;                 
+  dwCount; i++)<br>                              
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                               
+  me-&gt;TeleportTo(aPath[i].x, aPath[i].y, <font color="#0000FF">TRUE</font>);<br>                             
+  }<br>  
+  <br>  
+  <font color="#008000">  
+  // Now wait for the PM_MOVECOMPLETE message...</font></font></p>         
+</blockquote>  
+<hr noshade size="1">  
+  <p><font face="Verdana" size="2"><b><a name="CalculateWalkPath"></a>DWORD                 
+  CalculateWalkPath(</b></font><font size="2"><b><font face="Verdana">WORD                  
+</font></b><font face="Verdana"><i>x</i><b>, WORD </b><i>y</i><b>, LPPOINT </b><i>lpBuffer</i><b>,   
+  DWORD </b><i>dwMaxCount</i></font></font><font face="Verdana" size="2"><b>);</b></font></p>        
+<p><font face="Verdana" size="2"><b>Return Value</b></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If succeeded, the function returns number of   
+  path node calculated, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><font face="Verdana" size="2"><b>Parameters</b></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2"><i>x, y</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the destination map position.</font></p>  
+  </blockquote>  
+  <p><font face="Verdana" size="2"><i>lpBuffer</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to an array of POINT     
+    structures which will receive the calculated path nodes.</font></p>   
+  </blockquote>  
+    <p><font face="Verdana" size="2">dwMaxCount</font></p>   
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the maximum number of path nodes   
+    that <i>lpBuffer</i> can hold.</font></p>   
+  </blockquote>  
+</blockquote>  
+<p><font face="Verdana" size="2"><b>Remarks</b></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Calculate all required steps from the     
+  player's current map position to the destination map position specified by <i>x</i>     
+  and <i>y</i>. This function is similar to <a href="#CalculateTeleportPath">CalculateTeleportPath</a>   
+  except for that it takes into acount map obstacles and collisions. Usually   
+  used for town walking.</font></p>   
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetItemCode"></a>BOOL                               
+GetItemCode(DWORD </b><i>dwItemID</i><b>, LPSTR </b><i>lpszBuffer</i><b>, DWORD </b><i>dwMaxChars</i><b>);</b></font></p>                              
+<p><font face="Verdana" size="2"><b>Return Value</b></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero  
+  otherwise.</font></p>  
+</blockquote>  
+<p><font face="Verdana" size="2"><b>Parameters</b></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2"><i>dwItemID</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the item ID.</font></p>  
+  </blockquote>  
+  <p><font face="Verdana" size="2"><i>lpszBuffer</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a null-terminated buffer which   
+    will receive the item code.</font></p>  
+  </blockquote>  
+  <p><font face="Verdana" size="2"><i>dwMaxChars</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the maximum number of characters   
+    that can be copied to </font><font face="Verdana" size="2"><i>lpszBuffer</i>.   
+    The value shall be no less than 4.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><font face="Verdana" size="2"><b>Remarks</b></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve the 3-letter item code of the item   
+  specified by </font><font face="Verdana" size="2"><i>dwItemID</i>.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="LeftClick"></a>BOOL LeftClick(long </b><i>x</i><b>,                              
+long </b><i>y</i><b>);<br>  
+<a name="RightClick"></a>BOOL RightClick(long </b><i>x</i><b>, long </b><i>y</i><b>);</b></font></p>                             
+<p><font face="Verdana" size="2"><b>Return Value</b></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero   
+  otherwise.</font></p>  
+</blockquote>  
+  <p><font face="Verdana" size="2"><b>Parameters</b></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2"><i>x</i>, <i>y</i></font></p>  
+  <blockquote>  
+  <p><font face="Verdana" size="2">Specifies the client coordinates where the   
+  mouse click shall occur.</font></p>  
+  </blockquote>  
+</blockquote>  
+  <p><font face="Verdana" size="2"><b>Remarks</b></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Simulate a mouse-click on the game client   
+  area.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="QueryModuleData"></a>DWORD                         
+QueryModuleData(LPCSTR </b><i>lpszModuleName</i><b>, DWORD </b><i>dwDataID</i><b>,                         
+LPVOID </b><i>lpBuffer</i><b>, DWORD </b><i>dwMaxLength</i><b>, LPARAM </b><i>lParam</i><b>   
+= 0);</b></font></p>  
+<p><font face="Verdana" size="2"><b>Return Value</b></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If succeeded, the function returns number of   
+  bytes that were actually copied to <i>lpBuffer</i>, otherwise it returns zero.</font></p>  
+</blockquote>  
+  <p><font face="Verdana" size="2"><b>Parameters</b></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2"><i>lpszModuleName</i></font></p>  
+  <blockquote>  
+  <p><font face="Verdana" size="2">Specifies name of the target module. Module   
+  extension is not included, for example, if you want to query data from the   
+  module &quot;<i>pickit.d2h</i>&quot;, you must specify &quot;<i>pickit</i>&quot;   
+  as the target module name.</font></p>  
+  </blockquote>  
+  <p><font face="Verdana" size="2"><i>dwDataID</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the iddentity of the data to be   
+    queried. This value must had been defined in the target module.</font></p>  
+  </blockquote>  
+  <p><font face="Verdana" size="2"><i>lpBuffer</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a memory block, to where the   
+    target module will write the data if the query is successful.</font></p>  
+  </blockquote>  
+  <p><font face="Verdana" size="2"><i>dwMaxLength</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specify maximum data length, in bytes, that   
+    can be written to <i>lpBuffer. </i>The return value of this function will   
+    never exceed <i>dwMaxLength.</i></font></p>  
+  </blockquote>  
+  <p><font face="Verdana" size="2"><i>lParam</i><b>&nbsp;</b></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies additional information to the                        
+    target module on how the data should be queried. Assuming the caller and the                        
+    target module have already made agreement on how <i>lParam</i><b> </b>is                        
+    defined.</font></p>  
+  </blockquote>  
+</blockquote>  
+  <p><font face="Verdana" size="2"><b>Remarks</b></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve some particular data or information   
+  from the target module specified by <i>lpszModuleName</i>. This function fails   
+  if any of the following conditions are true:</font></p>  
+  <ul>  
+    <li><font face="Verdana" size="2">The target module cannot be found (was not   
+      loaded by D2Hackit).</font></li>  
+    <li><font size="2" face="Verdana">The target module did not export or   
+      implement the &quot;<i>OnQueryModuleData</i>&quot; function.</font></li>  
+    <li><font size="2" face="Verdana">Meanings of <i>dwDataID</i> or <i>lParam</i><b>   
+      </b>cannot be recognized by the target module.</font></li>  
+    <li><font size="2" face="Verdana">The target module does not agree to expose   
+      the required data to the caller.</font></li>  
+  </ul>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetKeyName"></a>DWORD GetKeyName(BYTE                        
+</b><i>iKeyCode</i><b>, LPSTR </b><i>lpszBuffer</i><b>, DWORD </b><i>dwMaxChars</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>   
+<blockquote>  
+  <p><font face="Verdana" size="2">If succeeded, the function returns length of the   
+  key name, otherwise it returns zero.</font></p>   
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2"><i>iKeyCode</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the virtual key code.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">lpszBuffer</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a null-terminated string which will receive   
+    the key name.</font></p>  
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">dwMaxChars</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the maximum buffer size, in char's.&nbsp;</font></p>                                   
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieve name of a key whose virtual key code   
+  value is specified by <i>iKeyCode</i>.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="IsQuestItem"></a>BOOL IsQuestItem(LPCSTR                     
+</b><i>lpszItemCode</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>    
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if the   
+  specified item is a quest item, zero otherwise.</font></p>   
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2"><i>lpszItemCode</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the item code.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Check whether the specified item is a quest   
+  item.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><b><font face="Verdana" size="2"><a name="GetScreenSize"></a>SIZE GetScreenSize();&nbsp;</font></b></p>                                 
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>                                 
+<blockquote>  
+<p><font face="Verdana" size="2">The function returns size of the game window client area.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">Calculate size of the game window client area, the return value will be   
+either {800, 600} or {640, 480}. No other sizes are defined.</font></p>   
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="ScreenToMapCoords"></a>void ScreenToMapCoords(POINT&amp; </b><i>rScreenCoords</i><b>);</b></font></p>                                
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+<p><i><font face="Verdana" size="2">rScreenCoords</font></i></p>  
+  <blockquote>  
+<p><font face="Verdana" size="2">Reference to a POINT structure which specifies   
+the screen coordinates and receives translated map position.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">Translate a screen coordinates into an absolute game map position.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="MapToScreenCoords"></a>void MapToScreenCoords(POINT&amp; </b><i>rMapPosition</i><b>);</b></font></p>                               
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2"><i>rMapPosition</i></font></p>  
+  <blockquote>  
+<p><font face="Verdana" size="2">Reference to a POINT structure which specifies   
+the absolute map position and receives translated screen coordinates.</font></p>   
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">Translate an absolute game map position into a screen coordinates.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><b><font face="Verdana" size="2"><a name="GetMousePosition"></a>POINT GetMousePosition();</font></b></p>                                 
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">The function returns current mouse position.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">Retrieve current mouse position in the game client area.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetRandomPosition"></a>POINT                  
+GetRandomPosition(int </b><i>nRadiusMin</i><b>, int </b><i>nRadiusMax</i><b>,                  
+int </b><i>nAngleMin</i><b> = 0, int </b><i>nAngleMax</i><b> = 360, const   
+LPPOINT </b><i>lpOrigin</i><b> = NULL);</b></font></p>   
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">The function returns the calculated result.</font></p>   
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2"><i>nRadiusMin, nRadiusMax</i></font></p>  
+  <blockquote>  
+<p><font face="Verdana" size="2">Specify the minimum and maximum radius, in   
+yards, from the origin point.</font></p>  
+  </blockquote>  
+  <p><font face="Verdana" size="2"><i>nAngleMin, nAngleMax</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specify the angles, in degrees, from the    
+    origin point. Angles values may range from 0 to 360.</font></p>  
+  </blockquote>  
+</blockquote>  
+<blockquote>  
+<p><font face="Verdana" size="2"><i>lpOrigin</i><b>&nbsp;</b></font></p>  
+  <blockquote>  
+<p><font face="Verdana" size="2">Pointer to a POINT struct                   
+specifies the origin point from where a random position is to be calculated. If                   
+this parameter is null, the player's current position will be used as the origin                   
+point.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">Calculates for a random position within the     
+specified radius and angles. Please note that if the origin point specified by <i>    
+lpOrigin</i> is not a valid map position, then the return value will not be a valie     
+map position, either. However, even if this is the case, the function will not     
+fail since it merely performs a mathematical calculation.</font></p>    
+<p><font face="Verdana" size="2">This function could be extremely useful in some   
+circumstances, for example, D2Hackit uses this function in its internal   
+motion-queue to detour around small obstacles.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetAngle"></a>int GetAngle(WORD </b><i>x1</i><b>,                  
+WORD </b><i>y1</i><b>, WORD </b><i>x2</i><b>, WORD </b><i>y2</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">The function returns calculated angle   
+value(0-360).</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2"><b>&nbsp;</b><i>x1, y1</i></font></p>                 
+  <blockquote>  
+<p><font face="Verdana" size="2">Specifiy the starting position.</font></p>  
+  </blockquote>  
+<p><font face="Verdana" size="2"><i>x2, y2</i></font></p>  
+  <blockquote>  
+<p><font face="Verdana" size="2">Specifiy the ending position.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">Calculates the angle value(0-360) between the   
+starting position and the ending position.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="CreateCollisionMap"></a>BOOL                  
+CreateCollisionMap();</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">The function returns non-zero if the collision   
+map was created successfully, zero otherwise.</font></p>   
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">Create a collision map against current map. A   
+collision map is treated as an 1000*1000 two-dimensional array which stores all   
+collision data of current map.</font></p>  
+<p><font face="Verdana" size="2">If the collision map of current map was already   
+created period to this call, the function returns non-zero immediately without   
+recreating it.</font></p>  
+<p><font face="Verdana" size="2">Collision map will be destroyed automatically   
+as soon as current map is changed(the player enters a new area) and D2Hackit   
+will not recreate it, you need to manually call this function at least once   
+after every map change in order to be able to access collision data of the new   
+map.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetCollisionData"></a>WORD                  
+GetCollisionData(long </b><i>x</i><b>, long </b><i>y</i><b>, BOOL </b><i>bAbsolute</i><b>);</b></font></p>                 
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">If succeeded, the function returns the   
+specified collision data, otherwise it returns -1.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2"><b>&nbsp;</b><i>x, y</i></font></p>                
+  <blockquote>  
+<p><font face="Verdana" size="2">Specifiy the location, at which the collision   
+data is to e retrieved.</font></p>  
+  </blockquote>  
+<p><font face="Verdana" size="2"><i>bAbsolute</i></font></p>  
+  <blockquote>  
+<p><font face="Verdana" size="2">Specifies whether the location specified by <i>x</i>   
+and <i>y</i> is an absolute game map position or a relative index.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">Retrieves the collision data at a particular   
+position.</font></p>  
+<p><font face="Verdana" size="2">If <i>bAbsolute </i>is non-zero, <i>x</i> and <i>y</i>   
+are treated as an absolute game map position. If <i>bAbsolute </i>is zero, <i>x</i>   
+and <i>y</i> are treated as a relative index, in this case values of <i>x</i>   
+and <i>y</i> must be in range of 0 to 999, since the collision map is an   
+1000*1000 two-dimensional array.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="DumpCollisionMap"></a>BOOL                 
+DumpCollisionMap(LPCSTR </b><i>lpszFilePath</i><b>, const LPPOINT </b><i>lpTokens</i><b>                 
+= NULL, DWORD </b><i>dwTokenCount</i><b> = 0);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero   
+  otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2"><b>&nbsp;</b></font><font face="Verdana" size="2"><i>lpszFilePath</i></font></p>  
+  <blockquote>  
+<p><font face="Verdana" size="2">Pointer to a null-terminated character string   
+which specifiy full path of the file. If the file does not exist, it is created.</font></p>  
+  </blockquote>  
+<p><font face="Verdana" size="2"><i>lpTokens</i><b>&nbsp;</b></font></p>  
+  <blockquote>  
+<p><font face="Verdana" size="2">Pointer to an array of POINT structures which                 
+contain tokens to be printed to the file. If this parameter is zero, no tokens                 
+are printed.</font></p>                
+  </blockquote>  
+<p><font face="Verdana" size="2"><i>dwTokenCount</i><b>&nbsp;</b></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Specifies number of elements contained in <i>lpTokens</i>.</font></p>                
+</blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">Prints the collision map data to a text file,                 
+you may view the file using your text editor with &quot;word-wrap&quot;                 
+disabled.&nbsp;</font></p>  
+<p><font face="Verdana" size="2">All reachable areas are printed as <b>blank</b>,                 
+non-reachable areas are printed as '<b>X</b>', and the player's current location                 
+is printed as '<b>P</b>'. If <i>lpTokens </i>contains elements, the first                 
+element of <i>lpTokens</i><b> </b>is printed as '<b>S</b>', the last element of                 
+lpTokens is printed as '<b>E</b>', and all intermediate elements are printed as                 
+'<b>*</b>'.</font></p>  
+<p><font face="Verdana" size="2">Please be adviced that collision map data are   
+huge in size (could be easily over hundreds of KB) and writing the map data to   
+disk files are time consuming, you should only use this function for internal   
+debug purpose, the release versions of your modules shall never contain this   
+function.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetItemPrice"></a>DWORD                 
+GetItemPrice(DWORD </b><i>dwItemID</i><b>, DWORD </b><i>dwNpcClassID</i><b>,                 
+BOOL </b><i>bBuyOrSell</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">If succeeded, the function returns price of the   
+specified item, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2"><b>&nbsp;</b></font><font face="Verdana" size="2"><i>dwItemID</i></font></p>  
+  <blockquote>  
+<p><font face="Verdana" size="2">Specifiy ID of the item which is to be checked.</font></p>  
+  </blockquote>  
+<p><font face="Verdana" size="2"><i>dwNpcClassID</i></font></p>  
+  <blockquote>  
+<p><font face="Verdana" size="2">Specifies class ID of the npc against whom the   
+item price is to be checked. And yes, you guessed it right, different npc's may   
+return different prices on same item.</font></p>  
+  </blockquote>  
+<p><font face="Verdana" size="2"><i>bBuyOrSell</i></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If this parameter is non-zero, the function                 
+  returns buying price of the item, otherwise the function returns selling price                 
+  of the item. Buying prices of items are usually much higher than selling                 
+  prices.&nbsp;</font></p>  
+</blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">Retrieves buying/selling prices of a particular   
+item.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetItemAttributes"></a>DWORD                 
+GetItemAttributes(DWORD </b><i>dwItemID</i><b>);</b></font></p>                
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">If succeeded, the function returns attributes   
+of the item, otherwise it returns 0.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2"><i>dwItemID</i></font></p>  
+  <blockquote>  
+<p><font face="Verdana" size="2">Specifiy ID of the item which is to be checked.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">Retrieves attributes of a particular item.   
+Please check &quot;<a href="definitions.htm#itemattr">Item Attributes</a>&quot;   
+for a complete list of item attribute values.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetItemSockets"></a>BYTE               
+GetItemSockets(DWORD </b><i>dwItemID</i><b>);</b></font></p>              
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">If succeeded, the function returns number of   
+sockets on the item, otherwise it returns 0.</font></p>   
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2"><i>dwItemID</i></font></p>  
+  <blockquote>  
+<p><font face="Verdana" size="2">Specifiy ID of the item which is to be checked.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">Retrieves number of sockets on a particular   
+item.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="UnitOverhead"></a>BOOL               
+UnitOverhead(LPCGAMEUNIT </b><i>lpUnit</i><b>, LPCSTR </b><i>lpszText</i><b>,               
+DWORD </b><i>dwDuration</i><b> = 8000);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero   
+  otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>   
+    struct which specifies the unit that will display the overhead message.</font></p>  
+  </blockquote>  
+    <p><font face="Verdana" size="2"><i>lpszText</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a null-terminated character   
+    string which will be displayed. If this parameter is null or empty, the   
+    existing overhead message of the unit will be immediately removed.</font></p>  
+  </blockquote>  
+    <p><font face="Verdana" size="2"><i>dwDuration</i><b>&nbsp;</b></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the duration, in milliseconds,               
+    for how long the overhead message will be displayed. The message will be               
+    automatically removed after the duration has elapsed. If this parameter is               
+    -1, the message will not be automatically removed.</font></p>              
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">Makes any kind of game units display overhead   
+messages just like what players can do, you may use this function to make npc's,   
+chests, items, monsters, etc, to display overhead messages. Overhead message of   
+a unit will be automatically removed if the duration specified by <i>dwDuration</i><b>   
+</b>has elapsed, or the unit is out of the player's awareness.</font></p>  
+<p><font face="Verdana" size="2">To immediate remove overhead message of an   
+unit, simply specify null as <i>lpszText </i>value<i>.</i></font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetItemProperties"></a>DWORD               
+GetItemProperties(DWORD </b><i>dwItemID</i><b>, LPITEMPROPERTY </b><i>lpBuffer</i><b>,               
+DWORD </b><i>dwMaxCount</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">If succeeded, the function returns number of   
+properties copied to the buffer, otherwise it returns 0.</font></p>   
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2"><i>dwItemID</i></font></p>  
+  <blockquote>  
+<p><font face="Verdana" size="2">Specifiy ID of the item whose properties are to   
+be retrieved.</font></p>  
+  </blockquote>  
+<p><font face="Verdana" size="2"><i>lpBuffer</i></font></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">Pointer to an array of <a href="structs.htm#ITEMPROPERTY">ITEMPROPERTY</a>   
+structures which will receive the item property data.</font></p>  
+</blockquote>  
+<p><font face="Verdana" size="2"><i>dwMaxCount</i></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Specifies the maximum number of properties   
+  the buffer can store.</font></p>  
+</blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">Retrieves a list of item properties, AKA, item   
+magical mods.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="FindPresetUnit"></a>POINT              
+FindPresetUnit(DWORD </b><i>dwUnitID</i><b>, DWORD </b><i>dwUnitType</i><b>);</b></font></p>             
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">If succeeded, the function returns position of   
+the found preset-unit, otherwise it returns {0,0}.</font></p>   
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2"><i>dwUnitID</i></font></p>  
+  <blockquote>  
+<p><font face="Verdana" size="2">Specifiy ID of the preset-unit that is to be   
+found.</font></p>  
+  </blockquote>  
+<p><font face="Verdana" size="2"><i>dwUnitType</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies type of the preset-unit that is to be   
+    found. Please check <a href="definitions.htm#unittype">Unit Types</a>    
+    for a complete list of game unit types.</font></p>   
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">Searchs for a particular preset-unit on current   
+map and returns its position.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetHighlightUnit"></a>BOOL             
+GetHighlightUnit(LPGAMEUNIT </b><i>lpBuffer</i><b>);</b></font></p>            
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if there is a   
+  highlighted unit, zero otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>    
+    struct which will receive the highlighted unit data.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieves the currently highlighted game   
+  unit. A game unit is highlighted when the player's mouse cursor hovers over   
+  it, the highlighted unit is drawn with different brightness by the game and   
+  its brief description is usually shown overhead.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetItemQuality"></a>int            
+GetItemQuality(DWORD </b><i>dwItemID</i><b>);</b></font></p>           
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If succeeded, the function returns quality   
+  value of the item, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2"><i>dwItemID</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies ID of the item to be checked.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieves the item quality value. Please   
+  check &quot;<a href="definitions.htm#itemquality">Item Quality</a>&quot; for a   
+  complete list of item quality values.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetItemPrefixSuffix"></a>BOOL            
+GetItemPrefixSuffix(DWORD </b><i>dwItemID</i><b>, WORD* </b><i>pPrefix</i><b>,            
+WORD* </b><i>pSuffix</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero   
+  otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2"><i>dwItemID</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies ID of the item to be checked.</font></p>  
+  </blockquote>  
+    <p><font face="Verdana" size="2"><i>pPrefix</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a WORD which will receive the   
+    item prefix value.</font></p>  
+  </blockquote>  
+    <p><font face="Verdana" size="2"><i>pPrefix</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a WORD which will receive the   
+    item suffix value.</font></p>    
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieves the prefix and suffix values of a   
+  magical item.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetPrefixSuffixName"></a>DWORD            
+GetPrefixSuffixName(WORD </b><i>wPrefixOrSuffix</i><b>, LPSTR </b><i>lpszBuffer</i><b>,            
+DWORD </b><i>dwMaxChars</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">If succeeded, the function returns number of   
+characters copied to the buffer, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2"><i>wPrefixOrSuffix</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the prefix or suffix value to be   
+    translated into its string representation.</font></p>  
+  </blockquote>  
+    <p><font face="Verdana" size="2"><i>lpszBuffer</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a null-terminated character    
+    string which will receive the translated text.</font></p>  
+  </blockquote>  
+    <p><font face="Verdana" size="2"><i>dwMaxChars</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies the maximum number of characters   
+    that can be copied to <i>lpszBuffer</i> .</font></p>    
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Translate a magical prefix or suffix value   
+  into its string representation.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetUnitMode"></a>DWORD          
+GetUnitMode(LPCGAMEUNIT </b><i>lpUnit</i><b>);</b></font></p>         
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">If succeeded, the function returns the unit's   
+  mode value, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>    
+    struct whose mode value is to be retrieved.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieves mode value of the specified unit.   
+  Meanings of mode values depend on the unit type, please check &quot;<a href="definitions.htm#mode">Unit   
+  Modes</a>&quot; for a complete list of mode values for all unit types.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b>BOOL EnumGroundItems(fnEnumItemProc </b><i>lpfn</i><b>,   
+LPARAM </b><i>lParam</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds,  
+  zero otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+<p><font size="2" face="Verdana"><i>lpfn</i></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Pointer to a <a href="me.htm#fnEnumItemProc"><i>fnEnumItemProc</i></a><b>  
+  </b>function which will receive item data. </font></p>  
+</blockquote>  
+<p><font size="2"><i><font face="Verdana">lParam</font></i><font face="Verdana"><b>&nbsp;</b></font></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">A 32-bit application defined data.</font></p>       
+</blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+<p><font size="2" face="Verdana">Enumerate all items on the ground.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetItemLevel"></a>BYTE        
+GetItemLevel(DWORD </b><i>dwItemID</i><b>);</b></font></p>       
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">If succeeded, the function returns the   
+item-level, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2"><i>dwItemID</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies ID of the item to be checked.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieves item-level of the specified item.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><b><font size="2" face="Verdana"><a name="ExamItemProperties"></a>BOOL        
+ExamItemProperties(DWORD </font></b><font size="2" face="Verdana"><i>dwItemID</i><b>,        
+LPCSTR </b><i>lpszExpression</i><b>, LPCSTR </b><i>lpszCodes</i><b> = NULL, BOOL*  
+</b><i>pSyntaxError</i><b>  = NULL);</b></font></p> 
+<p><b><font face="Verdana" size="2">Return Value</font></b></p> 
+<blockquote> 
+<p><font face="Verdana" size="2">The function returns non-zero if the  
+examination has passed, zero otherwise.</font></p> 
+</blockquote> 
+<p><b><font face="Verdana" size="2">Parameters</font></b></p> 
+<blockquote> 
+  <p><font face="Verdana" size="2"><i>dwItemID</i></font></p> 
+  <blockquote> 
+    <p><font face="Verdana" size="2">Specifies ID of the item to be examined.</font></p> 
+  </blockquote> 
+    <p><font size="2" face="Verdana"><i>lpszExpression</i></font></p> 
+  <blockquote> 
+    <p><font size="2" face="Verdana">Pointer to a null-terminated character  
+    string which contains the item mod expression.</font></p> 
+  </blockquote> 
+    <p><font size="2" face="Verdana"><i>lpszCodes</i></font></p> 
+  <blockquote> 
+    <p><font size="2" face="Verdana">Pointer to a null-terminated character   
+    string which contains one or more item codes.</font></p>  
+  </blockquote>  
+    <p><font size="2" face="Verdana"><i>pSyntaxError</i><b> &nbsp;</b></font></p>    
+  <blockquote> 
+    <p><font size="2" face="Verdana">Pointer to a BOOL variable which will     
+    receive the expression syntax parsing flags. If this parameter is not null,     
+    if there are syntax errors in the expression specified by <i>lpszExpression</i>,     
+    value 1 will be written, if there are no syntax errors, value 0 will be     
+    written.</font></p> 
+  </blockquote> 
+</blockquote> 
+<p><b><font face="Verdana" size="2">Remarks</font></b></p> 
+<blockquote> 
+  <p><font face="Verdana" size="2">Examines a specified item against a set of        
+  item codes and an &quot;item mod expression&quot;.&nbsp;</font></p>       
+  <p><font face="Verdana" size="2">The <i>lpszCodes</i><b> </b>parameter        
+  contains one or more item codes, multiple item codes shall be separated by        
+  commas. For example: &quot;rin&quot;, &quot;rin,amu,jew&quot; are both valid        
+  format. The function will handle the comparison properly. If <i>lpszCodes</i><b>        
+  </b>is null or empty, D2Hackit will assume the user does not care about item        
+  codes, therefore no code comparison will be done.&nbsp;</font></p>       
+  <p><font face="Verdana" size="2">The <i>lpszExpression </i>parameter contains        
+  an &quot;item mod expression&quot;, please check &quot;<a href="modexp.htm">Item        
+  Mod Expression</a>&quot; for details.</font></p>       
+  <p><font face="Verdana" size="2">This is one of the most useful functions to   
+  have for bot developers, it almost completely takes the item mod   
+  parsing/comparing burden off the developer's shoulders.</font></p>  
+</blockquote>  
+<p><font face="Verdana" size="2"><b>Code Sample</b></font></p>  
+<blockquote>  
+  <p><font face="Courier New" size="2"><font color="#008000">/////////////////////////////////////////////////////////////////<br>  
+  // Suppose we have an item whose ID is dwItemID, check:<br>  
+  /////////////////////////////////////////////////////////////////<br>  
+  <br>  
+  // 1, The item must be a rare Circlet.<br>  
+  // 2, It has +2 to any class skills, or +3 to sor fire<br>  
+  //&nbsp;&nbsp;&nbsp; or lightning skill tabs.<br>  
+  // 3, It adds some life or mana, and sum of of the added<br>  
+  //&nbsp;&nbsp;&nbsp; amounts shall be no less than 40.<br>  
+  // 4, If above is not true, then it should have +15 to<br>  
+  //&nbsp;&nbsp;&nbsp; all resistance in compensation.<br>  
+  // 5, It has +20% or more faster cast rate, or +20% or<br>  
+  //&nbsp;&nbsp;&nbsp; more faster run/walk, or +20% or more faster hit   
+  recovery.</font><br>  
+  <br>  
+  <font color="#0000FF">char</font> szCodes[] = &quot;ci0,ci1,ci2,ci3&quot;; <font color="#008000">//        
+  Circlets</font><br>  
+  <font color="#0000FF">char</font> szExp[] = &quot;quality==6 &amp;&amp; (class_skill==2        
+  || sor_fire==3 || sor_lit==3) &amp;&amp; (life+mana&gt;=40 || all_res&gt;=15)        
+  &amp;&amp; (fcr&gt;=20 || frw&gt;=20 || fhr&gt;=20)&quot;; <font color="#008000">//        
+  Mod expression</font><br>  
+  <font color="#0000FF"><br> 
+  BOOL</font> bSyntaxError;<br>    
+  <font color="#0000FF">BOOL</font> bMatched = server-&gt;ExamItemProperties(dwItemID, szExp, szCodes,     
+  &amp;bSyntaxError);<br> 
+  <font color="#0000FF"><br> 
+  if</font>  (bSyntaxError)<br>      
+  {<br> 
+  &nbsp;&nbsp;&nbsp; server-&gt;GameErrorf(&quot;Syntax error in: %s&quot;,     
+  szExp);&nbsp;&nbsp;&nbsp;&nbsp;<br> 
+  }<br> 
+  <font color="#0000FF">else<br> 
+  {<br> 
+  &nbsp;&nbsp;&nbsp; if </font>(bMatched)<br> 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server-&gt;GamePrintInfo(&quot;OMFG this circlet        
+  r0x0rs!&quot;);<br>  
+  &nbsp;&nbsp;&nbsp; <font color="#0000FF">else</font><br>    
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server-&gt;GamePrintInfo(&quot;Yet another crap...&quot;);<br>     
+  }</font></p>   
+</blockquote> 
+<hr noshade size="1"> 
+<p><b><font size="2" face="Verdana"><a name="EnumPlayers"></a>BOOL        
+EnumPlayers(fnEnumPlayerProc </font></b><font size="2" face="Verdana"><i>lpfn</i><b>,        
+LPARAM </b><i>lParam</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds,  
+  zero otherwise.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+<p><font size="2" face="Verdana"><i>lpfn</i></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Pointer to a <i><a href="#fnEnumPlayerProc">fnEnumPlayerProc</a></i><b>   
+  </b>function which will receive player information.</font></p>  
+</blockquote>  
+<p><font size="2"><i><font face="Verdana">lParam</font></i><font face="Verdana"><b>&nbsp;</b></font></font></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">A 32-bit application defined data.</font></p>        
+</blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+<p><font size="2" face="Verdana">Enumerate all players in the game.</font></p>  
+</blockquote>  
+<hr noshade size="1">  
+<p><font size="2" face="Verdana"><b><a name="fnEnumPlayerProc"></a>typedef BOOL        
+(CALLBACK *</b><i>fnEnumPlayerProc</i><b>)(DWORD </b><i>dwPlayerID</i><b>,        
+LPCSTR </b><i>lpszPlayerName</i><b>, DWORD </b><i>dwPlayerClass</i><b>, DWORD </b><i>dwPvpFlags</i><b>,   
+BYTE </b><i>iMapID</i><b>, LPARAM </b><i>lParam</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Return zero to abort unit enumeration, return non-zero  
+  to continue.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><font size="2" face="Verdana"><i>dwPlayerID</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Player ID.</font></p>  
+  </blockquote>  
+    <p><font size="2" face="Verdana"><i>lpszPlayerName</i></font></p>  
+  <blockquote>  
+    <p><font size="2" face="Verdana">Pointer to a null-terminated string which   
+    contains player name.</font></p>  
+  </blockquote>  
+  <p><font size="2" face="Verdana"><i>dwPlayerClass</i></font></p>  
+  <blockquote>  
+    <p><font size="2" face="Verdana">Player character class ID. Please see <a href="me.htm#GetClassID">me-&gt;GetClassID</a>   
+    for a complete list of player class ID's.</font></p>  
+  </blockquote>  
+  <p><font size="2" face="Verdana"><i>dwPvpFlags</i></font></p>  
+  <blockquote>  
+    <p><font size="2" face="Verdana">Player's PVP flags, in relation to current    
+    player. Please see <a href="me.htm#GetPvpFlags">me-&gt;GetPvpFlags</a>    
+    </font><font size="2" face="Verdana">for a complete list of Pvp flag   
+    definitions.</font></p>  
+  </blockquote>  
+  <p><font size="2" face="Verdana"><i>iMapID</i></font></p>  
+  <blockquote>  
+    <p><font size="2" face="Verdana">ID of the map where the player is in. Only   
+    valid to allied players. Please check <a href="definitions.htm#map">Map   
+    definition</a> for a complete list of map ID's.</font></p>   
+  </blockquote>  
+  <p><i><font face="Verdana" size="2">lParam</font></i></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">A 32-bit application defined value.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Process each player information passed from <a href="#EnumPlayers">EnumPlayers</a><i>.</i></font></p>   
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetItemDescription"></a>DWORD GetItemDescription(DWORD </b><i>dwItemID</i><b>, LPSTR </b><i>lpszBuffer</i><b>, DWORD </b><i>dwMaxChars</i><b>, BOOL </b><i> bUseColor</i><b> = TRUE); </b></font></p>      
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">If succeeded, the function returns number of   
+characters that were copied to the buffer, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2"><i>dwItemID</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies ID of the item.</font></p>  
+  </blockquote>  
+    <p><font face="Verdana" size="2"><i>lpszBuffer</i></font></p>  
+  <blockquote>  
+    <p><font size="2" face="Verdana">Pointer to a null-terminated character    
+    string which will receive item description.</font></p>  
+  </blockquote>  
+    <p><font face="Verdana" size="2"><i>dwMaxChars</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Maximum number of characters the buffer can   
+    hold.</font></p>  
+  </blockquote>  
+    <p><font face="Verdana" size="2"><i> bUseColor</i><b>&nbsp; </b></font></p>  
+  <blockquote>  
+    <p><font size="2" face="Verdana">Specifies whether to colorize the output     
+    string.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieves description of an item, for example   
+  &quot;Unique Monarch&quot;, &quot;Set Votex Shield (3)&quot;, &quot;Superior   
+  Plated Belt&quot;, etc. Socketed item will have a suffix &quot;<i>(socket_number)</i>&quot;   
+  appened to the end. </font></p>   
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetD2HackitVersion"></a>DWORD GetD2HackitVersion();</b></font></p>   
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">The function returns version of D2Hackit.dll.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieves version of D2Hackit.dll.</font></p>   
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetD2HackitBuild"></a>DWORD GetD2HackitBuild();</b></font></p>   
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">The function returns build number of 
+D2Hackit.dll.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieves build number of D2Hackit.dll.</font></p>   
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="LoadD2Bitmap"></a>HD2BITMAP LoadD2Bitmap(LPCSTR   
+</b><i>lpszFilePath</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">If succeeded, the function returns a handle to 
+the loaded image file, otherwise it returns zero.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+    <p><font face="Verdana" size="2"><i>lpszFilePath</i></font></p>  
+  <blockquote>  
+    <p><font size="2" face="Verdana">Pointer to a null-terminated character     
+    string which specifies file path of the image to be loaded.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Loads a image file into memory. Current 
+  version only supports 8-bit (256 colors) bitmaps (with &quot;bmp&quot; 
+  extension). Once an image file has been successfully loaded, you can draw it 
+  to game screen in the <a href="draw.htm#OnDraw">OnDraw</a> function, using <a href="draw.htm#CGameDC">CGameDC::DrawD2Bitmap</a>.</font></p>   
+  <p><font face="Verdana" size="2">For each image loaded by this function, you 
+  must call <a href="#DestroyD2Bitmap">DestroyD2Bitmap</a> to free the resource 
+  it occupies.</font></p>   
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><br>
+<a name="DestroyD2Bitmap"></a>BOOL DestroyD2Bitmap(HD2BITMAP </b><i>hBitmap</i><b>);</b></font></p>  
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds,   
+  zero otherwise.</font></p>   
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+    <p><font face="Verdana" size="2"><i>hBitmap</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Handle to an image file which was loaded by 
+    a previous call to <a href="#LoadD2Bitmap">LoadD2Bitmap</a>.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Destroys an loaded image and frees resources 
+  occupied by that image.</font></p>   
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetItemStrRequirement"></a>DWORD 
+GetItemStrRequirement(DWORD </b><i>dwItemID</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">If succeeded, the function returns the item's 
+strength requirement, otherwise it returns -1.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2"><i>dwItemID</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies ID of the item.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieves strength requirement of the item 
+  whose ID is specified by <i>dwItemID</i>.</font></p>   
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetItemDexRequirement"></a>DWORD 
+GetItemDexRequirement(DWORD </b><i>dwItemID</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">If succeeded, the function returns the item's 
+dexterity requirement, otherwise it returns -1.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2"><i>dwItemID</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies ID of the item.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieves dexterity requirement of the item 
+  whose ID is specified by <i>dwItemID</i>.</font></p>   
+</blockquote>  
+<hr noshade size="1">  
+<p><font face="Verdana" size="2"><b><a name="GetItemLevelRequirement"></a>DWORD 
+GetItemLevelRequirement(DWORD </b><i>dwItemID</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>  
+<blockquote>  
+<p><font face="Verdana" size="2">If succeeded, the function returns the item's 
+character level requirement, otherwise it returns -1.</font></p>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2"><i>dwItemID</i></font></p>  
+  <blockquote>  
+    <p><font face="Verdana" size="2">Specifies ID of the item.</font></p>  
+  </blockquote>  
+</blockquote>  
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>  
+<blockquote>  
+  <p><font face="Verdana" size="2">Retrieves character level requirement of the 
+  item whose ID is specified by <i>dwItemID</i>.</font></p>   
+</blockquote>  
+<hr noshade size="1">  

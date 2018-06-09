@@ -1,0 +1,314 @@
+
+<p align="center"><font face="Arial Black" size="4">The &quot;screen&quot; API Set</font></p>
+<p><font face="Verdana" size="2">This API set encapsulates game screen hooking(permanent text drawing) and
+screen attributes access.</font></p>
+<ul>
+  <li><a href="#CreateScreenHook"><font face="Verdana" size="2">screen-&gt;CreateScreenHook</font></a></li>
+  <li><a href="#ReleaseScreenHook"><font face="Verdana" size="2">screen-&gt;ReleaseScreenHook</font></a></li>
+  <li><a href="#SendToFront"><font face="Verdana" size="2">screen-&gt;SendToFront</font></a></li>
+  <li><a href="#SendToBack"><font face="Verdana" size="2">screen-&gt;SendToBack</font></a></li>
+  <li><a href="#DrawSingleText"><font face="Verdana" size="2">screen-&gt;DrawSingleText</font></a></li>
+  <li><a href="#DrawMultipleTexts"><font face="Verdana" size="2">screen-&gt;DrawMultipleTexts</font></a></li>
+  <li><a href="#GetTextSize"><font face="Verdana" size="2">screen-&gt;GetTextSize</font></a></li>
+  <li><a href="#GetScreenSize"><font face="Verdana" size="2">screen-&gt;GetScreenSize</font></a></li>
+  <li><a href="#ScreenToMapCoords"><font face="Verdana" size="2">screen-&gt;ScreenToMapCoords</font></a></li>
+  <li><a href="#MapToScreenCoords"><font face="Verdana" size="2">screen-&gt;MapToScreenCoords</font></a></li>
+  <li><a href="#GetMousePosition"><font face="Verdana" size="2">screen-&gt;GetMousePosition</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#ClearScroll">screen-&gt;ClearScroll</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#SetScrollTitle">screen-&gt;SetScrollTitle</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#AddScrollLine">screen-&gt;AddScrollLine</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#ShowScroll">screen-&gt;ShowScroll</a></font></li>
+</ul>
+<hr noshade size="1">
+<p><b><font face="Verdana" size="2"><a name="CreateScreenHook"></a>DWORD CreateScreenHook();</font></b></p>   
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">If the function succeeds, the return value is the newly created screen hook
+ID. If the function fails, the return value is zero.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Registers a new screen hook and retrieve the hook ID. The retrieved hook ID 
+shall be kept unaltered for subsequent usage. Your module must call <i><a href="#ReleaseScreenHook">
+ReleaseScreenHook</a></i> before unloading to release the hook resource, or the text 
+drawn using this hook will never be removed until D2Hackit is unloaded.</font></p> 
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="ReleaseScreenHook"></a>BOOL ReleaseScreenHook(DWORD </b><i>dwHookID</i><b>);</b></font></p>   
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">dwHookID</font></i></p>
+<p><font face="Verdana" size="2">The screen hook ID you retrieved from a previous call to <i><a href="#CreateScreenHook">CreateScreenHook</a></i>.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Unregisters the screen hook, frees all resource occupied by the hook and
+removes all text that were drawn to the screen using this hook ID.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="SendToFront"></a>BOOL SendToFront(DWORD </b><i>dwHookID</i><b>);<br>   
+<a name="SendToBack"></a>BOOL SendToBack(DWORD </b><i>dwHookID</i><b>);</b></font></p>   
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The functions return non-zero if succeed, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">dwHookID</font></i></p>
+<p><font face="Verdana" size="2">The screen hook ID you retrieved from a previous call to <i><a href="#CreateScreenHook">CreateScreenHook</a></i>.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Multiple text will overlap if drawn at same screen coordinates, these two
+function are used to change text layers, <i>SendToFront</i> makes the text drawn
+using <i>dwHookID </i>appear on top of all other text, whereas <i>SendToback</i>
+makes the text drawn using <i>dwHookID </i>appear on bottom of all other text.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="DrawSingleText"></a>BOOL DrawSingleText(DWORD </b><i>dwHookID</i><b>, LPCSTR   
+</b><i>lpszText</i><b>, long </b><i>x</i><b>, long </b><i>y</i><b>, int </b><i> nFont</i><b> = 0, BOOL
+</b><i> bRightAlign</i><b> = FALSE);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">dwHookID</font></i></p>
+  <blockquote>
+<p><font face="Verdana" size="2">The screen hook ID you retrieved from a previous call to <i><a href="#CreateScreenHook">CreateScreenHook</a></i>.</font></p>
+  </blockquote>
+<p><i><font face="Verdana" size="2">lpszText</font></i></p>
+  <blockquote>
+<p><font face="Verdana" size="2">Pointer to a null-terminated string to be drawn to the screen.&nbsp;</font></p>   
+  </blockquote>
+<p><i><font face="Verdana" size="2">x</font></i></p>
+  <blockquote>
+<p><font face="Verdana" size="2">If <i> bRightAlign</i><b> </b>is zero, this value specifies the left position
+of the text where it should be drawn. If <i> bRightAlign</i><b> </b>is non-zero,
+this value specifies the right position of the text where it should be drawn.</font></p>
+  </blockquote>
+<p><i><font face="Verdana" size="2">y</font></i></p>
+  <blockquote>
+<p><font face="Verdana" size="2">Specifies the top position of the text where it should be drawn.</font></p>
+  </blockquote>
+<p><font face="Verdana" size="2"><i> nFont</i><b>&nbsp;</b></font></p>
+  <blockquote>
+<p><font face="Verdana" size="2">Specifies the font value, using which the text will be drawn. Please check <a href="definitions.htm#font">game   
+fonts</a> for a complete list of available game font.</font></p>   
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Draw on line of text to the screen. Text color symbols(&quot;yc1&quot;,   
+&quot;yc2&quot; etc) can be used in <i>lpszText </i>to display colors.&nbsp;</font></p>   
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="DrawMultipleTexts"></a>BOOL DrawMultipleTexts(DWORD </b><i>dwHookID</i><b>, LPCD2DRAWDATA   
+</b><i>aData</i><b>, int </b><i>nDataCount</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">dwHookID</font></i></p>
+  <blockquote>
+<p><font face="Verdana" size="2">The screen hook ID you retrieved from a previous call to <i><a href="#CreateScreenHook">CreateScreenHook</a></i>.</font></p>
+  </blockquote>
+<p><i><font face="Verdana" size="2">aData</font></i></p>
+  <blockquote>
+<p><font face="Verdana" size="2">Pointer to an array of <a href="structs.htm#D2DRAWDATA">D2DRAWDATA</a>
+structs, each of which contains detailed drawing data information.</font></p>
+  </blockquote>
+<p><font face="Verdana" size="2">nDataCount</font></p>
+  <blockquote>
+<p><font face="Verdana" size="2">Number of <a href="structs.htm#D2DRAWDATA">D2DRAWDATA</a> structs pointed by <i>aData.</i></font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Draw multiple lines of text to the screen.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Code Sample</font></b></p>
+<blockquote>
+<p><font size="2" face="Courier New" color="#008000">/////////////////////////////////////////////////////////<br>
+// Draw 2 lines of text<br> 
+/////////////////////////////////////////////////////////</font></p>
+<p><font size="2" face="Courier New">g_dwScreenHookID = screen-&gt;CreateScreenHook();<br>  
+<font color="#0000FF">assert</font>(g_dwScreenHookID);</font></p>
+<p><font size="2" face="Courier New"><font color="#0000FF">D2DRAWDATA</font> aData[2] = { 0 };</font></p>  
+<p><font size="2" face="Courier New"><font color="#008000">// the first line</font><br> 
+::strcpy(aData[0].szText, &quot;First line&quot;);<br>  
+aData[0].x = 100;<br>  
+aData[0].y = 100;<br>  
+aData[0].nFont = <font color="#0000FF">D2FONT_SMALL</font>;</font></p> 
+<p><font size="2" face="Courier New"><font color="#008000">// the second line</font><br> 
+::strcpy(aData[1].szText, &quot;Second line&quot;);<br>  
+aData[1].x = 100;<br>  
+aData[1].y = 200;<br>  
+aData[1].nFont = <font color="#0000FF">D2FONT_THIN</font>;</font></p> 
+<p><font size="2" face="Courier New"><font color="#008000">// Draw them</font><br> 
+screen-&gt;DrawMultipleTexts(g_dwScreenHookID, aData, 2);</font></p> 
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="GetTextSize"></a>SIZE GetTextSize(LPCSTR </b><i>lpszText</i><b>, int   
+</b><i>nFont</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns size of the specified text using specified font.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">lpszText</font></i></p>
+  <blockquote>
+<p><font face="Verdana" size="2">Pointer to a null-terminated string whose size is to be calculated.&nbsp;</font></p>   
+  </blockquote>
+<p><i><font face="Verdana" size="2">nFont</font></i></p>
+  <blockquote>
+<p><font face="Verdana" size="2">Specifies the font value, using which the text will be calculated. Please
+check <a href="definitions.htm#font">game fonts</a> for a complete list of
+available game font.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Calculate drawing size of a string.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font face="Verdana" size="2"><a name="GetScreenSize"></a>SIZE GetScreenSize();&nbsp;</font></b></p>   
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>   
+<blockquote>
+<p><font face="Verdana" size="2">The function returns size of the game window client area.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Calculate size of the game window client area, the return value will be 
+either {800, 600} or {640, 480}. No other sizes are defined.</font></p> 
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="ScreenToMapCoords"></a>MAPPOS ScreenToMapCoords(POINT </b><i>ptScreenCoords</i><b>);</b></font></p>   
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns a <a href="structs.htm#MAPPOS">MAPPOS</a> struct which
+contains the game map position value.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">ptScreenCoords</font></i></p>
+  <blockquote>
+<p><font face="Verdana" size="2">Screen coordinates.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Translate a screen coordinates into an absolute game map position.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="MapToScreenCoords"></a>POINT MapToScreenCoords(MAPPOS </b><i>mapPosition</i><b>);</b></font></p>   
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns the screen coordinates value.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">mapPosition</font></i></p>
+  <blockquote>
+<p><font face="Verdana" size="2">A <a href="structs.htm#MAPPOS">MAPPOS</a> struct contains an absolute game
+map position.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Translate an absolute game map position into a screen coordinates.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font face="Verdana" size="2"><a name="GetMousePosition"></a>POINT GetMousePosition();</font></b></p>   
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns current mouse position.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve current mouse position in the game client area.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="SetScrollTitle"></a>void 
+SetScrollTitle(LPCSTR </b><i>lpszTitle</i><b>);</b>
+</font>
+</p>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>lpszTitle</i>
+</font>
+</p>
+  <blockquote>
+<p><font face="Verdana" size="2">Pointer to a null-terminated string which 
+contains the scroll title.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specify title of the scroll. Title will be 
+drawn using a different font then other text lines on the scroll.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="AddScrollLine"></a>BOOL AddScrollLine(LPCSTR 
+</b><i>lpszText</i><b>);</b>
+</font>
+</p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero 
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>lpszText</i>
+</font>
+</p>
+  <blockquote>
+<p><font face="Verdana" size="2">Pointer to a null-terminated string which 
+contains a text line to be drawn on the scroll.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Add a text line to the scroll.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="ShowScroll"></a>BOOL ShowScroll();</b> 
+</font>
+</p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero 
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Show the scroll UI. The scroll UI is a 
+&quot;scroll of whatever&quot; screen which displays a scroll and the text you 
+specified by previous calls to <i>SetScrollTitle</i> and <i>AddScrollLine.</i> 
+This UI looks pretty cool and can be used for displaying bot instructions, 
+notifications, or credits.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="ClearScroll"></a>void ClearScroll();</b> 
+</font>
+</p>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Clear all text that were drawn on the scroll 
+UI.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><br>
+</b>
+</font>
+</p>
+<p><font face="Verdana" size="2"><b>&nbsp;</b></font></p>

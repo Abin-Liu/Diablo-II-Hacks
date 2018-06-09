@@ -1,0 +1,304 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 195, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About D2XSpeed"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "D2X Speed Calculator",IDC_STATIC,40,10,97,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2001",IDC_STATIC,40,25,60,8
+    DEFPUSHBUTTON   "&OK",IDOK,138,7,50,14,WS_GROUP
+    LTEXT           "Welcome to Cure-Team.",IDC_CURETEAM,40,40,83,8
+    LTEXT           "Abin",IDC_ABIN,103,25,36,8,NOT WS_GROUP
+END
+
+IDD_D2XSPEED_DIALOG DIALOGEX 0, 0, 201, 138
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "D2X Speed Calculator"
+MENU IDR_MENU1
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Character Classes:",IDC_STATIC,11,7,68,10
+    COMBOBOX        IDC_CLASSES,7,17,92,78,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Attack Forms:",IDC_STATIC,11,36,57,10
+    COMBOBOX        IDC_ATTACKFORM,7,47,92,54,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "&Weapon Filter:",IDC_STATIC,105,7,57,10
+    COMBOBOX        IDC_FILTER,102,17,92,113,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Weapon &Types:",IDC_STATIC,105,36,66,10
+    COMBOBOX        IDC_WEAPONS,102,47,92,113,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Total <IAS> Source:",IDC_IASSOURCE,7,68,187,42
+    LTEXT           "&Items (%):",IDC_STATIC,13,81,40,9,0,WS_EX_TRANSPARENT
+    EDITTEXT        IDC_IAS,56,79,30,12,ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_SPINIAS,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,77,62,11,
+                    10
+    LTEXT           "F&renzy (%):",IDC_LBLFRENZY,13,95,42,9,NOT WS_GROUP,
+                    WS_EX_TRANSPARENT
+    EDITTEXT        IDC_FRENZY,56,94,30,12,ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_SPINFRENZY,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,88,63,11,
+                    10
+    LTEXT           "Fa&naticism (%):",IDC_LBLFANA,91,81,67,9,NOT WS_GROUP,
+                    WS_EX_TRANSPARENT
+    EDITTEXT        IDC_FANA,159,79,30,12,ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_SPINFANA,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,158,62,11,
+                    10
+    LTEXT           "&Burst of Speed (%):",IDC_LBLBOS,91,95,67,9,NOT 
+                    WS_GROUP,WS_EX_TRANSPARENT
+    EDITTEXT        IDC_BOS,159,94,30,12,ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_SPINBOS,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,171,62,11,
+                    10
+    DEFPUSHBUTTON   "Calc&ulate",IDC_SHOWTABLE,46,116,54,15
+    PUSHBUTTON      "E&xit",IDC_EXIT,100,116,54,15
+END
+
+IDD_TABLEDLG DIALOGEX 0, 0, 189, 194
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "All Avialable Speed Table"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "&Close",IDOK,65,173,50,14
+    LTEXT           "Item-IAS:",IDC_STATIC,78,20,31,10
+    LTEXT           "<ias>",IDC_CURIAS,115,20,25,10,NOT WS_GROUP
+    LTEXT           "Base:",IDC_STATIC,7,7,22,10
+    LTEXT           "<base>",IDC_CURBASE,37,7,25,10,NOT WS_GROUP
+    LTEXT           "Wsm:",IDC_STATIC,7,20,22,10
+    LTEXT           "<wsm>",IDC_CURWSM,37,20,25,10,NOT WS_GROUP
+    LTEXT           "Skill-IAS:",IDC_STATIC,78,7,29,10
+    LTEXT           "<sias>",IDC_CURSIAS,115,7,25,10,NOT WS_GROUP
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_ALIGNLEFT | LVS_NOSORTHEADER | 
+                    WS_BORDER | WS_TABSTOP,7,51,175,117
+    LTEXT           "Current Speed:",IDC_CURSPEED,59,35,28,12,0,
+                    WS_EX_CLIENTEDGE
+    LTEXT           "Current Speed:",IDC_STATIC,7,36,50,9
+    LTEXT           "Frames",IDC_STATIC,89,36,28,9
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO MOVEABLE PURE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 188
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_D2XSPEED_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 194
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 131
+    END
+
+    IDD_TABLEDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 182
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 187
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\D2XSpeed.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\D2XSpeed.ico"
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "FileDescription", "D2XSpeed MFC Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "D2XSpeed\0"
+            VALUE "LegalCopyright", "Copyright (C) 2002\0"
+            VALUE "OriginalFilename", "D2XSpeed.EXE\0"
+            VALUE "ProductName", "D2XSpeed Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit",                       ID_EXIT
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Contents",                   ID_HELP
+        MENUITEM "&About...",                   ID_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "&About D2XSpeed..."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\D2XSpeed.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,427 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\ShopbotCfg.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\ShopbotCfg.ico"
+IDI_YES                 ICON    DISCARDABLE     "res\\yes.ico"
+IDI_ADD                 ICON    DISCARDABLE     "res\\add.ico"
+IDI_REMOVE              ICON    DISCARDABLE     "res\\delete.ico"
+IDI_EDIT                ICON    DISCARDABLE     "res\\edititem.ico"
+IDI_INFO                ICON    DISCARDABLE     "res\\info.ICO"
+IDI_NO                  ICON    DISCARDABLE     "res\\no.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About ShopbotCfg"
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,11,20,20
+    LTEXT           "ShopbotCfg v1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2004, Abin",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_SHOPBOTCFG_DIALOG DIALOGEX 0, 0, 259, 299
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Shopbot v1.10 by Abin"
+FONT 9, "宋体"
+BEGIN
+    GROUPBOX        "Global Settings",IDC_STATIC,7,7,245,111
+    LTEXT           "Shopping Act:",IDC_STATIC,13,22,77,8
+    COMBOBOX        IDC_ACT,95,20,48,67,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Shopping NPC:",IDC_STATIC,13,38,77,8
+    COMBOBOX        IDC_NPC,95,36,151,71,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Out-Town Waypoint:",IDC_STATIC,13,54,73,8
+    COMBOBOX        IDC_WP,95,52,151,174,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "WARNING: Waypoints with ""(*)"" can be dangerous!",
+                    IDC_STATIC,13,69,231,8
+    LTEXT           "Pause/Resume Hotkey:",IDC_STATIC,13,85,81,8
+    COMBOBOX        IDC_HOTKEY,95,83,48,149,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Stop if Player HP <",IDC_STATIC,13,102,77,8
+    EDITTEXT        IDC_STOPHP,95,99,48,14,ES_AUTOHSCROLL
+    LTEXT           "% (Injured Out-Town).",IDC_STATIC,146,102,85,8
+    GROUPBOX        "Item Settings",IDC_STATIC,7,126,245,138
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_NOCOLUMNHEADER | 
+                    LVS_NOSORTHEADER | WS_TABSTOP,13,140,232,102,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "Add",IDC_ADD,37,245,50,14
+    PUSHBUTTON      "Edit",IDC_EDIT,96,246,50,14,WS_DISABLED
+    PUSHBUTTON      "Remove",IDC_DEL,154,246,50,14,WS_DISABLED
+    PUSHBUTTON      "Save",IDOK,67,270,55,22,WS_DISABLED
+    PUSHBUTTON      "Exit",IDCANCEL,137,270,55,22
+END
+
+IDD_CFGDLG DIALOGEX 0, 0, 246, 225
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Item Details"
+FONT 9, "宋体"
+BEGIN
+    LTEXT           "Description:",IDC_STATIC,7,10,49,8
+    EDITTEXT        IDC_DESC,58,7,181,14,ES_AUTOHSCROLL
+    LTEXT           "Item Codes:",IDC_STATIC,7,27,45,8
+    EDITTEXT        IDC_CODE,58,24,181,14,ES_AUTOHSCROLL
+    LTEXT           "If item types do not matter, leave ""Item Codes"" blank.",
+                    IDC_STATIC,7,41,217,8
+    LTEXT           "Sockets:",IDC_STATIC,7,56,33,8
+    COMBOBOX        IDC_SOCKETS,58,54,32,84,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "Must be non-magical.",IDC_NONMAGIC,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,113,55,119,10
+    CONTROL         "List1",IDC_MODS,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,7,73,232,121
+    PUSHBUTTON      "Add",IDC_ADD,7,197,36,14
+    PUSHBUTTON      "Remove",IDC_DEL,45,197,42,14,WS_DISABLED
+    PUSHBUTTON      "Edit",IDC_EDIT,89,197,42,14,WS_DISABLED
+    PUSHBUTTON      "OK",IDOK,139,197,50,21
+    PUSHBUTTON      "Cancel",IDCANCEL,189,197,50,21
+END
+
+IDD_MODDLG DIALOGEX 0, 0, 230, 255
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Mod Settings"
+FONT 9, "宋体"
+BEGIN
+    COMBOBOX        IDC_COMBO1,7,7,215,193,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Mod Values",IDC_STATIC,7,28,215,65
+    LTEXT           "(x) =",IDC_STATIC,14,44,21,8
+    EDITTEXT        IDC_VAL1,43,41,40,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Click for Help",IDC_HELP1,85,41,92,14
+    LTEXT           "(y) =",IDC_STATIC,14,60,21,8
+    EDITTEXT        IDC_VAL2,43,57,40,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Click for Help",IDC_HELP2,85,57,92,14
+    LTEXT           "(z) =",IDC_STATIC,14,76,21,8
+    EDITTEXT        IDC_VAL3,43,73,40,14,ES_AUTOHSCROLL
+    GROUPBOX        "Mod Preview",IDC_STATIC,7,101,216,35
+    EDITTEXT        IDC_PREVIEW,14,115,202,14,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "Notes",IDC_STATIC,7,143,216,77
+    LTEXT           "Most item mods are examed in a "">="" basis, that is, mod values that are either equivalent to or greater than configured values are considered as satisfied. ",
+                    IDC_STATIC,13,156,204,28,0,WS_EX_TRANSPARENT
+    PUSHBUTTON      "OK",IDOK,59,225,50,23
+    PUSHBUTTON      "Cancel",IDCANCEL,121,225,50,23
+    LTEXT           "For example, configuring ""+1 to Blessed Hammer"" will allow items that add 1, 2 or 3 to the ""Blessed Hammer"" spell to be purchased.",
+                    IDC_STATIC,13,188,203,27
+END
+
+IDD_ASSISTDLG DIALOGEX 0, 0, 220, 215
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Mod Data Assitant"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | WS_BORDER | WS_TABSTOP,7,7,206,169
+    PUSHBUTTON      "OK",IDOK,50,183,54,25,WS_DISABLED
+    PUSHBUTTON      "Cancel",IDCANCEL,114,183,54,25
+END
+
+IDD_SKILLTYPEDLG DIALOGEX 0, 0, 129, 95
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Skill Types"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "Amazon Skills",IDC_SKILLTYPE,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,7,7,68,10
+    CONTROL         "Sorceress Skills",IDC_RADIO2,"Button",
+                    BS_AUTORADIOBUTTON,7,19,80,10
+    CONTROL         "Necromancer Skills",IDC_RADIO3,"Button",
+                    BS_AUTORADIOBUTTON,7,31,88,10
+    CONTROL         "Paladin Skills",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON,
+                    7,43,72,10
+    CONTROL         "Barbarian Skills",IDC_RADIO5,"Button",
+                    BS_AUTORADIOBUTTON,7,55,80,10
+    CONTROL         "Druid Skills",IDC_RADIO6,"Button",BS_AUTORADIOBUTTON,7,
+                    67,64,10
+    CONTROL         "Assassin Skills",IDC_RADIO7,"Button",BS_AUTORADIOBUTTON,
+                    7,79,76,10
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "ShopbotCfg Microsoft 基础类应用程序\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "ShopbotCfg\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2004\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "ShopbotCfg.EXE\0"
+            VALUE "ProductName", "ShopbotCfg 应用程序\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_SHOPBOTCFG_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 252
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 292
+    END
+
+    IDD_CFGDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 239
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 218
+    END
+
+    IDD_MODDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 223
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 248
+    END
+
+    IDD_ASSISTDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 213
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 208
+    END
+
+    IDD_SKILLTYPEDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 122
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_CFGDLG DLGINIT
+BEGIN
+    IDC_SOCKETS, 0x403, 4, 0
+0x2f4e, 0x0041, 
+    IDC_SOCKETS, 0x403, 2, 0
+0x0031, 
+    IDC_SOCKETS, 0x403, 2, 0
+0x0032, 
+    IDC_SOCKETS, 0x403, 2, 0
+0x0033, 
+    IDC_SOCKETS, 0x403, 2, 0
+0x0034, 
+    IDC_SOCKETS, 0x403, 2, 0
+0x0035, 
+    IDC_SOCKETS, 0x403, 2, 0
+0x0036, 
+    0
+END
+
+IDD_SHOPBOTCFG_DIALOG DLGINIT
+BEGIN
+    IDC_ACT, 0x403, 6, 0
+0x6341, 0x2074, 0x0031, 
+    IDC_ACT, 0x403, 6, 0
+0x6341, 0x2074, 0x0032, 
+    IDC_ACT, 0x403, 6, 0
+0x6341, 0x2074, 0x0033, 
+    IDC_ACT, 0x403, 6, 0
+0x6341, 0x2074, 0x0034, 
+    IDC_ACT, 0x403, 6, 0
+0x6341, 0x2074, 0x0035, 
+    IDC_HOTKEY, 0x403, 3, 0
+0x3146, "\000" 
+    IDC_HOTKEY, 0x403, 3, 0
+0x3246, "\000" 
+    IDC_HOTKEY, 0x403, 3, 0
+0x3346, "\000" 
+    IDC_HOTKEY, 0x403, 3, 0
+0x3446, "\000" 
+    IDC_HOTKEY, 0x403, 3, 0
+0x3546, "\000" 
+    IDC_HOTKEY, 0x403, 3, 0
+0x3646, "\000" 
+    IDC_HOTKEY, 0x403, 3, 0
+0x3746, "\000" 
+    IDC_HOTKEY, 0x403, 3, 0
+0x3846, "\000" 
+    IDC_HOTKEY, 0x403, 3, 0
+0x3946, "\000" 
+    IDC_HOTKEY, 0x403, 4, 0
+0x3146, 0x0030, 
+    IDC_HOTKEY, 0x403, 4, 0
+0x3146, 0x0031, 
+    IDC_HOTKEY, 0x403, 4, 0
+0x3146, 0x0032, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP  DISCARDABLE     "res\\bitmap1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 ShopbotCfg(&A)..."
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\ShopbotCfg.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

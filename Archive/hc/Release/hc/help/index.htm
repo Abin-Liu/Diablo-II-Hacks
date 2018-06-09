@@ -1,0 +1,418 @@
+<h2><a name="top"></a>“HC Module v1.5 for D2 1.10”使用说明</h2>                          
+<p><a href="http://www.wxjindu.com/abin/hc/hc.zip">下载HC Module</a>(120 KB)                             
+<p><a href="http://www.wxjindu.com/abin/">回到“Abin的D2X工具箱”首页</a></p>    
+<p><b>目录</b></p>
+<p><a href="#firstofall">作者声明</a><br>
+<a href="#history">版本历史</a><br>
+<a href="#howto">使用方法</a><br>
+<a href="#features">功能简介</a><br>
+<a href="#commands">程序设置与相关命令</a><br>
+<a href="#bugreport">向作者报告错误</a></p>
+<p><b><a name="firstofall"></a>作者声明:</b></p>
+<p>本程序为自由软件，允许自由使用、复制、转赠以及免费下载，但不得用于以营利为目的的商业行为；未经作者同意，不得对程序进行反编译和修改；本程序的性质属于Battle.net封闭站网上的作弊工具，作者对于因使用本程序而引起的任何后果概不负责。<b>如果您不同意以上条款，请现在关闭本网页。</b></p>
+<p>“HC.D2H”是一个D2Hackit外挂模块，需要<a href="http://www.wxjindu.com/abin/d2hackit/d2hackit_110.zip">D2Hackit 
+110</a>（或更高版本）才能运行。该模块的主要功能是在角色遇到各种威胁时自动做出快速反应，同时也提供了如快速退回聊天频道、快速用Town Portal回城、快速客户端重绘（消除“黑墙”状态）等等便利有效的辅助功能。</p>               
+<p><a href="#top">返回</a></p>
+<p><b><a name="history"></a>版本历史：</b></p>
+<ul>
+  <li>1.5 - 修正了一个HP/Mana检测方面的bug。</li>   
+  <li>1.4 - 修正了几个次要的bug。</li>    
+  <li>1.2 - 代码已经基于“D2Lib”类库重写，更快速、更高效、更稳定；某些命令语法已改变；增加了“mana”命令；角色生命值和mana值指标已由原来的绝对值改为现在的百分比；原有的谩骂功能因使用率不高已被删除。</li>     
+  <li>1.1 - 增加了“merc”命令；增加了自动给角色和雇佣兵喝药水的功能。</li>      
+  <li>1.0 - 修正了一个快捷键设置方面的问题。</li>       
+  <li>
+  0.8 - 兼容Diablo II 1.10。</li>         
+  <li>     
+  0.7 - 修正了一个低生命值时TP回城的问题。</li>         
+  <li>      
+  0.6 - 角色因HP过低而退出游戏不再导致下一次进入游戏后又立即退出。</li>         
+  <li>       
+  0.5 - 正式发布版本。</li>         
+  <li>         
+  0.4 - 使用了新的技术，确保角色打开Town Portal后进入的准确率为100%。</li>         
+  <li>           
+  0.3 - 新增“立即开一个Town Portal并进入”的功能。</li>         
+  <li>                 
+  0.2 - 改正了一个快捷键设置方面的问题。</li>         
+  <li>                  
+  0.1 - 最初beta版本。</li>         
+</ul>
+<p><b><a name="howto"></a>使用方法：</b></p>
+<ol>
+  <li>下载“<a href="http://www.wxjindu.com/abin/hc/hc.zip">hc.zip</a>”并解压，将所有的文件复制到<a href="http://www.wxjindu.com/abin/d2hackit/d2hackit_110.zip">D2Hackit 
+    110</a>所在的目录里并覆盖源文件。</li>  
+  <li>完成了上面的步骤后，请确认你的<a href="http://www.wxjindu.com/abin/d2hackit/d2hackit_110.zip">D2Hackit 
+    110</a>目录里至少有这些文件（一个都不能缺）：<br>
+    <img border="0" src="hc_chs.gif"><br>
+    &nbsp;</li>  
+  <li>运行Diablo II。</li>                                
+  <li>用Alt-Tab将游戏最小化，双击“loader.exe”启动<a href="http://www.wxjindu.com/abin/d2hackit/d2hackit_110.zip">D2Hackit 
+    110</a>。</li>         
+  <li>角色进入游戏后，确认您在游戏屏幕上看到了“<span style="background-color: #000000"> <b><font face="Arial" color="#FFFFFF">Module 
+    </font><font face="Arial" color="#CCCC00"> 'hc'</font><font face="Arial" color="#FFFFFF"> by Abin 
+    loaded!&nbsp; </font></b></span>”这行提示。</li>        
+  <li>参考<a href="#commands">程序设置与相关命令</a>进行设置。程序会将设置存盘，因此每个角色只需要设置一次。</li>
+  <li><b><font color="#FF0000">注意</font></b><font color="#FF0000">：某些重要的功能（例如自动喝药水等等）要求用户在角色进入游戏以前就已经加载本模块，否则只有当角色进入一个新游戏以后这些功能才能被正常使用．</font></li>
+</ol>
+<p><a href="#top">返回</a></p>
+<p><b><a name="features"></a>功能简介：</b></p>
+<ol>
+  <li><b>逃避功能</b>：<br>
+    &nbsp;<br>
+    当角色生命值低于特定值或遭到Hostile时自动迅速采取逃避措施，包括退回聊天频道、用TP回城，和用TP回城并对敌对玩家进行谩骂。<br>
+  </li>
+  <li><b>自动喝药水功能：</b><br>
+    <br>
+    当角色的生命值或魔法值低于设定的百分比时，自动喝药水，当雇佣兵生命值低于设定的百分比时，自动给它喂药水。<br>
+    &nbsp;&nbsp;</li>
+  <li><b>同步功能</b>：<br>
+    &nbsp;<br>
+    迫使客户端的显示与服务器端同步。简单地说，当角色遇到“黑墙”，砍怪物没反应，不知道自己实际上到底在哪里时（也许在几个屏幕之外），只要按某一个设定的键，客户端立即以角色真实坐标进行重绘，于是角色即回到实际所在的真实位置，也就是服务器端角色位置。<font color=#ff0000>注意：角色通过TP、WP等方式切换场景后，请稍候数秒才能使用同步功能，否则在lag严重的时候可能引起游戏掉线。</font><br>
+    &nbsp;</li>
+  <li><b>快捷键功能</b>：<br>
+    &nbsp;<br>
+    一键退出：按一个键，角色立即退回聊天频道；<br>
+    一键回城：按一个键，角色立即开一个Town portal并自动进入；<br>                          
+    一键同步：按一个键，立即实现客户端重绘。<br>
+    &nbsp;<br>
+    允许对“退回聊天频道”、“用TP回城”和“同步功能”设定任意快捷键。以后要实现这些功能只需按一个健即可。例如，您可以设置“退回聊天频道”的快捷键为“F9”，“用TP回城”的快捷键为“F10”，“同步功能”的快捷键为“F11”。需要退出游戏时只需按一下“F9”，角色立即退出游戏回到聊天频道；而如果遇到了黑墙或丢包现象，只需按一下“F10”就全搞定；在一大堆怪物的包围中要想顺利地打开Town     Portal并用鼠标点中它不容易吧？现在好了，按一下“F11”你就回到城里，再也不用手忙脚乱了。酷吧？</li>              
+</ol>
+<p><a href="#top">返回</a></p>
+<p><b><a name="commands"></a>程序设置与相关命令：</b></p>
+<ul>
+  <li><a href="#quit">退出游戏</a></li>
+  <li><a href="#sync">客户端重绘</a></li>
+  <li><a href="#town">TP回城</a></li>
+  <li><a href="#keyquit">“退出游戏”快捷键设置</a></li>
+  <li><a href="#keysync">“客户端重绘”快捷键设置</a></li>
+  <li><a href="#keytown">“TP回城”快捷键设置</a></li>
+  <li><a href="#hostile">Hostile反应设置</a></li>
+  <li><a href="#hp">角色低生命值反应设置</a></li>
+  <li><a href="#mana">角色低魔法值反应设置</a></li>
+  <li><a href="#merc">雇佣兵低生命值反应设置</a></li>
+  <li><a href="#summary">查看当前设置</a></li>
+</ul>
+<p><a href="#top">返回</a></p>
+<p>　</p>
+<p><b><a name="quit"></a>退出游戏</b></p>
+<table border="1" width="100%" cellspacing="1">
+  <tr>
+    <td width="11%">功能</td>
+    <td width="89%">退出游戏</td>
+  </tr>
+  <tr>
+    <td width="11%">语法</td>
+    <td width="89%"><span style="background-color: #000000"><font color="#FFFFFF" face="Arial Black">&nbsp; .hc quit&nbsp;</font></span></td>                                 
+  </tr>
+  <tr>
+    <td width="11%">快捷键</td>
+    <td width="89%">默认快捷键“F9”，允许自定义</td>
+  </tr>
+  <tr>
+    <td width="11%">参数说明</td>
+    <td width="89%">无</td>
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="sync"></a>客户端重绘</b></p>
+<table border="1" width="100%" cellspacing="1">
+  <tr>
+    <td width="11%">功能</td>
+    <td width="89%">客户端重绘</td>
+  </tr>
+  <tr>
+    <td width="11%">语法</td>
+    <td width="89%"><font face="Arial Black" color="#FFFFFF"><span style="background-color: #000000">&nbsp; .hc&nbsp;                                  
+      sync&nbsp;</span></font></td>
+  </tr>
+  <tr>
+    <td width="11%">快捷键</td>
+    <td width="89%">默认快捷键“F10”，允许自定义</td>
+  </tr>
+  <tr>
+    <td width="11%">参数说明</td>
+    <td width="89%">无</td>
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="town"></a>TP回城</b></p>
+<table border="1" width="100%" cellspacing="1">
+  <tr>
+    <td width="11%">功能</td>
+    <td width="89%">TP回城</td>
+  </tr>
+  <tr>
+    <td width="11%">语法</td>
+    <td width="89%"><span style="background-color: #000000"><font color="#FFFFFF">&nbsp;                           
+      </font><font face="Arial Black" color="#FFFFFF">.hc&nbsp; town&nbsp;</font></span>&nbsp;</td>                          
+  </tr>
+  <tr>
+    <td width="11%">快捷键</td>
+    <td width="89%">默认快捷键“F11”，允许自定义</td>
+  </tr>
+  <tr>
+    <td width="11%">参数说明</td>
+    <td width="89%">无</td>
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="keyquit"></a>“退出游戏”快捷键设置</b></p>
+<table border="1" width="100%" cellspacing="1">
+  <tr>
+    <td width="11%">功能</td>
+    <td width="89%">“退出游戏”快捷键设置</td>
+  </tr>
+  <tr>
+    <td width="11%">语法</td>
+    <td width="89%"><span style="background-color: #000000"><font face="Arial Black" color="#FFFFFF">&nbsp; .hc&nbsp;                                  
+      key.quit&nbsp; </font><font face="Arial Black" color="#CCCC00">&lt;Key_Code&gt;                               
+      </font><font face="Arial Black" color="#FFFFFF">&nbsp;</font></span></td>
+  </tr>
+  <tr>
+    <td width="11%">快捷键</td>
+    <td width="89%">无</td>
+  </tr>
+  <tr>
+    <td width="11%">参数说明</td>
+    <td width="89%">&lt;Key_Code&gt;：快捷键的16进制键码。“KeyCode.txt”有键码全表。</td>
+  </tr>
+  <tr>
+    <td width="11%">示例</td>
+    <td width="89%"><span style="background-color: #000000"><font face="Arial Black" color="#FFFFFF">&nbsp; .hc&nbsp;        
+      key.quit&nbsp; </font><font face="Arial Black" color="#CCCC00">78 </font><font face="Arial Black" color="#FFFFFF">&nbsp;</font></span>   
+      <p>将“退出游戏”的快捷键设置为“F9”.<font face="Arial Black">&nbsp;&nbsp;</font></p>
+    </td> 
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="keysync"></a>“客户端重绘”快捷键设置</b></p>
+<table border="1" width="100%" cellspacing="1">
+  <tr>
+    <td width="11%">功能</td>
+    <td width="89%">“客户端重绘”快捷键设置</td>
+  </tr>
+  <tr>
+    <td width="11%">语法</td>
+    <td width="89%"><span style="background-color: #000000"><font face="Arial Black" color="#FFFFFF">&nbsp; .hc&nbsp;                                  
+      key.sync&nbsp; </font><font face="Arial Black" color="#CCCC00">&lt;Key_Code&gt;</font><font face="Arial Black" color="#FFFFFF">                               
+      &nbsp;</font></span></td>                              
+  </tr>
+  <tr>
+    <td width="11%">快捷键</td>
+    <td width="89%">无</td>
+  </tr>
+  <tr>
+    <td width="11%">参数说明</td>
+    <td width="89%">&lt;Key_Code&gt;：快捷键的16进制键码。“KeyCode.txt”有键码全表。</td>
+  </tr>
+  <tr>
+    <td width="11%">示例</td>
+    <td width="89%"><span style="background-color: #000000"><font face="Arial Black" color="#FFFFFF">&nbsp;   
+      .hc&nbsp; key.sync&nbsp; </font><font face="Arial Black" color="#CCCC00">79</font><font face="Arial Black" color="#FFFFFF">&nbsp;&nbsp;   
+      </font></span>
+      <p>将“客户端重绘”的快捷键设置为“F10”.</p>
+    </td>
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="keytown"></a>“TP回城”快捷键设置</b></p>
+<table border="1" width="100%" cellspacing="1">
+  <tr>
+    <td width="11%">功能</td>
+    <td width="89%">“TP回城”快捷键设置</td>
+  </tr>
+  <tr>
+    <td width="11%">语法</td>
+    <td width="89%"><span style="background-color: #000000"><font color="#FFFFFF">&nbsp;                           
+      </font><font face="Arial Black" color="#FFFFFF">.hc&nbsp; key.town&nbsp; </font><font face="Arial Black" color="#CCCC00">&lt;key_code&gt;</font><font color="#FFFFFF"><font face="Arial Black">&nbsp;&nbsp;</font>&nbsp;</font></span></td>                             
+  </tr>
+  <tr>
+    <td width="11%">快捷键</td>
+    <td width="89%">无</td>
+  </tr>
+  <tr>
+    <td width="11%">参数说明</td>
+    <td width="89%">&lt;Key_Code&gt;：快捷键的16进制键码。“KeyCode.txt”有键码全表。</td>
+  </tr>
+  <tr>
+    <td width="11%">示例</td>
+    <td width="89%"><span style="background-color: #000000"><font color="#FFFFFF">&nbsp;   
+      </font><font face="Arial Black" color="#FFFFFF">.hc&nbsp; key.town&nbsp; </font><font face="Arial Black" color="#CCCC00">7A</font><font face="Arial Black" color="#FFFFFF">&nbsp;   
+      </font></span>
+      <p>将“TP回城”的快捷键设置为“F11”</p>
+    </td>
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="hostile"></a>Hostile反应设置</b></p>
+<table border="1" width="100%" cellspacing="1">
+  <tr>
+    <td width="11%">功能</td>
+    <td width="89%">Hostile反应设置</td>
+  </tr>
+  <tr>
+    <td width="11%">语法</td>
+    <td width="89%"><span style="background-color: #000000"><font face="Arial Black" color="#FFFFFF">&nbsp; .hc&nbsp;                                  
+      hostile&nbsp; </font><font color="#CCCC00"><font face="Arial Black">&lt;quit   
+      / town&gt;&nbsp;</font></font></span></td>                                
+  </tr>
+  <tr>
+    <td width="11%">快捷键</td>
+    <td width="89%">无</td>
+  </tr>
+  <tr>
+    <td width="11%">参数说明</td>
+    <td width="89%">Quit:退出游戏；Town:TP回城</td>
+  </tr>
+  <tr>
+    <td width="11%">示例</td>
+    <td width="89%"><span style="background-color: #000000"><font face="Arial Black" color="#FFFFFF">&nbsp; .hc&nbsp;    
+      hostile&nbsp; </font><font face="Arial Black" color="#CCCC00">town</font><font face="Arial Black" color="#FFFFFF">&nbsp;</font></span>   
+      &nbsp;  
+      <p>如果被Hostile，用TP回城</p>
+    </td>                              
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="hp"></a>角色低生命值反应设置</b></p>
+<table border="1" width="100%" cellspacing="1">
+  <tr>
+    <td width="11%">功能</td>
+    <td width="89%">角色低生命值反应设置</td>
+  </tr>
+  <tr>
+    <td width="11%">语法</td>
+    <td width="89%"><span style="background-color: #000000"><font face="Arial Black" color="#FFFFFF">&nbsp; .hc&nbsp;                                  
+      hp&nbsp; </font><font face="Arial Black" color="#00FF00">&lt;quit / town /   
+      potion&gt;</font><font face="Arial Black" color="#CCCC00">&nbsp;                                  
+      &lt;life-percent&gt;&nbsp;</font></span></td>
+  </tr>
+  <tr>
+    <td width="11%">快捷键</td>
+    <td width="89%">无</td>
+  </tr>
+  <tr>
+    <td width="11%">参数说明</td>
+    <td width="89%">Quit:退出游戏；Town:TP回城；Potion:喝紫/红药水<br>
+      <b>&lt;life-percent&gt;</b>：生命警戒值百分比 (0到100)  
+      <p>注:你可以多重设置,例如可以设定当生命值低于80%喝药水,低于60%回城,低于25%退出游戏,三项设定可以共同作用,互不冲突.如下例:</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="11%">示例</td>
+    <td width="89%"><span style="background-color: #000000"><font face="Arial Black" color="#FFFFFF">&nbsp; .hc&nbsp;     
+      hp&nbsp; </font><font face="Arial Black" color="#00FF00">potion</font><font face="Arial Black" color="#CCCC00">&nbsp;   
+      80&nbsp;</font></span> &nbsp;  
+      <p><span style="background-color: #000000"><font face="Arial Black" color="#FFFFFF">&nbsp; .hc&nbsp;     
+      hp&nbsp; </font><font face="Arial Black" color="#00FF00">town</font><font face="Arial Black" color="#CCCC00">&nbsp;   
+      60&nbsp;</font></span> &nbsp;</p>  
+      <p><span style="background-color: #000000"><font face="Arial Black" color="#FFFFFF">&nbsp; .hc&nbsp;     
+      hp&nbsp; </font><font face="Arial Black" color="#00FF00">quit</font><font face="Arial Black" color="#CCCC00">&nbsp;   
+      25&nbsp;</font></span> &nbsp;</p>  
+      <p>当生命值低于80%喝药水,如果喝药水失败或者喝了药水以后生命值继续下降,降至低于60%时回城,降至低于25%时退出游戏</p>
+    </td>                             
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="mana"></a>角色低魔法值反应设置</b></p>
+<table border="1" width="100%" cellspacing="1">
+  <tr>
+    <td width="11%">功能</td>
+    <td width="89%">角色低魔法值反应设置</td>
+  </tr>
+  <tr>
+    <td width="11%">语法</td>
+    <td width="89%"><span style="background-color: #000000"><font face="Arial Black" color="#FFFFFF">&nbsp;    
+      .hc&nbsp; mana&nbsp; </font><font face="Arial Black" color="#00FF00">&lt;quit   
+      / town / potion&gt;</font><font face="Arial Black" color="#CCCC00">&nbsp;                                  
+      &lt;mana-percent&gt;&nbsp;</font></span></td>
+  </tr>
+  <tr>
+    <td width="11%">快捷键</td>
+    <td width="89%">无</td>
+  </tr>
+  <tr>
+    <td width="11%">参数说明</td>
+    <td width="89%">Quit:退出游戏；Town:TP回城；Potion:喝蓝药水<br>
+      <b>&lt;life-percent&gt;</b>：魔法警戒值百分比 (0到100)  
+      <p>注:你可以多重设置.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="11%">示例</td>
+    <td width="89%"><span style="background-color: #000000"><font face="Arial Black" color="#FFFFFF">&nbsp;    
+      .hc&nbsp; mana&nbsp; </font><font face="Arial Black" color="#00FF00">potion   
+      </font><font face="Arial Black" color="#CCCC00">50&nbsp;</font></span>&nbsp;
+      <p>如果魔法值降至50%以下,自动喝蓝药水.</p>
+    </td>                            
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="merc"></a>雇佣兵低生命值反应设置</b></p>
+<table border="1" width="100%" cellspacing="1">
+  <tr>
+    <td width="11%">功能</td>
+    <td width="89%">雇佣兵低生命值反应设置</td>
+  </tr>
+  <tr>
+    <td width="11%">语法</td>
+    <td width="89%"><span style="background-color: #000000"><font face="Arial Black" color="#FFFFFF">&nbsp;    
+      .hc&nbsp; merc&nbsp; </font><font face="Arial Black" color="#00FF00">&lt;quit   
+      / town / potion&gt;</font><font face="Arial Black" color="#CCCC00">&nbsp;                                  
+      &lt;life-percent&gt;&nbsp;</font></span></td>
+  </tr>
+  <tr>
+    <td width="11%">快捷键</td>
+    <td width="89%">无</td>
+  </tr>
+  <tr>
+    <td width="11%">参数说明</td>
+    <td width="89%">Quit:退出游戏；Town:TP回城；Potion:喝紫/红药水<br>
+      <b>&lt;life-percent&gt;</b>：生命警戒值百分比 (0到100)  
+      <p>注:你可以多重设置.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="11%">示例</td>
+    <td width="89%"><span style="background-color: #000000"><font face="Arial Black" color="#FFFFFF">&nbsp;    
+      .hc&nbsp; merc&nbsp; </font><font face="Arial Black" color="#00FF00">potion</font><font face="Arial Black" color="#CCCC00">&nbsp;   
+      50&nbsp;</font></span> &nbsp;  
+      <p>如果雇佣兵生命值降至50%以下，立即喂它喝药水－－如果角色腰带上有紫药水或者红药水瓶的话.</p>
+    </td>                            
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="summary"></a>查看当前设置</b></p>
+<table border="1" width="100%" cellspacing="1">
+  <tr>
+    <td width="11%">功能</td>
+    <td width="89%">查看当前设置</td>
+  </tr>
+  <tr>
+    <td width="11%">语法</td>
+    <td width="89%"><font face="Arial Black" color="#FFFFFF"><span style="background-color: #000000">&nbsp; .hc&nbsp;                                  
+      summary&nbsp;</span></font></td>
+  </tr>
+  <tr>
+    <td width="11%">快捷键</td>
+    <td width="89%">无</td>
+  </tr>
+  <tr>
+    <td width="11%">参数说明</td>
+    <td width="89%">无</td>
+  </tr>
+</table>
+<p>　</p>
+<p><a name="bugreport"></a><b>向作者报告错误</b></p>
+<p>您可以<a href="mailto:abinn32@yahoo.com">给我直接发Email</a>。请在email中提供下列信息：</p>
+<ul>
+  <li>操作系统版本。
+  <li>D2hackit版本号。
+  <li>如果使用了任何Diablo II免CD程序，请提供免CD程序的作者名字和版本号。 
+  <li>如果有任何错误提示框，请提供其截图。
+  <li>请用简洁明了的语句描述您所遇到的问题。</li>
+</ul>
+<p><a href="#top">返回</a></p>
+<p><a href="http://www.wxjindu.com/abin/">回到“Abin的D2X工具箱”首页</a></p>
+<p>　</p>
+<p>　</p>

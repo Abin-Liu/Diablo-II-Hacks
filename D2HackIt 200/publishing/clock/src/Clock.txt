@@ -1,0 +1,21 @@
+Clock 1.2 by Abin
+===================================================================
+
+Requires D2Hackit v2.00 Build 1207+
+
+Displays a digital clock on the game screen so you don't miss the party for
+playing too much D2 ;-)
+
+Commands:
+
+.clock big <0/1>
+Displays in big mode or small mode. 0=small mode, 1=big mode.
+
+.clock show <0/1>
+Hides/shows the clock. 0=hide, 1=show.
+
+.clock scheme <LED/green/red>
+Specifies clock color scheme. LED=Modern LED. green=green color, red=red color.
+
+===================================================================
+Abin (abinn32@yahoo.com)

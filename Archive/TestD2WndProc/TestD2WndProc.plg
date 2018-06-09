@@ -1,0 +1,36 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: TestD2WndProc - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP221.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/TestD2WndProc.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\Projects\Diablo II\TestD2WndProc\TestD2WndProcDlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP221.tmp" 
+Creating temporary file "C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP222.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/TestD2WndProc.pdb" /debug /machine:I386 /out:"TestD2WndProc.exe" /pdbtype:sept 
+".\Debug\StdAfx.obj"
+".\Debug\TestD2WndProc.obj"
+".\Debug\TestD2WndProcDlg.obj"
+".\Debug\TestD2WndProc.res"
+".\WndProcHook\Debug\WndProcHook.lib"
+]
+Creating command line "link.exe @C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP222.tmp"
+<h3>Output Window</h3>
+Compiling...
+TestD2WndProcDlg.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+TestD2WndProc.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

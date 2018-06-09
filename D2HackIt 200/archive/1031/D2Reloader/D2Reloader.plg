@@ -1,0 +1,37 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: D2Reloader - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\abin\LOCALS~1\Temp\RSP1D6.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/D2Reloader.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\Diablo II\D2HackIt 200\D2Reloader\D2Reloader.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\abin\LOCALS~1\Temp\RSP1D6.tmp" 
+Creating temporary file "C:\DOCUME~1\abin\LOCALS~1\Temp\RSP1D7.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/D2Reloader.pdb" /machine:I386 /out:"..\Release/D2Reloader.exe" 
+".\Release\StdAfx.obj"
+".\Release\D2Reloader.obj"
+".\Release\IntegrityWalker.obj"
+".\Release\ModuleLoader.obj"
+".\Release\ModuleWalker.obj"
+".\Release\RemoteExecute.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\abin\LOCALS~1\Temp\RSP1D7.tmp"
+<h3>Output Window</h3>
+Compiling...
+D2Reloader.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+D2Reloader.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

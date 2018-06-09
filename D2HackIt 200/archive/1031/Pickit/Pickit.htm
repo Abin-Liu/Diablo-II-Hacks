@@ -1,0 +1,444 @@
+
+
+<head>
+<title>Pickit Readme</title>
+<style fprolloverstyle>A:hover {color: red; font-weight: bold}
+</style>
+</head>
+
+<h1 align="center"><font size="5" face="Arial Black">Pickit v2.3</font></h1> 
+<p align="left"><font face="Arial Black"><a name="toc"></a>Table of Contents</font></p>                
+<ul>
+  <li>
+    <p align="left"><font face="Arial"><a href="#requirements">Requirements</a></font></li>
+  <li>
+    <p align="left"><font face="Arial"><a href="#whatsnew">What's New</a></font></li> 
+  <li>
+    <p align="left"><font face="Arial"><a href="#history">History</a></font></li>
+  <li>
+    <p align="left"><font face="Arial"><a href="#cmdref">Command Reference</a></font></li>
+  <li>
+    <p align="left"><font face="Arial"><a href="#author">About the Author</a></font></li>
+</ul>
+<p align="left"><font face="Arial Black"><a name="requirements"></a>Requirements</font></p>
+<ul>
+  <li>
+    <p align="left"><font face="Arial">Diablo II Lord of Destruction v1.10</font></li> 
+  <li>
+    <p align="left"><font face="Arial">D2Hackit v2.00 or Higher</font></li>
+</ul>
+<p><font face="Arial Black"><a name="whatsnew"></a>What's New</font></p>                
+<ol>
+  <li><font face="Arial">Item picking delay is now adjustable.</font></li>
+  <li><font face="Arial">Added &quot;Auto&quot; picking methods for gold and 
+    rejuvenation potions, those items are picked up if the player is able to hold more gold  
+    or there are available slots on player's belt, and are ignored otherwise.  
+    Especially useful for bot users.</font></li> 
+  <li><font face="Arial">Added command call-back feature, especially useful for 
+    bot users.</font></li>
+  <li><font face="Arial">Added item log feature, especially useful for bot  
+    users.</font></li>
+  <li><font face="Arial">In both ini file and log file, &quot;%c&quot; now              
+    represents the text color prefix,&nbsp; the original prefix&nbsp;              
+    &quot;yc&quot; (the unreadable one) is still allowed for downward              
+    compatibility.</font></li>
+  <li><font face="Arial">Added &quot;Client Move&quot; feature so the actual      
+    character position are updated on client screen while picking items. This      
+    feature can be turned off by typing &quot;.pickit clientmove      
+    off&quot;.&nbsp;</font></li>
+  <li><font face="Arial">Added &quot;townpick&quot; command for     
+    allowing/disallowing pickup in towns.</font></li>    
+</ol>
+<p><font face="Arial Black"><a name="history"></a>History</font></p>
+<ul>
+  <li><font face="Arial">2.0 - Released for D2Hackit v2.00.</font></li> 
+  <li><font face="Arial">2.1 - Fixed a problem where the module would stop  
+    working if the user specified pickit delay values that could not be exactly  
+    devided by 100.</font></li> 
+  <li><font face="Arial">2.2 - Fixed some synchronization problems.</font></li> 
+  <li><font face="Arial">2.3 - Added &quot;goldamount&quot; command.</font></li>
+</ul>
+<p><font face="Arial Black"><a name="cmdref"></a>Command Reference</font></p>                
+<ul>
+  <li><font face="Arial"><a href="#townpick">townpick</a></font></li>
+  <li><font face="Arial"><a href="#clientmove">clientmove</a></font></li>
+  <li><font face="Arial"><a href="#load">load</a></font></li>
+  <li><font face="Arial"><a href="#log">log</a></font></li>
+  <li><font face="Arial"><a href="#radius">radius</a></font></li>
+  <li><font face="Arial"><a href="#toggle">toggle</a></font></li>
+  <li><font face="Arial"><a href="#enable">enable</a></font></li>
+  <li><font face="Arial"><a href="#disable">disable</a></font></li>
+  <li><font face="Arial"><a href="#delay">delay</a></font></li>
+  <li><font face="Arial"><a href="#summary">summary</a></font></li>
+  <li><font face="Arial"><a href="#fullcmds">fullcmds</a></font></li>
+  <li><font face="Arial"><a href="#gold">gold</a></font></li>
+  <li><font face="Arial"><a href="#rejuv">rejuv</a></font></li>
+  <li><font face="Arial"><a href="#fullrejuv">fullrejuv</a></font></li>
+  <li><font face="Arial"><a href="#goldamount">goldamount</a></font></li>
+</ul>
+<p><font face="Arial"><b><a name="townpick"></a>townpick</b></font></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="0" height="88">
+  <tr>
+    <td width="15%" align="center" height="19"><font face="Arial">Syntax</font></td>
+    <td width="85%" height="19"><font face="Arial"><b>.pickit townpick <i>&lt;on/off&gt;</i></b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center" height="24"><font face="Arial">Description</font></td>
+    <td width="85%" height="24"><font face="Arial">Allows/disallows pickit in 
+      towns.</font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center" height="19"><font face="Arial">Sample</font></td>
+    <td width="85%" height="19"><font face="Arial"><b>.pickit townpick off</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center" height="18"><font face="Arial">Sample Effect</font></td>
+    <td width="85%" height="18"><font face="Arial">Disallows town-pick. No items 
+      will be picked up when the player is in town.</font></td>
+  </tr>
+</table>
+<p>　</p>
+<p><a name="clientmove"></a><font face="Arial"><b>clientmove</b></font></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="0" height="100">
+  <tr>
+    <td width="15%" align="center" height="19"><font face="Arial">Syntax</font></td>
+    <td width="85%" height="19"><font face="Arial"><b>.pickit clientmove <i>&lt;on/off&gt;</i></b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center" height="36"><font face="Arial">Description</font></td>
+    <td width="85%" height="36"><font face="Arial">Allows/disallows the actual 
+      character position to be updated on client screen while picking items. It 
+      is strongly recommended that you turn this feature on, so that you can be 
+      aware of if your character rushes into a monster pack for grabbing a 
+      cracked sash.</font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center" height="19"><font face="Arial">Sample</font></td>
+    <td width="85%" height="19"><font face="Arial"><b>.pickit clientmove off</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center" height="18"><font face="Arial">Sample Effect</font></td>
+    <td width="85%" height="18"><font face="Arial">Disallows client move update.</font></td>
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="load"></a><font face="Arial">load</font></b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Syntax</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit load <i>&lt;file-name&gt;</i></b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Description</font></td>
+    <td width="85%"><font face="Arial">Loads item configurations from an ini  
+      file.</font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit load pickit.ini</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample Effect</font></td>
+    <td width="85%"><font face="Arial">Loads item configurations from  
+      &quot;pickit.ini&quot;.</font></td>
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="log"></a><font face="Arial">log</font></b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Syntax</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit log <i>[file-name]</i></b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Description</font></td>
+    <td width="85%"><font face="Arial">Specifies&nbsp; the log file name. Each log entry                 
+      will be appended to the end of the log file, if the log file does not                 
+      exist, it is created.</font>                
+      <p><font face="Arial">If [file-name] is empty, the log feature will be 
+      disabled, otherwise information will be written to the log file every time 
+      when a desired item is dropped.</font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit log itemdrops.log</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample Effect</font></td>
+    <td width="85%"><font face="Arial">Uses &quot;itemdrops.log&quot; as the log  
+      file name.</font></td> 
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="radius"></a><font face="Arial">radius</font></b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Syntax</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit radius <i>&lt;radius&gt;</i></b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Description</font></td>
+    <td width="85%"><font face="Arial">Specifies the pick up radius. Larger radius  
+      allows more items to be picked up but has higher chance on driving the  
+      player wander into monster packs. If radius is set to 0, no item will be  
+      picked up.</font></td> 
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit radius 15</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample Effect</font></td>
+    <td width="85%"><font face="Arial">Sets the pick up radius to 15.&nbsp;</font></td>                
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="toggle"></a><font face="Arial">toggle</font></b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Syntax</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit toggle</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Description</font></td>
+    <td width="85%"><font face="Arial">Disables pickit if it was previously 
+      enabled, or enables it if it was not.</font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit toggle</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample Effect</font></td>
+    <td width="85%"><font face="Arial">Pickit is disabled if it was previously 
+      enabled, or is enabled if it was not.</font></td>
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="enable"></a><font face="Arial">enable</font></b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Syntax</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit enable</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Description</font></td>
+    <td width="85%"><font face="Arial">Enables pickit regardless of its previous 
+      state.</font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit enable</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample Effect</font></td>
+    <td width="85%"><font face="Arial">Pickit is enabled.</font></td>
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="disable"></a><font face="Arial">disable</font></b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Syntax</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit disable</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Description</font></td>
+    <td width="85%"><font face="Arial">Disables pickit regardless of its 
+      previous state.</font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit disable</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample Effect</font></td>
+    <td width="85%"><font face="Arial">Pickit is disabled.</font></td>
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="delay"></a><font face="Arial">delay</font></b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Syntax</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit delay <i>&lt;milliseconds&gt;</i></b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Description</font></td>
+    <td width="85%"><font face="Arial">Specifies the delay, in milliseconds, for how   
+      long it must wait two picking attempts. Lower delay   
+      makes the player grab items quicker, but has higher chance on getting   
+      disconnected or suspected. This value can be no less than 500.</font></td> 
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit delay 500</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample Effect</font></td>
+    <td width="85%"><font face="Arial">After having attempted to pick up an                 
+      item, it will wait for 500 milliseconds before another attempt.&nbsp;</font></td>  
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="summary"></a><font face="Arial">summary</font></b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Syntax</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit summary</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Description</font></td>
+    <td width="85%"><font face="Arial">Displays current pickit settings.</font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit summary</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample Effect</font></td>
+    <td width="85%"><font face="Arial">Current settings are shown on the game 
+      screen.</font></td>
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="fullcmds"></a><font face="Arial">fullcmds</font></b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Syntax</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit fullcmds <i>[command 1;command 
+      2;...;command n]</i></b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Description</font></td>
+    <td width="85%"><font face="Arial">Specifies the command(s) to be executed when                 
+      the player's inventory is overflowing. Multiple commands must&nbsp; be                 
+      separated by semicolons(&quot;;&quot;) and are being executed in the                 
+      left-to-right order. The purpose of this command is to notify your bots of                 
+      the &quot;inventory full&quot; event, by receiving this notification, the                 
+      bots should stop killing, back to town, throw away junks, make more rooms                 
+      in the inventory, and resume.&nbsp;</font>                
+      <p><font face="Arial">As soon as pickit detects player's inventory is                 
+      full, it disables itself after 3 or 4 retries. <font color="#FF0000">Please                 
+      remember to call &quot;.pickit enable&quot; after you resume your bots, so 
+      that pickit can  
+      return to work.</font></font></td> 
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit fullcmds pindlebot pause;idbot 
+      id</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample Effect</font></td>
+    <td width="85%"><font face="Arial">When the player's inventory is full, the 
+      following commands will be automatically executed:</font>
+      <p><font face="Arial">&quot;.pindlebot pause&quot;<br>
+      &quot;.idbot id&quot;</font></td>
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="gold"></a><font face="Arial">gold</font></b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Syntax</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit gold <i> &lt;yes/no/auto&gt;</i></b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Description</font></td>
+    <td width="85%"><font face="Arial">Specifies pick up method for gold.&nbsp;</font>                
+      <p><font face="Arial">Yes = Always pick up.<br>                
+      No = Never pick up.<br>                
+      Auto = Pick up only if the player can hold more gold, Maximum amount of                 
+      gold a player can hold is player_level * 10000.&nbsp;</font></p>                
+    </td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit gold yes</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample Effect</font></td>
+    <td width="85%"><font face="Arial">Gold will always be picked up.</font></td>
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="rejuv"></a><font face="Arial">rejuv</font></b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Syntax</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit rejuv <i> &lt;yes/no/auto&gt;</i></b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Description</font></td>
+    <td width="85%"><font face="Arial">Specifies pick up method for rejuvenation                 
+      potions (small purple ones).&nbsp;</font>                
+      <p><font face="Arial">Yes = Always pick up.<br>                
+      No = Never pick up.<br>                
+      Auto = Pick up only if the player has belt slots that are available to                 
+      automatically receive this potion from ground.</font></p>                
+    </td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit rejuv no</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample Effect</font></td>
+    <td width="85%"><font face="Arial">Rejuvenation potions will never be picked 
+      up.</font></td>
+  </tr>
+</table>
+<p>　</p>
+<p><b><a name="fullrejuv"></a><font face="Arial">fullrejuv</font></b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Syntax</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit fullrejuv <i> &lt;yes/no/auto&gt;</i></b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Description</font></td>
+    <td width="85%"><font face="Arial">Specifies pick up method for full rejuvenation                 
+      potions (big&nbsp; purple ones).</font>                
+      <p><font face="Arial">Yes = Always pick up.<br> 
+      No = Never pick up.<br> 
+      Auto = Pick up only if the player has belt slots that are available to  
+      automatically receive this potion from ground.</font></p> 
+    </td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit fullrejuv auto</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample Effect</font></td>
+    <td width="85%"><font face="Arial">Full rejuvenation potions will only be  
+      picked up if the player has available belt slots that can automatically  
+      receive this potion from ground.</font></td> 
+  </tr>
+</table>
+<p><font face="Arial"><b><a name="goldamount"></a>goldamount</b></font></p>          
+<table border="1" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Syntax</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit goldamount <i>&lt;amount&gt;</i></b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Description</font></td>
+    <td width="85%"><font face="Arial">Specifies the minimum gold amount for 
+      picking up gold piles.</font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample</font></td>
+    <td width="85%"><font face="Arial"><b>.pickit goldamount 1000</b></font></td>
+  </tr>
+  <tr>
+    <td width="15%" align="center"><font face="Arial">Sample Effect</font></td>
+    <td width="85%"><font face="Arial">Gold piles will only be picked if they 
+      contain at least 1000 gold.</font></td> 
+  </tr>
+</table>
+<p>　</p>          
+<p><a name="author"></a><font face="Arial Black">About the Author</font></p>             
+<p><font face="Arial"><b>Abin</b><br>
+<a href="http://www.wxjindu.com/abin/">http://www.wxjindu.com/abin/</a><br><a href="mailto:abinn32@yahoo.com">abinn32@yahoo.com</a></font></p>

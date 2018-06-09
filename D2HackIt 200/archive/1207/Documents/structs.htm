@@ -1,0 +1,92 @@
+
+
+<head>
+<title>D2Hackit v2.00 - Structs</title>
+</head>
+
+<p align="center"><font face="Arial Black">Game Structs</font></p>
+
+<pre>
+////////////////////////////////////////////////////////////////////
+// CGameDC (v2.00, Abin)
+//------------------------------------------------------------------
+// Will be passed to &quot;OnDraw&quot; functions in client modules. Use members
+// of this struct to draw customized stuff on the game screen.
+////////////////////////////////////////////////////////////////////
+typedef struct tagGameDC 
+{
+	// Drawing methods
+	fnD2TextOut					TextOut;	// Draw simple text
+	fnD2DrawText				DrawText;	// Draw aligned text
+	fnD2MoveTo					MoveTo;		// Change DC start position
+	fnD2LineTo					LineTo;		// Draw line
+	fnD2Rectangle				Rectangle;	// Draw a solid rectangle outlined by a frame
+	fnD2FrameRect				FrameRect;	// Draw empty frame
+	fnD2FillRect				FillRect;	// Draw a solid rectangle	
+
+	// Attributes
+	fnD2SetFont					SetFont;	// Set font
+	fnD2GetFont					GetFont;	// Get font
+	fnD2GetTextExtent			GetTextExtent; // Get text drawing size
+	fnD2SetTextColor			SetTextColor; // Set text color
+	fnD2GetTextColor			GetTextColor; // Get text color
+	fnD2SetPenColor				SetPenColor; // Set pen color
+	fnD2GetPenColor				GetPenColor; // Get pen color
+	fnD2SetPenWidth				SetPenWidth; // Set pen width
+	fnD2GetPenWidth				GetPenWidth; // Get pen width
+	fnD2SetBrushColor			SetBrushColor; // Set brush color
+	fnD2GetBrushColor			GetBrushColor; // Get brush color
+	fnD2SetBrushTransparency	SetBrushTransparency; // Set brush transparency
+	fnD2GetBrushTransparency	GetBrushTransparency; // Get brush transparency
+	
+} GAMEDC, *LPGAMEDC;
+typedef const tagGameDC* LPCGAMEDC;
+typedef tagGameDC CGameDC; // make the name more win32 GDI'ish :)
+
+
+<a name="GAMEUNIT"></a>typedef struct tagGameUnit
+{
+	DWORD dwUnitID;					// Unit ID
+	DWORD dwUnitType;				// Unit type(player, monster, object, etc)
+} GAMEUNIT, *LPGAMEUNIT;
+typedef const tagGameUnit* LPCGAMEUNIT;
+
+<a name="fnEnumUnitProc"></a>// Unit enumeration callback definition
+typedef BOOL (CALLBACK *fnEnumUnitProc)(LPCGAMEUNIT lpUnit, LPARAM lParam);
+
+
+//////////////////////////////////////////////////////////////////////
+// PresetUnit(Caves, Stairs, Dens, Towers, Entrances, Izual, Hephasto, Countess Chest, etc...)
+//////////////////////////////////////////////////////////////////////
+<a name="presetunit"></a>typedef struct tagPresetUnit
+{
+	DWORD dwID;		// Preset unit ID (txt no). 
+	DWORD dwType;		// Preset unit type, monster, object, room tile, etc
+	WORD x;			// Map position x
+	WORD y;			// Map position y
+} PRESETUNIT, *LPPRESETUNIT;
+typedef const tagPresetUnit* LPCPRESETUNIT;
+
+// PresetUnit enumeration callback definition
+typedef BOOL (CALLBACK *fnEnumPresetUnitProc)(LPCPRESETUNIT lpPresetUnit, LPARAM lParam);
+
+
+<a name="ITEMPROPERTY"></a>//////////////////////////////////////////////////////////////////////
+// ITEMPROPERTY
+//--------------------------------------------------------------------
+// Item properties(mods) data. Thanks to Mousepad for the help.
+//////////////////////////////////////////////////////////////////////
+typedef struct tagItemProperty
+{
+    WORD wSubProperty; // Sub property value
+    WORD wPropertyID; // Property ID
+    int nValue; // Property value
+} ITEMPROPERTY, *LPITEMPROPERTY;
+typedef const tagItemProperty* LPCITEMPROPERTY;
+
+
+<a name="fnEnumItemProc"></a>//////////////////////////////////////////////////////////////////////
+// Item Enumeration Callback Function def
+//////////////////////////////////////////////////////////////////////
+typedef BOOL (CALLBACK *fnEnumItemProc)(DWORD dwItemID, LPCSTR lpszItemCode, WORD x, WORD y, LPARAM lParam); 
+</pre>

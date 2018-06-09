@@ -1,0 +1,41 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Pindlebot - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP450.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "PINDLEBOT_EXPORTS" /Fp"Release/Pindlebot.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\Diablo II\Pindlebot\PickitPlayer.cpp"
+"D:\Projects\Diablo II\Pindlebot\Pindlebot.cpp"
+"D:\Projects\Diablo II\Pindlebot\Pindleskin.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP450.tmp" 
+Creating temporary file "C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP451.tmp" with contents
+[
+kernel32.lib user32.lib /nologo /dll /incremental:no /pdb:"Release/Pindlebot.pdb" /machine:I386 /nodefaultlib:"libc.lib" /out:"Release/Pindlebot.d2h" /implib:"Release/Pindlebot.lib" 
+".\Release\PBotConfig.obj"
+".\Release\PickitPlayer.obj"
+".\Release\PindleBonusDef.obj"
+".\Release\Pindlebot.obj"
+".\Release\Pindleskin.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP451.tmp"
+<h3>Output Window</h3>
+Compiling...
+PickitPlayer.cpp
+Pindlebot.cpp
+Pindleskin.cpp
+Linking...
+   Creating library Release/Pindlebot.lib and object Release/Pindlebot.exp
+
+
+
+<h3>Results</h3>
+Pindlebot.d2h - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

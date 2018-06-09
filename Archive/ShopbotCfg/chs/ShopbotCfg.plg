@@ -1,0 +1,50 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ShopbotCfg - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP762.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/ShopbotCfg.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\Diablo II\ShopbotCfg\chs\ShopbotCfgDlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP762.tmp" 
+Creating temporary file "C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP763.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:"Release/ShopbotCfg.pdb" /machine:I386 /out:"Release/ShopbotCfg.exe" 
+".\Release\AssistDlg.obj"
+".\Release\BtnST.obj"
+".\Release\ConfigDlg.obj"
+".\Release\D2ModParser.obj"
+".\Release\EditEx.obj"
+".\Release\Ini.obj"
+".\Release\MapDef.obj"
+".\Release\ModDlg.obj"
+".\Release\ReportCtrl.obj"
+".\Release\SBItemConfig.obj"
+".\Release\ShopbotCfg.obj"
+".\Release\ShopbotCfgDlg.obj"
+".\Release\Singleton.obj"
+".\Release\SkillTypeDlg.obj"
+".\Release\SpellDef.obj"
+".\Release\StdAfx.obj"
+".\Release\StringParse.obj"
+".\Release\WinAppEx.obj"
+".\Release\ShopbotCfg.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP763.tmp"
+<h3>Output Window</h3>
+Compiling...
+ShopbotCfgDlg.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+ShopbotCfg.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

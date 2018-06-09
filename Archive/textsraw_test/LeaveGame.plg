@@ -1,0 +1,35 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: LeaveGame - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP24.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "LeaveGame_EXPORTS" /Fp"Release/LeaveGame.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\Diablo II\textsraw_test\main.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP24.tmp" 
+Creating temporary file "C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP25.tmp" with contents
+[
+kernel32.lib user32.lib shell32.lib /nologo /dll /incremental:no /pdb:"Release/LeaveGame.pdb" /machine:I386 /nodefaultlib:"libc.lib" /out:"Release/LeaveGame.d2h" /implib:"Release/LeaveGame.lib" 
+".\Release\D2TextDraw.obj"
+".\Release\main.obj"
+".\Release\SharedMem.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP25.tmp"
+<h3>Output Window</h3>
+Compiling...
+main.cpp
+Linking...
+   Creating library Release/LeaveGame.lib and object Release/LeaveGame.exp
+
+
+
+<h3>Results</h3>
+LeaveGame.d2h - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

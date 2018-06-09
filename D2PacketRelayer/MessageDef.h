@@ -1,0 +1,28 @@
+#ifndef __MESSAGEDEF_H__
+#define __MESSAGEDEF_H__
+
+#define MAX_HWND			32
+#define MAX_PLAYERNAME		31
+
+#define MEM_ID				"{E8CD7852-4BB1-41B7-9A77-69379FDF9757}"
+#define MEM_SIZE			(44 + MAX_HWND * 4)
+#define MEM_POS_CLIENT		0
+#define MEM_POS_GAME		1
+#define MEM_POS_PLAYERID	2
+#define MEM_POS_CHARCLASS	6
+#define MEM_POS_MERCID		7
+#define MEM_POS_MERCALIVE	11
+#define MEM_POS_PLAYERNAME	12
+#define MEM_POS_HWND		44
+
+#define WM_PACKET_START		(WM_APP + 1501)
+#define WM_PACKET_BODY		(WM_APP + 1502)
+#define WM_PACKET_END		(WM_APP + 1503)
+#define WM_GAMEJOIN			(WM_APP + 1504)
+#define WM_GAMELEAVE		(WM_APP + 1505)
+#define WM_PLAYERLOCATION	(WM_APP + 1506)
+#define WM_MERC				(WM_APP + 1507)
+#define WM_CLIENT_START		(WM_APP + 1508)
+#define WM_CLIENT_STOP		(WM_APP + 1509)
+
+#endif // __MESSAGEDEF_H__

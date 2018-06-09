@@ -1,0 +1,156 @@
+
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Shopbot v1.20 by Abin</title>
+</head>
+
+<h2><a name="top"></a>Shopbot v1.20使用说明</h2>                     
+<ul>
+  <li><a href="#intro">软件简介</a></li>
+  <li><a href="#la">作者声明</a></li>
+  <li><a href="#whatsnew">Shopbot 1.20版新特性</a></li>              
+  <li><a href="#files">程序文件</a></li>
+  <li><a href="#install">安装方法</a></li>
+  <li><a href="#usage">使用方法</a></li>
+  <li><a href="#settings">参数设置</a></li>
+  <li><a href="#commands">游戏内命令</a></li>
+</ul>
+<p><b><a name="intro"></a>软件简介</b></p>
+<p>软件名称：Shopbot v1.20<br>                                          
+操作系统：Windows 9x/ME/2000<br>                 
+运行环境：SIG v3.00或以上版本、Diablo II: Lord of Destruction 1.10<br>                                                      
+硬件要求：须能满足“Diablo II: Lord of Destruction”正常运行.<br>           
+作者：&nbsp;&nbsp;&nbsp; Abin<br>          
+作者主页：http://www.wxjindu.com/abin</p>                                            
+<p><b><a name="la"></a>作者声明</b></p>
+<ol>
+  <li>Shopbot 1.20版的性质属于封闭战网上的作弊软件，一旦被Blizzard侦测到，用户有可能会受到包括(但不限于)删除账号、封闭CD-Key在内的各种处罚。本人对用户因使用Shopbot      
+    1.20版及其附属模块所造成的一切后果不承担任何责任。</li>
+  <li>Shopbot 1.20版属于自由软件，允许被任意使用、复制、转赠，但不得用以出售、出租、或任何以牟利为目的的商业行为。</li>              
+  <li>未经作者同意，不得擅自对Shopbot 1.20版程序可执行文件或动态连接库进行修改或反编译。</li>              
+  <li>作者拥有Shopbot 1.20版程序模块组及说明文档的版权，并保留一切权力。</li>              
+</ol>
+<p>如果您不同意以上声明，请立即停止下载、安装或使用Shopbot      
+1.20版。</p>
+<p><b><a name="whatsnew"></a>Shopbot 1.20版新特性</b></p>              
+<ol>
+  <li>完善、易用的图形化设置界面，即使从没用过Shopbot的人也能轻易上手。</li>
+  <li>物品属性细分为数十个品类，可以进行精确到个位数的设置。</li>
+  <li>完善的路径计算功能，可以对5个act里所有有价值的NPC进行shopping。</li>
+  <li>角色受到伤害或敌对时自动离开游戏。生命值低于95%时自动找最近的医生NPC治疗（顺便对医生shop一把）。</li>
+  <li>对于Paladin和Assassin自动使用加速技能来提高效率。</li>
+  <li>当shopping到有价值的物品而无钱购买时，角色将尽可能久地停留在游戏中并执行Anti-Idle指令以防被踢，除非BN抽风，否则使用者将有足够的时间去亲自处理那件物品。</li>
+  <li>内置游戏快捷键用于暂停和继续Shopbot的运行。</li>
+  <li>可以设置Shopbot运行时间和callback命令，时间结束后Shopbot会自动回到用户通过“endact”命令所指定的地点，运行所有设定的callback命令，然后结束自身的运行。这一特点适用于被其它bot所引用。</li>
+</ol>
+<p><b><a name="files"></a>程序文件</b></p>
+<p>Shopbot 1.20版包括以下文件：</p>               
+<ul>
+  <li>Shopbot.d2h ----      
+    游戏内主控模块，负责角色动作、安全保障、物品购买、快捷键拦截等功能。</li>
+  <li>ShopbotCfg.exe ----      
+    图形化设置界面，提供简洁明了、人性化的设置界面。</li>
+  <li>Shopbot.ini ---- 物品拾取设置文件，必须使用ShopbotCfg.exe来进行配置，手工修改这个文件无异于读天书。</li>              
+  <li>Pindlebot.chm ---- 本帮助文件。</li>               
+</ul>
+<p><b><a name="install"></a>安装方法</b></p>
+<p>一，将Shopbot 1.20版的所有文件复制到SIG安装目录中的“Hacks”文件夹里，如果存在同名文件，请先将原来存在的文件改名。</p>              
+<p>二，到SIG的“Hacks”页面选中“Shopbot”。注意，切勿同时选择其它模块，否则Shopbot      
+1.20可能无法正常运行。</p>     
+<p><img border="0" src="sig.gif" width="371" height="478"></p>     
+<p>三，到SIG的D2JSP页面禁止D2JSP。如果D2JSP被加载，Shopbot将不会被运行。</p>     
+<p><img border="0" src="d2jsp.gif" width="371" height="478"></p>     
+<p><b><a name="usage"></a>使用方法</b></p>
+<p>运行ShopbotCfg.exe进行必要的设置，然后运行SIG即可。</p>
+<p>注意：Shopbot必须在角色进入游戏之前就已经被加载，否则无法正常运行。</p>
+<p><b><a name="settings"></a>参数设置</b></p>
+<p>一，全局参数</p>
+<p><img border="0" src="global.gif" width="395" height="520"></p>
+<ul>
+  <li>进入游戏后自动开始运行，如果选中，则角色进入游戏后Shopbot就自动开始运行。如果不选，则需要输入&quot;.shopbot   
+    start [time_limit]&quot;来启动Shopbot。</li>   
+  <li>Shopping Act：要在哪一个act进行shopping．</li>    
+  <li>Shopping NPC：Shopping对象．</li>    
+  <li>城外Waypoint：Shopbot需要不断地通过WP进出城以刷新NPC出售的物品，你必须选择一个你已经可以到达的WP．列表中带有(*)标记的WP可能是极其危险的！例如Act5的Frigid     
+    Highlands，在normal很安全，但是在NM和hell却往往有怪物埋伏在WP旁边，一出城就会受到攻击．要是逛商店把命都逛丢了岂不是很冤．</li>
+  <li>暂停／继续快捷键：选择一个快捷键用来暂停和继续Shopbot的运行．</li>
+  <li>生命警戒线，如果因为种种原因（例如选择了不适当的WP）而受到攻击，当生命值低于这个百分比就会退出游戏．</li>
+  <li>物品设置：目前所设置的物品．可使用添加、编辑、删除来进行物品设置。</li>
+</ul>
+<p>二，物品设置</p>
+<p><img border="0" src="itemset.gif" width="375" height="360"></p>
+<ul>
+  <li>文字显示：用来代表当前设定，可使用任何文字，但不能用&quot;Global&quot;这一词。</li>
+  <li>物品代码：物品代码可以有这3种设置方式：(1)单个代码，表示购买的物品种类已确定；(2)多个代码用逗号分隔，表示物品种类必须在设定的范围之内；(3)空，表示不管什么物品，只要符合设定的属性就买。</li>
+  <li>孔数：物品孔数必须不少于设定值，&quot;N/A&quot;为不检测孔数。</li>
+  <li>必须为非Magical物品：如果物品买来是作为imbue或制作神符之语的原料请选中此项。</li>
+  <li>属性列表：列表中为物品必须满足的属性条件，请使用添加、删除、编辑按钮来设置物品的具体属性。Shopbot     
+    1.20对物品属性的监测采用“AND”操作，即一个物品必须符合所有设定的属性才会被认为合格，在上图中，一个物品必须具有+2     
+    Pal skills，并且具有+20 FCR，并且具有+3级 BH，并且具有+1到3级Conc，才会被购买。</li>    
+</ul>
+<p>三，物品属性设置</p>
+<p><img border="0" src="mods.gif" width="351" height="405"></p>
+<ul>
+  <li>属性公式列表：列出所有可选属性的公式。公式中的x、y、z值需要在下面填入。</li>
+  <li>属性数值：将x、y、z值代入选定的属性公式而获得具体的属性。</li>
+  <li>属性助手：当选定属性公式中包含“非直接性数值”(用户可能无法按常规直觉来正确填入的数值)时，“属性助手”会自动出现，点击它，它会帮助你正确填入属性数值。484很人性化呀？什么？不是？我晕......</li>
+  <li>属性预览：当属性数值被正确地代入到选定的属性公式中以后，该项属性的具体内容会出现在属性预览中，用户可以据此核对自己填入的属性数值是否合适。</li>
+</ul>
+<p><b><a name="commands"></a>游戏内命令</b></p>
+<ul>
+  <li><font face="Arial Black">.shopbot pause</font><br> 
+    <br>
+    用以暂停或继续Shopbot的运行，可自行设置快捷键。执行一次为暂停，再执行一次为继续。<br>
+    &nbsp;
+  </li>
+  <li><font face="Arial Black">.shopbot cleanlog</font><br> 
+    <br>
+    用以清空log文件。<br>
+    &nbsp;
+  </li>
+  <li><font face="Arial Black">.shopbot reload</font><br> 
+    &nbsp;
+    <br>
+    重新从Shopbot.ini文件中读取物品设置。注意，这一命令仅仅重新读取物品设置数据，而全局参数不会变化，要重新读取全局参数，您必须重新运行Shopbot。<br>
+    &nbsp;</li>
+  <li><font face="Arial Black">.shopbot start </font><font face="Arial">[<i>time_limit</i>]</font><br>
+    &nbsp;<br>
+    启动Shopbot，<font face="Arial">[<i>time_limit</i>]<i> </i></font>为Shopbot运行的时间限制（秒），时间一到，Shopbot会自动回到用户通过“endact”所指定d的地点（即使这个地点在其它act，Shopbot也能找到路径并正确地长途跋涉回去），然后结束自身的运行。如果   
+    <font face="Arial">[<i>time_limit</i>]<i> </i></font>为空或为零，则Shopbot的运行将没有时间限制。<br>
+    &nbsp;</li>
+  <li><font face="Arial Black">.shopbot stop</font><br>
+    &nbsp;<br>
+    请求结束Shopbot的运行。Shopbot会自动回到用户通过“endact”所指定的地点（即使这个地点在其它act，Shopbot也能找到路径并正确地长途跋涉回去），然后结束自身的运行。<br>
+    &nbsp;</li>
+  <li><font face="Arial Black">.shopbot endact </font><font face="Arial">&lt;1 / 
+    2 / 3 / 4 / 5&gt;<br>
+    &nbsp;<br>
+    </font>指定<font face="Arial">Shopbot</font>在运行结束之后要去的<font face="Arial">Act</font>，允许值为<font face="Arial">1</font>至<font face="Arial">5</font>。<font face="Arial">Shopbot</font>在运行结束之后将会自动寻找路径回到这个<font face="Arial">Act</font>城镇中的起始位置。这一条命令能够保证在<font face="Arial">shop</font>结束后其它<font face="Arial">bot</font>能从它所希望的地点开始运行。<br>
+    &nbsp;</li>
+  <li><font face="Arial Black">.shopbot callback</font> [<i>command 1; command   
+    2; command 3; ... ; command n</i>]<br>
+    &nbsp;<br>
+    设置Shopbot结束之后自动执行的命令，多条命令之间必须以分号隔开。当Shopbot因为限制时间已到或是用户输入了“.shopbot   
+    stop”命令而自动回到起始地点以后，它会执行所有的callback命令，然后结束自身的运行。如果Shopbot被其它bot所引用的话，这一条命令至关重要。举例来说，如果在Pindlebot里使用，想要在进入游戏后先shop   
+    5分钟，然后再去kp，可以在Pindlebot源代码中添加这样的步骤：<br>
+    &nbsp;<br>
+    1 - 进入游戏后执行 “.pindlebot pause” 来先暂停Pindlebot。<br>  
+    2 - 执行 “.shopbot start 300” 启动shopbot并限制时间300秒（5分钟），此时shopbot将开始运行，如果你设置为在其它act进行购物，角色会自动通过wp到其它act去。<br>  
+    3 - 执行 “.shopbot callback pindlebot resume” 来告诉Shopbot结束以后执行“pindlebot   
+    resume”命令。<br>
+    4 - 5分钟时限一到，shopbot将自动停止购物活动并回到当初角色所在的位置，然后自动执行“pindlebot   
+    resume”命令，并终止自身的运行。“.pindlebot resume”命令将重新唤醒Pindlebot，于是开始去kp。<br>  
+    &nbsp;
+  </li>
+  <li><font face="Arial Black">.shopbot autostart </font><font face="Arial">&lt;0 
+    / 1&gt;</font><br>
+    &nbsp;<br>
+    设置Shopbot在本次运行中是否允许自动开始。如果你把Shopbot整合到你自己的bot中，而且希望由你的bot来决定Shopbot的开始和终止，请在你bot的  
+    <font face="Arial">OnGameJoin</font> 函数中加入&quot;<font face="Arial">server-&gt;GameCommandLine(&quot;shopbot  
+    autostart 0&quot;);</font>&quot;来防止Shopbot自动运行。<br>
+  </li>
+</ul>

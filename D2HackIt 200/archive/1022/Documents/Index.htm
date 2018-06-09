@@ -1,0 +1,160 @@
+<p align="center"><font face="Arial Black" size="4">D2Hackit v2.00</font></p>
+<p align="center"><font face="Verdana" size="2"><b>API Reference</b></font></p>        
+<ul>
+  <li><font face="Verdana" size="2"><a href="#whatnew">What's new</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#compatibility">Backward 
+    Compatibility</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#Acknowledgement">Acknowledgement</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#credits">Credits</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#Author">About the Author</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#Agreement">License Agreement</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#Reference">API Reference</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#Message">D2 Message System</a></font></li>
+</ul>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="whatnew"></a>What's New in v2.00</b></font></p>              
+<p><font face="Verdana" size="2">D2Hackit v2.00 is an improved version of the old D2Hackit(whatever 
+version it was before 2.00) that presents a lot of new features and API's which 
+would otherwise take the module developers thousands of code lines to achieve. 
+The following are some of the new features added in D2Hackit 2.00:</font></p> 
+<ol>
+  <li><font face="Verdana" size="2">Greatly improved the original &quot;server-&gt;...&quot; API set.</font></li>
+  <li><font face="Verdana" size="2">Added new API set &quot;me-&gt;...&quot;, this API set encapsulates player
+    attributes and game operations, &quot;<i>me-&gt;BackToTown();</i>&quot;, for
+    example, will make the player cast a town portal and immediately use it to
+    return to town.</font></li>
+  <li><font face="Verdana" size="2">Added new API set &quot;screen-&gt;...&quot;, this API set encapsulates
+    game screen hooking(permanent text drawing) and screen attributes access.
+    Always wished to mess the screen up like what D2JSP does? Now you've got to
+    love this.</font></li>
+  <li><font face="Verdana" size="2">Introduced the &quot;D2 Message System&quot;, which is similar to  
+    &quot;Windows message system&quot; on Win32 plateforms, D2 messages will be  
+    sent to your application(d2h modules) when something happens in the game.  
+    This mechanism establishes an &quot;Event Driving&quot; interface between  
+    the game and your application.</font></li>  
+  <li><font face="Verdana" size="2">Added &quot;anti-detection&quot;.&nbsp;</font></li>      
+  <li><font face="Verdana" size="2">Added inter-module communication.</font></li>     
+  <li><font face="Verdana" size="2">Added command line &quot;<b>.banner     
+    &lt;0/1&gt;</b>&quot; to hide/show the banner text displayed on the top middle     
+    of the game screen.</font></li>    
+  <li><font face="Verdana" size="2">Added command line &quot;<b>.backtotown</b>&quot;   
+    to make the player cast a town portal and quickly walk in.</font></li> 
+  <li><font face="Verdana" size="2">Added command line &quot;<b>.mystats</b>&quot; 
+    to display player's important stats, including some hidden stats.</font></li>
+  <li><font face="Verdana" size="2">And much more.</font></li>
+</ol>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="compatibility"></a>Backward Compatibility</b></font></p>              
+<p><font face="Verdana" size="2">Modules developed using old versions of D2Hackit are still able to be
+functional in D2Hackit 2.00, however, those modules will not benefit from any
+new features added in D2Hackit 2.00. It is strongly recommended that you rebuild
+your old modules using D2Hackit 2.00.</font></p>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="Acknowledgement"></a>Acknowledgement</b></font></p>
+<p><font face="Verdana" size="2">As we all know, Thohell was the original author 
+of D2Hackit, although he stopped the development long ago, this new version, as 
+well as all of the d2h modules we've been using, would not even exist without his 
+excellent SDK. So I think it can only be fair if his name appears before mine. 
+:)</font></p>
+<p><font face="Verdana" size="2">Also, I <strike>stole</strike> reused a lot of 
+code from Mousepad's Maphack</font><font face="Small Fonts" size="1"><sup>TM</sup></font><font face="Verdana" size="2">, what can I say? He is THE genius, end 
+of discussion.</font></p> 
+<p><font face="Verdana" size="2">We shall never forget those who kept D2Hackit 
+improved to where it was, either. I do not know who you exactly are, but here 
+you have my respect.</font></p>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="credits"></a>Credits</b></font></p>  
+<p><font face="Verdana" size="2"><u><b><i>D2HackIt!</i></b></u></font></p>
+<ul>
+  <li><font face="Verdana" size="2">Thohell</font></li>
+  <li><font face="Verdana" size="2">Bootyjuice</font></li>
+  <li><font face="Verdana" size="2">Herzog_Zwei</font></li>
+  <li><font face="Verdana" size="2">D'Flame</font></li>
+  <li><font face="Verdana" size="2">Dan_Goon</font></li>
+  <li><font face="Verdana" size="2">Sting</font></li>
+</ul>
+<p><font face="Verdana" size="2"><u><b><i>Various other wonderful functions</i></b></u></font></p>
+<ul>
+  <li><font face="Verdana" size="2">Mousepad</font></li>
+  <li><font face="Verdana" size="2">D2BS</font></li> 
+</ul>
+<p><font face="Verdana" size="2"><b><i><u>Anti-Detection Methods, Compatibilities</u></i></b></font></p>
+<ul>
+  <li><font face="Verdana" size="2">Sting</font></li>
+</ul>
+<p><font face="Verdana" size="2"><u><i><b>Path Finding Algorithm (Partial)</b></i></u></font></p>
+<ul>
+  <li><font face="Verdana" size="2">Niren7</font></li>
+</ul>
+<p><font face="Verdana" size="2"><u><b><i>Documentation, Code Supporting, 
+Testing</i></b></u></font></p>
+<ul>
+  <li><font face="Verdana" size="2">Ustc_tweeg</font></li>
+</ul>
+<p><font face="Verdana" size="2">More are to be added...</font></p>
+<p><font face="Verdana" size="2">In case of code reusing, I'm only able to give   
+explicit credits to those whose code are directly reused in this project. For   
+example, if I used A's code, A used B's code, and B, in turn, used C's code, I   
+can only give credits to A since I may not know for sure who B and C are.</font></p>  
+<p><font face="Verdana" size="2">I'll try to get more people who  
+deserve rightful credits up on the list, this list is NOT ended and is absolutely not final...</font></p> 
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="Author"></a>About the Author</b></font></p>               
+<table border="0" cellpadding="2" width="100%">
+  <tr>
+    <td width="17%"><font face="Verdana" size="2">Author of v2.00</font>
+    </td>
+    <td width="83%"><font face="Verdana" size="2">
+Abin</font>
+    </td>
+  </tr>
+  <tr>
+    <td width="17%"><font face="Verdana" size="2">Email</font>
+    </td>
+    <td width="83%"><font face="Verdana" size="2"><a href="mailto:abinn32@yahoo.com">abinn32@yahoo.com</a></font>
+    </td>
+  </tr>
+  <tr>
+    <td width="17%"><font face="Verdana" size="2">Homepage</font>
+    </td>
+    <td width="83%"><font face="Verdana" size="2"><a href="http://www.wxjindu.com/abin/d2hackit/">http://www.wxjindu.com/abin/d2hackit/</a></font>
+    </td>
+  </tr>
+</table>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="Agreement"></a>License Agreement</b></font></p>               
+<ol>
+  <li><font face="Verdana" size="2">Developing or using any third-party applications on the Battle.net closed
+    realms are considered hacking and may therefore receive punishments from
+    Blizzard Entertainment, including, but not limited to, character deletion,
+    account closing, or CD-key removal. The author holds no responsibility to
+    any damage of data caused by use of this library. USE IT AT YOUR OWN RISK.</font></li>
+  <li><font face="Verdana" size="2">This library and its source code may be used 
+    in any way you desire.</font></li> 
+  <li><font face="Verdana" size="2">This library is provided &quot;as is&quot; with no expressed or implied
+    warranty.</font></li>
+</ol>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="Reference"></a>API Reference</b></font></p>              
+<ul>
+  <li><font face="Verdana" size="2"><a href="server.htm">The &quot;server&quot;
+    API set</a>.</font></li>
+  <li><font face="Verdana" size="2"><a href="me.htm">The &quot;me&quot; API set</a>.</font></li>
+  <li><font face="Verdana" size="2"><a href="screen.htm">The &quot;screen&quot;
+    API set</a>.</font></li>
+</ul>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="Message"></a>D2 Message System</b></font></p>              
+<ul>
+  <li><font face="Verdana" size="2"><a href="Message.htm" target="_self">Overview</a></font>
+  <li><font face="Verdana" size="2"><a href="Message.htm#uh" target="_self">Unit 
+    Message Handler</a></font>
+  <li><font face="Verdana" size="2"><a href="Message.htm#ph" target="_self">This-Player 
+    Message Handler</a></font>
+  <li><font face="Verdana" size="2"><a href="Message.htm#um" target="_self">Unit 
+    Messages</a></font>
+  <li><font face="Verdana" size="2"><a href="Message.htm#pm" target="_self">This-Player 
+    Messages</a></font></li>
+</ul>
+<hr noshade size="1">
+<p>&nbsp;</p>

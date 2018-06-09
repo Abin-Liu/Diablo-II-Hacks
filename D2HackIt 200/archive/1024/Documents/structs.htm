@@ -1,0 +1,77 @@
+
+<p align="center"><font face="Arial Black">Game Structs</font></p>
+
+<pre>
+<a name="MAPPOS"></a>////////////////////////////////////////////////////////////////////
+// D2 Game Map Position
+////////////////////////////////////////////////////////////////////
+typedef struct tagMapPos
+{
+	WORD x;				// x
+	WORD y;				// y
+} MAPPOS, *LPMAPPOS;
+typedef const tagMapPos* LPCMAPPOS;
+
+
+////////////////////////////////////////////////////////////////////
+// CGameDC
+//------------------------------------------------------------------
+// Will be passed to &quot;OnDraw&quot; functions in client modules. Use members
+// of this struct to draw customized stuff on the game screen.
+////////////////////////////////////////////////////////////////////
+struct CGameDC // make the name more win32 GDI'ish :)
+{
+	fnD2TextOut TextOut;	// Draw simple text
+	fnD2DrawText DrawText;	// Draw aligned text
+	fnD2MoveTo MoveTo;		// Change DC start position
+	fnD2LineTo LineTo;		// Draw line
+	fnD2Rectangle Rectangle;	// Draw solid rectangle
+	fnD2Frame Frame;		// Draw empty frame
+	POINT ptPosition;		// DC start position
+};
+
+
+<a name="fnEnumItemProc"></a>//////////////////////////////////////////////////////////////////////
+// Item Enumeration Callback Function def
+//////////////////////////////////////////////////////////////////////
+typedef BOOL (CALLBACK *fnEnumItemProc)(DWORD dwItemID, LPARAM lParam); 
+
+
+
+<a name="GAMEUNIT"></a>typedef struct tagGameUnit
+{
+	DWORD dwUnitID;					// Unit ID
+	DWORD dwUnitType;				// Unit type(player, monster, object, etc)
+} GAMEUNIT, *LPGAMEUNIT;
+typedef const tagGameUnit* LPCGAMEUNIT;
+
+<a name="fnEnumUnitProc"></a>// Unit enumeration callback definition
+typedef BOOL (CALLBACK *fnEnumUnitProc)(LPCGAMEUNIT lpUnit, LPARAM lParam);</pre>
+
+<pre>//////////////////////////////////////////////////////////////////////
+// PresetUnit(Caves, Stairs, Dens, Towers, Entrances, Izual, Hephasto, Countess Chest, etc...)
+//////////////////////////////////////////////////////////////////////
+<a name="presetunit"></a>typedef struct tagPresetUnit
+{
+	DWORD dwID;		// Preset unit ID (txt no). 
+	DWORD dwType;		// Preset unit type, monster, object, room tile, etc
+	WORD x;			// Map position x
+	WORD y;			// Map position y
+} PRESETUNIT, *LPPRESETUNIT;
+typedef const tagPresetUnit* LPCPRESETUNIT;
+
+// PresetUnit enumeration callback definition
+typedef BOOL (CALLBACK *fnEnumPresetUnitProc)(LPCPRESETUNIT lpPresetUnit, LPARAM lParam);
+
+
+/////////////////////////////////////////////////////////////////////
+// Path (path from one position to an other)
+/////////////////////////////////////////////////////////////////////
+<a name="path"></a>typedef struct tagPath
+{
+	MAPPOS posStart;				// Start position
+	MAPPOS posEnd;				// Destination position
+	MAPPOS aPathNodes[255];			// Path nodes between posStart and posEnd
+	BYTE iNodeCount;				// Number of path nodes (0-255)
+} PATH, *LPPATH;
+typedef const tagPath* LPCPATH;</pre>

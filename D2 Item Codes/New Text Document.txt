@@ -1,0 +1,135 @@
+//misc
+
+// potions
+
+//gems
+
+//runes
+
+// rings
+
+// amulets
+
+// circulets
+
+//helms
+
+//armor
+
+//shields
+
+//gloves
+
+//boots
+
+//belts
+
+// barbarian helms
+
+// druid pelts
+
+// paladin shields
+
+// necromancer shrunk heads
+
+// axes
+	{ "2ax", "Double Axe" },
+	{ "72a", "Ettin Axe" },
+	{ "7ax", "Small Crescent" },
+	{ "7ba", "Silver edged Axe" },
+	{ "7bt", "Decapitator" },
+	{ "7ga", "Champion Axe" },
+	{ "7gi", "Glorious Axe" },
+	{ "7wa", "Berserker Axe" },
+// bows
+	{ "6cb", "Great Bow" },
+	{ "6hb", "Blade Bow" },
+	{ "6l7", "Crusader Bow" },
+	{ "6lb", "Shadow Bow" },
+	{ "6lw", "Hydra Bow" },
+	{ "6s7", "Diamond Bow" },
+	{ "6sb", "Spider Bow" },
+	{ "6sw", "Ward Bow" },
+
+// crossbows
+	{ "6hx", "Colossus Crossbow" },
+	{ "6mx", "Gorgon Crossbow" },
+	{ "6rx", "Demon Crossbow" },
+//daggers
+	{ "7bl", "Legend Spike" },
+	{ "7dg", "Bone Knife" },
+	{ "7di", "Mithril Point" },
+
+//javelins
+	{ "7pi", "Stygian Pilum" },
+	{ "7s7", "Balrog Spear" },
+	{ "7ts", "Winged Harpoon" },
+
+//maces
+	{ "7cl", "Truncheon" },
+	{ "7fl", "Scourge" },
+	{ "7gm", "Thunder Maul" },
+	{ "7m7", "Ogre Maul" },
+	{ "7ma", "Reinforced Mace" },
+	{ "7mt", "Devil Star" },
+	{ "7sp", "Tyrant Club" },
+	{ "7wh", "Legendary Mallet" },
+
+//polearms
+	{ "7h7", "Great Poleaxe" },
+	{ "7o7", "Ogre Axe" },
+	{ "7pa", "Cryptic Axe" },
+	{ "7s8", "Thresher" },
+	{ "7vo", "Colossus Voulge" },
+	{ "7wc", "Giant Thresher" },
+
+//scepters
+	{ "7sc", "Mighty Scepter" },
+
+//spears
+	{ "7p7", "War Pike" },
+	{ "7sr", "Hyperion Spear" },
+
+//staves
+	{ "6cs", "Elder Staff" },
+	{ "6ss", "Walking Stick" },
+	{ "6ws", "Archon Staff" },
+//swords
+	{ "2hs", "Two Handed Sword" },
+	{ "72h", "Legend Sword" },
+	{ "7b7", "Champion Sword" },
+	{ "7bs", "Conquest Sword" },
+	{ "7cm", "Highland Blade" },
+	{ "7cr", "Phase Blade" },
+	{ "7fb", "Colossus Sword" },
+	{ "7fc", "Hydra Edge" },
+	{ "7gd", "Colossus Blade" },
+	{ "7gs", "Balrog Blade" },
+	{ "7sb", "Elegant Blade" },
+	{ "7sm", "Ataghan" },
+	{ "7wd", "Mythical Sword" },
+
+//throwing
+	{ "7b8", "Winged Axe" },
+	{ "7bk", "Winged Knife" },
+	{ "7gl", "Ghost Glaive" },
+	{ "7ta", "Flying Axe" },
+	{ "7tk", "Flying Knife" },
+
+//wands
+	{ "7bw", "Lich Wand" },
+	{ "7gw", "Unearthed Wand" },
+	{ "7wn", "Polished Wand" },
+
+//amazon weapons
+	{ "6lx", "Pellet Bow" },
+
+//assassin katars
+	{ "7ar", "Suwayyah" },
+	{ "7cs", "Battle Cestus" },
+	{ "7qr", "Scissors Suwayyah" },
+	{ "7tw", "Runic Talons" },
+	{ "7wb", "Wrist Sword" },
+
+//sorceress orbs
+	{ "7qs", "Seraph Rod" },

@@ -1,0 +1,131 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: D2Lib - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\abin\LOCALS~1\Temp\RSP687.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /FR"Release/" /Fp"Release/D2Lib.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\Definition\AffectionDef.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\D2Abstract.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\D2Merc.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\D2Monster.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\D2Object.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\D2Player.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\Utils\D2PlayerStats.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\D2StaticObject.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\Utils\D2Stdio.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\Utils\D2TextDraw.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\D2Unit.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\Utils\Ini.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\Utils\item.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\Utils\KeyBind.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\Definition\KeyDef.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\Definition\MapDef.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\Utils\MsgSender.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\Definition\PlayerDef.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\Utils\properties.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\Utils\SharedMem.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\Definition\SpellDef.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\Utils\StringParse.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\Utils\Ticker.cpp"
+"D:\Projects\Diablo II\Archive\D2Lib\Classes\Definition\WaypointDef.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\abin\LOCALS~1\Temp\RSP687.tmp" 
+Creating temporary file "C:\DOCUME~1\abin\LOCALS~1\Temp\RSP688.tmp" with contents
+[
+/nologo /out:"D2Lib.lib" 
+".\Release\AffectionDef.obj"
+".\Release\D2Abstract.obj"
+".\Release\D2Merc.obj"
+".\Release\D2Monster.obj"
+".\Release\D2Object.obj"
+".\Release\D2Player.obj"
+".\Release\D2PlayerStats.obj"
+".\Release\D2StaticObject.obj"
+".\Release\D2Stdio.obj"
+".\Release\D2TextDraw.obj"
+".\Release\D2Unit.obj"
+".\Release\Ini.obj"
+".\Release\item.obj"
+".\Release\KeyBind.obj"
+".\Release\KeyDef.obj"
+".\Release\MapDef.obj"
+".\Release\MsgSender.obj"
+".\Release\PlayerDef.obj"
+".\Release\properties.obj"
+".\Release\SharedMem.obj"
+".\Release\SpellDef.obj"
+".\Release\StringParse.obj"
+".\Release\Ticker.obj"
+".\Release\WaypointDef.obj"
+]
+Creating command line "link.exe -lib @C:\DOCUME~1\abin\LOCALS~1\Temp\RSP688.tmp"
+<h3>Output Window</h3>
+Compiling...
+AffectionDef.cpp
+D2Abstract.cpp
+D2Merc.cpp
+D2Monster.cpp
+D2Object.cpp
+D2Player.cpp
+D2PlayerStats.cpp
+D2StaticObject.cpp
+D2Stdio.cpp
+D2TextDraw.cpp
+D2Unit.cpp
+Ini.cpp
+item.cpp
+KeyBind.cpp
+KeyDef.cpp
+MapDef.cpp
+MsgSender.cpp
+PlayerDef.cpp
+properties.cpp
+SharedMem.cpp
+SpellDef.cpp
+StringParse.cpp
+Ticker.cpp
+WaypointDef.cpp
+Creating library...
+Creating temporary file "C:\DOCUME~1\abin\LOCALS~1\Temp\RSP689.tmp" with contents
+[
+/nologo /o"Release/D2Lib.bsc" 
+".\Release\AffectionDef.sbr"
+".\Release\D2Abstract.sbr"
+".\Release\D2Merc.sbr"
+".\Release\D2Monster.sbr"
+".\Release\D2Object.sbr"
+".\Release\D2Player.sbr"
+".\Release\D2PlayerStats.sbr"
+".\Release\D2StaticObject.sbr"
+".\Release\D2Stdio.sbr"
+".\Release\D2TextDraw.sbr"
+".\Release\D2Unit.sbr"
+".\Release\Ini.sbr"
+".\Release\item.sbr"
+".\Release\KeyBind.sbr"
+".\Release\KeyDef.sbr"
+".\Release\MapDef.sbr"
+".\Release\MsgSender.sbr"
+".\Release\PlayerDef.sbr"
+".\Release\properties.sbr"
+".\Release\SharedMem.sbr"
+".\Release\SpellDef.sbr"
+".\Release\StringParse.sbr"
+".\Release\Ticker.sbr"
+".\Release\WaypointDef.sbr"]
+Creating command line "bscmake.exe @C:\DOCUME~1\abin\LOCALS~1\Temp\RSP689.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+D2Lib.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

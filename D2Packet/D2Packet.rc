@@ -1,0 +1,483 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\D2Packet.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\D2Packet.ico"
+IDR_D2PACKTYPE          ICON    DISCARDABLE     "res\\D2PacketDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_PAUSE
+    BUTTON      ID_RESUME
+    SEPARATOR
+    BUTTON      ID_CLEAR
+    SEPARATOR
+    BUTTON      ID_POPUP_CLIPBOARD
+    SEPARATOR
+    BUTTON      ID_POPUP_BLOCK
+    BUTTON      ID_FILTER
+    SEPARATOR
+    BUTTON      ID_SEARCH
+    SEPARATOR
+    BUTTON      ID_PLAYERINFO
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "Recent Files",                ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About D2Packet...",          ID_APP_ABOUT
+    END
+END
+
+IDR_POPUP MENU DISCARDABLE 
+BEGIN
+    POPUP "-dropdown-"
+    BEGIN
+        POPUP "Received Packets"
+        BEGIN
+            MENUITEM "Allow All",                   ID_RCV_ALLOWALL
+            MENUITEM "Block All",                   ID_RCV_BLOCKALL
+            MENUITEM SEPARATOR
+            MENUITEM "Custom...",                   ID_RCV_CUSTOM
+        END
+        POPUP "Sent Packets"
+        BEGIN
+            MENUITEM "Allow All",                   ID_SNT_ALLOWALL
+            MENUITEM "Block All",                   ID_SNT_BLOCKALL
+            MENUITEM SEPARATOR
+            MENUITEM "Custom...",                   ID_SNT_CUSTOM
+        END
+    END
+    POPUP "-popup-"
+    BEGIN
+        MENUITEM "Block",                       ID_POPUP_BLOCK
+        MENUITEM "Copy to Clipboard",           ID_POPUP_CLIPBOARD
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "B",            ID_POPUP_BLOCK,         VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_POPUP_CLIPBOARD,     VIRTKEY, CONTROL, NOINVERT
+    "D",            ID_DEBUG,               VIRTKEY, CONTROL, NOINVERT
+    "E",            ID_CLEAR,               VIRTKEY, CONTROL, NOINVERT
+    "F",            ID_FILTER,              VIRTKEY, CONTROL, NOINVERT
+    "I",            ID_PLAYERINFO,          VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_PAUSE,               VIRTKEY, CONTROL, NOINVERT
+    "R",            ID_RESUME,              VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    VK_F5,          ID_SEARCH,              VIRTKEY, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 D2Packet"
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,13,20,20
+    LTEXT           "D2Packet 1.0 版",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "版权所有 (C) 2004, Abin",IDC_STATIC,40,25,107,8
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,14,WS_GROUP
+    LTEXT           "abinn32@yahoo.com",IDC_STATIC,40,40,102,8
+END
+
+IDD_D2PACKET_FORM DIALOG DISCARDABLE  0, 0, 417, 285
+STYLE WS_CHILD
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | WS_TABSTOP,0,0,
+                    417,285
+END
+
+IDD_FILTERDLG DIALOGEX 0, 0, 217, 147
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Packet Filter"
+FONT 9, "宋体"
+BEGIN
+    LTEXT           "Allowed",IDC_STATIC,7,7,42,8
+    CONTROL         "List1",IDC_LISTALLOWED,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_SORTASCENDING | 
+                    LVS_NOCOLUMNHEADER | WS_TABSTOP,7,19,62,121,
+                    WS_EX_STATICEDGE
+    LTEXT           "Blocked",IDC_STATIC,100,7,42,8
+    CONTROL         "List1",IDC_LISTBLOCKED,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_SORTASCENDING | 
+                    LVS_NOCOLUMNHEADER | WS_TABSTOP,100,19,62,121,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      ">",IDC_BLOCK,75,45,20,14,WS_DISABLED
+    PUSHBUTTON      "<",IDC_ALLOW,75,59,20,14,WS_DISABLED
+    PUSHBUTTON      ">>>",IDC_BLOCKALL,75,76,20,14
+    PUSHBUTTON      "<<<",IDC_ALLOWALL,75,90,20,14
+    PUSHBUTTON      "OK",IDOK,167,107,43,14
+    PUSHBUTTON      "Cancel",IDCANCEL,167,126,43,14
+END
+
+IDD_PACKETIDDLG DIALOGEX 0, 0, 187, 41
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Packet ID"
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    LTEXT           "Please enter packet ID:",IDC_STATIC,7,7,102,8
+    EDITTEXT        IDC_EDIT1,7,20,110,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,130,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,130,21,50,14
+END
+
+IDD_CONTAINDLG DIALOG DISCARDABLE  0, 0, 187, 95
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Content Search"
+FONT 9, "宋体"
+BEGIN
+    LTEXT           "Packet must contain the following bytes:",IDC_STATIC,7,
+                    7,173,8
+    EDITTEXT        IDC_EDIT1,7,21,173,14,ES_AUTOHSCROLL
+    LTEXT           "(Every two bytes must be separated with a single spaces).",
+                    IDC_STATIC,7,41,173,25
+    DEFPUSHBUTTON   "OK",IDOK,44,74,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,94,74,50,14
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "Abin\0"
+            VALUE "FileDescription", "D2Packet Microsoft 基础类应用程序\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "D2Packet\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2004, Abin\0"
+            VALUE "LegalTrademarks", "Abin\0"
+            VALUE "OriginalFilename", "D2Packet.EXE\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "D2Packet 应用程序\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_D2PACKET_FORM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 410
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 278
+    END
+
+    IDD_FILTERDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 210
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 140
+    END
+
+    IDD_PACKETIDDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 34
+    END
+
+    IDD_CONTAINDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "D2Packet\n\nD2Pack\nD2Pack Filters (*.flt)\n.flt\nD2Packet.Document\nD2Pack Filter"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "D2Packet"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "Ext"
+    ID_INDICATOR_CAPS       "Caps"
+    ID_INDICATOR_NUM        "Num"
+    ID_INDICATOR_SCRL       "Scroll"
+    ID_INDICATOR_OVR        "Overwrite"
+    ID_INDICATOR_REC        "Record"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_OPEN            "Load a filter\nOpen Filter (Ctrl+O)"
+    ID_FILE_SAVE            "Save current filter\nSave Filter (Ctrl+S)"
+    ID_FILE_SAVE_AS         "Save current filter as another file\nSave As"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "About D2Packet\nAbout"
+    ID_APP_EXIT             "Exit D2Packet\nExit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Load this filter"
+    ID_FILE_MRU_FILE2       "Load this filter"
+    ID_FILE_MRU_FILE3       "Load this filter"
+    ID_FILE_MRU_FILE4       "Load this filter"
+    ID_FILE_MRU_FILE5       "Load this filter"
+    ID_FILE_MRU_FILE6       "Load this filter"
+    ID_FILE_MRU_FILE7       "Load this filter"
+    ID_FILE_MRU_FILE8       "Load this filter"
+    ID_FILE_MRU_FILE9       "Load this filter"
+    ID_FILE_MRU_FILE10      "Load this filter"
+    ID_FILE_MRU_FILE11      "Load this filter"
+    ID_FILE_MRU_FILE12      "Load this filter"
+    ID_FILE_MRU_FILE13      "Load this filter"
+    ID_FILE_MRU_FILE14      "Load this filter"
+    ID_FILE_MRU_FILE15      "Load this filter"
+    ID_FILE_MRU_FILE16      "Load this filter"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Display/Hide toolbar\nToolbar"
+    ID_VIEW_STATUS_BAR      "Display/Hide status bar\nStatus bar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change window size"
+    AFX_IDS_SCMOVE          "Change window position"
+    AFX_IDS_SCMINIMIZE      "Minimize window"
+    AFX_IDS_SCMAXIMIZE      "Maximize window"
+    AFX_IDS_SCNEXTWINDOW    "Switch to next window"
+    AFX_IDS_SCPREVWINDOW    "Switch to previous window"
+    AFX_IDS_SCCLOSE         "Close active window, prompt to save filter"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate task list"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_PAUSE                "Temporarily ignore any packets\nPause (Ctrl+P)"
+    ID_RESUME               "Continue to process packets\nResume (Ctrl+R)"
+    ID_CLEAR                "Clear all packets from the list\nClear List (Ctrl+E)"
+    ID_FILTER               "Configure packet filter\nFilter (Ctrl+F)"
+    ID_DEBUG                "Debug\nDebug"
+    ID_PLAYERINFO           "Display current player information\nPlayer Info (Ctrl+I)"
+    ID_SEARCH               "Search for a particular byte string\nSearch (F5)"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_POPUP_CLIPBOARD      "Copy selected packet to the clipboard\nCopy (Ctrl+C)"
+    ID_POPUP_BLOCK          "Block selected packets and remove them from the list\nBlock (Ctrl+B)"
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\D2Packet.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

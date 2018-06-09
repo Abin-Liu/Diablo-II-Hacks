@@ -1,0 +1,52 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Pindlebot - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\abin\LOCALS~1\Temp\RSP1C0.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/Pindlebot.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\Diablo II\Pindlebot GUI\BtnST.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\abin\LOCALS~1\Temp\RSP1C0.tmp" 
+Creating temporary file "C:\DOCUME~1\abin\LOCALS~1\Temp\RSP1C1.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:"Release/Pindlebot.pdb" /machine:I386 /out:"Release/Pindlebot.exe" 
+".\Release\ActionDlg.obj"
+".\Release\ActionListDlg.obj"
+".\Release\BtnST.obj"
+".\Release\CharDlg.obj"
+".\Release\CharListDlg.obj"
+".\Release\ComboDlg.obj"
+".\Release\Ini.obj"
+".\Release\MainFrm.obj"
+".\Release\PBotConfig.obj"
+".\Release\PindleBonusDef.obj"
+".\Release\Pindlebot.obj"
+".\Release\PopupMenu.obj"
+".\Release\ReportCtrl.obj"
+".\Release\SettingsDlg.obj"
+".\Release\Singleton.obj"
+".\Release\SpellDef.obj"
+".\Release\StatisticsDlg.obj"
+".\Release\StdAfx.obj"
+".\Release\SystemTray.obj"
+".\Release\WinAppEx.obj"
+".\Release\Pindlebot.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\abin\LOCALS~1\Temp\RSP1C1.tmp"
+<h3>Output Window</h3>
+Compiling...
+BtnST.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+Pindlebot.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

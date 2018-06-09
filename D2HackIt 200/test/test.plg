@@ -1,0 +1,31 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: test - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\abin\LOCALS~1\Temp\RSPE.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "test_EXPORTS" /FR"Release/" /Fp"Release/test.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\Diablo II\D2HackIt 200\test\main.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\abin\LOCALS~1\Temp\RSPE.tmp" 
+Creating command line "link.exe kernel32.lib user32.lib shell32.lib /nologo /dll /incremental:no /pdb:"Release/test.pdb" /machine:I386 /nodefaultlib:"libc.lib" /out:"..\\Release/test.d2h" /implib:"Release/test.lib"  ".\Release\main.obj" "
+<h3>Output Window</h3>
+Compiling...
+main.cpp
+Linking...
+   Creating library Release/test.lib and object Release/test.exp
+Creating command line "bscmake.exe /nologo /o"Release/test.bsc"  ".\Release\main.sbr""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+test.d2h - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

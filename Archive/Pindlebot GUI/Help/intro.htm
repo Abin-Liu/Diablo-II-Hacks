@@ -1,0 +1,147 @@
+
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title></title>
+</head>
+
+<h2><a name="top"></a>Pindlebot SIG版使用说明</h2>                   
+<ul>
+  <li><a href="#intro">软件简介</a></li>
+  <li><a href="#la">作者声明</a></li>
+  <li><a href="#whatsnew">Pindlebot SIG版新特性</a></li>            
+  <li><a href="#files">程序文件</a></li>
+  <li><a href="#install">安装方法</a></li>
+  <li><a href="#usage">使用方法</a></li>
+  <li><a href="#hotkeys">游戏内快捷键</a></li>
+  <li><a href="#settings">参数设置</a></li>
+  <li><a href="#autoskills">几个不需要设定的技能</a></li>
+  <li><a href="#recommendation">推荐使用的角色</a></li>
+</ul>
+<p><b><a name="intro"></a>软件简介</b></p>
+<p>软件名称：Pindlebot SIG版 5.0<br>                                        
+操作系统：Windows 9x/ME/2000<br>             
+运行环境：SIG v3.00或以上版本、Diablo II: Lord of Destruction 1.10<br>                                                  
+硬件要求：须能满足“Diablo II: Lord of Destruction”正常运行.<br>       
+作者：&nbsp;&nbsp;&nbsp; Abin<br>      
+作者主页：http://www.wxjindu.com/abin</p>                                            
+<p>Pindlebot SIG版是Pindlebot 3.47的移植版本，运行于SIG 3.x环境，在速度和稳定性方面比Pindlebot             
+3.47有极大的提高。用户计算机上必须已经安装了SIG 3.x，否则Pindlebot             
+SIG版无法正常运行。</p>
+<p><b><a name="la"></a>作者声明</b></p>
+<ol>
+  <li>Pindlebot SIG版的性质属于封闭战网上的作弊软件，一旦被Blizzard侦测到，用户有可能会受到包括(但不限于)删除账号、封闭CD-Key在内的各种处罚。本人对用户因使用Pindlebot             
+    SIG版及其附属模块所造成的一切后果不承担任何责任。</li>
+  <li>Pindlebot SIG版属于自由软件，允许被任意使用、复制、转赠，但不得用以出售、出租、或任何以牟利为目的的商业行为。</li>            
+  <li>未经作者同意，不得擅自对Pindlebot SIG版程序可执行文件或动态连接库进行修改或反编译。</li>            
+  <li>作者拥有Pindlebot SIG版程序模块组及说明文档的版权，并保留一切权力。</li>            
+</ol>
+<p>如果您不同意以上声明，请立即停止下载、安装或使用Pindlebot             
+SIG版。</p>
+<p><b><a name="whatsnew"></a>Pindlebot SIG版新特性</b></p>            
+<p>虽然Pindlebot SIG版是Pindlebot 3.47的移植版本，但作者在移植过程中也对它作了一些修改，主要包括以下几方面：</p>            
+<ol>
+  <li>删除了“Pickit.d2h”模块，Pindlebot SIG版内置了物品监测和拾取函数，不再使用“Pickit”来完成这些功能，这样做的好处是在杀死Pindleskin后可以实时监测到怪物是否掉了有价值的物品，如果没有发现任何有价值的物品，程序将立即退出游戏而不必再无谓地等待好几秒。</li>            
+  <li>删除了“Bind.d2h”，Pindlebot SIG版内置了快捷键拦截函数来捕获F9、F10、F11、F12按键，这样可以避免这些热键被其它程序所篡改。</li>           
+  <li>用户可以为每一个角色指定是否使用“消耗性武器(Arrow/Bolt/Throwing)”。</li>
+  <li>针对目前BN根据用户在单位时间内创建/加入游戏的数量来ban   
+    CDKey的做法，增加了“进入游戏后先消磨xxx秒”的选项，一般情况下安全值为300秒以上，您也可以根据实际情况自行调整。</li>
+  <li>允许使用Shopbot来消磨时间。</li>
+</ol>
+<p><b><a name="files"></a>程序文件</b></p>
+<p>Pindlebot SIG版包括以下文件：</p>            
+<ul>
+  <li>Pindlebot.d2h ----             
+    游戏内主控模块，负责角色动作、安全保障、物品拾取、快捷键拦截等功能。</li>
+  <li>Pindlebot.exe ----             
+    图形化设置界面，提供简洁明了、人性化的设置界面和统计界面。</li>
+  <li>idbot.d2h ---- IDBot 0.8, 牛人 <b>niren7 </b>的作品，用以鉴定、丢弃和移动物品。</li>          
+  <li>IDBot.ini ---- Idbot需要的文件，可自行修改。</li>           
+  <li>Identify.ini ---- Idbot需要的文件，可自行修改。</li>           
+  <li>TextPatch.ini - IDBot需要的文件。</li>          
+  <li>Pickit.ini ---- 物品拾取设置文件，可自行修改。</li>           
+  <li>Pindlebot.chm ---- 本帮助文件。</li>           
+  <li>Shopbot.d2h ---- Shopbot 1.10。</li>          
+  <li>Shopbot.ini ---- Shopbot配置文件。</li>          
+  <li>Shopbotcfg.exe ---- Shopbot设置工具。</li>          
+  <li>Shopbot.chm ---- Shopbot帮助文件。</li>          
+</ul>
+<p><b><a name="install"></a>安装方法</b></p>
+<p>一，将Pindlebot SIG版的所有文件复制到SIG安装目录中的“Hacks”文件夹里，如果存在同名文件，请先将原来存在的文件改名。</p>           
+<p>二，到SIG的“Hacks”页面选中“IDBot”、“Pindlebot”、和“Shopbot”。注意，如果你是在私服玩，或者不想用Shopbot，那就不要选“Shopbot”。</p>     
+<p><img border="0" src="sig.gif" width="371" height="478"></p>     
+<p>三，到SIG的D2JSP页面禁止D2JSP。如果D2JSP被加载，Pindlebot将不会被运行。</p>     
+<p><img border="0" src="d2jsp.gif" width="371" height="478"></p>     
+<p><b><a name="usage"></a>使用方法</b></p>
+<p>运行Pindlebot.exe进行必要的设置，然后运行SIG即可。Pindlebot.exe将驻留在系统托盘区，用户可随时以鼠标右键激活其功能菜单。Pindlebot.exe的功能菜单包含：</p>
+<ul>
+  <li>物品纪录 ---- 查看怪物都掉了哪些物品。</li>            
+  <li>运行统计 ---- 对Pindlebot SIG版的运行数据进行计算和统计。</li>            
+  <li>设置 ---- 激活Pindlebot SIG版设置界面。</li>            
+  <li>使用帮助 ---- 打开本帮助文件。</li>           
+  <li>关于 ---- 软件信息界面。</li>            
+  <li>退出 ---- 关闭Pindlebot.exe。不影响Pindlebot SIG版的运行，只是将Pindlebot             
+    SIG版图标从系统托盘区删除。</li>
+</ul>
+<p>Pindlebot SIG版驻留于系统托盘区是为了方便用户随时查看物品纪录和运行统计，驻留程序对系统资源的占用微乎其微，在运行过程中您可以随时将它关闭，Pindlebot的运行并不会受到影响。<br>       
+</p>    
+<p><b><a name="hotkeys"></a>游戏内快捷键</b></p>
+<p>Pindlebot SIG版提供了游戏内快捷键以方便用户在游戏内部对程序的运行进行常用操作：</p>        
+<ul>
+  <li>F9 ---- 查看运行统计。</li>        
+  <li>F10 ---- 结束Pindlebot SIG版的运行。该操作在同一游戏中不可逆。</li>       
+  <li>F11 ---- 暂停Pindlebot SIG版的运行。</li>      
+  <li>F12 ---- 继续Pindlebot SIG版的运行。</li>      
+</ul>
+<p>注意：所有的游戏内快捷键都只有在角色进入游戏后才起作用。</p>
+<p><b><a name="settings"></a>参数设置</b></p>
+<p>一，添加角色</p>
+<p>Pindlebot实行一角色一方案制，您必须为每一个想要用来挂bot的角色设置一套方案。</p>
+<p><img border="0" src="charlist.gif" width="380" height="423"></p>
+<p>进入游戏后消磨时是为了防止每个游戏时间过短而被ban 
+cdkey，如果希望在此过程中使用Shopbot，请选中“利用Shopbot来消磨时间”。注意，如果你是在私服玩，请不要使用Shopbot。</p>
+<p>二，设置安全参数</p>
+<p><img border="0" src="safety.gif" width="651" height="435"></p>
+<p>注意：所有的生命、魔法、装备完好度的数值都是百分比而非绝对值，允许值在0-100之间。</p>
+<p>三，设定Pindleskin属性组合</p>
+<p>老P拥有某些属性组合时可以将角色或Pet一击必杀，您设定的生命线就无法起作用。为了避免这种情况发生，您可以设定当老P拥有某些属性组合时放弃猎杀而重建新游戏。</p>
+<p><img border="0" src="combo.gif" width="389" height="390"></p>
+<p>每个属性组合为2种属性，请按住“Ctrl”键在列表中点击2个属性，然后按确定。</p>
+<p>四，设置技能方案</p>
+<p>根据角色职业的不同，可用的技能也不相同。机能方案共分四类：</p>
+<ol>
+  <li><img border="0" src="energyshield.jpg" width="48" height="48"> 
+    角色在进入红色传送门之前使用的技能。一般为允许在城内使用的保护性技能，如能量盾、圣盾、骨盾、冰甲、火傀儡、瓦尔基里、影子大师等等。</li>
+  <li><img border="0" src="battleorders.jpg" width="48" height="48"> 
+    角色在进入红色传送门之后、向Pindleskin移动之前使用的技能。一般为不允许在城内使用的保护性技能，最典型的是野蛮人的各种嚎叫，为即将到来的拼杀作准备。</li>       
+  <li><img border="0" src="zeal.jpg" width="48" height="48"> 角色在遭遇Pindleskin之后使用的技能，一般是用来杀死怪物的攻击性技能。</li>       
+  <li><img border="0" src="raiseskeleton.jpg" width="48" height="48"> 
+    战斗过程中当地上出现尸体时使用的技能，仅限于亡灵巫师和野蛮人。如尸爆（强烈推荐！杀得那个快呀），召唤骷髅、复兴、以及野蛮人的几个翻尸技能。</li>
+</ol>
+<p>技能方案的设置包括：</p>
+<p><img border="0" src="spells.gif" width="287" height="243"></p>
+<ol>
+  <li>技能种类。从列表中选择一个技能。</li>
+  <li>左、右键（鸡腿丁必须把鸡腿设在左键，集中光环设在右键，其它角色对该项设定无所谓）。</li>
+  <li>瞄准目标。<b>无需瞄准</b>--如果你选的技能不需瞄准任何目标（如Nova），就选此项；<b>瞄准Pindleskin本身</b>--大部分技能应选此项；<b>角色和Pindleskin之间</b>--适用于召唤傀儡等；<b>Pindleskin身后</b>--野蛮人旋风专用。</li>
+  <li>使用间隔。很多技能都有施放间隔，角色的Faster cast rate也会影响到施放间隔，请设得足够长，否则会出现“跳技能”的现象。</li>       
+  <li>使用次数。这个技能要被施放多少次，次数少了可是K不死老P的喔！</li>
+</ol>
+<p><b><a name="autoskills"></a>几个不需要设定的技能</b></p>
+<p>以下几个时刻角色会自动使用特定的技能（如果他拥有这些技能的话），您无需设置：</p>
+<ol>
+  <li>城中行走阶段，如果是女刺客，她会自动使用Burst of Speed。如果是圣骑士，他会自动打开Vigor光环。</li>     
+  <li>进入红色传送门之后，如果是女巫并且有Pet，她会自动对Pet使用Enchant。</li>
+  <li>老P死翘翘之后，如果是野蛮人，会自动对老P进行翻尸，注意，仅仅自动翻老P一人的尸体，如果你想翻小兵的尸还是需要设定的。</li>
+</ol>
+<p><b><a name="recommendation"></a>推荐使用的角色</b></p>
+<ol>
+  <li>亡灵巫师。进红门前开骨盾，见到老P时往<b>角色和老P之间</b>招一个火傀儡，然后放伤害加强诅咒，主攻用骨矛（记住不是骨精灵啊），地上有尸体时用尸爆，一般2个尸爆以后世界就安静了......既快又安全。</li>
+  <li>女巫。这个就不用我多说了。</li>
+</ol>
+<p>说实话除了上面这两个，其他的角色我用了以后都不爽。</p>
+<p>　</p>
+<p>　</p>

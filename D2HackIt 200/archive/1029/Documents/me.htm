@@ -1,0 +1,1984 @@
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<title>D2Hackit v2.00 - me API set</title>
+</HEAD>
+<p align="center"><font face="Arial Black" size="4">The &quot;me&quot; API Set</font></p>
+<p><font face="Verdana" size="2">This API set encapsulates player attributes and game
+operations.</font></p>
+<p><b><font face="Verdana" size="2">Character General Attributes &amp;
+Operations</font></b></p>
+<ul>
+  <li><a href="#GetAccountName"><font face="Verdana" size="2">me-&gt;GetAccountName</font></a></li>
+  <li><a href="#IsHardcore"><font face="Verdana" size="2">me-&gt;IsHardcore</font></a></li>
+  <li><a href="#GetAlwaysRun"><font face="Verdana" size="2">me-&gt;GetAlwaysRun</font></a></li>
+  <li><a href="#GetMaxDifficulty"><font face="Verdana" size="2">me-&gt;GetMaxDifficulty</font></a></li>
+  <li><a href="#GetID"><font face="Verdana" size="2">me-&gt;GetID</font></a></li>
+  <li><a href="#GetName"><font face="Verdana" size="2">me-&gt;GetName</font></a></li>
+  <li><a href="#GetMode"><font face="Verdana" size="2">me-&gt;GetMode</font></a></li>
+  <li><a href="#GetHPPercent"><font face="Verdana" size="2">me-&gt;GetHPPercent</font></a></li>
+  <li><a href="#GetManaPercent"><font face="Verdana" size="2">me-&gt;GetManaPercent</font></a></li>
+  <li><a href="#GetStat"><font face="Verdana" size="2">me-&gt;GetStat</font></a></li>
+  <li><a href="#GetAffection"><font face="Verdana" size="2">me-&gt;GetAffection</font></a></li>
+  <li><a href="#Say"><font face="Verdana" size="2">me-&gt;Say</font></a></li>
+  <li><a href="#OverHead"><font face="Verdana" size="2">me-&gt;OverHead</font></a></li>
+  <li><a href="#SendSound"><font face="Verdana" size="2">me-&gt;SendSound</font></a></li>
+  <li><a href="#AntiIdle"><font face="Verdana" size="2">me-&gt;AntiIdle</font></a></li>
+  <li><a href="#LeaveGame"><font face="Verdana" size="2">me-&gt;LeaveGame</font></a></li>
+  <li><a href="#BackToTown"><font face="Verdana" size="2">me-&gt;BackToTown</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#IsWaypointAvailable">me->IsWaypointAvailable</a></font></li>
+  <li><a href="#EnterWP"><font face="Verdana" size="2">me-&gt;EnterWaypoint</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#IsWeaponSwitched">me->IsWeaponSwitched</a></font></li>
+  <li><a href="#WeaponSwitch"><font face="Verdana" size="2">me-&gt;WeaponSwitch</font></a></li>
+</ul>
+<p><font face="Verdana" size="2"><b>Belt &amp; Item Functions</b></font></p>
+<ul>
+  <li><a href="#GetCursorItem"><font face="Verdana" size="2">me-&gt;GetCursorItem</font></a></li>
+  <li><a href="#GetBeltRows"><font face="Verdana" size="2">me-&gt;GetBeltRows</font></a></li>
+  <li><a href="#GetBeltItem"><font face="Verdana" size="2">me-&gt;GetBeltItem</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#GetAvailableBeltSlots">me->GetAvailableBeltSlots</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#PutInventoryPotionToBelt">me-&gt;PutInventoryPotionToBelt</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetEquipItem">me-&gt;GetEquipItem</a></font></li>
+  <li><a href="#GetStorageItem"><font face="Verdana" size="2">me-&gt;GetStorageItem</font></a></li>
+  <li><a href="#DropCursorItemToGround"><font face="Verdana" size="2">me-&gt;DropCursorItemToGround</font></a></li>
+  <li><a href="#DropCursorItemToStorage"><font face="Verdana" size="2">me-&gt;DropCursorItemToStorage</font></a></li>
+  <li><a href="#EnumStorageItems"><font face="Verdana" size="2">me-&gt;EnumStorageItems</font></a></li>
+  <li><a href="#PickStorageItemToCursor"><font size="2" face="Verdana">me-&gt;PickStorageItemToCursor</font></a></li>
+  <li><a href="#FindFirstStorageSpace"><font face="Verdana" size="2">me-&gt;FindFirstStorageSpace</font></a></li>
+  <li><a href="#HealMe"><font face="Verdana" size="2">me-&gt;HealMe</font></a></li>
+  <li><a href="#HealMerc"><font face="Verdana" size="2">me-&gt;HealMerc</font></a></li>
+  <li><a href="#SupplyMana"><font face="Verdana" size="2">me-&gt;SupplyMana</font></a></li>
+  <li><a href="#DrinkBeltPotion"><font face="Verdana" size="2">me-&gt;DrinkBeltPotion</font></a></li>
+  <li><a href="#DrinkInventoryPotion"><font face="Verdana" size="2">me-&gt;DrinkInventoryPotion</font></a></li>
+  <li><a href="#DrinkAllInventoryPotions"><font face="Verdana" size="2">me-&gt;DrinkAllInventoryPotions</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#GetUnidItemCount">me-&gt;GetUnidItemCount</a></font></li>
+  <li><a href="#GetItemDurabilityPercent"><font face="Verdana" size="2">me-&gt;GetItemDurabilityPercent</font></a></li>
+  <li><a href="#DepositGoldToStash"><font face="Verdana" size="2">me-&gt;DepositGoldToStash</font></a></li>
+  <li><a href="#GetStashGoldLimit"><font face="Verdana" size="2">me-&gt;GetStashGoldLimit</font></a></li>
+  <li><a href="#GetInventoryGoldLimit"><font face="Verdana" size="2">me-&gt;GetInventoryGoldLimit</font></a></li>
+  <li><a href="#PickItem"><font face="Verdana" size="2">me-&gt;PickGroundItem</font></a></li>
+  <li><a href="#DropGold"><font face="Verdana" size="2">me-&gt;DropGold</font></a></li>
+</ul>
+<p><font face="Verdana" size="2"><b>Spell Function</b></font></p>
+<ul>
+  <li><a href="#HaveSpell"><font face="Verdana" size="2">me-&gt;HaveSpell</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#GetSpellCharges">me-&gt;GetSpellCharges</a></font></li>
+  <li><a href="#GetSelectedSpell"><font face="Verdana" size="2">me-&gt;GetSelectedSpell</font></a></li>
+  <li><a href="#SelectSpell"><font face="Verdana" size="2">me-&gt;SelectSpell</font></a></li>
+  <li><a href="#CastNoTarget"><font face="Verdana" size="2">me-&gt;CastNoTarget</font></a></li>
+  <li><a href="#CastOnMap"><font face="Verdana" size="2">me-&gt;CastOnMap</font></a></li>
+  <li><a href="#CastOnUnit"><font face="Verdana" size="2">me-&gt;CastOnUnit</font></a></li>
+</ul>
+<p><font face="Verdana" size="2"><b>Position &amp; Motion Functions</b></font></p>
+<ul>
+  <li><a href="#IsInTown"><font face="Verdana" size="2">me-&gt;IsInTown</font></a></li>
+  <li><a href="#GetPosition"><font face="Verdana" size="2">me-&gt;GetPosition</font></a></li>
+  <li><a href="#GetCurrentMapID"><font face="Verdana" size="2">me-&gt;GetCurrentMapID</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#GetCurrentAct">me-&gt;GetCurrentAct</a></font></li>
+  <li><a href="#GetDistanceFrom"><font face="Verdana" size="2">me-&gt;GetDistanceFrom</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#GetAngleFrom">me-&gt;GetAngleFrom</a></font></li>
+  <li><a href="#MoveTo"><font face="Verdana" size="2">me-&gt;MoveTo</font></a></li>
+  <li><a href="#MoveToUnit"><font face="Verdana" size="2">me-&gt;MoveToUnit</font></a></li>
+  <li><a href="#TeleportTo"><font face="Verdana" size="2">me-&gt;TeleportTo</font></a></li>
+  <li><a href="#PauseJobs"><font face="Verdana" size="2">me-&gt;PauseJobs</font></a></li>
+  <li><a href="#CleanJobs"><font face="Verdana" size="2">me-&gt;CleanJobs</font></a></li>
+</ul>
+<p><b><font face="Verdana" size="2">Npc Session Operations</font></b></p>
+<ul>
+  <li><a href="#StartNpcSession"><font size="2" face="Verdana">me-&gt;StartNpcSession</font></a></li>
+  <li><a href="#EndNpcSession"><font size="2" face="Verdana">me-&gt;EndNpcSession</font></a></li>
+  <li><font size="2" face="Verdana"><a href="#IsNpcSessionStarted">me-&gt;</a></font><a href="#IsNpcSessionStarted"><font face="Verdana" size="2">IsNpcSessionStarted</font></a></li>
+  <li><a href="#ResurrectMerc"><font size="2" face="Verdana">me-&gt;ResurrectMerc</font></a></li>
+  <li><a href="#SellItem"><font size="2" face="Verdana">me->SellItem</font></a></li>
+  <li><font size="2" face="Verdana"><a href="#SellInventoryItems">me-&gt;SellInventoryItems</a></font></li>
+  <li><a href="#RepairItem"><font size="2" face="Verdana">me-&gt;RepairItem</font></a></li>
+  <li><a href="#IdentifyItems"><font size="2" face="Verdana">me-&gt;IdentifyItems</font></a></li>
+  <li><a href="#BuyItem"><font size="2" face="Verdana">me-&gt;BuyItem</font></a></li>
+  <li><a href="#BuyHealingPotion"><font size="2" face="Verdana">me-&gt;BuyHealingPotion</font></a></li>
+  <li><a href="#BuyManaPotion"><font size="2" face="Verdana">me-&gt;BuyManaPotion</font></a></li>
+  <li><a href="#BuyTownScroll"><font size="2" face="Verdana">me-&gt;BuyTownScroll</font></a></li>
+  <li><a href="#BuyIdentifyScroll"><font size="2" face="Verdana">me-&gt;BuyIdentifyScroll</font></a></li>
+  <li><a href="#BuyArrows"><font size="2" face="Verdana">me-&gt;BuyArrows</font></a></li>
+  <li><a href="#BuyBolts"><font size="2" face="Verdana">me-&gt;BuyBolts</font></a></li>
+  <li><font size="2" face="Verdana"><a href="#Gamble">me-&gt;Gamble</a></font></li>
+  <li><font size="2" face="Verdana"><a href="#gamblexxx">me-&gt;GambleAmulets</a></font></li>
+  <li><font size="2" face="Verdana"><a href="#gamblexxx">me-&gt;GambleRings</a></font></li>
+  <li><font size="2" face="Verdana"><a href="#gamblexxx">me-&gt;GambleCirclets</a></font></li>
+  <li><font size="2" face="Verdana"><a href="#gamblexxx">me-&gt;GambleGloves</a></font></li>
+  <li><font size="2" face="Verdana"><a href="#gamblexxx">me-&gt;GambleBoots</a></font></li>
+  <li><font size="2" face="Verdana"><a href="#gamblexxx">me-&gt;GambleBelts</a></font></li>
+</ul>
+<p><font size="2" face="Verdana"><b>Misc Functions</b></font></p>
+<ul>
+  <li><a href="#GetMyMercUnit"><font face="Verdana" size="2">me-&gt;GetMyMercUnit</font></a></li>
+  <li><a href="#IsMercAlive"><font face="Verdana" size="2">me-&gt;IsMercAlive</font></a></li>
+  <li><a href="#GetMyCorpseCount"><font face="Verdana" size="2">me-&gt;GetMyCorpseCount</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#PickMyCorpse">me->PickMyCorpse</a></font></li>
+  <li><a href="#GetHostilerCount"><font face="Verdana" size="2">me-&gt;GetHostilerCount</font></a></li>
+  <li><a href="#IsUIOpened"><font face="Verdana" size="2">me-&gt;IsUIOpened</font></a></li>
+  <li><font face="Verdana"><a href="#GetOpenedUI"><font size="2">me-&gt;GetOpenedUI</font></a></font></li>
+  <li><font face="Verdana"><a href="#CloseAllUIs"><font size="2">me-&gt;CloseAllUIs</font></a></font></li>
+  <li><a href="#Interact"><font face="Verdana" size="2">me-&gt;Interact</font></a></li>
+  <li><a href="#RedrawClient"><font face="Verdana" size="2">me-&gt;RedrawClient</font></a></li>
+  <li><a href="#Transmute"><font face="Verdana" size="2">me-&gt;Transmute</font></a></li>
+</ul>
+<hr noshade size="1">
+<p><b><a name="GetAccountName"><font size="2" face="Verdana"></font></a><font size="2" face="Verdana">LPCSTR GetAccountName();</font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">If succeeded, the function returns pointer to a
+null-terminated string which contains the account name.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve the account name, from which the
+player logged on to Battle.net.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="GetStashGoldLimit"><font face="Verdana"></font></a><font face="Verdana">DWORD GetStashGoldLimit();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns maximum amount of gold the
+player's stash can hold.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve the player's stash gold amount limit.
+Gold amount limit depends on player's character level.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="GetInventoryGoldLimit"><font face="Verdana"></font></a><font face="Verdana">DWORD GetInventoryGoldLimit();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns maximum amount of gold the
+player's inventory can hold.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve the player's inventory gold amount
+limit. Gold amount limit depends on player's character level.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="GetMaxDifficulty"><font face="Verdana"></font></a><font face="Verdana">int GetMaxDifficulty();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">If succeeded, the function returns the maximum
+difficulty number, otherwise it returns zero.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve the maximum difficulty, to which the
+player has access. 1(normal), 2(nightmare), 3(hell).</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="IsHardcore"><font face="Verdana"></font></a><font face="Verdana">BOOL IsHardcore();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if the player is
+a hardcore player, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Detect whether the player is a hardcore player.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="GetAlwaysRun"><font face="Verdana"></font></a><font face="Verdana">BOOL GetAlwaysRun();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if the
+&quot;always run&quot; game trigger is on, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Detect whether the &quot;always run&quot; game
+trigger is on.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="GetCursorItem"><font face="Verdana"></font></a><font face="Verdana">DWORD GetCursorItem();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">If there's an item sticks on the cursor, the
+function returns ID of the item, otherwise it returns zero.&nbsp;</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Detect whether there's an item sticks on the
+cursor.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><a name="HaveSpell"><font size="2" face="Verdana"></font></a><font size="2" face="Verdana">BOOL HaveSpell(WORD
+</font> </b><font size="2" face="Verdana"><i>wSpellID</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if the player has the spell, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+  <p><font size="2" face="Verdana"><i>wSpellID</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specifies the spell ID. Please check <a href="definitions.htm#spell" target="_self">Spell
+    Definition</a> for a complete list of spell ID's.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Check whether the player has a pariticular spell.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="IsInTown"><font face="Verdana"></font></a><font face="Verdana">BOOL IsInTown();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if the player is in town, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Check whether the player is in town.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="GetMyMercUnit"><font face="Verdana"></font></a><font face="Verdana">BOOL GetMyMercUnit(LPGAMEUNIT
+</font> </b><font face="Verdana"><i>lpBuffer</i><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">lpUnit</font></i></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT" target="_self">GAMEUNIT</a>
+  struct which will receive the merc unit data.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve the hiring unit of this player, if any.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="GetID"><font face="Verdana"></font></a><font face="Verdana">DWORD GetID();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns the player's ID.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve the player's ID.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="GetName"><font face="Verdana"></font></a><font face="Verdana">LPCSTR GetName();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns a pointer to a null-terminated string which contains the
+player's name.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve the player's name.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font face="Verdana" size="2">DWORD GetMode();</font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns current mode of the player.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve mode of the player. </font><font face="Verdana" size="2">Meanings
+of mode values depend on the unit type, please check &quot;<a href="definitions.htm#mode">Unit
+Modes</a>&quot; for a complete list of mode values for all unit types.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="GetSelectedSpell"><font face="Verdana"></font></a><font face="Verdana">WORD GetSelectedSpell(BOOL
+</font> </b><font face="Verdana"><i>bLeftHand</i><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns currently selected spell
+ID.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">bLeftHand</font></i></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Specifies whether the function should return
+  left-hand spell or right-hand spell.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve selected spell ID.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="GetHPPercent"><font face="Verdana"></font></a><font face="Verdana">BYTE GetHPPercent();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns player's remaining life percent.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve life percent of the player, return
+  value ranges from 0 to 100.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="GetManaPercent"><font face="Verdana"></font></a><font face="Verdana">BYTE GetManaPercent();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns player's remaining mana percent.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve mana percent of the player, return
+  value ranges from 0 to 100.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="GetItemDurabilityPercent"><font face="Verdana"></font></a><font face="Verdana">BYTE GetItemDurabilityPercent();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns player's overall item
+durability percent.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve overall item durability percent, return
+  value ranges from 0 to 100.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="GetStat"><font face="Verdana"></font></a><font face="Verdana">DWORD GetStat(int
+</font> </b><font face="Verdana"><i>nStatID</i><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns player's stat value specified by <i>nStatID.</i></font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+  <p><i><font face="Verdana" size="2">nStatID</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">ID of the stat to return. Please check <a href="definitions.htm#stat">Unit
+    Stat Definition</a> for a complete list of unit stat ID's.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve a particular stat value of the player, such as HP, max HP, mana, max
+  mana, magic find, IAS, fast run, fast cast, resists, absorbs, etc.&nbsp;</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="GetAffection"><font face="Verdana"></font></a><font face="Verdana">BOOL GetAffection(int
+</font> </b><font face="Verdana"><i>nAffectionID</i><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if the player is affected by
+  the affection specified by <i>nAffectionID</i>, zero otherwise<i>.</i></font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+  <p><i><font face="Verdana" size="2">nAffectionID</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">ID of the affection. Please check <a href="definitions.htm#affection">Unit
+    Affection Definition</a> for a complete list of unit affection ID's.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Check whether the player is affected by a particular
+  affection. Affections are states that can affect game units, such as poisoned,
+  chilled, all passive skills, auras, etc.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="SelectSpell"><font face="Verdana"></font></a><font face="Verdana">BOOL SelectSpell(WORD
+</font> </b><font face="Verdana"><i>wSpell</i><b>, BOOL </b><i> bLeftHand</i><b> = FALSE);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+  <p><i><font face="Verdana" size="2">wSpell</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specifies the spell ID. Please check <a href="definitions.htm#spell" target="_self">Spell
+    Definition</a> for a complete list of spell ID's.</font></p>
+  </blockquote>
+<p><font size="2"><i> <font face="Verdana"> bLeftHand</font></i><font face="Verdana"><b> &nbsp;</b></font></font></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Specifies whether the spell shall be set as
+  the left-hand spell.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Select a particular spell.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font face="Verdana" size="2">POINT GetPosition();</font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns the player's current map position.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrive the player's current position. Please
+note that the result returned by this function is guaranteed to be up-to-time,
+unlike the old way of &quot;thisgame-&gt;player-&gt;PlayerPositionX&quot; which
+had a 2-5 seconds of delay. It is strongly recommended that you use this
+function to retrieve player position.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="GetMyCorpseCount"><font face="Verdana"></font></a><font face="Verdana">int GetMyCorpseCount();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns the player's corpse
+number. Only corpses those are within player's vision are counted in.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve player's corpse number.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="PickMyCorpse"><font face="Verdana"></font></a><font face="Verdana">BOOL PickMyCorpse();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Pick up the player's corpse. If there are
+multiple corpses, it picks up the first corpse found in the game unit chain.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="GetHostilerCount"><font face="Verdana"></font></a><font face="Verdana">int GetHostilerCount();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns number of players who have
+expressed hostility to this player.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve number of hostiled players.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="GetCurrentMapID"><font face="Verdana"></font></a><font face="Verdana">BYTE GetCurrentMapID();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns current map ID.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve ID of the map where the player is
+currently at. Please check <a href="definitions.htm#map">Map
+    definition</a> for a complete list of map ID's. </font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="GetDistanceFrom"><font face="Verdana"></font></a><font face="Verdana">DWORD GetDistanceFrom(WORD
+</font> </b><font face="Verdana"><i>x</i><b>, WORD </b><i>y</i><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns distance, in yards,
+between the player and a particular map position.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">x, y</font></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specifies the map position.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Calculate distance, in yards, between the
+player and a particular map position.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="HealMe"><font face="Verdana"></font></a><font face="Verdana">DWORD
+HealMe(BOOL </b><i> bKeepBottomRow</i><b> = FALSE);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns class ID of the potion
+drank if succeeds, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font size="2"><b><font face="Verdana"></font></b><font face="Verdana"><i> bKeepBottomRow</i><b>&nbsp;</b></font></font></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specifies whether potions reside on the bottom
+belt row shall be unused. If this value is non-zero, the bottom belt row will be
+protected and potions reside on which will not be used. This option could be
+extremely handy when used by a bot that implements potion consuming and
+refilling, so that the player's &quot;belt potion structure&quot; will never
+change.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Drink a belt potion to heal the player.&nbsp;</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="HealMerc"><font face="Verdana"></font></a><font face="Verdana">DWORD
+HealMerc(</font></font></b><font size="2"><b><font face="Verdana">BOOL </font></b><font face="Verdana"><i> bKeepBottomRow</i><b> = FALSE</b></font></font><b><font face="Verdana">);</font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns class ID of the potion
+drank if succeeds, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font size="2"><b><font face="Verdana"></font></b><font face="Verdana"><i> bKeepBottomRow</i><b>&nbsp;</b></font></font></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specifies whether potions reside on the bottom
+belt row shall be unused. If this value is non-zero, the bottom belt row will be
+protected and potions reside on which will not be used. This option could be
+extremely handy when used by a bot that implements potion consuming and
+refilling, so that the player's &quot;belt potion structure&quot; will never
+change.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Feed a belt potion to heal the player's hiring.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="SupplyMana"><font face="Verdana"></font></a><font face="Verdana">DWORD SupplyMana(BOOL
+</font> </b><font face="Verdana"><i> bDrinkPurpleIfNoBlue</i><b> = TRUE, </b></font><b><font face="Verdana">BOOL
+</font></b><font face="Verdana"><i> bKeepBottomRow</i><b> = FALSE</b></font><font face="Verdana"><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns class ID of the potion
+drank if succeeds, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font size="2"><i> <font face="Verdana"> bDrinkPurpleIfNoBlue</font></i><font face="Verdana"><b> &nbsp;</b></font></font></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Specifies whether to try to drink a
+  rejuvenate/full rejuvenate potion if there's no blue potion in the belt.</font></p>
+</blockquote>
+<p><font size="2"><b><font face="Verdana"></font></b><font face="Verdana"><i> bKeepBottomRow</i><b>&nbsp;</b></font></font></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specifies whether potions reside on the bottom
+belt row shall be unused. If this value is non-zero, the bottom belt row will be
+protected and potions reside on which will not be used. This option could be
+extremely handy when used by a bot that implements potion consuming and
+refilling, so that the player's &quot;belt potion structure&quot; will never
+change.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Drink a belt potion to supply the player's
+mana, it will search for a mana potion first, if there's none, then search for a
+purple potion if <i> bDrinkPurpleIfNoBlue</i><b> 
+</b>is non-zero. </font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="GetBeltRows"><font face="Verdana"></font></a><font face="Verdana">BYTE GetBeltRows();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns number of rows of the
+player's belt.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve player's belt rows, return value
+ranges from 1 to 4.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b>DWORD </b></font><font size="2"><b><font face="Verdana">GetBeltItem(int
+</font></b><font face="Verdana"><i>nSlot</i><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">If succeeded, the function returns an item ID
+or zero(empty slot), otherwise it returns -1.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">nSlot</font></i></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Specifies the belt slot, this value must be 0
+  - 15. belt slots are mapped as the following:</font></p>
+  <table border="1" cellspacing="0">
+    <tr>
+      <td align="center"><font face="Verdana" size="2">12</font></td>
+      <td align="center"><font face="Verdana" size="2">13</font></td>
+      <td align="center"><font face="Verdana" size="2">14</font></td>
+      <td align="center"><font face="Verdana" size="2">15</font></td>
+    </tr>
+    <tr>
+      <td align="center"><font face="Verdana" size="2">8</font></td>
+      <td align="center"><font face="Verdana" size="2">9</font></td>
+      <td align="center"><font face="Verdana" size="2">10</font></td>
+      <td align="center"><font face="Verdana" size="2">11</font></td>
+    </tr>
+    <tr>
+      <td align="center"><font face="Verdana" size="2">4</font></td>
+      <td align="center"><font face="Verdana" size="2">5</font></td>
+      <td align="center"><font face="Verdana" size="2">6</font></td>
+      <td align="center"><font face="Verdana" size="2">7</font></td>
+    </tr>
+    <tr>
+      <td align="center"><font face="Verdana" size="2">0</font></td>
+      <td align="center"><font face="Verdana" size="2">1</font></td>
+      <td align="center"><font face="Verdana" size="2">2</font></td>
+      <td align="center"><font face="Verdana" size="2">3</font></td>
+    </tr>
+  </table>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve ID of the item resides in a particular bel
+slot. You may use the item ID to retrieve more detailed item info such as item
+code, item size, item class ID, item location, etc by calling appropriate server
+API's.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="CastNoTarget"><font face="Verdana"></font></a><font face="Verdana">BOOL CastNoTarget(WORD
+</font> </b><font face="Verdana"><i>wSpell</i><b>, BOOL </b><i> bLeftHand</i><b> = FALSE);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+  <p><i><font face="Verdana" size="2">wSpell</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specifies the spell ID. Please check <a href="definitions.htm#spell" target="_self">Spell
+    Definition</a> for a complete list of spell ID's.</font></p>
+  </blockquote>
+<p><font size="2"><i> <font face="Verdana"> bLeftHand</font></i><font face="Verdana"><b> &nbsp;</b></font></font></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Specifies whether the spell shall be set as
+  the left-hand spell.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Cast a spell which does not require any target,
+such as Energy shield, Battle orders, etc.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="CastOnMap"><font face="Verdana"></font></a><font face="Verdana">BOOL CastOnMap(WORD
+</font> </b><font face="Verdana"><i>wSpell</i><b>, WORD </b><i>x</i><b>, WORD
+</b><i>y</i><b>, BOOL </b><i> bLeftHand</i><b> = FALSE);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+  <p><i><font face="Verdana" size="2">wSpell</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specifies the spell ID. Please check <a href="definitions.htm#spell" target="_self">Spell
+    Definition</a> for a complete list of spell ID's.</font></p>
+  </blockquote>
+<p><font face="Verdana" size="2">x, y</font></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specifies the map position to where the spell
+will be cast.</font></p>
+</blockquote>
+<p><font size="2"><i> <font face="Verdana"> bLeftHand</font></i><font face="Verdana"><b> &nbsp;</b></font></font></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Specifies whether the spell shall be set as
+  the left-hand spell.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Cast a spell to a map position.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="CastOnUnit"><font face="Verdana"></font></a><font face="Verdana">BOOL CastOnUnit(WORD
+</font> </b><font face="Verdana"><i>wSpell</i><b>, LPCGAMEUNIT </b><i>lpUnit</i><b>, BOOL
+</b><i> bLeftHand</i><b> = FALSE);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+  <p><i><font face="Verdana" size="2">wSpell</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specifies the spell ID. Please check <a href="definitions.htm#spell" target="_self">Spell
+    Definition</a> for a complete list of spell ID's.</font></p>
+  </blockquote>
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>
+    struct.</font></p>
+  </blockquote>
+<p><font size="2"><i> <font face="Verdana"> bLeftHand</font></i><font face="Verdana"><b> &nbsp;</b></font></font></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Specifies whether the spell shall be set as
+  the left-hand spell.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Cast a spell on a game unit.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="LeaveGame"><font face="Verdana"></font></a><font face="Verdana">BOOL LeaveGame();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Leave current game and back to the chat lobby.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="PauseJobs"><font face="Verdana"></font></a><font face="Verdana">void PauseJobs(BOOL
+</font> </b><font face="Verdana"><i>bPause</i><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">bPause</font></i></p>
+<blockquote>
+  <p><font face="Verdana" size="2">If non-zero, all queued jobs will be
+  suspended, if zero, queued jobs will be resumed.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Pause/resume queued jobs. Motion operations
+such as &quot;me-&gt;MoveTo&quot; and &quot;me-&gt;TeleportTo&quot; are stored
+in a First-in-first-out queue and to be executed once all preceding jobs are
+completed, during this process, your application is not actually controlling the
+player. If your module need to pause, you should call this function and pass in
+non-zero to prevent the player from further moving, later call this function
+again and pass in zero the resume.&nbsp;</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="CleanJobs"><font face="Verdana"></font></a><font face="Verdana">void CleanJobs();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Clean the player's job queue, all jobs in the
+queue are abandoned.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="BackToTown"><font face="Verdana"></font></a><font face="Verdana">BOOL BackToTown();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player cast a town portal and walk in as soon as the portal
+becomes &quot;click-able&quot;. This is an asynchronous
+operation, that is, although the function returns right away, this operation
+will be performed internally in a number of actual steps and usually takes a
+couple of seconds to complete, depends on network status. If there's no scroll
+of town portal or tome of town portal in the player's inventory, the operation
+fails.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="MoveTo"><font face="Verdana"></font></a><font face="Verdana">BOOL MoveTo(WORD
+</font> </b><font face="Verdana"><i>x</i><b>, WORD </b><i>y</i><b>, BOOL
+</b><i> bQueueJob</i><b> = TRUE);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">x, y</font></i></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Specifies the destination map position where
+  the player will move to.</font></p>
+</blockquote>
+<p><font size="2"><i> <font face="Verdana"> bQueueJob</font></i><font face="Verdana"><b> &nbsp;</b></font></font></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Specifies whether this job shall be queued.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player move to a particular map
+position, the player will be either walking or running, depends on state of the
+&quot;Always Run&quot; game trigger.</font></p>
+<p><font face="Verdana" size="2">Moving jobs can either be queued or not queued.
+If it is queued, the moving might not be executed immediately, instead, they
+will be stored in a First-in-first-out queue and to be executed one after
+another. if, however, <i> bQueueJob</i><b> 
+</b>is zero, then the job queue will be cleaned and all previously queued jobs
+will be abanddoned, and the new job gets executed right away. </font></p>
+<p><font face="Verdana" size="2">Another significant advantage of queuing the
+jobs is that D2Hackit will try to go around small obstacles if they are on the
+way to the next queued destination, so objects such as npc's, chests, shrines,
+rocks, etc are very unlikely able to make the player stuck. If the jobs are not
+queued, however, D2Hackit will not be able to take such action.&nbsp;</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="MoveToUnit"><font face="Verdana"></font></a><font face="Verdana">BOOL MoveToUnit(LPCGAMEUNIT
+</font> </b><font face="Verdana"><i>lpUnit</i><b>, BOOL </b><i> bQueueJob</i><b> = TRUE);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+  <p><i><font face="Verdana" size="2">lpUnit</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>
+    struct.</font></p>
+  </blockquote>
+<p><font size="2"><i> <font face="Verdana"> bQueueJob</font></i><font face="Verdana"><b> &nbsp;</b></font></font></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Specifies whether this job shall be queued.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player move to a particular game unit,
+the player will be either walking or running, depends on state of the
+&quot;Always Run&quot; game trigger.</font></p>
+<p><font face="Verdana" size="2">Moving jobs can either be queued or not queued.
+If it is queued, the moving might not be executed immediately, instead, they
+will be stored in a First-in-first-out queue and to be executed one after
+another. if, however, <i> bQueueJob</i><b>  </b>is zero, then the job queue will
+be cleaned and all previously queued jobs will be abanddoned, and the new job
+gets executed right away.</font></p>
+<p><font face="Verdana" size="2">Another significant advantage of queuing the
+jobs is that D2Hackit will try to go around small obstacles if they are on the
+way to the next queued destination, so objects such as npc's, chests, shrines,
+rocks, etc are very unlikely able to make the player stuck. If the jobs are not
+queued, however, D2Hackit will not be able to take such action.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="TeleportTo"><font face="Verdana"></font></a><font face="Verdana">BOOL TeleportTo(WORD
+</font> </b><font face="Verdana"><i>x</i><b>, WORD </b><i>y</i><b>, BOOL
+</b><i> bQueueJob</i><b> = TRUE);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">x, y</font></i></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Specifies the destination map position where
+  the player will teleport to.</font></p>
+</blockquote>
+<p><font size="2"><i> <font face="Verdana"> bQueueJob</font></i><font face="Verdana"><b> &nbsp;</b></font></font></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Specifies whether this job shall be queued.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player teleport to a particular map
+position.</font></p>
+<p><font face="Verdana" size="2">Moving jobs can either be queued or not queued.
+If it is queued, the moving might not be executed immediately, instead, they
+will be stored in a First-in-first-out queue and to be executed one after
+another. if, however, <i> bQueueJob</i><b>  </b>is zero, then the job queue will
+be cleaned and all previously queued jobs will be abanddoned, and the new job
+gets executed right away.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="Say"><font face="Verdana"></font></a><font face="Verdana">BOOL Say(LPCSTR
+</font> </b><font face="Verdana"><i>lpszMessage</i><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">lpszMessage</font></i></p>
+<blockquote>
+<p><font face="Verdana" size="2">Pointer to a null-terminated string which
+contains the message that is to be said.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player say a message, other players in
+the game will see the message.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="OverHead"><font face="Verdana"></font></a><font face="Verdana">BOOL OverHead(LPCSTR
+</font> </b><font face="Verdana"><i>lpszMessage</i><b>, BOOL </b><i> bClientOnly</i><b> = TRUE);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">lpszMessage</font></i></p>
+<blockquote>
+<p><font face="Verdana" size="2">Pointer to a null-terminated string which
+contains the overhead message that is to be printed.</font></p>
+</blockquote>
+<p><font size="2"><i> <font face="Verdana"> bClientOnly</font></i><font face="Verdana"><b> &nbsp;</b></font></font></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Specifies whether this overhead message shall
+  be printed client-only.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player print an overhead message. If <i> bClientOnly</i><b> 
+</b>is zero, other players in the same screen will see the message, if <i> bClientOnly</i><b> 
+</b>is non-zero, only yourself can see the message. </font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="SendSound"><font face="Verdana"></font></a><font face="Verdana">BOOL SendSound(BYTE
+</font> </b><font face="Verdana"><i>iSound</i><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">iSound</font></i></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Specifies index of the sound to be sent.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player send a sound to the game, other
+player in the same area will hear the sound. Value of <i>iSound
+</i>shall be 25 to 32, maps to the mini-keyboard key &quot;0&quot; to
+&quot;7&quot;. </font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="AntiIdle"><font face="Verdana"></font></a><font face="Verdana">BOOL AntiIdle();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player send some irrelevant packets to
+avoid being dropped by the game due to inactivity. The player will make some
+randomly sounds, or print some overhead messages.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="WeaponSwitch"><font face="Verdana"></font></a><font face="Verdana">BOOL WeaponSwitch();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player perform a weapon switching.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="EnterWP"><font face="Verdana"></font></a><font face="Verdana">BOOL EnterWaypoint(LPCGAMEUNIT
+</font> </b><font face="Verdana"><i>lpWPUnit</i><b>, BYTE </b><i>iDestinationMapID</i><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">lpWPUnit</font></i></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>
+  struct which contains the waypoint unit data.</font></p>
+</blockquote>
+<p><i><font face="Verdana" size="2">iDestinationMapID</font></i></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specifies the destination map ID. Please check <a href="definitions.htm#map">Map
+    definition</a> for a complete list of map ID's. </font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player travel to another map through
+the waypoint. This operation is asynchronous, you will have to wait for the
+PM_MAPCHANGE or PM_WPFAIL message to get the final results. You do not need to
+open the waypoint UI beffore calling this function.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="Interact"><font face="Verdana"></font></a><font face="Verdana">BOOL Interact(LPCGAMEUNIT
+</font> </b><font face="Verdana"><i>lpUnit</i><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">lpUnit</font></i></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>
+  struct.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player interact with a game unit.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="PickItem"><font face="Verdana"></font></a><font face="Verdana">BOOL PickGroundItem(DWORD
+</font>
+</b><font face="Verdana"><i>dwItemID</i><b>, BOOL
+</b><i> bShowClientMove</i><b> = TRUE);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">dwItemID</font></i></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specifies the item ID..</font></p>
+</blockquote>
+<p><font size="2"><i> <font face="Verdana"> bShowClientMove</font></i><font face="Verdana"><b> &nbsp;</b></font></font></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specifies whether to reflect the player
+movement on client screen.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player pick up an ground item.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="ResurrectMerc"><font face="Verdana"></font></a><font face="Verdana">BOOL
+ResurrectMerc();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player request current npc to
+resurrect the hiring. This operation must be performed with an npc interact
+session started by a successful previous call of <i>NpcStart</i>.</font></p>
+<p><font face="Verdana" size="2">Please note that, in order to protect you from
+losing your merc or raising an error, the function will fail if either of the
+following conditions are true:</font></p>
+<ul>
+  <li><font face="Verdana" size="2">Current npc does not have the ability to
+    resurrect your merc.</font></li>
+  <li><font face="Verdana" size="2">Your merc is alive.</font></li>
+</ul>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="BuyItem"><font face="Verdana"></font></a><font face="Verdana">BOOL BuyItem(DWORD
+</font> </b><font face="Verdana"><i>dwItemID</i><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">dwItemID</font></i></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specified the item ID.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player buy an item from a current npc.
+This function requires an active npc session which was started by a previous
+successful call to <i><a href="#StartNpcSession">StartNpcSession</a> </i>with
+interact type being set to <i>NPC_TRADE</i>.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="RepairItem"><font face="Verdana"></font></a><font face="Verdana">BOOL RepairItem(DWORD
+</font>
+</b><font face="Verdana"><i>dwItemID</i><b> = 0);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">dwItemID</font></i></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specifies the item ID.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player repair items from an npc
+unit. If <i>dwItemID</i><b>  </b>is
+non-zero, that particular item will be repaired, if <i>dwItemID</i><b>  </b>is zero, all equipped items will be repaired.
+This function requires an active npc session which was started by a previous
+successful call to <i><a href="#StartNpcSession">StartNpcSession</a> </i>with
+interact type being set to <i>NPC_TRADE</i>. </font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="IdentifyItems"><font face="Verdana"></font></a><font face="Verdana">BOOL
+IdentifyItems();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player identify all items from current
+npc, namely, Deckard Cain. This function requires an active npc session which
+was started by a previous successful call to <i><a href="#StartNpcSession">StartNpcSession</a></i>.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="DepositGoldToStash"><font face="Verdana"></font></a><font face="Verdana">BOOL DepositGoldToStash(DWORD
+</font> </b><font face="Verdana"><i> dwAmount</i><b> = 0);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font size="2"><i> <font face="Verdana"> dwAmount</font></i><font face="Verdana"><b> &nbsp;</b></font></font></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specifies the amount of gold to be deposit.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player deposit gold from inventory to
+stash. If <i> dwAmount</i><b>  </b>is zero,
+the player will attempt to deposit all inventory gold. </font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="RedrawClient"><font face="Verdana"></font></a><font face="Verdana">BOOL RedrawClient(BOOL
+</font> </b><font face="Verdana"><i> bFade</i><b> = TRUE);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds,
+  zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font size="2"><i> <font face="Verdana"> bFade</font></i><font face="Verdana"><b> &nbsp;</b></font></font></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specifies whether to blink the screen.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Redraw client screen, reposition the player to
+last known good map position. This function is extremely handy in case of desynchronization,
+such as the infamous &quot;black wall&quot;.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="DropCursorItemToGround"><font face="Verdana"></font></a><font face="Verdana">BOOL DropCursorItemToGround();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player drop the the cursor item.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="Transmute"><font face="Verdana"></font></a><font face="Verdana">BOOL Transmute();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player use the cube to transmute.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="IsUIOpened"><font face="Verdana"></font></a><font face="Verdana">BOOL IsUIOpened(int
+</font>
+</b><font face="Verdana"><i>nUIType</i><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">The function returns non-zero if the UI
+  specified by <i>nUIType </i>is opened,
+  zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">nUIType</font></i></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specifies type of the UI to be examed. Please
+check <a href="definitions.htm#uiflags">UI Flags</a> for a complete list of game
+UI flags.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font size="2" face="Verdana">Determine whether a game UI is opened.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="EnumStorageItems"><font face="Verdana"></font></a><font face="Verdana">BOOL
+EnumStorageItems(int </font> </b><font face="Verdana"><i>nSTorageType</i><b>, fnEnumItemProc </b><i>lpfnEnumItemProc</i><b>,
+LPARAM </b><i>lParam</i><b> = 0);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds,
+  zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">nSTorageType</font></i></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specifies type of the storage area in which
+items are to be enumerated. Please
+check <a href="definitions.htm#storagetype">Storage Types</a> for a complete list of
+storage types.</font></p>
+</blockquote>
+<p><i><font face="Verdana" size="2">lpfnEnumItemProc</font></i></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Pointer to a <a href="#fnEnumItemProc"><i>fnEnumItemProc</i></a><b>
+  </b>function which will receive item ID. </font></p>
+</blockquote>
+<p><font size="2"><i><font face="Verdana">lParam</font></i><font face="Verdana"><b>&nbsp;</b></font></font></p>
+<blockquote>
+  <p><font face="Verdana" size="2">A 32-bit application defined data.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font size="2" face="Verdana">Enumerate all items in the storage type
+specified by <i>nSTorageType</i>.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="fnEnumItemProc"><font face="Verdana"></font></a><font face="Verdana">typedef BOOL
+(CALLBACK *</font></b><font face="Verdana"><i>fnEnumItemProc</i><b>)(DWORD </b><i>dwItemID</i><b>, LPARAM </b><i>lParam</i><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Return zero to abort unit enumeration, return
+  non-zero to continue.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+  <p><font face="Verdana"><i>dwItemID</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">ID of the item.</font></p>
+  </blockquote>
+  <p><i><font face="Verdana" size="2">lParam</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">A 32-bit application defined value.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Process each unit data passed from <i><a href="#EnumStorageItems">EnumStorageItems</a>.</i></font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="PickStorageItemToCursor"><font face="Verdana"></font></a><font face="Verdana">BOOL PickStorageItemToCursor(DWORD
+</font>
+</b><font face="Verdana"><i>dwItemID</i><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds,
+  zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font size="2" face="Verdana">dwItemID</font></i></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specifies the item ID.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Pick an item from storage up to the cursor.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="FindFirstStorageSpace"><font face="Verdana"></font></a><font face="Verdana">BOOL FindFirstStorageSpace(int
+</font>
+</b><font face="Verdana"><i>nStorageType</i><b>, SIZE </b><i>minSize</i><b>, LPPOINT </b><i>lpBuffer</i><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">The function returns non-zero if the required
+  storage space is found,
+  zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">nSTorageType</font></i></p>
+  <blockquote>
+<p><font face="Verdana" size="2">Specifies type of the storage area in which
+spaces are calculated. Please
+check <a href="definitions.htm#storagetype">Storage Types</a> for a complete list of
+storage types.</font></p>
+  </blockquote>
+<p><i><font face="Verdana" size="2">minSize</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">The minimum size of an item that the
+    storage must be capable of hold. Sizes of items are same as what they appear
+    on the screen, for example, rings/amulets/potions/gems/runes have size of
+    1*1, gloves/helmets/boots have size of 2*2, pikes/colussus blades/polearms
+    have size of 2*4, etc. The function <a href="server.htm#GetItemSize">server-&gt;GetItemSize</a>
+    is available for retrieving sizes of any known items.</font></p>
+  </blockquote>
+  <p><i><font face="Verdana" size="2">lpBuffer</font></i></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Pointer to a POINT struct which will
+    receive the storage coordinates if the required space is found.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Find an available space from the storage
+specified by <i>nSTorageType</i>, where it
+can hold an item which has size of <i>minSize</i>.
+If the space is found, the function returns non-zero and the coordinates found
+in the storage will be copied into <i>lpBuffer, </i>if the space is not found,
+the function returns zero, in that case value of <i>lpBuffer</i> is undefined. </font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font size="2"><b><a name="DropCursorItemToStorage"><font face="Verdana"></font></a><font face="Verdana">BOOL
+DropCursorItemToStorage(int </font> </b><font face="Verdana"><i>nStorageType</i><b>);</b></font></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds,
+  zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">nSTorageType</font></i></p>
+  <blockquote>
+<p><font face="Verdana" size="2">Specifies type of the storage area in which
+spaces are calculated. Please
+check <a href="definitions.htm#storagetype">Storage Types</a> for a complete list of
+storage types.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font size="2" face="Verdana">Drops the cursor item, if any, to the storage
+specified by <i>nSTorageType.</i>
+Appropriate coordinates to where the item should be dropped are to be calculated
+automatically. If there are no required space in the storage for the given item,
+the function fails. </font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="GetOpenedUI"><font face="Verdana"></font></a><font face="Verdana">BYTE
+GetOpenedUI();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">The function returns first opened UI flag, or
+  zero if no UI has been opened. Please
+check <a href="definitions.htm#uiflags">UI Flags</a> for a complete list of game
+UI flags. </font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Check whether any UI has been opened.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><font size="2"><a name="CloseAllUIs"><font face="Verdana"></font></a><font face="Verdana">void
+CloseAllUIs();</font></font></b></p>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Close all opened UI's that will obstruct
+  player operations. UI's those will not obstruct player operations will not be
+  closed, e.g. mini-panel, auto-map, etc. You shall wait for the PM_UICLOSED
+  message after calling this function.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><a name="BuyHealingPotion"><font size="2" face="Verdana"></font></a><font size="2" face="Verdana">BOOL BuyHealingPotion(int
+</font> </b><font size="2" face="Verdana"><i>nQuantity</i><b> = 0, DWORD </b><i> dwDelay</i><b> = 500);<br>
+<a name="BuyManaPotion"></a>
+BOOL BuyManaPotion(int </b><i>nQuantity</i><b> = 0, DWORD </b><i> dwDelay</i><b> = 500);<br>
+<a name="BuyTownScroll"></a>
+BOOL BuyTownScroll(int </b><i>nQuantity</i><b> = 0, DWORD </b><i> dwDelay</i><b> = 500);<br>
+<a name="BuyIdentifyScroll"></a>
+BOOL BuyIdentifyScroll(int </b><i>nQuantity</i><b> = 0, DWORD </b><i> dwDelay</i><b> = 500);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds,
+  zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font size="2" face="Verdana">nQuantity</font></i><font size="2" face="Verdana"><b>&nbsp;</b></font></p>
+  <blockquote>
+<p><font face="Verdana" size="2">Specifies quantity of the item to be bought.
+If this parameter is zero, the player will perform a &quot;full-fill&quot;
+purchase.</font></p>
+  </blockquote>
+  <p><font size="2" face="Verdana"><b>
+  </b><i> dwDelay</i><b>
+&nbsp;</b></font></p>
+<blockquote>
+  <p><font size="2" face="Verdana">Specifies the delay, in milliseconds, between
+  two items are bought. Higher delay values yield out higher stability and
+  reliability.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Buy potions or scrolls from current npc. This
+  function requires an active npc session which was started by a previous
+  successful call to <i><a href="#StartNpcSession">StartNpcSession</a> </i>with
+  interact type being set to <i>NPC_TRADE</i>.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><a name="BuyArrows"><font size="2" face="Verdana"></font></a><font size="2" face="Verdana">BOOL BuyArrows(int
+</font> </b><font size="2" face="Verdana"><i>nQuantity</i><b>, DWORD </b><i> dwDelay</i><b> = 500);<br>
+<a name="BuyBolts"></a>
+BOOL BuyBolts(int </b><i>nQuantity</i><b>, DWORD </b><i> dwDelay</i><b> = 500);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds,
+  zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font size="2" face="Verdana">nQuantity</font></i><font size="2" face="Verdana"><b>&nbsp;</b></font></p>
+  <blockquote>
+<p><font face="Verdana" size="2">Specifies quantity of the item to be bought. If
+this parameter cannot be zero.</font></p>
+  </blockquote>
+  <p><font size="2" face="Verdana"><b>
+  </b><i> dwDelay</i><b>
+&nbsp;</b></font></p>
+<blockquote>
+  <p><font size="2" face="Verdana">Specifies the delay, in milliseconds, between
+  two items are bought. Higher delay values yield out higher stability and
+  reliability.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Buy arrows or bolts from current npc. This
+  function requires an active npc session which was started by a previous
+  successful call to <i><a href="#StartNpcSession">StartNpcSession</a> </i>with
+  interact type being set to <i>NPC_TRADE</i>.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><a name="SellItem"><font size="2" face="Verdana"></font></a><font size="2" face="Verdana">BOOL SellItem(DWORD
+</font> </b><font size="2" face="Verdana"><i>dwItemID</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds,
+  zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font size="2" face="Verdana">dwItemID</font></i></p>
+  <blockquote>
+<p><font face="Verdana" size="2">Specifies ID of the item to be sold.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Sell an item to current npc. This function
+  requires an active npc session which was started by a previous successful call
+  to <i><a href="#StartNpcSession">StartNpcSession</a> </i>with interact type
+  being set to <i>NPC_TRADE</i>.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><a name="StartNpcSession"><font size="2" face="Verdana"></font></a><font size="2" face="Verdana">BOOL StartNpcSession(LPCGAMEUNIT
+</font> </b><font size="2" face="Verdana"><i>lpNpcUnit</i><b>,
+int </b><i>nInteractType</i><b> = NPC_NORMAL); </b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds,
+  zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">lpWPUnit</font></i></p>
+  <blockquote>
+  <p><font face="Verdana" size="2">Pointer to a <a href="structs.htm#GAMEUNIT">GAMEUNIT</a>
+  struct which contains the npc unit data.</font></p>
+  </blockquote>
+  <p><i><font size="2" face="Verdana">nInteractType</font></i></p>
+<blockquote>
+  <p><font size="2" face="Verdana">Specifies additional interaction types after successfully
+  talk to the npc, this parameter can be one of the following:</font></p>
+  <ul>
+    <li><b><font size="2" face="Verdana">NPC_NORMAL</font></b><font size="2" face="Verdana">: Just open the npc menu.</font></li>
+    <li><b><font size="2" face="Verdana">NPC_TRADE</font></b><font size="2" face="Verdana">:&nbsp;&nbsp; Open the npc menu, then
+      open the npc store.</font></li>
+    <li><b><font size="2" face="Verdana">NPC_GAMBLE</font></b><font size="2" face="Verdana">: Open the npc menu, then open the
+      gamble UI.</font></li>
+  </ul>
+  <p><font size="2" face="Verdana">Please note that if the npc does not have the
+  ability on
+  the specified interaction types, the function will immediately fail. For
+  example, if you specify <b>NPC_TRADE </b>type to Warriv, who is not capable of
+  trading, this function will fail.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Start an npc session. If the function returns
+  non-zero, you must wait for the <i>PM_NPCSESSION</i> message and check the <i>wParam</i> parameter value
+  to determine results of this operation. If this function returns zero, no
+  further message will be sent. The player can only
+  perform npc operations after an npc session has been successfully started with
+  appropriate interaction types. </font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><a name="EndNpcSession"><font size="2" face="Verdana"></font></a><font size="2" face="Verdana">void EndNpcSession();</font></b></p>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">End an npc session that was started by an
+  previous call to <i>StartNpcSession</i>. This function simply closes any
+  opened npc UI's/menus and will never fail. You will, however, need to wait a
+  short period of time(around 500 milliseconds) for all opened npc UI's/ menus
+  to be closed. After calling this function, all subsequent npc operations will
+  fail until a new npc session is successfully started by another call to <i><a href="#StartNpcSession">StartNpcSession</a></i>.&nbsp;</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><a name="DrinkAllInventoryPotions"><font size="2" face="Verdana"></font></a><font size="2" face="Verdana">int DrinkAllInventoryPotions(BOOL
+</font> </b><font size="2" face="Verdana"><i>bKeepFullRejuv</i><b>
+= FALSE, DWORD </b><i> dwDelay</i><b>
+ = 500);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">If succeeded, the function returns number of
+  potions that were drunk, otherwise it returns zero.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font size="2" face="Verdana">bKeepFullRejuv</font></i><font size="2" face="Verdana"><b>
+&nbsp;</b></font></p>
+  <blockquote>
+  <p><font face="Verdana" size="2">Specifies whether full rejuvenation potions
+  should be drunk, too. If this parameter is non-zero, full rejuvenation potions
+  will be kept in inventory.</font></p>
+  </blockquote>
+  <p><font size="2" face="Verdana"><b>
+  </b><i> dwDelay</i><b>
+&nbsp;</b></font></p>
+<blockquote>
+  <p><font size="2" face="Verdana">Specifies the delay, in milliseconds, between
+  two potions are drunk. Higher delay values yield out higher stability and
+  reliability.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Drink all inventory potions, except for full
+  rejuvenation potions which will be kept if <i>bKeepFullRejuv</i>
+  is non-zero. </font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><a name="IsMercAlive"><font size="2" face="Verdana"></font></a><font size="2" face="Verdana">BOOL IsMercAlive();</font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">If the player does not have a hiring or the hiring was
+  killed, the function returns zero, otherwise it returns the hiring's current
+  life percent.&nbsp;</font></p>
+</blockquote>
+  <p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Determine if the player's hiring is alive.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><a name="DropGold"><font size="2" face="Verdana"></font></a><font size="2" face="Verdana">BOOL DropGold(DWORD
+</font> </b><font size="2" face="Verdana"><i>dwGoldAmount</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds,
+  zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font size="2" face="Verdana">dwGoldAmount</font></i></p>
+  <blockquote>
+  <p><font face="Verdana" size="2">Specifies the gold amount to be dropped.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font size="2" face="Verdana">Drop some gold to the ground. The function fails if <i>dwGoldAmount
+  </i>is zero or is greater than the player's current inventory gold amount. To
+  retrieve the player's current inventory gold amount, please check the <i><a href="#GetStat">GetStat</a></i>
+  API. </font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><a name="DrinkBeltPotion"><font size="2" face="Verdana"></font></a><font size="2" face="Verdana">BOOL DrinkBeltPotion(DWORD
+</font> </b><font size="2" face="Verdana"><i>dwItemID</i><b>,
+BOOL </b><i>bFeedMerc</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds,
+  zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font size="2" face="Verdana">dwItemID</font></i></p>
+  <blockquote>
+  <p><font face="Verdana" size="2">Specifies ID of the potion which is to be
+  drunk.</font></p>
+  </blockquote>
+<p><i><font size="2" face="Verdana">bFeedMerc</font></i></p>
+  <blockquote>
+  <p><font face="Verdana" size="2">Specifies whether this potion will be used
+  for feeding the player's hiring.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font size="2" face="Verdana">Drink a belt potion.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><b><a name="DrinkInventoryPotion"><font size="2" face="Verdana"></font></a><font size="2" face="Verdana">BOOL
+DrinkInventoryPotion(DWORD </font> </b><font size="2" face="Verdana"><i>dwItemID</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">The function returns non-zero if succeeds,
+  zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font size="2" face="Verdana">dwItemID</font></i></p>
+  <blockquote>
+  <p><font face="Verdana" size="2">Specifies ID of the potion which is to be
+  drunk.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font size="2" face="Verdana">Drink an inventory potion.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="Gamble"></a>BOOL Gamble(DWORD </b><i>dwItemID</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero
+otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">dwItemID</font></i></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specified the item ID.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Make the player gamble an item from current npc.
+This function requires an active npc session which was started by a previous
+successful call to <i><a href="#StartNpcSession">StartNpcSession</a> </i>with
+interact type being set to <i>NPC_GAMBLE</i>.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="GetSpellCharges"></a>DWORD
+GetSpellCharges(WORD </b><i>wSpellID</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">If succeeded, the function returns number of
+remaining charges on the spell cpecified by </font><font face="Verdana" size="2"><i>wSpellID</i>,
+otherwise it returns zero</font><font face="Verdana" size="2">.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+  <p><font size="2" face="Verdana"><i>wSpellID</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specifies the spell ID. This value can only
+    be one of the following:</font></p>
+    <ul>
+      <li><font size="2" face="Verdana">D2S_SCROLLOFIDENTIFY</font></li>
+      <li><font face="Verdana" size="2">D2S_TOMEOFIDENTIFY</font></li>
+      <li><font face="Verdana" size="2">D2S_SCROLLOFTOWNPORTAL</font></li>
+      <li><font face="Verdana" size="2">D2S_TOMEOFTOWNPORTAL</font></li>
+    </ul>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve remaining charges on a particular
+spell.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="GetUnidItemCount"></a>int
+GetUnidItemCount();</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns number of unidentified
+items in the player's storage.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve number of unidentified items in the
+player's storage.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="GetEquipItem"></a>DWORD GetEquipItem(int </b><i>nEquipLocation</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">If succeeded, the function returns an item ID
+or zero(empty slot), otherwise it returns -1.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2"><i>nEquipLocation</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specifies the equip location that
+    determines which item shall be returned. Please check <a href="definitions.htm#Equiplocation">Player
+    Equip Location</a> for a complete list of player's equip locations.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve ID of the item resides in a particular
+body slot. You may use the item ID to retrieve more detailed item info such as
+item code, item size, item class ID, item location, etc by calling appropriate
+server API's.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="GetAvailableBeltSlots"></a>int GetAvailableBeltSlots(BYTE
+</b><i>iColumn</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns number of empty slots on a
+belt column.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2"><i>iColumn</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specifies column index. This value is zero
+    based (0-3).</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve number of empty slots on a belt
+column.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="GetCurrentAct"></a>BYTE GetCurrentAct();</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns current act number. Zero
+based (0-4).</font></p>
+</blockquote>
+<p><font face="Verdana" size="2"><b>Remarks</b></font></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve current act number.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="GetStorageItem"></a>DWORD GetStorageItem(int
+</b><i>nStorageType</i><b>, int </b><i>x</i><b>, int </b><i>y</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">If succeeded, the function returns an item ID or zero(empty slot), otherwise it returns -1.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><i><font face="Verdana" size="2">nSTorageType</font></i></p>
+  <blockquote>
+<p><font face="Verdana" size="2">Specifies type of the storage area. Please
+check <a href="definitions.htm#storagetype">Storage Types</a> for a complete list of
+storage types.</font></p>
+  </blockquote>
+<p><font face="Verdana" size="2">x, y</font></p>
+  <blockquote>
+<p><font face="Verdana" size="2">Specifies coordinates of the position where
+item resides.</font></p>
+<p><font face="Verdana" size="2">Diablo II storage coordinates are
+top-left based, that is, the top-left corner has the smallest <i>x</i> and <i>y</i>
+values, whereas the bottom-right corner has the greatest.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Retrieve ID of the item resides in a particular
+storage slot. You may use the item ID to retrieve more detailed item info such as item code, item size, item class ID, item location, etc by calling appropriate server API's. </font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="SellInventoryItems"></a>int SellInventoryItems(int
+</b><i>nLeftColumn</i><b>, int </b><i>nRightColumn</i><b>, DWORD </b><i> dwDelay</i><b> = 500);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">If succeeded, the function returns number of
+items that were sold, otherwise it returns zero.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2"><i>nLeftColumn, nRightColumn</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specifies left-most and right-most column
+    indices, all items that reside between </font><font face="Verdana" size="2"><i>nLeftColumn
+    </i>and <i>nRightColumn</i>, inclusively, will be sold to the npc</font><font face="Verdana" size="2">.</font></p>
+  </blockquote>
+  <p><font size="2" face="Verdana"><b>
+  </b><i> dwDelay</i><b>
+&nbsp;</b></font></p>
+  <blockquote>
+  <p><font size="2" face="Verdana">Specifies the delay, in milliseconds, between
+  two items are sold. Higher delay values yield out higher stability and
+  reliability.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Sell inventory items to npc. </font><font face="Verdana" size="2"> This function
+  requires an active npc session which was started by a previous successful call
+  to <i><a href="#StartNpcSession">StartNpcSession</a> </i>with interact type
+  being set to <i>NPC_TRADE</i>.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="gamblexxx"></a>int GambleAmulets(DWORD
+</b><i> dwDelay</i><b> = 500);<br>
+int GambleRings(DWORD </b><i> dwDelay</i><b> = 500);<br>
+int GambleCirclets(DWORD </b><i> dwDelay</i><b> = 500);<br>
+int GambleGloves(DWORD </b><i> dwDelay</i><b> = 500);<br>
+int GambleBoots(DWORD </b><i> dwDelay</i><b> = 500);<br>
+int GambleBelts(DWORD </b><i> dwDelay</i><b> = 500);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">If succeeded, the function returns number of
+matched items that were found in the gambling store, otherwise it returns zero.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+  <p><font size="2" face="Verdana"><b>
+  </b><i> dwDelay</i><b>
+&nbsp;</b></font></p>
+  <blockquote>
+  <p><font size="2" face="Verdana">Specifies the delay, in milliseconds, between
+  two items are bought. Higher delay values yield out higher stability and
+  reliability.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Gamble some particular items. This function
+  requires an active npc session which was started by a previous successful call
+  to <i><a href="#StartNpcSession">StartNpcSession</a> </i>with interact type
+  being set to <i>NPC_GAMBLE</i>.</font></p>
+<p><font face="Verdana" size="2">All items with same type will be gambled, for
+example, <i>GambleCirclets</i> will result the player gamble all kinds of
+circlets that exist in the gambling store, including all found <i>Circlets</i>, <i>Coronets</i>,
+<i>Tiaras</i>, and <i>Diadems</i>.</font></p>
+<p><font face="Verdana" size="2">Please note that in case of </font><font face="Verdana" size="2"><i>GambleBelts</i>,
+only 4-row belts will be gambled. Belts that with 1, 2, or 3 rows are considered
+useless.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="IsNpcSessionStarted"></a>BOOL
+EXPORT IsNpcSessionStarted(DWORD </b><i>dwNpcID</i><b>, int </b><i>nInteractType</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">The function returns non-zero if the required
+  npc session has been started successfully, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>dwNpcID</i></font></p>
+  <blockquote>
+  <p><font size="2" face="Verdana">Specify ID of the npc unit.</font></p>
+  </blockquote>
+  <p><i><font size="2" face="Verdana">nInteractType</font></i></p>
+<blockquote>
+  <p><font size="2" face="Verdana">Specifies additional interaction types after successfully
+  talk to the npc, this parameter can be one of the following:</font></p>
+  <ul>
+    <li><font face="Verdana" size="2"><b>NPC_NORMAL</b>: Just open the npc menu.</font></li>
+    <li><font face="Verdana" size="2"><b>NPC_TRADE</b>:&nbsp;&nbsp; Open the npc menu, then
+      open the npc store.</font></li>
+    <li><font face="Verdana" size="2"><b>NPC_GAMBLE</b>: Open the npc menu, then open the
+      gamble UI.</font></li>
+  </ul>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Check whether the npc session has been
+  started successfully from a previous call to <i><a href="#StartNpcSession">StartNpcSession</a></i>. </font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="GetAngleFrom"></a>int GetAngleFrom(WORD </b><i>x</i><b>, WORD </b><i>y</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns the angle degree value between the player's
+current position and a particular map position.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>x, y</i></font></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specifies the map position.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Calculate the angle degree value
+between the player's current position and a particular map position. This
+function is useful for determining directions.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="IsWaypointAvailable"></a>BOOL
+IsWaypointAvailable(BYTE </b><i>iMapID</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if the player has
+access to the specified waypoint, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>iMapID</i></font></p>
+<blockquote>
+<p><font face="Verdana" size="2">Specifies the map ID. Please check <a href="definitions.htm#map">Map
+    definition</a> for a complete list of map ID's.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Determines whether the player has access to the
+waypoint on a particular map.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="PutInventoryPotionToBelt"></a>BOOL
+PutInventoryPotionToBelt(DWORD </b><i>dwItemID</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">The function returns non-zero if the potion
+  can be put to belt, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>dwItemID</i></font></p>
+  <blockquote>
+  <p><font size="2" face="Verdana">Specify ID of the potion.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Put an inventory potion to the belt. The
+  function fails if any of the following conditions are true:</font></p>
+  <ul>
+    <li><font face="Verdana" size="2"><i>dwItem</i> ID does not specify a valid
+      item.</font></li>
+    <li><font face="Verdana" size="2">The item is not located in the player's
+      inventory.</font></li>
+    <li><font face="Verdana" size="2">The item is not a healing, mana, or
+      rejuvenation potion.</font></li>
+    <li><font face="Verdana" size="2">There is no available belt slots for this
+      particular type of potion.</font></li>
+  </ul>
+</blockquote>
+<hr noshade size="1">
+<p><b><font face="Verdana" size="2"><a name="IsWeaponSwitched"></a>BOOL
+IsWeaponSwitched();</font></b></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">The function returns non-zero if the
+  currently activated weapon switch position is &quot;II&quot; , zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Checks whether the player's weapons are
+  switched. The player's weapon is not switched if the currently activated
+  switch position is &quot;I&quot;, and are switched if the currently activated
+  switch position is &quot;II&quot;.</font></p>
+</blockquote>
+<hr noshade size="1">

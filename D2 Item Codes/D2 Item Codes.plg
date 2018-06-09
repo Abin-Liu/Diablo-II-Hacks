@@ -1,0 +1,57 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: D2 Item Codes - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Release/D2 Item Codes.res" /d "NDEBUG" /d "_AFXDLL" "D:\Projects\D2 Item Codes\D2 Item Codes.rc"" 
+Creating temporary file "C:\DOCUME~1\abin\LOCALS~1\Temp\RSP9F.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/D2 Item Codes.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\D2 Item Codes\CodeDef.cpp"
+"D:\Projects\D2 Item Codes\ComboCompletion.cpp"
+"D:\Projects\D2 Item Codes\D2 Item Codes.cpp"
+"D:\Projects\D2 Item Codes\D2 Item CodesDlg.cpp"
+"D:\Projects\D2 Item Codes\EditEx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\abin\LOCALS~1\Temp\RSP9F.tmp" 
+Creating temporary file "C:\DOCUME~1\abin\LOCALS~1\Temp\RSPA0.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/D2 Item Codes.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\D2 Item Codes\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\abin\LOCALS~1\Temp\RSPA0.tmp" 
+Creating temporary file "C:\DOCUME~1\abin\LOCALS~1\Temp\RSPA1.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:"Release/ItemCodes.pdb" /machine:I386 /out:"Release/ItemCodes.exe" 
+".\Release\CodeDef.obj"
+".\Release\ComboCompletion.obj"
+".\Release\D2 Item Codes.obj"
+".\Release\D2 Item CodesDlg.obj"
+".\Release\EditEx.obj"
+".\Release\StdAfx.obj"
+".\Release\D2 Item Codes.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\abin\LOCALS~1\Temp\RSPA1.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+CodeDef.cpp
+ComboCompletion.cpp
+D2 Item Codes.cpp
+D2 Item CodesDlg.cpp
+EditEx.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+ItemCodes.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

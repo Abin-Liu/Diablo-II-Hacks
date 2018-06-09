@@ -1,0 +1,636 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\Pindlebot.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\Pindlebot.ico"
+IDI_YES                 ICON    DISCARDABLE     "res\\yes.ico"
+IDI_DELETE              ICON    DISCARDABLE     "res\\delete.ico"
+IDI_DOWN                ICON    DISCARDABLE     "res\\down.ico"
+IDI_EDIT                ICON    DISCARDABLE     "res\\edititem.ico"
+IDI_NO                  ICON    DISCARDABLE     "res\\no.ico"
+IDI_UP                  ICON    DISCARDABLE     "res\\up.ico"
+IDI_ADD                 ICON    DISCARDABLE     "res\\add.ico"
+IDI_RENAME              ICON    DISCARDABLE     "res\\icon1.ico"
+IDI_SHOP                ICON    DISCARDABLE     "res\\ico00001.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "文件(&F)"
+    BEGIN
+        MENUITEM "退出(&X)",                    ID_APP_EXIT
+    END
+    POPUP "编辑(&E)"
+    BEGIN
+        MENUITEM "撤消(&U)\tCtrl+Z",            ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "剪切(&T)\tCtrl+X",            ID_EDIT_CUT
+        MENUITEM "复制(&C)\tCtrl+C",            ID_EDIT_COPY
+        MENUITEM "粘贴(&P)\tCtrl+V",            ID_EDIT_PASTE
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "关于 Pindlebot(&A)...",       ID_APP_ABOUT
+    END
+END
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "popup"
+    BEGIN
+        MENUITEM "设置...",                     ID_POPUP_SETTINGS
+        MENUITEM SEPARATOR
+        MENUITEM "物品纪录",                    ID_POPUP_ITEMLOG
+        MENUITEM "运行统计",                    ID_POPUP_STATISTICS
+        MENUITEM SEPARATOR
+        MENUITEM "帮助主题",                    ID_POPUP_HELP
+        MENUITEM "关于...",                     ID_APP_ABOUT
+        MENUITEM SEPARATOR
+        MENUITEM "退出",                        ID_APP_EXIT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 Pindlebot"
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "Pindlebot v5.2 for SIG",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "版权所有 (C) 2004, Abin",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_SETTINGSDLG DIALOGEX 0, 0, 430, 273
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "参数设置"
+FONT 9, "宋体"
+BEGIN
+    GROUPBOX        "技能方案",IDC_STATIC,7,7,203,56
+    PUSHBUTTON      "",IDC_BEFORERED,16,19,40,40
+    PUSHBUTTON      "",IDC_INRED,62,19,40,40
+    PUSHBUTTON      "",IDC_ONPINDLE,107,19,40,40
+    PUSHBUTTON      "",IDC_ONCORPSE,152,19,40,40,WS_DISABLED
+    GROUPBOX        "角色安全性参数",IDC_STATIC,7,69,203,88
+    LTEXT           "生命 <",IDC_STATIC,16,87,25,8
+    EDITTEXT        IDC_MALAHHP,45,84,25,14,ES_AUTOHSCROLL
+    LTEXT           "%，或魔法 <",IDC_STATIC,74,87,45,8
+    EDITTEXT        IDC_MALAHMANA,123,84,25,14,ES_AUTOHSCROLL
+    LTEXT           "%，骚扰Malah。",IDC_STATIC,151,87,57,8
+    LTEXT           "生命 <",IDC_STATIC,16,105,25,8
+    EDITTEXT        IDC_POTIONHP,45,102,25,14,ES_AUTOHSCROLL
+    LTEXT           "%，或魔法 <",IDC_STATIC,74,105,45,8
+    EDITTEXT        IDC_POTIONMANA,123,102,25,14,ES_AUTOHSCROLL
+    LTEXT           "%，喝药水。",IDC_STATIC,151,105,45,8
+    LTEXT           "生命 <",IDC_STATIC,16,123,25,8
+    EDITTEXT        IDC_QUITHP,45,120,25,14,ES_AUTOHSCROLL
+    LTEXT           "%，或魔法 <",IDC_STATIC,74,123,45,8
+    EDITTEXT        IDC_QUITMANA,123,120,25,14,ES_AUTOHSCROLL
+    LTEXT           "%，逃出游戏。",IDC_STATIC,151,123,53,8
+    LTEXT           "站位：",IDC_STATIC,16,141,25,8
+    CONTROL         "正常",IDC_STAYNORMAL,"Button",BS_AUTORADIOBUTTON | 
+                    BS_FLAT | WS_GROUP,45,140,32,10
+    CONTROL         "近",IDC_STAYCLOSE,"Button",BS_AUTORADIOBUTTON | BS_FLAT,
+                    87,140,24,10
+    CONTROL         "远",IDC_STAYFAR,"Button",BS_AUTORADIOBUTTON | BS_FLAT,
+                    123,140,24,10
+    GROUPBOX        "小弟参数",IDC_STATIC,7,165,203,68
+    LTEXT           "生命 <",IDC_STATIC,16,181,25,8
+    EDITTEXT        IDC_PETHP,45,178,25,14,ES_AUTOHSCROLL
+    LTEXT           "%，就喂它喝药。",IDC_STATIC,74,181,61,8
+    CONTROL         "小弟一死，我也不混了。",IDC_QUITONPETDIE,"Button",
+                    BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,16,198,104,10
+    CONTROL         "自动复活小弟。",IDC_RESMERC,"Button",BS_AUTOCHECKBOX | 
+                    BS_FLAT | WS_TABSTOP,16,215,72,10
+    GROUPBOX        "装备修理",IDC_STATIC,219,7,203,36
+    LTEXT           "当装备完好度低于",IDC_STATIC,228,24,65,8
+    EDITTEXT        IDC_REPAIR,296,21,25,14,ES_AUTOHSCROLL
+    LTEXT           "%，就去修理。",IDC_STATIC,324,24,53,8
+    GROUPBOX        "消耗性武器",IDC_STATIC,219,49,203,34
+    CONTROL         "不使用",IDC_WEAPONTYPE,"Button",BS_AUTORADIOBUTTON | 
+                    BS_FLAT | WS_GROUP,228,65,40,10
+    CONTROL         "弓",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON | BS_FLAT,
+                    274,65,24,10
+    CONTROL         "十字弓",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON | 
+                    BS_FLAT,304,65,40,10
+    CONTROL         "投掷类武器",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON | 
+                    BS_FLAT,350,65,56,10
+    LTEXT           "如果Pindleskin属性符合下列任一组合我就饶它不死：",
+                    IDC_STATIC,219,95,193,8
+    CONTROL         "List2",IDC_DEADLYCOMBO,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | WS_TABSTOP,220,
+                    107,203,108,WS_EX_STATICEDGE
+    PUSHBUTTON      "添加",IDC_ADDCOMBO,251,219,42,14
+    PUSHBUTTON      "删除",IDC_DELCOMBO,300,219,42,14,WS_DISABLED
+    PUSHBUTTON      "编辑",IDC_EDITCOMBO,348,219,42,14,WS_DISABLED
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,0,239,429,1
+    PUSHBUTTON      "确定",IDOK,145,245,60,21
+    PUSHBUTTON      "取消",IDCANCEL,223,245,60,21
+END
+
+IDD_NEWCHARDLG DIALOGEX 0, 0, 145, 67
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "编辑角色"
+FONT 9, "宋体"
+BEGIN
+    LTEXT           "角色名",IDC_STATIC,7,10,25,8
+    EDITTEXT        IDC_CHARNAME,48,7,90,14,ES_AUTOHSCROLL
+    LTEXT           "角色职业",IDC_STATIC,7,26,33,8
+    COMBOBOX        IDC_CHARCLASS,48,24,90,88,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    DEFPUSHBUTTON   "确定",IDOK,22,46,50,14
+    PUSHBUTTON      "取消",IDCANCEL,72,46,50,14
+END
+
+IDD_CHARLISTDLG DIALOGEX 0, 0, 249, 267
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Pindlebot设置"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | 
+                    WS_TABSTOP,7,7,175,120,WS_EX_STATICEDGE
+    PUSHBUTTON      "添加",IDC_ADD,192,19,50,14
+    PUSHBUTTON      "删除",IDC_DEL,192,33,50,14,WS_DISABLED
+    PUSHBUTTON      "改名",IDC_REN,192,47,50,14,WS_DISABLED
+    PUSHBUTTON      "设置",IDC_EDIT,192,61,50,14,WS_DISABLED
+    LTEXT           "进入游戏后先消磨",IDC_STATIC,7,141,65,8
+    EDITTEXT        IDC_IDLELEN,75,138,40,14,ES_AUTOHSCROLL
+    LTEXT           "秒。",IDC_STATIC,119,141,17,8
+    LTEXT           "消磨时间是为了防止因为在单位时间内创建的游戏数过多而导致CDKey被Ban，安全值为300秒以上，你可根据实际情况自行调整。",
+                    IDC_STATIC,7,158,235,20
+    CONTROL         "利用Shopbot来消磨时间（某些私服不能使用）。",
+                    IDC_USESHOPBOT,"Button",BS_AUTOCHECKBOX | BS_FLAT | 
+                    WS_TABSTOP,7,191,188,10
+    PUSHBUTTON      "设置",IDC_SHOPBOT,196,185,46,21
+    LTEXT           "注意：在Shopbot设置界面里不要选中“进入游戏后自动开始运行”，Shopbot必须由Pindlebot来启动！",
+                    IDC_STATIC,7,211,235,20
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,0,233,247,1
+    PUSHBUTTON      "确定",IDOK,67,237,50,23
+    PUSHBUTTON      "取消",IDCANCEL,129,237,50,23
+END
+
+IDD_ACTIONDLG DIALOGEX 0, 0, 187, 147
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "技能设置"
+FONT 9, "宋体"
+BEGIN
+    LTEXT           "可选技能",IDC_STATIC,7,7,33,8
+    COMBOBOX        IDC_SKILLS,51,7,129,129,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "该技能冷却时间为：<> 毫秒",IDC_LBL,7,27,173,8
+    LTEXT           "将技能设于",IDC_STATIC,7,46,41,8
+    CONTROL         "左键",IDC_LEFTRIGHT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,61,46,32,10
+    CONTROL         "右键",IDC_RIGHT,"Button",BS_AUTORADIOBUTTON,109,46,32,
+                    10
+    LTEXT           "瞄准目标",IDC_STATIC,7,64,33,8
+    COMBOBOX        IDC_TARGET,51,62,129,90,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "使用间隔",IDC_STATIC,7,85,33,8
+    EDITTEXT        IDC_DELAY,51,82,54,14,ES_AUTOHSCROLL
+    LTEXT           "毫秒",IDC_STATIC,110,85,17,8
+    LTEXT           "使用次数",IDC_STATIC,7,105,33,8
+    EDITTEXT        IDC_REPEAT,51,102,54,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "确定",IDOK,43,126,50,14
+    PUSHBUTTON      "取消",IDCANCEL,93,126,50,14
+END
+
+IDD_ACTIONLISTDLG DIALOGEX 0, 0, 331, 181
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "技能方案"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_NOSORTHEADER | WS_TABSTOP,7,7,317,
+                    115,WS_EX_STATICEDGE
+    PUSHBUTTON      "添加",IDC_ADD,43,127,42,14
+    PUSHBUTTON      "删除",IDC_DEL,93,127,42,14,WS_DISABLED
+    PUSHBUTTON      "编辑",IDC_EDIT,143,127,42,14,WS_DISABLED
+    PUSHBUTTON      "上移",IDC_UP,193,127,42,14,WS_DISABLED
+    PUSHBUTTON      "下移",IDC_DOWN,243,127,42,14,WS_DISABLED
+    PUSHBUTTON      "确定",IDOK,102,154,55,20
+    PUSHBUTTON      "取消",IDCANCEL,174,154,55,20
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,0,148,331,1
+END
+
+IDD_COMBODLG DIALOGEX 0, 0, 255, 245
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Pindleskin属性组合"
+FONT 9, "宋体"
+BEGIN
+    LTEXT           "请按住“Ctrl”键从下表中选取2个属性。",IDC_STATIC,7,7,
+                    149,8
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | WS_BORDER | 
+                    WS_TABSTOP,7,18,241,197
+    DEFPUSHBUTTON   "确定",IDOK,77,224,50,14,WS_DISABLED
+    PUSHBUTTON      "取消",IDCANCEL,128,224,50,14
+END
+
+IDD_STATISTICSDLG DIALOGEX 0, 0, 179, 215
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Pindlebot运行统计"
+FONT 9, "宋体"
+BEGIN
+    LTEXT           "有效游戏内时间：",IDC_STATIC,7,7,65,8
+    LTEXT           "Static",IDC_TOTALTIME,85,7,87,8
+    LTEXT           "已完成游戏数：",IDC_STATIC,7,22,57,8
+    LTEXT           "Static",IDC_TOTALGAMES,85,22,87,8
+    LTEXT           "平均效率：",IDC_STATIC,7,37,41,8
+    LTEXT           "Static",IDC_NETEFFECTIVE,85,37,87,8
+    LTEXT           "猎杀成功次数：",IDC_STATIC,7,52,57,8
+    LTEXT           "Static",IDC_PINDLEKILLED,85,52,87,8
+    LTEXT           "提前逃避次数：",IDC_STATIC,7,67,57,8
+    LTEXT           "Static",IDC_DEADLYCOMBO,85,67,87,8
+    LTEXT           "负伤撤退次数：",IDC_STATIC,7,82,57,8
+    LTEXT           "Static",IDC_RETREATED,85,82,87,8
+    LTEXT           "角色死亡次数：",IDC_STATIC,7,97,57,8
+    LTEXT           "Static",IDC_CHARDIED,85,97,87,8
+    LTEXT           "雇佣兵死亡次数：",IDC_STATIC,7,112,65,8
+    LTEXT           "Static",IDC_MERCDIED,85,112,87,8
+    LTEXT           "技能不足次数：",IDC_STATIC,7,127,57,8
+    LTEXT           "Static",IDC_INSUFFICIENTSKILL,85,127,87,8
+    LTEXT           "角色喝掉紫药水：",IDC_STATIC,7,142,65,8
+    LTEXT           "Static",IDC_POTIONDRUNK,85,142,87,8
+    LTEXT           "雇佣兵喝掉紫药水：",IDC_STATIC,7,157,73,8
+    LTEXT           "Static",IDC_POTIONMERC,85,157,87,8
+    LTEXT           "提示：在游戏中按""F9""键也能查看统计。",IDC_STATIC,7,
+                    172,145,8
+    PUSHBUTTON      "关闭",IDCANCEL,64,194,50,14
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 5,0,0,1
+ PRODUCTVERSION 5,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "Pindlebot Microsoft 基础类应用程序\0"
+            VALUE "FileVersion", "5, 0, 0, 1\0"
+            VALUE "InternalName", "Pindlebot\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2004\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "Pindlebot.EXE\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Pindlebot 应用程序\0"
+            VALUE "ProductVersion", "5, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_SETTINGSDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 423
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 266
+    END
+
+    IDD_NEWCHARDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 138
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 60
+    END
+
+    IDD_CHARLISTDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 242
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 260
+    END
+
+    IDD_ACTIONDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 140
+    END
+
+    IDD_ACTIONLISTDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 324
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 174
+    END
+
+    IDD_COMBODLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 248
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 238
+    END
+
+    IDD_STATISTICSDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 172
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 208
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_NEWCHARDLG DLGINIT
+BEGIN
+    IDC_CHARCLASS, 0x403, 7, 0
+0x6d41, 0x7a61, 0x6e6f, "\000" 
+    IDC_CHARCLASS, 0x403, 9, 0
+0x7341, 0x6173, 0x7373, 0x6e69, "\000" 
+    IDC_CHARCLASS, 0x403, 10, 0
+0x6142, 0x6272, 0x7261, 0x6169, 0x006e, 
+    IDC_CHARCLASS, 0x403, 6, 0
+0x7244, 0x6975, 0x0064, 
+    IDC_CHARCLASS, 0x403, 12, 0
+0x654e, 0x7263, 0x6d6f, 0x6e61, 0x6563, 0x0072, 
+    IDC_CHARCLASS, 0x403, 8, 0
+0x6150, 0x616c, 0x6964, 0x006e, 
+    IDC_CHARCLASS, 0x403, 10, 0
+0x6f53, 0x6372, 0x7265, 0x7365, 0x0073, 
+    0
+END
+
+IDD_ACTIONDLG DLGINIT
+BEGIN
+    IDC_TARGET, 0x403, 9, 0
+0xdece, 0xe8d0, 0xe9c3, 0xbcd7, "\000" 
+    IDC_TARGET, 0x403, 15, 0
+0x6950, 0x646e, 0x656c, 0x6b73, 0x6e69, 0xbeb1, 0xedc9, "\000" 
+    IDC_TARGET, 0x403, 21, 0
+0xc7bd, 0xabc9, 0xcdba, 0x6950, 0x646e, 0x656c, 0x6b73, 0x6e69, 0xaed6, 
+0xe4bc, "\000" 
+    IDC_TARGET, 0x403, 15, 0
+0x6950, 0x646e, 0x656c, 0x6b73, 0x6e69, 0xedc9, 0xf3ba, "\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BEFORERED           BITMAP  DISCARDABLE     "res\\bitmap1.bmp"
+IDB_INRED               BITMAP  DISCARDABLE     "res\\bitmap2.bmp"
+IDB_ONPINDLE            BITMAP  DISCARDABLE     "res\\bitmap3.bmp"
+IDB_ONCORPSE            BITMAP  DISCARDABLE     "res\\bitmap4.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "Pindlebot"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "Pindlebot"
+    AFX_IDS_IDLEMESSAGE     "就绪"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "扩展名"
+    ID_INDICATOR_CAPS       "大写"
+    ID_INDICATOR_NUM        "数字"
+    ID_INDICATOR_SCRL       "滚动"
+    ID_INDICATOR_OVR        "改写"
+    ID_INDICATOR_REC        "记录"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "显示程序信息，版本号和版权\n关于"
+    ID_APP_EXIT             "退出应用程序；提示保存文档\n退出"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "切换到下一个窗格\n下一窗格"
+    ID_PREV_PANE            "切换回前一个窗格\n前一窗格"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "将活动的窗口分隔成窗格\n分隔"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "删除被选对象\n删除"
+    ID_EDIT_CLEAR_ALL       "全部删除\n全部删除"
+    ID_EDIT_COPY            "复制被选对象并将其置于剪贴板上\n复制"
+    ID_EDIT_CUT             "剪切被选对象并将其置于剪贴板上\n剪切"
+    ID_EDIT_FIND            "查找指定的正文\n查找"
+    ID_EDIT_PASTE           "插入剪贴板内容\n粘贴"
+    ID_EDIT_REPEAT          "重复上一步操作\n重复"
+    ID_EDIT_REPLACE         "用不同的正文替换指定的正文\n替换"
+    ID_EDIT_SELECT_ALL      "选择整个文档\n选择全部"
+    ID_EDIT_UNDO            "撤消最后一步操作\n撤消"
+    ID_EDIT_REDO            "重新执行先前已撤消的操作\n重新执行"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "改变窗口大小"
+    AFX_IDS_SCMOVE          "改变窗口位置"
+    AFX_IDS_SCMINIMIZE      "将窗口缩小成图标"
+    AFX_IDS_SCMAXIMIZE      "把窗口放大到最大尺寸"
+    AFX_IDS_SCNEXTWINDOW    "切换到下一个文档窗口"
+    AFX_IDS_SCPREVWINDOW    "切换到先前的文档窗口"
+    AFX_IDS_SCCLOSE         "关闭活动的窗口并提示保存所有文档"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "把窗口恢复到正常大小"
+    AFX_IDS_SCTASKLIST      "激活任务表"
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\Pindlebot.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

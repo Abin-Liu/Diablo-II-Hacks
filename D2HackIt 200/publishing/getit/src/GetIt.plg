@@ -1,0 +1,51 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: GetIt - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\abin\LOCALS~1\Temp\RSP58B.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "GetIt_EXPORTS" /FR"Release/" /Fp"Release/GetIt.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\Diablo II\D2HackIt 200\GetIt\D2MiscItem.cpp"
+"D:\Projects\Diablo II\D2HackIt 200\GetIt\D2Npc.cpp"
+"D:\Projects\Diablo II\D2HackIt 200\GetIt\GetIt.cpp"
+"D:\Projects\Diablo II\D2HackIt 200\Includes\Utilities\Ini.cpp"
+"D:\Projects\Diablo II\D2HackIt 200\GetIt\ItemPicker.cpp"
+"D:\Projects\Diablo II\D2HackIt 200\Includes\Utilities\StateTicker.cpp"
+"D:\Projects\Diablo II\D2HackIt 200\Includes\Utilities\TickThread.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\abin\LOCALS~1\Temp\RSP58B.tmp" 
+Creating temporary file "C:\DOCUME~1\abin\LOCALS~1\Temp\RSP58C.tmp" with contents
+[
+kernel32.lib user32.lib /nologo /dll /incremental:no /pdb:"Release/GetIt.pdb" /machine:I386 /out:"..\\Release/GetIt.d2h" /implib:"Release/GetIt.lib" 
+".\Release\D2MiscItem.obj"
+".\Release\D2Npc.obj"
+".\Release\GetIt.obj"
+".\Release\Ini.obj"
+".\Release\ItemPicker.obj"
+".\Release\StateTicker.obj"
+".\Release\TickThread.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\abin\LOCALS~1\Temp\RSP58C.tmp"
+<h3>Output Window</h3>
+Compiling...
+D2MiscItem.cpp
+D2Npc.cpp
+GetIt.cpp
+Ini.cpp
+ItemPicker.cpp
+StateTicker.cpp
+TickThread.cpp
+Linking...
+   Creating library Release/GetIt.lib and object Release/GetIt.exp
+
+
+
+<h3>Results</h3>
+GetIt.d2h - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: D2LibTest - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP141.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "D2LIBTEST_EXPORTS" /Fp"Release/D2LibTest.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\Diablo II\D2LibTest\Sample.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Abin\LOCALS~1\Temp\RSP141.tmp" 
+Creating command line "link.exe kernel32.lib user32.lib /nologo /dll /incremental:no /pdb:"Release/Sample.pdb" /machine:I386 /nodefaultlib:"libc.lib" /out:"Release/Sample.d2h" /implib:"Release/Sample.lib"  ".\Release\D2TextDraw.obj" ".\Release\Sample.obj" "
+<h3>Output Window</h3>
+Compiling...
+Sample.cpp
+Linking...
+   Creating library Release/Sample.lib and object Release/Sample.exp
+Sample.obj : error LNK2001: unresolved external symbol "public: int __thiscall CD2TextDraw::DrawSingleText(char const *,long,long,int)" (?DrawSingleText@CD2TextDraw@@QAEHPBDJJH@Z)
+Release/Sample.d2h : fatal error LNK1120: 1 unresolved externals
+Error executing link.exe.
+
+
+
+<h3>Results</h3>
+Sample.d2h - 2 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

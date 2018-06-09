@@ -1,0 +1,539 @@
+
+
+<head>
+<title>D2Hackit v2.00 - Screen Drawing API</title>
+</head>
+
+<p align="center"><font face="Arial Black" size="4"> Screen Drawing API</font></p> 
+<p align="center">¡¡</p>
+<ul>
+  <li>
+    <p align="left"><font face="Verdana" size="2"><a href="#OnDraw">Implementing               
+    the &quot;OnDraw&quot; function</a></font></li>              
+  <li>
+    <p align="left"><font face="Verdana" size="2"><a href="#ColorChart">Color 
+    Chart</a></font></li>
+  <li>
+    <p align="left"><font face="Verdana" size="2"><a href="#CGameDC">CGameDC 
+    members</a></font></li>
+</ul>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><a name="OnDraw"></a>To draw your own stuff to the game screen, you                
+need to implement the &quot;OnDraw&quot; function in your modules implementation               
+file, usually the same file where &quot;OnGameJoin&quot;,               
+&quot;OnGameLeave&quot;, &quot;OnGamePacketBeforeReceived&quot;, etc are               
+implemented.</font></p>
+<p><font face="Verdana" size="2">The function     
+is defined as the following:</font></p>    
+<p><font face="Verdana" size="2"><b>VOID EXPORT OnDraw(CGameDC* </b><i>pDC</i><b>, 
+LPCRECT </b><i>lpScreenRect</i><b>);</b></font></p>
+<p><font face="Verdana" size="2"><b>Parameters</b></font></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>pDC</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Pointer to a game device context <a href="#CGameDC"> CGameDC</a>  
+    structure which contains drawing methods for drawing texts, lines, frames,  
+    and solid rectangles.</font></p> 
+  </blockquote>
+<p><font face="Verdana" size="2"><i>lpScreenRect</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Pointer to a RECT structure which contains 
+    current game client screen boundaries.</font></p>
+  </blockquote>
+</blockquote>
+<p><font face="Verdana" size="2"><b>Remarks</b></font></p>
+<blockquote>
+  <p><font face="Verdana" size="2">You will be strictly using the given <a href="#CGameDC"> CGameDC</a>            
+  pointer to draw your own stuff on the game screen.&nbsp;</font></p>               
+  <p><font face="Verdana" size="2">Please note that this function is                
+  automatically called by D2Hackit whenever the game screen need to be                
+  repainted, you shall never call this function in your own code. The <i>pDC</i>             
+  pointer is                
+  only valid within the scope of this function, you cannot make a copy of <i>pDC</i>                
+  and use it otherwhere, attempt on doing so will raise an error.</font></p>               
+</blockquote>
+<p><font face="Verdana" size="2"><b>Code Sample</b></font></p>
+<blockquote>
+  <p><font size="2" face="Courier New"><font color="#008000">///////////////////////////////////////////////////////////////////<br>
+  // MyBot.cpp<br>
+  //-----------------------------------------------------------------<br>
+  // Using the &quot;OnDraw&quot; function to draw something on the game screen<br> 
+  ///////////////////////////////////////////////////////////////////</font><font color="#0000FF"><br>
+  VOID</font> <font color="#800080">EXPORT</font> OnDraw(<font color="#0000FF">CGameDC</font>*                
+  pDC, <font color="#0000FF">LPCRECT</font> lpScreenRect)<br>               
+  {<br>
+  &nbsp;&nbsp;&nbsp; <font color="#008000">// First we draw a red bold-line cross                
+  over the entire screen<br> 
+  &nbsp;&nbsp;&nbsp; </font>pDC-&gt;SetPenColor(0x62); <font color="#008000">// 0x62 = Red</font><br>         
+  &nbsp;&nbsp;&nbsp; pDC-&gt;SetPenWidth(5); <font color="#008000">// Make the          
+  line 5 pixels wide</font><br>
+  &nbsp;&nbsp;&nbsp; pDC-&gt;MoveTo(lpScreenRect-&gt;left,                
+  lpScreenRect-&gt;top);<br>
+  &nbsp;&nbsp;&nbsp; pDC-&gt;LineTo(lpScreenRect-&gt;right,                
+  lpScreenRect-&gt;bottom);<br>    
+  <br>
+  &nbsp;&nbsp;&nbsp; <font color="#008000">// Then we draw a transparent white                
+  rectangle outlines by a<br>
+  &nbsp;&nbsp;&nbsp; // yellow frame.<br>
+  &nbsp;&nbsp;&nbsp; </font>pDC-&gt;SetPenColor(0xA8);          
+  <font color="#008000">// 0xA8 = yellow</font><br> 
+  &nbsp;&nbsp;&nbsp; pDC-&gt;SetPenWidth(1); <font color="#008000">// Frame          
+  width is 1</font><br>
+  &nbsp;&nbsp;&nbsp; pDC-&gt;SetBrushColor(0x20); <font color="#008000"> // 0x20 = white</font><br>          
+  &nbsp;&nbsp;&nbsp; pDC-&gt;SetBrushTransparency(1); <font color="#008000">//          
+  Nice-looking translucent.</font><br>
+  &nbsp;&nbsp;&nbsp; RECT rect = { 200, 100, 400, 250};<br>               
+  &nbsp;&nbsp;&nbsp; pDC-&gt;Rectangle(&amp;rect);&nbsp;&nbsp;&nbsp;&nbsp; <font color="#008000"><br>         
+  <br>
+  </font>&nbsp;&nbsp;&nbsp; <font color="#008000">// And how about a green                
+  triangle, you said?<br> 
+  &nbsp;&nbsp;&nbsp; </font>pDC-&gt;SetPenColor(0x84); <font color="#008000">//           
+  0x84 = Green</font><br>
+  &nbsp;&nbsp;&nbsp; pDC-&gt;MoveTo(300, 120);<br>               
+  &nbsp;&nbsp;&nbsp; pDC-&gt;LineTo(220, 230);<br>            
+  &nbsp;&nbsp;&nbsp; pDC-&gt;LineTo(380, 230);<br>            
+  &nbsp;&nbsp;&nbsp; pDC-&gt;LineTo(300, 120);<br>            
+  <br>
+  &nbsp;&nbsp;&nbsp; <font color="#008000">// Finally we draw some text at                
+  center of the rectangle, using<br>
+  &nbsp;&nbsp;&nbsp; // a thin font.<br>
+  &nbsp;&nbsp;&nbsp; </font>pDC-&gt;SetFont(<font color="#800080">D2FONT_THIN</font>);<br>
+  &nbsp;&nbsp;&nbsp; pDC-&gt;DrawText(&quot;yc4OMG yc2r0x0rs?&quot;,                
+  &amp;rect, <font color="#800080">DT_CENTER</font>               
+  | <font color="#800080">DT_VCENTER</font>);<br>               
+  }</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><a name="ColorChart"></a><b>Color Chart</b></font></p> 
+
+<p><font face="Verdana" size="2">Lines, frames and rectangles are drawn with 256 
+colors, as shown below:</font></p>  
+<blockquote>
+<TABLE border="1" cellspacing="0" cellpadding="1" bgcolor="#393429"><TR HEIGHT="10"><TD WIDTH="12" bgcolor="#C0C0C0" valign="middle" align="right"><font face="Verdana" size="1">-&nbsp;</font></TD><TD WIDTH="12" bgcolor="#C0C0C0" valign="middle" align="center"><b><font face="Verdana" size="1">0</font></b></TD><TD WIDTH="12" bgcolor="#C0C0C0" valign="middle" align="center"><b><font face="Verdana" size="1">1</font></b></TD><TD WIDTH="12" bgcolor="#C0C0C0" valign="middle" align="center"><b><font face="Verdana" size="1">2</font></b></TD><TD WIDTH="12" bgcolor="#C0C0C0" valign="middle" align="center"><b><font face="Verdana" size="1">3</font></b></TD><TD WIDTH="12" bgcolor="#C0C0C0" valign="middle" align="center"><b><font face="Verdana" size="1">4</font></b></TD><TD WIDTH="12" bgcolor="#C0C0C0" valign="middle" align="center"><b><font face="Verdana" size="1">5</font></b></TD><TD WIDTH="12" bgcolor="#C0C0C0" valign="middle" align="center"><b><font face="Verdana" size="1">6</font></b></TD><TD WIDTH="12" bgcolor="#C0C0C0" valign="middle" align="center"><b><font face="Verdana" size="1">7</font></b></TD><TD WIDTH="12" bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>8</b></font></TD><TD WIDTH="12" bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>9</b></font></TD><TD WIDTH="12" bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>A</b></font></TD><TD WIDTH="12" bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>B</b></font></TD><TD WIDTH="12" bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>C</b></font></TD><TD WIDTH="12" bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>D</b></font></TD><TD WIDTH="12" bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>E</b></font></TD><TD WIDTH="12" bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>F</b></font></TD></TR><TR HEIGHT="10"><TD bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>0</b></font></TD><TD BGCOLOR="#000000"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#240000"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#1C1808"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#2C2410"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#3C3418"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#5C0000"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#484020"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#544828"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#900000"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#8C4810"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#BC0000"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#D08420"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#F4C46C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#8C7C50"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#AC9C64"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#0C0C08"><font face="Verdana" size="1">&nbsp;</font></TD></TR><TR HEIGHT="10"><TD bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>1</b></font></TD><TD BGCOLOR="#141010"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#1C1C1C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#28241C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#2C2C2C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#3C3830"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#383838"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#484848"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#585048"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#645834"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#585858"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#74643C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#646464"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#7C7470"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#848484"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#9C9894"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#C4C4C4"><font face="Verdana" size="1">&nbsp;</font></TD></TR><TR HEIGHT="10"><TD bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>2</b></font></TD><TD BGCOLOR="#F4F4F4"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#080404"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#100400"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#180804"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#181008"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#1C1410"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#240C04"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#20180C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#201814"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#2C1008"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#241C10"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#28200C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#380804"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#301C10"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#302814"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#40140C"><font face="Verdana" size="1">&nbsp;</font></TD></TR><TR HEIGHT="10"><TD bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>3</b></font></TD><TD BGCOLOR="#382810"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#480C04"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#38281C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#4C200C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#442C14"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#402C20"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#581008"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#483420"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#443428"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#54281C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#5C1C14"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#5C2408"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#543818"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#543824"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#6C1810"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#682C10"><font face="Verdana" size="1">&nbsp;</font></TD></TR><TR HEIGHT="10"><TD bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>4</b></font></TD><TD BGCOLOR="#5C4424"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#702418"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#683C24"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#7C2C0C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#644C2C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#704808"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#802818"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#745028"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#883024"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#6C5040"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#8C340C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#702068"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#785844"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#8C4040"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#845C30"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#9C3424"><font face="Verdana" size="1">&nbsp;</font></TD></TR><TR HEIGHT="10"><TD bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>5</b></font></TD><TD BGCOLOR="#A42818"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#A44814"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#8C6440"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#8C7038"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#8C6850"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#B04434"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#B44C20"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#987058"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#A07840"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#BC601C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#9C8448"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#C45454"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#C86C20"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#AC7C58"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#B08848"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#C87C54"><font face="Verdana" size="1">&nbsp;</font></TD></TR><TR HEIGHT="10"><TD bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>6</b></font></TD><TD BGCOLOR="#E07020"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#B89C54"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#FC2C00"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#C08C70"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#CC9850"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#E48430"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#E07070"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#D09878"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#F8883C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#ECA038"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#D8B864"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#E0A484"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#F0B444"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#F4C04C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#F0B08C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#FCD45C"><font face="Verdana" size="1">&nbsp;</font></TD></TR><TR HEIGHT="10"><TD bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>7</b></font></TD><TD BGCOLOR="#FCB0B0"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#042410"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#142418"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#203C18"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#18480C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#004430"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#186408"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#245C24"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#385C24"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#086C44"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#287C14"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#407434"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#587830"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#349C1C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#708438"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#48A034"><font face="Verdana" size="1">&nbsp;</font></TD></TR><TR HEIGHT="10"><TD bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>8</b></font></TD><TD BGCOLOR="#58904C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#44BC28"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#849848"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#60B84C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#18FC00"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#74DC5C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#8CD07C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#A0FC88"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#0C0C28"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#181848"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#000058"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#381444"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#102468"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#283C64"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#282878"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#4C1080"><font face="Verdana" size="1">&nbsp;</font></TD></TR><TR HEIGHT="10"><TD bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>9</b></font></TD><TD BGCOLOR="#384C84"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#303094"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#48608C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#385CA0"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#5050AC"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#4C6CAC"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#5478BC"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#2460D8"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#6478D0"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#6490E0"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#80A0DC"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#A420FC"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#8484F0"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#A0A0FC"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#90B8FC"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#588C90"><font face="Verdana" size="1">&nbsp;</font></TD></TR><TR HEIGHT="10"><TD bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>A</b></font></TD><TD BGCOLOR="#68A0A4"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#84C0C4"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#98D0D4"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#A8CCFC"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#CCF4F4"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#C0A080"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#C4C0A8"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#E0C494"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#FCE874"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#C4FCB0"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#FCE4A4"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#FCFCC4"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#040404"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#080808"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#0C0C0C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#101010"><font face="Verdana" size="1">&nbsp;</font></TD></TR><TR HEIGHT="10"><TD bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>B</b></font></TD><TD BGCOLOR="#141414"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#181818"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#241C18"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#202020"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#242424"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#282828"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#302820"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#303030"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#383028"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#343434"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#34383C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#443834"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#3C3C3C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#4C3C30"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#404040"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#44403C"><font face="Verdana" size="1">&nbsp;</font></TD></TR><TR HEIGHT="10"><TD bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>C</b></font></TD><TD BGCOLOR="#444444"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#50483C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#584438"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#4C4C4C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#604C3C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#34585C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#505050"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#545454"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#5C5C5C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#685C50"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#606060"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#447074"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#7C6450"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#686868"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#6C6C6C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#786C60"><font face="Verdana" size="1">&nbsp;</font></TD></TR><TR HEIGHT="10"><TD bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>D</b></font></TD><TD BGCOLOR="#707070"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#747474"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#7C7C7C"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#948064"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#908474"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#AC8870"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#909090"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#9C9484"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#8094B8"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#A0A0A0"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#B0AC98"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#ACACAC"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#B8B8B8"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#CCCCCC"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#D8D8D8"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#CCCCFC"><font face="Verdana" size="1">&nbsp;</font></TD></TR><TR HEIGHT="10"><TD bgcolor="#C0C0C0" valign="middle" align="center"><font face="Verdana" size="1"><b>E</b></font></TD><TD bgcolor="#E7E7E7"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#FF0084"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#101408"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#101C08"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#102008"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#182408"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#212C08"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#213418"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#313818"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#002042"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#18006B"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#080800"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#101410"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#181810"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#181C10"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#182010"><font face="Verdana" size="1">&nbsp;</font></TD></TR><TR HEIGHT="10"><TD bgcolor="#C0C0C0" valign="middle" align="center"><b><font face="Verdana" size="1">F</font></b></TD><TD bgcolor="#212018"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#212810"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#292821"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#292821"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#212C31"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#312C21"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#313029"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#000000"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#313C42"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#423C31"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#4A4539"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#524D42"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#5A594A"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#635D52"><font face="Verdana" size="1">&nbsp;</font></TD><TD bgcolor="#6B655A"><font face="Verdana" size="1">&nbsp;</font></TD><TD BGCOLOR="#FFFFFF"><font face="Verdana" size="1">&nbsp;</font></TD></TR></TABLE></blockquote>
+
+<p><font face="Verdana" size="2">Each color is a hexadecimal <font color="#0000FF"> BYTE</font> value combined            
+by the vertical index and the horizontal index, for example:</font></p>             
+<ul>
+  <li><font face="Verdana" size="2">Color &quot;purple <span style="background-color: #9900CC">&nbsp;    
+    </span>&quot;&nbsp; has value of 0x9B.</font></li>        
+  <li><font face="Verdana" size="2">Color &quot;red <span style="background-color: #FF0000">&nbsp;    
+    </span>&quot; has         
+value of 0x62.&nbsp;</font></li>      
+</ul>
+<p><font face="Verdana" size="2">Note, this color chart does not apply to text      
+colors, to draw colorful texts, either by     
+calling <i><a href="#SettextColor">SetTextColor</a></i> or by inserting text     
+color descriptors (yc1, yc2, etc) into the string. </font></p>    
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="CGameDC"></a>CGameDC Members</b></font></p>               
+<ul>
+  <li><font face="Verdana" size="2"><a href="#TextOut">CGameDC::TextOut</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#DrawText">CGameDC::DrawText</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#MoveTo">CGameDC::MoveTo</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#LineTo">CGameDC::LineTo</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#Rectangle">CGameDC::Rectangle</a></font></li>
+  <li><a href="#Frame"><font face="Verdana" size="2">CGameDC::FrameRect</font></a></li>
+  <li><font face="Verdana" size="2"><a href="#FillRect">CGameDC::FillRect</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#SetFont">CGameDC::SetFont</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetFont">CGameDC::GetFont</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#SetTextColor">CGameDC::SetTextColor</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetTextColor">CGameDC::GetTextColor</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#SetBkMode">CGameDC::SetBkMode</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetBkMode">CGameDC::GetBkMode</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetTextExtent">CGameDC::GetTextExtent</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#SetPenColor">CGameDC::SetPenColor</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetPenColor">CGameDC::GetPenColor</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#SetPenWidth">CGameDC::SetPenWidth</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetPenWidth">CGameDC::GetPenWidth</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#SetBrushColor">CGameDC::SetBrushColor</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetBrushColor">CGameDC::GetBrushColor</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#SetBrushTransparency">CGameDC::SetBrushTransparency</a></font></li>
+  <li><font face="Verdana" size="2"><a href="#GetBrushTransparency">CGameDC::GetBrushTransparency</a></font></li>
+</ul>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="TextOut"></a>BOOL TextOut(LPCSTR </b><i>lpszText</i><b>,                
+long </b><i>x</i><b>, long </b><i>y</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>lpszText</i></font></p>
+<blockquote>
+<p><font face="Verdana" size="2">Pointer to a null-terminated character string 
+which contains the characters to be drawn.</font></p>
+</blockquote>
+<p><font face="Verdana" size="2">x, y</font></p>
+<blockquote>
+  <p><font face="Verdana" size="2">Specify the screen coordinates, relative to 
+  game client area, at which the text is to be drawn.</font></p>
+</blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function writes a character string at the 
+specified location, using the current font, background mode, brush, and text 
+color.</font></p> 
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="DrawText"></a>BOOL DrawText(LPCSTR </b><i>lpszText</i><b>,                
+LPCRECT </b><i>lpRect</i><b>, UINT </b><i>nAlign</i><b>);</b></font></p> 
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>lpszText</i></font></p>
+  <blockquote>
+<p><font face="Verdana" size="2">Pointer to a null-terminated character string 
+which contains the characters to be drawn.</font></p>
+  </blockquote>
+<p><font face="Verdana" size="2"><i>lpRect</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specify the boundaries, relative to game 
+    client area, within which the text is to be drawn.</font></p>
+  </blockquote>
+  <p><font face="Verdana" size="2"><i>nAlign</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specifies text aligning types, relative to <i>lpRect</i>.  
+    Value of this parameter can be a combination of the following flags:</font></p> 
+  
+  <table border="1" cellspacing="0" width="400">
+    <tr>
+      <td width="100" align="center" bgcolor="#C0C0C0"><font face="Verdana" size="2"><b>Value</b></font></td>
+      <td width="290" align="center" bgcolor="#C0C0C0"><font face="Verdana" size="2"><b>Description</b></font></td>
+    </tr>
+    <tr>
+      <td width="100"><font size="2" face="Verdana" color="#800080">DT_LEFT</font></td>
+      <td width="290"><font face="Verdana" size="2">Left align</font></td>
+    </tr>
+    <tr>
+      <td width="100"><font size="2" face="Verdana" color="#800080">DT_CENTER</font></td>
+      <td width="290"><font face="Verdana" size="2">Horizontal center align</font></td>
+    </tr>
+    <tr>
+      <td width="100"><font size="2" face="Verdana" color="#800080">DT_RIGHT</font></td>
+      <td width="290"><font face="Verdana" size="2">Right align</font></td>
+    </tr>
+    <tr>
+      <td width="100"><font size="2" face="Verdana" color="#800080">DT_TOP</font></td>
+      <td width="290"><font face="Verdana" size="2">Top align</font></td>
+    </tr>
+    <tr>
+      <td width="100"><font size="2" face="Verdana" color="#800080">DT_VCENTER</font></td>
+      <td width="290"><font face="Verdana" size="2">Vertical center align</font></td>
+    </tr>
+    <tr>
+      <td width="100"><font size="2" face="Verdana" color="#800080">DT_BOTTOM</font></td>
+      <td width="290"><font face="Verdana" size="2">Bottom align</font></td>
+    </tr>
+  </table>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Similar to <i><a href="#TextOut">TextOut</a></i> 
+except for that this function lets you specify text alignments.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="MoveTo"></a>POINT MoveTo(long </b><i>x</i><b>, long               
+</b><i>y</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns the previous position.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">x, y</font></p>
+  <blockquote>
+  <p><font face="Verdana" size="2">Specify the screen coordinates, relative to  
+  game client area, to which the position where be changed.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Moves the current position to the point 
+specified by <i>x</i> and <i>y.</i></font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="LineTo"></a>BOOL LineTo(long </b><i>x</i><b>, long               
+</b><i>y</i><b>);</b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">x, y</font></p>
+  <blockquote>
+  <p><font face="Verdana" size="2">Specify the screen coordinates, relative to  
+  game client area, which will be the endpoint of the line.</font></p>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Draws a line from the current position up to,  
+but not including, the point specified by <i>x</i> and <i>y</i>. The current position is set to <i>x</i>,<i>y</i>. 
+The line is drawn by using the current pen color and width.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="FrameRect"></a>BOOL          
+FrameRect(LPCRECT </b><i>lpRect</i><b>);</b></font></p>          
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>lpRect</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specify the boundaries, relative to game  
+    client area, of the frame to be drawn.</font></p> 
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Draws a border around the specified rectangle, 
+using the current pen color and width.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="Rectangle"></a>BOOL Rectangle(LPCRECT               
+</b><i>lpRect</i><b>); </b></font></p>
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>lpRect</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specify the boundaries, relative to game  
+    client area, of the rectangle to be drawn.</font></p> 
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Draws a rectangle to the game screen. The 
+rectangle is outlined by using the current pen and filled by using the current 
+brush.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="FillRect"></a>BOOL FillRect(LPCRECT          
+</b><i>lpRect</i><b>);</b></font></p> 
+
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns non-zero if succeeds, zero otherwise.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>lpRect</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specify the boundaries, relative to game   
+    client area, of the rectangle to be filled.</font></p> 
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Fills a rectangle by using the current brush. 
+This function includes the left and top borders, but excludes the right and 
+bottom borders of the rectangle.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="SetFont"></a>BYTE SetFont(BYTE </b><i>iFont</i><b>);<br>         
+<a name="GetFont"></a>BYTE GetFont();</b></font></p>         
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns the previously selected 
+font.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>iFont</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specify the new font value. Please check 
+    &quot;<a href="definitions.htm#font">Game Fonts</a>&quot; for a complete 
+    list of available game font values.</font></p> 
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Sets and gets the font value of the game device 
+context.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="SetTextColor"></a>BYTE          
+SetTextColor(BYTE </b><i>iColor</i><b>);<br>         
+<a name="GetTextColor"></a>BYTE GetTextColor();</b></font></p>         
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns the previously selected 
+text color.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>iColor</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specify the new text color.</font></p> 
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Sets and gets the text color value of the game 
+device context. Text colors are different from pen or brush colors and there are 
+only about 14 available text colors. You have two ways to specify text colors, 
+either by calling <i>SettextColor</i> or by inserting text color descriptors 
+(yc1, yc2, etc) into the string.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="GetTextExtent"></a>SIZE          
+GetTextExtent(LPCSTR </b><i>lpszText</i><b>);</b></font></p>         
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns the actual drawing size of 
+the specified string.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>lpszText</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Pointer to a null-terminated character 
+    string which contains the text to be calculated.</font></p> 
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Calculates the width and height of a line of 
+text using the current font to determine the dimensions.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="SetPenColor"></a>BYTE          
+SetPenColor(BYTE </b><i>iColor</i><b>);<br>         
+<a name="GetPenColor"></a>BYTE GetPenColor();</b></font></p>         
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns the previously selected 
+pen color.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>iColor</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specify the new color value. Please check  
+    &quot;<a href="#ColorChart">Color Chart</a>&quot; for a complete table of  
+    color values.</font></p>  
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Sets and gets the pen color of the game device 
+context.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="SetPenWidth"></a>int          
+SetPenWidth(int </b><i>nWidth</i><b>);<br>         
+<a name="GetPenWidth"></a>int GetPenWidth();</b></font></p>         
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns the previously selected 
+pen width.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>nWidth</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specify the new width.</font></p> 
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Sets and gets the pen width of the game device 
+context.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="SetBrushColor"></a>BYTE          
+SetBrushColor(BYTE </b><i>iColor</i><b>);<br>         
+<a name="GetBrushColor"></a>BYTE GetBrushColor();</b></font></p>         
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns the previously selected 
+brush color.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>iColor</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specify the new color value. Please check  
+    &quot;<a href="#ColorChart">Color Chart</a>&quot; for a complete table of  
+    color values.</font></p>  
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Sets and gets the brush color of the game 
+device context.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="SetBrushTransparency"></a>BYTE          
+SetBrushTransparency(BYTE </b><i>iTransparency</i><b>);<br>         
+<a name="GetBrushTransparency"></a>BYTE GetBrushTransparency();</b></font></p>         
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns the previously selected 
+brush transparency.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>iTransparency</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specify the new transparency value. The 
+    smaller <i>iTransparency </i>is, the more transparent the brush fills. If <i>iTransparency 
+    </i>is 0xff, the brush fills opaque.</font></p> 
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Sets and gets the brush transparency of the 
+game device context.</font></p>
+</blockquote>
+<hr noshade size="1">
+<p><font face="Verdana" size="2"><b><a name="SetBkMode"></a>int SetBkMode(int </b><i>nBkMode</i><b>);<br>         
+<a name="GetBkMode"></a>int GetBkMode();</b></font></p>         
+<p><b><font face="Verdana" size="2">Return Value</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">The function returns the previously selected 
+text background filling mode.</font></p>
+</blockquote>
+<p><b><font face="Verdana" size="2">Parameters</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2"><i>nBkMode</i></font></p>
+  <blockquote>
+    <p><font face="Verdana" size="2">Specify the new text background filling 
+    mode value. Valid background filling mode values are:</font></p> 
+  
+  <table border="1" cellspacing="0" width="400">
+    <tr>
+      <td width="100" align="center" bgcolor="#C0C0C0"><font face="Verdana" size="2"><b>Value</b></font></td>
+      <td width="290" align="center" bgcolor="#C0C0C0"><font face="Verdana" size="2"><b>Description</b></font></td>
+    </tr>
+    <tr>
+      <td width="100"><font size="2" face="Verdana" color="#800080">OPAQUE</font></td>
+      <td width="290"><font face="Verdana" size="2">Background is filled with 
+        the current background color before the text is drawn.</font></td>
+    </tr>
+    <tr>
+      <td width="100"><font size="2" face="Verdana" color="#800080">TRANSPARENT</font></td>
+      <td width="290"><font face="Verdana" size="2">Background remains 
+        untouched.</font></td>
+    </tr>
+  </table>
+  </blockquote>
+</blockquote>
+<p><b><font face="Verdana" size="2">Remarks</font></b></p>
+<blockquote>
+<p><font face="Verdana" size="2">Sets and gets the text background filling mode 
+of the game device context.</font></p>
+</blockquote>
+<hr noshade size="1">
